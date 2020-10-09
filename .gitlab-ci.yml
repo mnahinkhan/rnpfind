@@ -5,6 +5,8 @@ stages:
 
 variables:
   IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+  HEROKU_APP_NAME: quiet-headland-02127
+  HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/web
 
 build:
   stage: build
@@ -15,17 +17,26 @@ build:
     DOCKER_DRIVER: overlay2
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker pull $IMAGE:latest || true
+    - docker pull $IMAGE:build-python || true
+    - docker pull $IMAGE:production || true
     - docker build
-      --cache-from $IMAGE:latest
-      --tag $IMAGE:latest
+      --target build-python
+      --cache-from $IMAGE:build-python
+      --tag $IMAGE:build-python
       --file ./Dockerfile
       "."
-    - docker push $IMAGE:latest
+    - docker build
+      --cache-from $IMAGE:production
+      --tag $IMAGE:production
+      --tag $HEROKU_REGISTRY_IMAGE
+      --file ./Dockerfile
+      "."
+    - docker push $IMAGE:build-python
+    - docker push $IMAGE:production
 
 test:
   stage: test
-  image: $IMAGE:latest
+  image: $IMAGE:production
   services:
     - postgres:latest
   variables:
@@ -46,17 +57,26 @@ deploy:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay2
-    HEROKU_APP_NAME: quiet-headland-02127
-    HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/web
   script:
     - apk add --no-cache curl
-    - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
-    - docker pull $HEROKU_REGISTRY_IMAGE || true
+    - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $IMAGE:build-python || true
+    - docker pull $IMAGE:production || true
     - docker build
-      --cache-from $HEROKU_REGISTRY_IMAGE
+      --target build-python
+      --cache-from $IMAGE:build-python
+      --tag $IMAGE:build-python
+      --file ./Dockerfile
+      "."
+    - docker build
+      --cache-from $IMAGE:production
+      --tag $IMAGE:production
       --tag $HEROKU_REGISTRY_IMAGE
       --file ./Dockerfile
       "."
+    - docker push $IMAGE:build-python
+    - docker push $IMAGE:production
+    - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
     - docker push $HEROKU_REGISTRY_IMAGE
     - chmod +x ./release.sh
     - ./release.sh
