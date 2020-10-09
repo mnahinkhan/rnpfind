@@ -1,0 +1,26 @@
+image: docker:stable
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+  HEROKU_APP_NAME: quiet-headland-02127
+  HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/web
+
+stages:
+  - build_and_deploy
+
+build_and_deploy:
+  stage: build_and_deploy
+  script:
+    - apk add --no-cache curl
+    - docker login -u _ -p $HEROKU_AUTH_TOKEN registry.heroku.com
+    - docker pull $HEROKU_REGISTRY_IMAGE || true
+    - docker build
+      --cache-from $HEROKU_REGISTRY_IMAGE
+      --tag $HEROKU_REGISTRY_IMAGE
+      --file ./Dockerfile
+      "."
+    - docker push $HEROKU_REGISTRY_IMAGE
+    - chmod +x ./release.sh
+    - ./release.sh
