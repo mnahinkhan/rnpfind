@@ -9,7 +9,7 @@ from django.db import models
 
 class Gene(models.Model):
     name = models.CharField(max_length=20)
-    chromosome_number = models.CharField(max_length=3)
+    chromosome_number = models.CharField(max_length=10)
     start_coord = models.IntegerField()
     end_coord = models.IntegerField()
     ucsc_url = models.URLField()
