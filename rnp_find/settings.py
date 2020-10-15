@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "192.168.99.100",
     "quiet-headland-02127.herokuapp.com",
-    "0.0.0.0"
+    "0.0.0.0",
 ]
 
 

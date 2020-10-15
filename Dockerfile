@@ -60,7 +60,7 @@ RUN chown myuser website/output-data/pickles
 RUN chown -R myuser website/data
 RUN chown -R myuser website/ucsc-tools/linux
 RUN chmod -R 755 website/ucsc-tools/linux
-RUN chown myuser db.sqlite3
+RUN chown myuser db.sqlite3 2>/dev/null
 RUN chown myuser /app
 # RUN ./website/ucsc-tools/linux/bedToBigBed
 USER myuser
