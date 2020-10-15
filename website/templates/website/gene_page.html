@@ -35,7 +35,7 @@
         .then(response => response.json())
         .then(info => {
             if (info.process_complete) {
-                window.location.reload();
+                setTimeout(() => window.location.reload());
             }
             else {
                 console.log(info);
