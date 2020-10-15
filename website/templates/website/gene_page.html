@@ -40,15 +40,20 @@
         })
         .catch(error => console.log(error));
 
-        setInterval( () => {
+        function ask_status() {
             fetch(`/analysis-status/${gene}`)
             .then(response => response.json())
             .then(info => {
                 document.querySelector('#status').innerHTML = info.status + "..."
             })
             .catch(error => console.log(error));
+
+            // and schedule a repeat
+            setTimeout(ask_status, 4000);
         }
-        , 4000 )
+
+        // start the cycle
+        ask_status();
         
 
 
