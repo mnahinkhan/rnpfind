@@ -14,6 +14,16 @@ class Gene(models.Model):
     end_coord = models.IntegerField()
     ucsc_url = models.URLField()
 
+    def total_sites(self):
+        return sum(summary.number_of_sites for summary in self.binding_summaries.all())
+
+    def max_unique_rbps(self):
+        return max(summary.number_of_rbps for summary in self.binding_summaries.all())
+    
+    def size(self):
+        return end_coord  - start_coord
+
+
 
 class BindingSummaryInfo(models.Model):
     RBPDB = 'RB'
