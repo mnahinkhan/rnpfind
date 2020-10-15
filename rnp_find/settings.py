@@ -33,12 +33,14 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "192.168.99.100",
     "quiet-headland-02127.herokuapp.com",
+    "0.0.0.0"
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "website",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -108,6 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+
+SESSION_SAVE_EVERY_REQUEST = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

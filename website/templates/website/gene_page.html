@@ -1,0 +1,65 @@
+{% extends "website/layout.html" %}
+
+{% block body %}
+<h1>
+    {{gene_official_name}}
+</h1>
+<h5>({{gene_typed_name}})</h5>
+
+{% if cached %}
+    <h6>Chromsome {{gene_cached_data.chromosome_number}}, {{gene_cached_data.start_coord}}-{{gene_cached_data.end_coord}}</h6>
+    <div class="information container">
+        <h5>RBP binding sites collected for this gene's transcript:</h5>
+        <ul id="binding_summaries">
+            {% for binding_summary in gene_cached_data.binding_summaries.all %}
+                <li>
+                    {{binding_summary.get_data_source_type_display.upper}}: {{binding_summary.number_of_sites}} sites from {{binding_summary.number_of_rbps}} RBPs
+                </li>
+            {% endfor %}
+        </ul>
+        <p>View the binding sites <a href="{{gene_cached_data.ucsc_url}}">here</a></p>
+    </div>
+
+{% else %}
+    <h6 id="output">We are loading the data and will get back to you!</h6>
+    <p id="status"></p>
+{% endif %}
+
+
+<script type="text/javascript">
+    const cached = {% if cached %}true{% else %}false{% endif %};
+    const gene = "{{gene_official_name}}";
+
+    if (!cached) {
+        fetch(`/analysis-request/${gene}`)
+        .then(response => response.json())
+        .then(info => {
+            if (info.process_complete) {
+                window.location.reload();
+            }
+            else {
+                console.log(info);
+                document.querySelector("#output").innerHTML = "Server error, sorry :(";
+            }
+        })
+        .catch(error => console.log(error));
+
+        setInterval( () => {
+            fetch(`/analysis-status/${gene}`)
+            .then(response => response.json())
+            .then(info => {
+                document.querySelector('#status').innerHTML = info.status + "..."
+            })
+            .catch(error => console.log(error));
+        }
+        , 4000 )
+        
+
+
+
+    }
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,416 @@
+1226	ENSG00000003756	2010-03-18	2010-04-24	RBM5	RNA binding motif protein 5 [Source:HGNC Symbol;Acc:9902]	Homo sapiens	9606	RRMx2; Znf_C2H2x1	LUCA15; H37	\N	\N	\N
+1228	ENSG00000004534	2010-03-18	2010-04-24	RBM6	RNA binding motif protein 6 [Source:HGNC Symbol;Acc:9903]	Homo sapiens	9606	RRMx2	DEF-3; 3G2; NY-LU-12; g16; DEF3	\N	\N	\N
+1229	ENSG00000005189	2010-03-18	2010-04-05		Putative RNA exonuclease NEF-sp (EC 3.1.-.-) [Source:UniProtKB/Swiss-Prot;Acc:Q96IC2]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1230	ENSG00000006047	2010-03-18	2010-04-24	YBX2	Y box binding protein 2 [Source:HGNC Symbol;Acc:17948]	Homo sapiens	9606	CSDx1	MSY2; CSDA3	\N	\N	\N
+1231	ENSG00000009307	2010-03-18	2010-04-29	CSDE1	cold shock domain containing E1, RNA-binding [Source:HGNC Symbol;Acc:29905]	Homo sapiens	9606	CSDx5	D1S155E; UNR	\N	\N	\N
+1233	ENSG00000011304	2010-03-18	2010-04-07	PTBP1	polypyrimidine tract binding protein 1 [Source:HGNC Symbol;Acc:9583]	Homo sapiens	9606	RRMx4	HNRPI; HNRNP-I; PTB2; PTB3; PTB-1; PTB4; pPTB	\N	\N	\N
+1234	ENSG00000014164	2010-03-18	2010-04-28	ZC3H3	zinc finger CCCH-type containing 3 [Source:HGNC Symbol;Acc:28972]	Homo sapiens	9606	Znf_CCCHx1	KIAA0150	\N	\N	\N
+1235	ENSG00000015479	2010-03-18	2010-04-06	MATR3	matrin 3 [Source:HGNC Symbol;Acc:6912]	Homo sapiens	9606	RRMx2	KIAA0723; MGC9105	\N	\N	\N
+1236	ENSG00000020577	2010-03-18	2010-04-29	SAMD4A	sterile alpha motif domain containing 4A [Source:HGNC Symbol;Acc:23023]	Homo sapiens	9606	SAMx1	KIAA1053; DKFZP434H0350; Smaug; SMG; SMGA; hSmaug1	\N	\N	\N
+1239	ENSG00000047188	2010-03-18	2010-04-29	YTHDC2	YTH domain containing 2 [Source:HGNC Symbol;Acc:24721]	Homo sapiens	9606	YTHx1	FLJ2194; FLJ10053; DKFZp564A186	\N	\N	\N
+1242	ENSG00000048740	2010-03-18	2010-03-30	CUGBP2	CUG triplet repeat, RNA binding protein 2 [Source:HGNC Symbol;Acc:2550]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1243	ENSG00000055917	2010-03-18	2010-04-29	PUM2	pumilio homolog 2 (Drosophila) [Source:HGNC Symbol;Acc:14958]	Homo sapiens	9606	PUMx1	PUMH2; KIAA0235	\N	\N	\N
+1244	ENSG00000056586	2010-03-18	2010-04-28	RC3H2	ring finger and CCCH-type zinc finger domains 2 [Source:HGNC Symbol;Acc:21461]	Homo sapiens	9606	Znf_CCCHx1; Znf_RING	FLJ20301; FLJ20713; RNF164	\N	\N	\N
+1245	ENSG00000058673	2010-03-18	2010-04-28	ZC3H11A	zinc finger CCCH-type containing 11A [Source:HGNC Symbol;Acc:29093]	Homo sapiens	9606	Znf_CCCHx3	KIAA0663	\N	\N	\N
+1247	ENSG00000059378	2010-03-18	2010-04-30	PARP12	poly (ADP-ribose) polymerase family, member 12 [Source:HGNC Symbol;Acc:21919]	Homo sapiens	9606	Znf_CCCHx3	FLJ22693; PARP-12; ZC3H1	\N	\N	\N
+1249	ENSG00000060138	2010-03-18	2010-04-24	CSDA	cold shock domain protein A pseudogene 1 [Source:HGNC Symbol;Acc:2429]	Homo sapiens	9606	CSDx1	dbpA; ZONAB; CSDA1	\N	\N	\N
+1250	ENSG00000061936	2010-03-18	2010-04-30	SFRS8	splicing factor, arginine/serine-rich 8 (suppressor-of-white-apricot homolog, Drosophila) [Source:HGNC Symbol;Acc:10790]	Homo sapiens	9606	SURPx2	SWAP	\N	\N	\N
+1251	ENSG00000063046	2010-03-18	2010-05-01	EIF4B	eukaryotic translation initiation factor 4B [Source:HGNC Symbol;Acc:3285]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1252	ENSG00000063244	2010-03-18	2010-05-10	U2AF2	U2 small nuclear RNA auxiliary factor 2 [Source:HGNC Symbol;Acc:23156]	Homo sapiens	9606	RRMx3	U2AF65	\N	\N	\N
+1253	ENSG00000064607	2010-03-18	2010-05-01	SFRS14	splicing factor, arginine/serine-rich 14 [Source:HGNC Symbol;Acc:18641]	Homo sapiens	9606	SURPx2	KIAA0365	\N	\N	\N
+1255	ENSG00000065526	2010-03-18	2010-05-01	SPEN	spen homolog, transcriptional regulator (Drosophila) [Source:HGNC Symbol;Acc:17575]	Homo sapiens	9606	RRMx4	KIAA0929; MINT; SHARP; RBM15C	0	DNA binding (PMID: 10451362)	\N
+1256	ENSG00000065548	2010-03-18	2010-04-28	ZC3H15	zinc finger CCCH-type containing 15 [Source:HGNC Symbol;Acc:29528]	Homo sapiens	9606	Znf_CCCHx2	LEREPO4	\N	\N	\N
+1257	ENSG00000065978	2010-03-18	2010-04-24	YBX1	Y box binding protein 1 [Source:HGNC Symbol;Acc:8014]	Homo sapiens	9606	CSDx1	YB-1; YB1; DBPB; NSEP-1; MDR-NF1; BP-8; CSDB; CSDA2	\N	also binds ssDNA sequence-specifically	\N
+1258	ENSG00000066044	2010-03-18	2010-06-28	ELAVL1	ELAV (embryonic lethal, abnormal vision, Drosophila)-like 1 (Hu antigen R) [Source:HGNC Symbol;Acc:3312]	Homo sapiens	9606	RRMx3	HuR; Hua; MelG	\N	\N	\N
+1259	ENSG00000066654	2010-03-18	2010-05-01	THUMPD1	THUMP domain containing 1 [Source:HGNC Symbol;Acc:23807]	Homo sapiens	9606	THUMPx1	FLJ20274	\N	\N	\N
+1260	ENSG00000067596	2010-03-18	2010-05-01	DHX8	DEAH (Asp-Glu-Ala-His) box polypeptide 8 [Source:HGNC Symbol;Acc:2749]	Homo sapiens	9606	S1x1	HRH1; PRP22; PRPF22	0	RNA helicase, no evidence of sequence-specific binding	\N
+1261	ENSG00000068784	2010-03-18	2010-05-01	SRBD1	S1 RNA binding domain 1 [Source:HGNC Symbol;Acc:25521]	Homo sapiens	9606	S1x1	FLJ10379	\N	\N	\N
+1262	ENSG00000070756	2010-03-18	2010-04-06	PABPC1	poly(A) binding protein, cytoplasmic 1 [Source:HGNC Symbol;Acc:8554]	Homo sapiens	9606	RRMx4	PABP1; PABPL1	\N	\N	\N
+1264	ENSG00000071626	2010-03-18	2010-03-22	DAZAP1	DAZ associated protein 1 [Source:HGNC Symbol;Acc:2683]	Homo sapiens	9606	RRMx2	MGC19907	\N	\N	\N
+1266	ENSG00000073792	2010-03-18	2010-05-03	IGF2BP2	insulin-like growth factor 2 mRNA binding protein 2 [Source:HGNC Symbol;Acc:28867]	Homo sapiens	9606	RRMx2; KHx4	IMP-2	\N	\N	\N
+1267	ENSG00000075292	2010-03-18	2010-04-28	ZNF638	zinc finger protein 638 [Source:HGNC Symbol;Acc:17894]	Homo sapiens	9606	Znf_C2H2x2; RRMx2	NP220; MGC26130; Zfp638	0	dsDNA binding (PMID:8647861)	\N
+1268	ENSG00000075856	2010-03-18	2010-05-21	SART3	squamous cell carcinoma antigen recognized by T cells 3 [Source:HGNC Symbol;Acc:16860]	Homo sapiens	9606	RRMx2; Lsmx1	KIAA0156; RP11-13G14	\N	\N	\N
+1269	ENSG00000075975	2010-03-18	2010-07-14	MKRN2	makorin ring finger protein 2 [Source:HGNC Symbol;Acc:7113]	Homo sapiens	9606	Znf_CCCHx4; Znf_RINGx1	RNF62; HSPC070	\N	\N	\N
+1270	ENSG00000076053	2010-03-18	2010-04-07	RBM7	RNA binding motif protein 7 [Source:HGNC Symbol;Acc:9904]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1271	ENSG00000076067	2010-03-18	2010-04-28	RBMS2	RNA binding motif, single stranded interacting protein 2 [Source:HGNC Symbol;Acc:9909]	Homo sapiens	9606	RRMx2	SCR3	0	possibly ssDNA binding (PMID: 7838710)	\N
+1272	ENSG00000076770	2010-03-18	2010-06-17	MBNL3	muscleblind-like 3 (Drosophila) [Source:HGNC Symbol;Acc:20564]	Homo sapiens	9606	Znf_CCCHx4	CHCR; FLJ11316; MBLX39; MBXL	\N	\N	\N
+1274	ENSG00000077312	2010-03-18	2010-06-17	SNRPA	small nuclear ribonucleoprotein polypeptide A [Source:HGNC Symbol;Acc:11151]	Homo sapiens	9606	RRMx2	U1A; U1-A; Mud1	\N	\N	\N
+1275	ENSG00000078269	2010-03-18	2010-07-21	SYNJ2	synaptojanin 2 [Source:HGNC Symbol;Acc:11504]	Homo sapiens	9606	RRMx1	INPP5H	\N	\N	\N
+1276	ENSG00000078328	2010-03-18	2010-04-07	A2BP1	Fox-1 homolog A (Ataxin-2-binding protein 1)(Hexaribonucleotide-binding protein 1) [Source:UniProtKB/Swiss-Prot;Acc:Q9NWB1]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1277	ENSG00000078687	2010-03-18	2010-05-11		Trinucleotide repeat-containing gene 6C protein  [Source:UniProtKB/Swiss-Prot;Acc:Q9HCJ0]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1279	ENSG00000080007	2010-03-18	2010-07-21	DDX43	DEAD (Asp-Glu-Ala-Asp) box polypeptide 43 [Source:HGNC Symbol;Acc:18677]	Homo sapiens	9606	KHx1	HAGE; DKFZp434H2114; CT13	\N	\N	\N
+1281	ENSG00000080608	2010-03-18	2010-05-03	KIAA0020	KIAA0020 [Source:HGNC Symbol;Acc:29676]	Homo sapiens	9606	PUMx1	XTP5; PEN; PUF6	\N	\N	\N
+1282	ENSG00000080802	2010-03-18	2010-07-21	CNOT4	CCR4-NOT transcription complex, subunit 4 [Source:HGNC Symbol;Acc:7880]	Homo sapiens	9606	RRMx1; Znf_RINGx1	CLONE243; NOT4H	\N	\N	\N
+1283	ENSG00000083896	2010-03-18	2010-07-20	YTHDC1	YTH domain containing 1 [Source:HGNC Symbol;Acc:30626]	Homo sapiens	9606	YTHx1	YT521; KIAA1966; YT521-B	\N	\N	\N
+1284	ENSG00000084072	2010-03-18	2010-07-20	PPIE	peptidylprolyl isomerase E (cyclophilin E) [Source:HGNC Symbol;Acc:9258]	Homo sapiens	9606	RRMx1	CyP-33; MGC3736; MGC111222	\N	\N	\N
+1286	ENSG00000085872	2010-03-18	2010-05-15	CHERP	calcium homeostasis endoplasmic reticulum protein [Source:HGNC Symbol;Acc:16930]	Homo sapiens	9606	SURPx1	ERPROT213-21; DAN16	\N	\N	\N
+1287	ENSG00000086589	2010-03-18	2010-04-28	RBM22	RNA binding motif protein 22 [Source:HGNC Symbol;Acc:25503]	Homo sapiens	9606	RRMx1; Znf_CCHCx1; Znf_CCCHx1	FLJ10290; ZC3H16; fSAP47; Cwc2	\N	\N	\N
+1288	ENSG00000088247	2010-03-18	2010-07-08	KHSRP	KH-type splicing regulatory protein [Source:HGNC Symbol;Acc:6316]	Homo sapiens	9606	KHx4	KSRP; FBP2; FUBP2	\N	\N	\N
+1289	ENSG00000089280	2010-03-18	2010-06-01	FUS	fused in sarcoma [Source:HGNC Symbol;Acc:4010]	Homo sapiens	9606	RRMx1; Znf_RanBP2x1	TLS; FUS1; hnRNP-P2	\N	\N	\N
+1290	ENSG00000089682	2010-03-18	2010-04-28	RBM41	RNA binding motif protein 41 [Source:HGNC Symbol;Acc:25617]	Homo sapiens	9606	RRMx1	FLJ11016	\N	\N	\N
+1291	ENSG00000090097	2010-03-18	2010-05-13	PCBP4	poly(rC) binding protein 4 [Source:HGNC Symbol;Acc:8652]	Homo sapiens	9606	KHx3	MCG10; LIP4	\N	\N	\N
+1292	ENSG00000090621	2010-03-18	2010-04-06	PABPC4	poly(A) binding protein, cytoplasmic 4 (inducible form) [Source:HGNC Symbol;Acc:8557]	Homo sapiens	9606	RRMx4	iPABP; APP-1	\N	\N	\N
+1293	ENSG00000090905	2010-03-18	2010-05-11	TNRC6A	trinucleotide repeat containing 6A [Source:HGNC Symbol;Acc:11969]	Homo sapiens	9606	RRMx1	CAGH26; KIAA1460; GW182	\N	\N	\N
+1294	ENSG00000091009	2010-03-18	2010-05-15	RBM27	RNA binding motif protein 27 [Source:HGNC Symbol;Acc:29243]	Homo sapiens	9606	RRMx1; Znf_CCCHx1	KIAA1311; ARRS1; Psc1	\N	\N	\N
+1296	ENSG00000092199	2010-03-18	2010-05-07	HNRNPC	heterogeneous nuclear ribonucleoprotein C (C1/C2) [Source:HGNC Symbol;Acc:5035]	Homo sapiens	9606	RRMx1	hnRNPC	\N	\N	\N
+1297	ENSG00000092345	2010-03-18	2010-03-22	DAZL	deleted in azoospermia-like [Source:HGNC Symbol;Acc:2685]	Homo sapiens	9606	RRMx1	DAZH; SPGYLA; MGC26406; DAZL1	\N	\N	\N
+1298	ENSG00000096746	2010-03-18	2010-04-25	HNRNPH3	heterogeneous nuclear ribonucleoprotein H3 (2H9) [Source:HGNC Symbol;Acc:5043]	Homo sapiens	9606	RRMx2	2H9	\N	\N	\N
+1299	ENSG00000099381	2010-03-18	2010-07-21	SETD1A	SET domain containing 1A [Source:HGNC Symbol;Acc:29010]	Homo sapiens	9606	RRMx1	KIAA0339; Set1; KMT2F	\N	\N	\N
+1300	ENSG00000099622	2010-03-18	2010-04-05	CIRBP	cold inducible RNA binding protein [Source:HGNC Symbol;Acc:1982]	Homo sapiens	9606	RRMx1	CIRP	\N	\N	\N
+1301	ENSG00000099783	2010-03-18	2010-04-06	HNRNPM	heterogeneous nuclear ribonucleoprotein M [Source:HGNC Symbol;Acc:5046]	Homo sapiens	9606	RRMx3	HTGR1; HNRNPM4; HNRPM4	\N	\N	\N
+1303	ENSG00000099899	2010-03-18	2010-07-21	TRMT2A	TRM2 tRNA methyltransferase 2 homolog A (S. cerevisiae) [Source:HGNC Symbol;Acc:24974]	Homo sapiens	9606	RRMx1	HTF9C	\N	\N	\N
+1304	ENSG00000099995	2010-03-18	2010-07-21	SF3A1	splicing factor 3a, subunit 1, 120kDa [Source:HGNC Symbol;Acc:10765]	Homo sapiens	9606	SURPx2	SF3a120; SAP114; PRPF21; Prp21	\N	\N	\N
+1305	ENSG00000100028	2010-03-18	2010-07-20	SNRPD3	small nuclear ribonucleoprotein D3 polypeptide 18kDa [Source:HGNC Symbol;Acc:11160]	Homo sapiens	9606	Lsmx1	SMD3; Sm-D3	\N	\N	\N
+1306	ENSG00000100227	2010-03-18	2010-07-14	POLDIP3	polymerase (DNA-directed), delta interacting protein 3 [Source:HGNC Symbol;Acc:23782]	Homo sapiens	9606	RRMx1	PDIP46; KIAA1649	\N	\N	\N
+1307	ENSG00000100319	2010-03-18	2010-04-28	ZMAT5	zinc finger, matrin type 5 [Source:HGNC Symbol;Acc:28046]	Homo sapiens	9606	Znf_CCCHx1; Znf_U1-C		\N	\N	\N
+1308	ENSG00000100320	2010-03-18	2010-04-07	RBM9	RNA binding motif protein 9 [Source:HGNC Symbol;Acc:9906]	Homo sapiens	9606	RRMx1	HNRBP2; FOX-2	\N	\N	\N
+1309	ENSG00000100403	2010-03-18	2010-04-28	ZC3H7B	zinc finger CCCH-type containing 7B [Source:HGNC Symbol;Acc:30869]	Homo sapiens	9606	Znf_CCCHx5	RoXaN; FLJ13787; DKFZp434K0920; KIAA1031	\N	\N	\N
+1310	ENSG00000100461	2010-03-18	2010-07-21	RBM23	RNA binding motif protein 23 [Source:HGNC Symbol;Acc:20155]	Homo sapiens	9606	RRMx2	FLJ10482	\N	\N	\N
+1312	ENSG00000100650	2010-03-18	2010-07-22	SFRS5	splicing factor, arginine/serine-rich 5 [Source:HGNC Symbol;Acc:10787]	Homo sapiens	9606	RRMx2	SRP40; HRS	\N	\N	\N
+1313	ENSG00000100722	2010-03-18	2010-04-28	ZC3H14	zinc finger CCCH-type containing 14 [Source:HGNC Symbol;Acc:20509]	Homo sapiens	9606	Znf_CCCHx2	FLJ11806; UKp68; NY-REN-37	\N	\N	\N
+1314	ENSG00000100813	2010-03-18	2010-03-22	ACIN1	apoptotic chromatin condensation inducer 1 [Source:HGNC Symbol;Acc:17066]	Homo sapiens	9606	RRMx1	KIAA0670; fSAP152	\N	\N	\N
+1315	ENSG00000100836	2010-03-18	2010-05-31	PABPN1	poly(A) binding protein, nuclear 1 [Source:HGNC Symbol;Acc:8565]	Homo sapiens	9606	RRMx1	PAB2	\N	\N	\N
+1316	ENSG00000101104	2010-03-18	2010-04-06	PABPC1L	poly(A) binding protein, cytoplasmic 1-like [Source:HGNC Symbol;Acc:15797]	Homo sapiens	9606	RRMx4	dJ1069P2.3; PABPC1L1; ePAB	\N	\N	\N
+1318	ENSG00000101489	2010-03-18	2010-03-30	BRUNOL4	bruno-like 4, RNA binding protein (Drosophila) [Source:HGNC Symbol;Acc:14015]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1319	ENSG00000101811	2010-03-18	2010-05-03	CSTF2	cleavage stimulation factor, 3' pre-RNA, subunit 2, 64kDa [Source:HGNC Symbol;Acc:2484]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1320	ENSG00000102053	2010-03-18	2010-04-28	ZC3H12B	zinc finger CCCH-type containing 12B [Source:HGNC Symbol;Acc:17407]	Homo sapiens	9606	Znf_CCCHx1	MCPIP2	\N	\N	\N
+1321	ENSG00000102081	2010-03-18	2010-05-05	FMR1	fragile X mental retardation 1 [Source:HGNC Symbol;Acc:3775]	Homo sapiens	9606	KHx2	FMRP; FRAXA; MGC87458	\N	\N	\N
+1323	ENSG00000102241	2010-03-18	2010-07-21	HTATSF1	HIV-1 Tat specific factor 1 [Source:HGNC Symbol;Acc:5276]	Homo sapiens	9606	RRMx2	TAT-SF1	\N	\N	\N
+1324	ENSG00000102317	2010-03-18	2010-04-05	RBM3	RNA binding motif (RNP1, RRM) protein 3 [Source:HGNC Symbol;Acc:9900]	Homo sapiens	9606	RRMx1	IS1-RNPL	\N	\N	\N
+1326	ENSG00000103067	2010-03-18	2010-07-01	ESRP2	epithelial splicing regulatory protein 2 [Source:HGNC Symbol;Acc:26152]	Homo sapiens	9606	RRMx3	FLJ21918	\N	\N	\N
+1327	ENSG00000103248	2010-03-18	2010-04-06	MTHFSD	methenyltetrahydrofolate synthetase domain containing [Source:HGNC Symbol;Acc:25778]	Homo sapiens	9606	RRMx1	FLJ12998	\N	\N	\N
+1329	ENSG00000104129	2010-03-18	2010-07-22	DNAJC17	DnaJ (Hsp40) homolog, subfamily C, member 17 [Source:HGNC Symbol;Acc:25556]	Homo sapiens	9606	RRMx1	FLJ10634	\N	\N	\N
+1330	ENSG00000104177	2010-03-18	2010-04-06	MYEF2	myelin expression factor 2 [Source:HGNC Symbol;Acc:17940]	Homo sapiens	9606	RRMx3	MEF-2; FLJ11213; KIAA1341; HsT18564	0	ssDNA binding (PMID: 9282330;7539003)	\N
+1331	ENSG00000104413	2010-03-18	2010-07-01	ESRP1	epithelial splicing regulatory protein 1 [Source:HGNC Symbol;Acc:25966]	Homo sapiens	9606	RRMx3	FLJ20171	\N	\N	\N
+1332	ENSG00000104824	2010-03-18	2010-03-31	HNRNPL	heterogeneous nuclear ribonucleoprotein L [Source:HGNC Symbol;Acc:5045]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1333	ENSG00000104852	2010-03-18	2010-07-20	SNRNP70	small nuclear ribonucleoprotein 70kDa (U1) [Source:HGNC Symbol;Acc:11150]	Homo sapiens	9606	RRMx1	U1-70K; Snp1	\N	\N	\N
+1334	ENSG00000104859	2010-03-18	2010-05-05	SFRS16	splicing factor, arginine/serine-rich 16 [Source:HGNC Symbol;Acc:17731]	Homo sapiens	9606		SWAP2; CLASP	\N	\N	\N
+1335	ENSG00000104907	2010-03-18	2010-07-22	TRMT1	TRM1 tRNA methyltransferase 1 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:25980]	Homo sapiens	9606	Znf_CCCHx1	FLJ20244	\N	\N	\N
+1336	ENSG00000104967	2010-03-18	2010-06-19	NOVA2	neuro-oncological ventral antigen 2 [Source:HGNC Symbol;Acc:7887]	Homo sapiens	9606	KHx3	ANOVA	\N	\N	\N
+1337	ENSG00000105705	2010-03-18	2010-05-03	SF4	splicing factor 4 [Source:HGNC Symbol;Acc:18643]	Homo sapiens	9606	SURPx2	F23858; DKFZp434E2216; RBP	\N	\N	\N
+1338	ENSG00000105939	2010-03-18	2010-04-28	ZC3HAV1	zinc finger CCCH-type, antiviral 1 [Source:HGNC Symbol;Acc:23721]	Homo sapiens	9606	Znf_CCCHx2	ZAP; FLB6421; FLJ13288; MGC48898; ZC3HDC2; ZC3H2; PARP13	\N	\N	\N
+1340	ENSG00000106263	2010-03-18	2010-07-20	EIF3B	eukaryotic translation initiation factor 3, subunit B [Source:HGNC Symbol;Acc:3280]	Homo sapiens	9606	RRMx1	PRT1; eIF3b	\N	\N	\N
+1341	ENSG00000106344	2010-03-18	2010-07-21	RBM28	RNA binding motif protein 28 [Source:HGNC Symbol;Acc:21863]	Homo sapiens	9606	RRMx4	FLJ10377	\N	\N	\N
+1342	ENSG00000106355	2010-03-18	2010-07-21	LSM5	LSM5 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:17162]	Homo sapiens	9606	Lsmx1	YER146W	\N	\N	\N
+1343	ENSG00000106682	2010-03-18	2010-07-06	EIF4H	eukaryotic translation initiation factor 4H [Source:HGNC Symbol;Acc:12741]	Homo sapiens	9606	RRMx1	WSCR1; KIAA0038	\N	\N	\N
+1344	ENSG00000107105	2010-03-18	2010-06-28	ELAVL2	ELAV (embryonic lethal, abnormal vision, Drosophila)-like 2 (Hu antigen B) [Source:HGNC Symbol;Acc:3313]	Homo sapiens	9606	RRMx3	HuB; HEL-N1	\N	\N	\N
+1345	ENSG00000107164	2010-03-18	2010-07-08	FUBP3	far upstream element (FUSE) binding protein 3 [Source:HGNC Symbol;Acc:4005]	Homo sapiens	9606	KHx4		\N	\N	\N
+1348	ENSG00000107864	2010-03-18	2010-07-06	CPEB3	cytoplasmic polyadenylation element binding protein 3 [Source:HGNC Symbol;Acc:21746]	Homo sapiens	9606	RRMx2	KIAA0940	\N	\N	\N
+1349	ENSG00000107929	2010-03-18	2010-07-22	LARP4B	La ribonucleoprotein domain family, member 4B [Source:HGNC Symbol;Acc:28987]	Homo sapiens	9606	Lax1; RRMx1		\N	\N	\N
+1350	ENSG00000109111	2010-03-18	2010-07-21	SUPT6H	suppressor of Ty 6 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:11470]	Homo sapiens	9606	S1x1	KIAA0162; SPT6H	\N	\N	\N
+1352	ENSG00000109819	2010-03-18	2010-04-05	PPARGC1A	peroxisome proliferator-activated receptor gamma, coactivator 1 alpha [Source:HGNC Symbol;Acc:9237]	Homo sapiens	9606	RRMx1	PGC1; PGC1A	\N	\N	\N
+1355	ENSG00000111605	2010-03-18	2010-05-05	CPSF6	microRNA 1279 [Source:HGNC Symbol;Acc:35357]	Homo sapiens	9606	RRMx1	CFIM; HPBRII-4; HPBRII-7; CFIM68	\N	\N	\N
+1356	ENSG00000111615	2010-03-18	2010-05-10	KRR1	KRR1, small subunit (SSU) processome component, homolog (yeast) [Source:HGNC Symbol;Acc:5176]	Homo sapiens	9606	KHx1	RIP-1	\N	\N	\N
+1358	ENSG00000111786	2010-03-18	2010-06-29	SFRS9	splicing factor, arginine/serine-rich 9 [Source:HGNC Symbol;Acc:10791]	Homo sapiens	9606	RRMx2	SRp30c	\N	\N	\N
+1360	ENSG00000112081	2010-03-18	2010-07-22	SFRS3	splicing factor, arginine/serine-rich 3 [Source:HGNC Symbol;Acc:10785]	Homo sapiens	9606	RRMx1	SRp20	\N	\N	\N
+1361	ENSG00000112183	2010-03-18	2010-07-22	RBM24	RNA binding motif protein 24 [Source:HGNC Symbol;Acc:21539]	Homo sapiens	9606	RRMx1	FLJ30829; dJ259A10.1	\N	\N	\N
+1362	ENSG00000112232	2010-03-18	2010-04-25	KHDRBS2	KH domain containing, RNA binding, signal transduction associated 2 [Source:HGNC Symbol;Acc:18114]	Homo sapiens	9606	KHx1	SLM1; SLM-1; MGC26664	\N	\N	\N
+1363	ENSG00000112531	2010-03-18	2010-04-25	QKI	quaking homolog, KH domain RNA binding (mouse) [Source:HGNC Symbol;Acc:21100]	Homo sapiens	9606	KHx1	QK3	\N	\N	\N
+1364	ENSG00000113742	2010-03-18	2010-07-06	CPEB4	cytoplasmic polyadenylation element binding protein 4 [Source:HGNC Symbol;Acc:21747]	Homo sapiens	9606	RRMx2	KIAA1673	\N	\N	\N
+1365	ENSG00000114416	2010-03-18	2010-05-05	FXR1	fragile X mental retardation, autosomal homolog 1 [Source:HGNC Symbol;Acc:4023]	Homo sapiens	9606	KHx2		\N	\N	\N
+1367	ENSG00000115053	2010-03-18	2010-07-23	NCL	nucleolin [Source:HGNC Symbol;Acc:7667]	Homo sapiens	9606	RRMx4	C23	\N	\N	\N
+1368	ENSG00000115128	2010-03-18	2010-04-07		Pre-mRNA branch site protein p14 (SF3B 14 kDa subunit) [Source:UniProtKB/Swiss-Prot;Acc:Q9Y3B4]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1369	ENSG00000115677	2010-03-18	2010-07-18	HDLBP	high density lipoprotein binding protein [Source:HGNC Symbol;Acc:4857]	Homo sapiens	9606	KHx14	HBP	\N	\N	\N
+1370	ENSG00000115875	2010-03-18	2010-07-19	SFRS7	splicing factor, arginine/serine-rich 7, 35kDa [Source:HGNC Symbol;Acc:10789]	Homo sapiens	9606	RRMx1; Znf_CCHCx1	9G8; ZCRB2; HSSG1; AAG3; RBM37; ZCCHC20	\N	\N	\N
+1371	ENSG00000115946	2010-03-18	2010-05-03	PNO1	partner of NOB1 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:32790]	Homo sapiens	9606	KHx1		\N	\N	\N
+1372	ENSG00000116001	2010-03-18	2010-05-10	TIA1	TIA1 cytotoxic granule-associated RNA binding protein [Source:HGNC Symbol;Acc:11802]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1374	ENSG00000116350	2010-03-18	2010-06-29	SFRS4	splicing factor, arginine/serine-rich 4 [Source:HGNC Symbol;Acc:10786]	Homo sapiens	9606	RRMx2	SRP75	\N	\N	\N
+1375	ENSG00000116560	2010-03-18	2010-05-07	SFPQ	splicing factor proline/glutamine-rich (polypyrimidine tract binding protein associated) [Source:HGNC Symbol;Acc:10774]	Homo sapiens	9606	RRMx2	PSF	0	Binds ssDNA, dsDNA (PMID: 8355702)	\N
+1376	ENSG00000116754	2010-03-18	2010-07-20	SFRS11	splicing factor, arginine/serine-rich 11 [Source:HGNC Symbol;Acc:10782]	Homo sapiens	9606	RRMx1	p54; NET2	\N	\N	\N
+1377	ENSG00000117360	2010-03-18	2010-04-25	PRPF3	PRP3 pre-mRNA processing factor 3 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:17348]	Homo sapiens	9606	PWIx1	Prp3; HPRP3	\N	\N	\N
+1378	ENSG00000117569	2010-03-18	2010-04-07	PTBP2	polypyrimidine tract binding protein 2 [Source:HGNC Symbol;Acc:17662]	Homo sapiens	9606	RRMx4	brPTB; nPTB; PTB; PTBLP	\N	\N	\N
+1379	ENSG00000119314	2010-03-18	2010-04-07	ROD1	ROD1 regulator of differentiation 1 (S. pombe) [Source:HGNC Symbol;Acc:10253]	Homo sapiens	9606	RRMx4	PTBP3	\N	\N	\N
+1380	ENSG00000119446	2010-03-18	2010-07-14	RBM18	RNA binding motif protein 18 [Source:HGNC Symbol;Acc:28413]	Homo sapiens	9606	RRMx1	MGC2734	\N	\N	\N
+1381	ENSG00000119705	2010-03-18	2010-04-05	C14orf156	SRA stem-loop-interacting RNA-binding protein, mitochondrial Precursor  [Source:UniProtKB/Swiss-Prot;Acc:Q9GZT3]	Homo sapiens	9606	RRMx1	DC50	\N	\N	\N
+1382	ENSG00000119707	2010-03-18	2010-07-14	RBM25	RNA binding motif protein 25 [Source:HGNC Symbol;Acc:23244]	Homo sapiens	9606	RRMx1; PWIx1	S164; fSAP94; NET52; Snu71	\N	\N	\N
+1384	ENSG00000120658	2010-03-18	2010-03-31	ENOX1	ecto-NOX disulfide-thiol exchanger 1 [Source:HGNC Symbol;Acc:25474]	Homo sapiens	9606	RRMx1	FLJ10094; PIG38; CNOX; cCNOX	\N	\N	\N
+1385	ENSG00000120948	2010-03-18	2010-07-18	TARDBP	TAR DNA binding protein [Source:HGNC Symbol;Acc:11571]	Homo sapiens	9606	RRMx2	TDP-43; ALS10	\N	\N	11470789; 15826655; 16157593; 19429692; 19815002; 20423455
+1386	ENSG00000121057	2010-03-18	2010-07-21	AKAP1	A kinase (PRKA) anchor protein 1 [Source:HGNC Symbol;Acc:367]	Homo sapiens	9606	KHx1	AKAP121; AKAP149; SAKAP84; S-AKAP84; AKAP84	\N	\N	\N
+1387	ENSG00000121390	2010-03-18	2010-05-07	PSPC1	paraspeckle component 1 [Source:HGNC Symbol;Acc:20320]	Homo sapiens	9606	RRMx2	PSP1; FLJ10955	0	Binds ssDNA, dsDNA (PMID: 8355702)	\N
+1388	ENSG00000121766	2010-03-18	2010-04-28	ZCCHC17	zinc finger, CCHC domain containing 17 [Source:HGNC Symbol;Acc:30246]	Homo sapiens	9606	S1x1; Znf_CCHCx1	PS1D; HSPC251; pNO40	\N	\N	\N
+1389	ENSG00000121774	2010-03-18	2010-04-25	KHDRBS1	KH domain containing, RNA binding, signal transduction associated 1 [Source:HGNC Symbol;Acc:18116]	Homo sapiens	9606	KHx1	Sam68; p62; FLJ34027	\N	\N	\N
+1391	ENSG00000122299	2010-03-18	2010-04-28	ZC3H7A	zinc finger CCCH-type containing 7A [Source:HGNC Symbol;Acc:30959]	Homo sapiens	9606	Znf_CCCHx5	HSPC055; FLJ20318	\N	\N	\N
+1392	ENSG00000122566	2010-03-18	2010-05-20	HNRNPA2B1	heterogeneous nuclear ribonucleoprotein A2/B1 [Source:HGNC Symbol;Acc:5033]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1393	ENSG00000122870	2010-03-18	2010-06-30	BICC1	bicaudal C homolog 1 (Drosophila) [Source:HGNC Symbol;Acc:19351]	Homo sapiens	9606	KHx3; SAMx1		\N	\N	\N
+1394	ENSG00000122965	2010-03-18	2010-03-31	RBM19	RNA binding motif protein 19 [Source:HGNC Symbol;Acc:29098]	Homo sapiens	9606	RRMx6	DKFZp586F1023; KIAA0682	\N	\N	\N
+1395	ENSG00000123200	2010-03-18	2010-04-28	ZC3H13	zinc finger CCCH-type containing 13 [Source:HGNC Symbol;Acc:20368]	Homo sapiens	9606	Znf_CCCHx1	DKFZp434D1812	\N	\N	\N
+1396	ENSG00000124193	2010-03-18	2010-06-29	SFRS6	splicing factor, arginine/serine-rich 6 [Source:HGNC Symbol;Acc:10788]	Homo sapiens	9606	RRMx2	SRP55; B52	\N	\N	\N
+1397	ENSG00000125352	2010-03-18	2010-07-21	RNF113A	ring finger protein 113A [Source:HGNC Symbol;Acc:12974]	Homo sapiens	9606	Znf_CCCHx1; Znf_RINGx1	RNF113; Cwc24	\N	\N	\N
+1398	ENSG00000125743	2010-03-18	2010-07-21	SNRPD2	small nuclear ribonucleoprotein D2 polypeptide 16.5kDa [Source:HGNC Symbol;Acc:11159]	Homo sapiens	9606	LSmx1	Sm-D2	\N	\N	\N
+1399	ENSG00000125835	2010-03-18	2010-07-20	SNRPB	small nuclear ribonucleoprotein polypeptides B and B1 [Source:HGNC Symbol;Acc:11153]	Homo sapiens	9606	LSmx1	COD; SmB/SmB'; Sm-B/B'; snRNP-B	\N	\N	\N
+1400	ENSG00000125870	2010-03-18	2010-06-17	SNRPB2	small nuclear ribonucleoprotein polypeptide B'' [Source:HGNC Symbol;Acc:11155]	Homo sapiens	9606	RRMx2	Msl1	\N	\N	\N
+1401	ENSG00000125944	2010-03-18	2010-05-03	HNRNPR	heterogeneous nuclear ribonucleoprotein R [Source:HGNC Symbol;Acc:5047]	Homo sapiens	9606	RRMx3	hnRNP-R	\N	\N	\N
+1402	ENSG00000125970	2010-03-18	2010-05-07	RALY	RNA binding protein, autoantigenic (hnRNP-associated with lethal yellow homolog (mouse)) [Source:HGNC Symbol;Acc:15921]	Homo sapiens	9606	RRMx1	P542; HNRPCL2	\N	\N	\N
+1403	ENSG00000126254	2010-03-18	2010-07-21	RBM42	RNA binding motif protein 42 [Source:HGNC Symbol;Acc:28117]	Homo sapiens	9606	RRMx1	MGC10433	\N	\N	\N
+1404	ENSG00000126945	2010-03-18	2010-04-25	HNRNPH2	heterogeneous nuclear ribonucleoprotein H2 (H') [Source:HGNC Symbol;Acc:5042]	Homo sapiens	9606	RRMx3; Znf_CCCHx1	hnRNPH'; FTP3; HNRPH'	\N	\N	\N
+1405	ENSG00000128016	2010-03-18	2010-04-27	ZFP36	zinc finger protein 36, C3H type, homolog (mouse) [Source:HGNC Symbol;Acc:12862]	Homo sapiens	9606	Znf_CCCHx2	RNF162A; TIS11; G0S24; TTP; NUP475	\N	\N	\N
+1406	ENSG00000128534	2010-03-18	2010-07-21	NAA38	N(alpha)-acetyltransferase 38, NatC auxiliary subunit [Source:HGNC Symbol;Acc:20471]	Homo sapiens	9606	LSmx1	YJR022W	\N	\N	\N
+1407	ENSG00000128739	2010-03-18	2010-07-20	SNRPN	small nuclear ribonucleoprotein polypeptide N [Source:HGNC Symbol;Acc:11164]	Homo sapiens	9606	LSmx1	SMN; SM-D; HCERN3; SNRNP-N; SNURF-SNRPN; RT-LI	\N	\N	\N
+1408	ENSG00000129245	2010-03-18	2010-05-05	FXR2	fragile X mental retardation, autosomal homolog 2 [Source:HGNC Symbol;Acc:4024]	Homo sapiens	9606	KHx2		\N	\N	\N
+1409	ENSG00000130254	2010-03-18	2010-07-21	SAFB2	scaffold attachment factor B2 [Source:HGNC Symbol;Acc:21605]	Homo sapiens	9606	RRMx1	KIAA0138	\N	\N	\N
+1410	ENSG00000130332	2010-03-18	2010-07-14	LSM7	LSM7 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:20470]	Homo sapiens	9606	LSmx1	YNL147W	\N	\N	\N
+1411	ENSG00000130520	2010-03-18	2010-07-20	LSM4	LSM4 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:17259]	Homo sapiens	9606	LSmx1	YER112W	\N	\N	\N
+1413	ENSG00000130749	2010-03-18	2010-04-28	ZC3H4	zinc finger CCCH-type containing 4 [Source:HGNC Symbol;Acc:17808]	Homo sapiens	9606	Znf_CCCHx2	KIAA1064	\N	\N	\N
+1414	ENSG00000130811	2010-03-18	2010-05-07	EIF3G	eukaryotic translation initiation factor 3, subunit G [Source:HGNC Symbol;Acc:3274]	Homo sapiens	9606	RRMx1	eIF3-delta; eIF3-p44; eIF3g	\N	\N	\N
+1416	ENSG00000130826	2010-03-18	2010-05-07	DKC1	small nucleolar RNA, H/ACA box 56 [Source:HGNC Symbol;Acc:32650]	Homo sapiens	9606	PUAx1	XAP101; dyskerin; NAP57; NOLA4	\N	\N	\N
+1417	ENSG00000131013	2010-03-18	2010-05-15	PPIL4	peptidylprolyl isomerase (cyclophilin)-like 4 [Source:HGNC Symbol;Acc:15702]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1418	ENSG00000131051	2010-03-18	2010-07-14	RBM39	RNA binding motif protein 39 [Source:HGNC Symbol;Acc:15923]	Homo sapiens	9606	RRMx3	CC1.3; HCC1; CAPER; fSAP59	\N	\N	\N
+1421	ENSG00000131503	2010-03-18	2010-05-07	ANKHD1	ankyrin repeat and KH domain containing 1 [Source:HGNC Symbol;Acc:24714]	Homo sapiens	9606	KHx1	MASK; FLJ20288; FLJ11979; FLJ10042; FLJ14127; KIAA1085	\N	\N	\N
+1423	ENSG00000131773	2010-03-18	2010-04-25	KHDRBS3	KH domain containing, RNA binding, signal transduction associated 3 [Source:HGNC Symbol;Acc:18117]	Homo sapiens	9606	KHx1	T-STAR; Etle; etoile; SALP; SLM2; SLM-2	\N	\N	\N
+1424	ENSG00000131795	2010-03-18	2010-07-20	RBM8A	RNA binding motif protein 8A [Source:HGNC Symbol;Acc:9905]	Homo sapiens	9606	RRMx1	ZNRP; BOV-1A; BOV-1B; BOV-1C; RBM8B; Y14	\N	\N	\N
+1425	ENSG00000131914	2010-03-18	2010-05-04	LIN28	lin-28 homolog (C. elegans) [Source:HGNC Symbol;Acc:15986]	Homo sapiens	9606	CSDx1; Znf_CCHCx2		\N	\N	\N
+1426	ENSG00000132463	2010-03-18	2010-07-23	GRSF1	G-rich RNA sequence binding factor 1 [Source:HGNC Symbol;Acc:4610]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1427	ENSG00000132466	2010-03-18	2010-05-07	ANKRD17	ankyrin repeat domain 17 [Source:HGNC Symbol;Acc:23575]	Homo sapiens	9606	KHx1	GTAR; KIAA0697; FLJ22206; NY-BR-16	\N	\N	\N
+1428	ENSG00000132478	2010-03-18	2010-07-06	UNK	unkempt homolog (Drosophila) [Source:HGNC Symbol;Acc:29369]	Homo sapiens	9606	Znf_CCCHx5	KIAA1753	\N	\N	\N
+1429	ENSG00000132603	2010-03-18	2010-07-21	NIP7	nuclear import 7 homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:24328]	Homo sapiens	9606	PUAx1	CGI-37; FLJ10296; HSPC031; KD93	\N	\N	\N
+1430	ENSG00000132773	2010-03-18	2010-07-23	TOE1	target of EGR1, member 1 (nuclear) [Source:HGNC Symbol;Acc:15954]	Homo sapiens	9606	Znf_CCCHx1		\N	\N	\N
+1431	ENSG00000132819	2010-03-18	2010-07-23	RBM38	RNA binding motif protein 38 [Source:HGNC Symbol;Acc:15818]	Homo sapiens	9606	RRMx1	HSRNASEB; SEB4D; seb4B; dJ800J21.2	\N	\N	\N
+1433	ENSG00000133226	2010-03-18	2010-06-29	SRRM1	serine/arginine repetitive matrix 1 [Source:HGNC Symbol;Acc:16638]	Homo sapiens	9606	PWIx1	SRM160; POP101; MGC39488	\N	\N	\N
+1434	ENSG00000133606	2010-03-18	2010-07-14	MKRN1	makorin ring finger protein 1 [Source:HGNC Symbol;Acc:7112]	Homo sapiens	9606	Znf_CCCHx4; Znf_RINGx1	RNF61	\N	\N	\N
+1435	ENSG00000134001	2010-03-18	2010-07-20	EIF2S1	eukaryotic translation initiation factor 2, subunit 1 alpha, 35kDa [Source:HGNC Symbol;Acc:3265]	Homo sapiens	9606	S1x1	EIF-2alpha; EIF2A	\N	\N	\N
+1436	ENSG00000134077	2010-03-18	2010-07-23	THUMPD3	THUMP domain containing 3 [Source:HGNC Symbol;Acc:24493]	Homo sapiens	9606	THUMPx1	DKFZP434F091	\N	\N	\N
+1437	ENSG00000134597	2010-03-18	2010-07-18	RBMX2	RNA binding motif protein, X-linked 2 [Source:HGNC Symbol;Acc:24282]	Homo sapiens	9606	RRMx1	CGI-79	\N	\N	\N
+1438	ENSG00000134644	2010-03-18	2010-04-29	PUM1	pumilio homolog 1 (Drosophila) [Source:HGNC Symbol;Acc:14957]	Homo sapiens	9606	PUMx1	PUMH1; KIAA0099	\N	\N	\N
+1440	ENSG00000135097	2010-03-18	2010-04-06	MSI1	musashi homolog 1 (Drosophila) [Source:HGNC Symbol;Acc:7330]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1441	ENSG00000135316	2010-03-18	2010-05-03	SYNCRIP	synaptotagmin binding, cytoplasmic RNA interacting protein [Source:HGNC Symbol;Acc:16918]	Homo sapiens	9606	RRMx3	NSAP1; GRY-RBP; dJ3J17.2; HNRPQ1; hnRNP-Q	\N	\N	\N
+1443	ENSG00000135482	2010-03-18	2010-04-28	ZC3H10	zinc finger CCCH-type containing 10 [Source:HGNC Symbol;Acc:25893]	Homo sapiens	9606	Znf_CCCHx3	FLJ14451	\N	\N	\N
+1444	ENSG00000135486	2010-03-18	2010-05-20	HNRNPA1	heterogeneous nuclear ribonucleoprotein A1 [Source:HGNC Symbol;Acc:5031]	Homo sapiens	9606	RRMx2	hnRNPA1; hnRNP-A1	\N	\N	\N
+1445	ENSG00000135870	2010-03-18	2010-04-28	RC3H1	ring finger and CCCH-type zinc finger domains 1 [Source:HGNC Symbol;Acc:29434]	Homo sapiens	9606	Znf_CCCHx1; Znf_RINGx1	KIAA2025; roquin; RP5-1198E17.5; RNF198	\N	\N	\N
+1446	ENSG00000136231	2010-03-18	2010-05-03	IGF2BP3	insulin-like growth factor 2 mRNA binding protein 3 [Source:HGNC Symbol;Acc:28868]	Homo sapiens	9606	RRMx2; KHx4	IMP-3; CT98	\N	\N	\N
+1447	ENSG00000136243	2010-03-18	2010-05-05	NUPL2	nucleoporin like 2 [Source:HGNC Symbol;Acc:17010]	Homo sapiens	9606	Znf_CCCHx1	NLP_1; CG1; hCG1; H_RG271G13.9	\N	\N	\N
+1448	ENSG00000136450	2010-03-18	2010-04-27	SFRS1	splicing factor, arginine/serine-rich 1 [Source:HGNC Symbol;Acc:10780]	Homo sapiens	9606	RRMx2	ASF; SF2; SRp30a; SF2p33; MGC5228	\N	\N	\N
+1449	ENSG00000136527	2010-03-18	2010-05-14	TRA2B	transformer 2 beta homolog (Drosophila) [Source:HGNC Symbol;Acc:10781]	Homo sapiens	9606	RRMx1	Htra2-beta	\N	\N	\N
+1450	ENSG00000137449	2010-03-18	2010-07-06	CPEB2	cytoplasmic polyadenylation element binding protein 2 [Source:HGNC Symbol;Acc:21745]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1451	ENSG00000137760	2010-03-18	2010-03-22	ALKBH8	alkB, alkylation repair homolog 8 (E. coli) [Source:HGNC Symbol;Acc:25189]	Homo sapiens	9606	RRMx1	MGC10235	\N	\N	\N
+1452	ENSG00000137776	2010-03-18	2010-07-21	SLTM	SAFB-like, transcription modulator [Source:HGNC Symbol;Acc:20709]	Homo sapiens	9606	RRMx1	Met; FLJ13213	\N	\N	\N
+1453	ENSG00000138035	2010-03-18	2010-07-21	PNPT1	polyribonucleotide nucleotidyltransferase 1 [Source:HGNC Symbol;Acc:23166]	Homo sapiens	9606	KHx1; S1x1	PNPase; OLD35; old-35	\N	\N	\N
+1454	ENSG00000138050	2010-03-18	2010-07-23	THUMPD2	THUMP domain containing 2 [Source:HGNC Symbol;Acc:14890]	Homo sapiens	9606	THUMPx1	MGC2454	\N	\N	\N
+1455	ENSG00000138303	2010-03-18	2010-07-20	ASCC1	activating signal cointegrator 1 complex subunit 1 [Source:HGNC Symbol;Acc:24268]	Homo sapiens	9606	KHx1	CGI-18; ASC1p50; Em:AC022392.3	\N	\N	\N
+1456	ENSG00000138385	2010-03-18	2010-07-01	SSB	Sjogren syndrome antigen B (autoantigen La) [Source:HGNC Symbol;Acc:11316]	Homo sapiens	9606	RRMx2; Lax1	LARP3; La	\N	\N	\N
+1457	ENSG00000138668	2010-03-18	2010-05-05	HNRNPD	heterogeneous nuclear ribonucleoprotein D (AU-rich element RNA binding protein 1, 37kDa) [Source:HGNC Symbol;Acc:5036]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1458	ENSG00000138709	2010-03-18	2010-07-01	LARP1B	La ribonucleoprotein domain family, member 1B [Source:HGNC Symbol;Acc:24704]	Homo sapiens	9606	Lax1	FLJ10378; DKFZp434K245; DKFZp686E0316	\N	\N	\N
+1459	ENSG00000138757	2010-03-18	2010-07-23	G3BP2	GTPase activating protein (SH3 domain) binding protein 2 [Source:HGNC Symbol;Acc:30291]	Homo sapiens	9606	RRMx1	KIAA0660	\N	\N	\N
+1461	ENSG00000139168	2010-03-18	2010-04-28	ZCRB1	zinc finger CCHC-type and RNA binding motif 1 [Source:HGNC Symbol;Acc:29620]	Homo sapiens	9606	RRMx1; Znf_CCHCx1	MADP-1; MADP1; RBM36; ZCCHC19	\N	\N	\N
+1463	ENSG00000139343	2010-03-18	2010-07-06	SNRPF	small nuclear ribonucleoprotein polypeptide F [Source:HGNC Symbol;Acc:11162]	Homo sapiens	9606	LSmx1	Sm-F	\N	\N	\N
+1464	ENSG00000139675	2010-03-18	2010-05-20		Heterogeneous nuclear ribonucleoprotein A1-like protein 2 (hnRNP core protein A1-like protein 2) [Source:UniProtKB/Swiss-Prot;Acc:Q32P51]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1465	ENSG00000139718	2010-03-18	2010-07-23	SETD1B	SET domain containing 1B [Source:HGNC Symbol;Acc:29187]	Homo sapiens	9606	RRMx1	KIAA1076; Set1B; KMT2G	\N	\N	\N
+1466	ENSG00000139746	2010-03-18	2010-05-15	RBM26	RNA binding motif protein 26 [Source:HGNC Symbol;Acc:20327]	Homo sapiens	9606	RRMx2; Znf_CCCHx1	PRO1777; SE70-2; FLJ20957; ZC3H17; ARRS2	\N	\N	\N
+1467	ENSG00000139793	2010-03-18	2010-06-17	MBNL2	muscleblind-like 2 (Drosophila) [Source:HGNC Symbol;Acc:16746]	Homo sapiens	9606	Znf_CCCHx4	MBLL; MBLL39	\N	\N	\N
+1468	ENSG00000139797	2010-03-18	2010-07-21	RNF113B	ring finger protein 113B [Source:HGNC Symbol;Acc:17267]	Homo sapiens	9606	Znf_CCCHx1; Znf_RINGx1	RNF161	\N	\N	\N
+1469	ENSG00000139910	2010-03-18	2010-06-19	NOVA1	neuro-oncological ventral antigen 1 [Source:HGNC Symbol;Acc:7886]	Homo sapiens	9606	KHx1		\N	\N	\N
+1470	ENSG00000140488	2010-03-18	2010-03-30	BRUNOL6	bruno-like 6, RNA binding protein (Drosophila) [Source:HGNC Symbol;Acc:14059]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1472	ENSG00000141994	2010-03-18	2010-07-14	DUS3L	dihydrouridine synthase 3-like (S. cerevisiae) [Source:HGNC Symbol;Acc:26920]	Homo sapiens	9606	Znf_CCCHx2	DUS3; FLJ13896	\N	\N	\N
+1475	ENSG00000143368	2010-03-18	2010-04-25	SF3B4	splicing factor 3b, subunit 4, 49kDa [Source:HGNC Symbol;Acc:10771]	Homo sapiens	9606	RRMx2	SAP49; SF3b49; Hsh49	\N	\N	\N
+1476	ENSG00000143486	2010-03-18	2010-04-25	LGTN	ligatin [Source:HGNC Symbol;Acc:6583]	Homo sapiens	9606	PUAx1		\N	\N	\N
+1478	ENSG00000143889	2010-03-18	2010-03-31	HNRPLL	heterogeneous nuclear ribonucleoprotein L-like [Source:HGNC Symbol;Acc:25127]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1479	ENSG00000143977	2010-03-18	2010-07-20	SNRPG	small nuclear ribonucleoprotein polypeptide G [Source:HGNC Symbol;Acc:11163]	Homo sapiens	9606	LSmx1	Sm-G	\N	\N	\N
+1480	ENSG00000144161	2010-03-18	2010-04-28	ZC3H8	zinc finger CCCH-type containing 8 [Source:HGNC Symbol;Acc:30941]	Homo sapiens	9606	Znf_CCCHx3	Fliz1	0	dsDNA binding (PMID: 12077251)	\N
+1481	ENSG00000144642	2010-03-18	2010-04-28	RBMS3	RNA binding motif, single stranded interacting protein [Source:HGNC Symbol;Acc:13427]	Homo sapiens	9606	RRMx2		0	possibly ssDNA binding (PMID: 7838710)	\N
+1483	ENSG00000145907	2010-03-18	2010-05-05	G3BP1	GTPase activating protein (SH3 domain) binding protein 1 [Source:HGNC Symbol;Acc:30292]	Homo sapiens	9606	RRMx1	HDH-VIII; G3BP	\N	\N	\N
+1486	ENSG00000147140	2010-03-18	2010-05-07	NONO	non-POU domain containing, octamer-binding [Source:HGNC Symbol;Acc:7871]	Homo sapiens	9606	RRMx2	NRB54; NMT55; P54NRB; P54	0	Binds ssDNA, dsDNA (PMID: 8355702)	\N
+1487	ENSG00000147274	2010-03-18	2010-07-18	RBMX	RNA binding motif protein, X-linked [Source:HGNC Symbol;Acc:9910]	Homo sapiens	9606	RRMx1	RNMX; hnRNP-G	\N	\N	\N
+1489	ENSG00000148584	2010-03-18	2010-03-22	A1CF	APOBEC1 complementation factor [Source:HGNC Symbol;Acc:24086]	Homo sapiens	9606	RRMx3	ACF; ASP; ACF64; ACF65; APOBEC1CF	\N	\N	\N
+1490	ENSG00000148840	2010-03-18	2010-04-05	PPRC1	peroxisome proliferator-activated receptor gamma, coactivator-related 1 [Source:HGNC Symbol;Acc:30025]	Homo sapiens	9606	RRMx1	PRC; KIAA0595; MGC74642	\N	\N	\N
+1491	ENSG00000148843	2010-03-18	2010-07-21	PDCD11	programmed cell death 11 [Source:HGNC Symbol;Acc:13408]	Homo sapiens	9606	S1x13	KIAA0185; ALG-4	\N	\N	\N
+1493	ENSG00000149016	2010-03-18	2010-05-03	TUT1	terminal uridylyl transferase 1, U6 snRNA-specific [Source:HGNC Symbol;Acc:26184]	Homo sapiens	9606	RRMx1; Znf_CCCHx1	FLJ22347; FLJ22267; FLJ21850; PAPD2; TUTase	\N	\N	\N
+1494	ENSG00000149187	2010-03-18	2010-03-30	CUGBP1	CUG triplet repeat, RNA binding protein 1 [Source:HGNC Symbol;Acc:2549]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1495	ENSG00000149273	2010-03-18	\N	RPS3	ribosomal protein S3 [Source:HGNC Symbol;Acc:10420]	Homo sapiens	9606	\N	FLJ26283; FLJ27450; MGC87870	0	nonspecific binder	\N
+1496	ENSG00000149289	2010-03-18	2010-04-28	ZC3H12C	zinc finger CCCH-type containing 12C [Source:HGNC Symbol;Acc:29362]	Homo sapiens	9606	Znf_CCCHx1	KIAA1726; MCPIP3	\N	\N	\N
+1497	ENSG00000149532	2010-03-18	2010-07-23	CPSF7	cleavage and polyadenylation specific factor 7, 59kDa [Source:HGNC Symbol;Acc:30098]	Homo sapiens	9606	RRMx1	FLJ12529	\N	\N	\N
+1498	ENSG00000149658	2010-03-18	2010-05-15	YTHDF1	YTH domain family, member 1 [Source:HGNC Symbol;Acc:15867]	Homo sapiens	9606	YTHx1	FLJ20391	\N	\N	\N
+1500	ENSG00000151846	2010-03-18	2010-04-06	PABPC3	poly(A) binding protein, cytoplasmic 3 [Source:HGNC Symbol;Acc:8556]	Homo sapiens	9606	RRMx4	PABP3; tPABP	\N	\N	\N
+1501	ENSG00000151923	2010-03-18	2010-05-10	TIAL1	TIA1 cytotoxic granule-associated RNA binding protein-like 1 [Source:HGNC Symbol;Acc:11804]	Homo sapiens	9606	RRMx3	TIAR	\N	\N	\N
+1502	ENSG00000151962	2010-03-18	2010-07-23	RBM46	RNA binding motif protein 46 [Source:HGNC Symbol;Acc:28401]	Homo sapiens	9606	RRMx3	MGC27016; CT68	\N	\N	\N
+1503	ENSG00000152332	2010-03-18	2010-07-20	UHMK1	U2AF homology motif (UHM) kinase 1 [Source:HGNC Symbol;Acc:19683]	Homo sapiens	9606	RRMx1	KIS; Kist	\N	\N	\N
+1504	ENSG00000152430	2010-03-18	2010-03-30	BOLL	bol, boule-like (Drosophila) [Source:HGNC Symbol;Acc:14273]	Homo sapiens	9606	RRMx1	BOULE	\N	\N	\N
+1505	ENSG00000152518	2010-03-18	2010-04-27	ZFP36L2	zinc finger protein 36, C3H type-like 2 [Source:HGNC Symbol;Acc:1108]	Homo sapiens	9606	Znf_CCCHx2	ERF2; RNF162C; TIS11D	\N	\N	\N
+1506	ENSG00000152520	2010-03-18	2010-07-23	PAN3	PAN3 poly(A) specific ribonuclease subunit homolog (S. cerevisiae) [Source:HGNC Symbol;Acc:29991]	Homo sapiens	9606	Znf_CCCHx1		\N	\N	\N
+1507	ENSG00000152601	2010-03-18	2010-06-17	MBNL1	muscleblind-like (Drosophila) [Source:HGNC Symbol;Acc:6923]	Homo sapiens	9606	Znf_CCCHx4	KIAA0428; EXP42; EXP40; EXP35; EXP	\N	\N	\N
+1508	ENSG00000152795	2010-03-18	2010-05-05	HNRPDL	heterogeneous nuclear ribonucleoprotein D-like [Source:HGNC Symbol;Acc:5037]	Homo sapiens	9606	RRMx2	JKTBP; laAUF1	\N	\N	\N
+1509	ENSG00000153048	2010-03-18	2010-05-15	CARHSP1	calcium regulated heat stable protein 1, 24kDa [Source:HGNC Symbol;Acc:17150]	Homo sapiens	9606	CSDx1	CRHSP-24; CSDC1	\N	\N	\N
+1510	ENSG00000153250	2010-03-18	2010-04-28	RBMS1	RNA binding motif, single stranded interacting protein 1 [Source:HGNC Symbol;Acc:9907]	Homo sapiens	9606	RRMx2	SCR2; MSSP-1; MSSP-2; MSSP-3; YC1; HCC-4; DKFZp564H0764	0	possibly ssDNA binding (PMID: 7838710)	\N
+1512	ENSG00000153914	2010-03-18	2010-07-20	SFRS12	splicing factor, arginine/serine-rich 12 [Source:HGNC Symbol;Acc:17882]	Homo sapiens	9606	RRMx2	DKFZp564B176; SRrp86; SRrp508	\N	\N	\N
+1513	ENSG00000153944	2010-03-18	2010-04-06	MSI2	musashi homolog 2 (Drosophila) [Source:HGNC Symbol;Acc:18585]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1514	ENSG00000154548	2010-03-18	2010-04-05	SFRS13B	splicing factor, arginine/serine-rich 13B [Source:HGNC Symbol;Acc:21220]	Homo sapiens	9606	RRMx1	SRrp35; SFRS19	\N	\N	\N
+1517	ENSG00000155275	2010-03-18	2010-07-23	C4orf23	Probable tRNA (uracil-O(2)-)-methyltransferase (EC 2.1.1.n2) [Source:UniProtKB/Swiss-Prot;Acc:Q8IYL2]	Homo sapiens	9606		FLJ35725	\N	\N	\N
+1519	ENSG00000155438	2010-03-18	2010-04-06	MKI67IP	MKI67 (FHA domain) interacting nucleolar phosphoprotein [Source:HGNC Symbol;Acc:17838]	Homo sapiens	9606	RRMx1	Nopp34; NIFK	\N	\N	\N
+1520	ENSG00000155506	2010-03-18	2010-07-01	LARP1	La ribonucleoprotein domain family, member 1 [Source:HGNC Symbol;Acc:29531]	Homo sapiens	9606	Lax1	LARP; KIAA0731; MGC19556	\N	\N	\N
+1521	ENSG00000155636	2010-03-18	2010-07-21	RBM45	RNA binding motif protein 45 [Source:HGNC Symbol;Acc:24468]	Homo sapiens	9606	RRMx4	DRB1; FLJ44612	\N	\N	\N
+1522	ENSG00000155846	2010-03-18	2010-07-23	PPARGC1B	peroxisome proliferator-activated receptor gamma, coactivator 1 beta [Source:HGNC Symbol;Acc:30022]	Homo sapiens	9606	RRMx1	PERC; PGC1B	\N	\N	\N
+1523	ENSG00000155858	2010-03-18	2010-07-21	LSM11	LSM11, U7 small nuclear RNA associated [Source:HGNC Symbol;Acc:30860]	Homo sapiens	9606	LSmx1	FLJ38273	\N	\N	\N
+1524	ENSG00000156304	2010-03-18	2010-04-28	SFRS15	splicing factor, arginine/serine-rich 15 [Source:HGNC Symbol;Acc:19304]	Homo sapiens	9606	RRMx1	KIAA1172; DKFZp434E098; SRA4; SCAF4	\N	\N	\N
+1526	ENSG00000157110	2010-03-18	2010-04-27	RBPMS	RNA binding protein with multiple splicing [Source:HGNC Symbol;Acc:19097]	Homo sapiens	9606	RRMx1	HERMES	\N	\N	\N
+1528	ENSG00000158545	2010-03-18	2010-04-28	ZC3H18	zinc finger CCCH-type containing 18 [Source:HGNC Symbol;Acc:25091]	Homo sapiens	9606	Znf_CCCHx1	NHN1	\N	\N	\N
+1529	ENSG00000159082	2010-03-18	2010-07-23	SYNJ1	synaptojanin 1 [Source:HGNC Symbol;Acc:11503]	Homo sapiens	9606	RRMx1	INPP5G	\N	\N	\N
+1530	ENSG00000159217	2010-03-18	2010-05-03	IGF2BP1	insulin-like growth factor 2 mRNA binding protein 1 [Source:HGNC Symbol;Acc:28866]	Homo sapiens	9606	RRMx2; KHx4	IMP-1; ZBP1	\N	\N	\N
+1531	ENSG00000159409	2010-03-18	2010-03-30	TNRC4	trinucleotide repeat containing 4 [Source:HGNC Symbol;Acc:11967]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1532	ENSG00000160201	2010-03-18	2010-05-10	U2AF1	U2 small nuclear RNA auxiliary factor 1 [Source:HGNC Symbol;Acc:12453]	Homo sapiens	9606	RRMx1; Znf_CCCHx1	U2AF35; RNU2AF1; RN	\N	\N	\N
+1533	ENSG00000160633	2010-03-18	2010-07-21	SAFB	scaffold attachment factor B [Source:HGNC Symbol;Acc:10520]	Homo sapiens	9606	RRMx1	HET; SAFB1	\N	\N	\N
+1534	ENSG00000160917	2010-03-18	2010-07-06	CPSF4	cleavage and polyadenylation specific factor 4, 30kDa [Source:HGNC Symbol;Acc:2327]	Homo sapiens	9606	Znf_CCCHx6; Znf_CCHCx1	NAR; CPSF30	\N	\N	\N
+1535	ENSG00000161082	2010-03-18	2010-03-30	BRUNOL5	bruno-like 5, RNA binding protein (Drosophila) [Source:HGNC Symbol;Acc:14058]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1536	ENSG00000161265	2010-03-18	2010-05-03	U2AF1L4	U2 small nuclear RNA auxiliary factor 1-like 4 [Source:HGNC Symbol;Acc:23020]	Homo sapiens	9606	RRMx1; Znf_CCCHx1	MGC33901; U2af26	\N	\N	\N
+1537	ENSG00000161547	2010-03-18	2010-05-20	SFRS2	splicing factor, arginine/serine-rich 2 [Source:HGNC Symbol;Acc:10783]	Homo sapiens	9606	RRMx1	SC-35; SC35; PR264; SFRS2A	\N	\N	\N
+1539	ENSG00000161813	2010-03-18	2010-07-23	LARP4	La ribonucleoprotein domain family, member 4 [Source:HGNC Symbol;Acc:24320]	Homo sapiens	9606	Lax1; RRMx1	PP13296	\N	\N	\N
+1540	ENSG00000161847	2010-03-18	2010-05-30	RAVER1	ribonucleoprotein, PTB-binding 1 [Source:HGNC Symbol;Acc:30296]	Homo sapiens	9606	RRMx3	KIAA1978	\N	\N	\N
+1542	ENSG00000162374	2010-03-18	2010-06-28	ELAVL4	ELAV (embryonic lethal, abnormal vision, Drosophila)-like 4 (Hu antigen D) [Source:HGNC Symbol;Acc:3315]	Homo sapiens	9606	RRMx3	PNEM	\N	\N	\N
+1543	ENSG00000162437	2010-03-18	2010-05-30	RAVER2	ribonucleoprotein, PTB-binding 2 [Source:HGNC Symbol;Acc:25577]	Homo sapiens	9606	RRMx3	KIAA1579; FLJ10770	\N	\N	\N
+1544	ENSG00000162613	2010-03-18	2010-07-08	FUBP1	far upstream element (FUSE) binding protein 1 [Source:HGNC Symbol;Acc:4004]	Homo sapiens	9606	KHx4	FBP	\N	\N	\N
+1545	ENSG00000162775	2010-03-18	2010-05-03	RBM15	RNA binding motif protein 15 [Source:HGNC Symbol;Acc:14959]	Homo sapiens	9606	RRMx3	OTT; OTT1	\N	\N	\N
+1546	ENSG00000163214	2010-03-18	2010-07-14	DHX57	DEAH (Asp-Glu-Ala-Asp/His) box polypeptide 57 [Source:HGNC Symbol;Acc:20086]	Homo sapiens	9606	Znf_CCCHx1	DDX57	\N	\N	\N
+1547	ENSG00000163239	2010-03-18	2010-07-23	TDRD10	tudor domain containing 10 [Source:HGNC Symbol;Acc:25316]	Homo sapiens	9606	RRMx1	DKFZp434M202	\N	\N	\N
+1548	ENSG00000163659	2010-03-18	2010-07-23	TIPARP	TCDD-inducible poly(ADP-ribose) polymerase [Source:HGNC Symbol;Acc:23696]	Homo sapiens	9606	Znf_CCCHx1	DKFZP434J214; DKFZp686N0351; DDF1; PARP7; PARP-7; PARP-1; pART14; RM1	\N	\N	\N
+1549	ENSG00000163694	2010-03-18	2010-07-23	RBM47	RNA binding motif protein 47 [Source:HGNC Symbol;Acc:30358]	Homo sapiens	9606	RRMx3	FLJ20273; NET18	\N	\N	\N
+1550	ENSG00000163714	2010-03-18	2010-04-07	SR140	U2-associated protein SR140 (140 kDa Ser/Arg-rich domain protein) [Source:UniProtKB/Swiss-Prot;Acc:O15042]	Homo sapiens	9606	RRMx1; Surpx1		\N	\N	\N
+1551	ENSG00000163728	2010-03-18	2010-07-23	TTC14	tetratricopeptide repeat domain 14 [Source:HGNC Symbol;Acc:24697]	Homo sapiens	9606	S1x1	FLJ00166; KIAA1980	\N	\N	\N
+1553	ENSG00000164167	2010-03-18	2010-07-20	LSM6	LSM6 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:17017]	Homo sapiens	9606	LSmx1	YDR378C	\N	\N	\N
+1555	ENSG00000164548	2010-03-18	2010-05-14	TRA2A	transformer 2 alpha homolog (Drosophila) [Source:HGNC Symbol;Acc:16645]	Homo sapiens	9606	RRMx1	htra-2-alpha; tra2a	\N	\N	\N
+1558	ENSG00000165119	2010-03-18	2010-07-01	HNRNPK	microRNA 7-1 [Source:HGNC Symbol;Acc:31638]	Homo sapiens	9606	KHx3	CSBP; TUNP	\N	\N	\N
+1561	ENSG00000165675	2010-03-18	2010-03-31	ENOX2	ecto-NOX disulfide-thiol exchanger 2 [Source:HGNC Symbol;Acc:2259]	Homo sapiens	9606	RRMx1	APK1; tNOX	\N	\N	\N
+1562	ENSG00000166173	2010-03-18	2010-07-14	LARP6	La ribonucleoprotein domain family, member 6 [Source:HGNC Symbol;Acc:24012]	Homo sapiens	9606	Lax1	acheron; FLJ11196	\N	\N	\N
+1564	ENSG00000166783	2010-03-18	2010-07-21	KIAA0430	KIAA0430 [Source:HGNC Symbol;Acc:29562]	Homo sapiens	9606	RRMx2	LKAP	\N	\N	\N
+1565	ENSG00000166831	2010-03-18	2010-07-01	RBPMS2	RNA binding protein with multiple splicing 2 [Source:HGNC Symbol;Acc:19098]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1566	ENSG00000167088	2010-03-18	2010-07-20	SNRPD1	small nuclear ribonucleoprotein D1 polypeptide 16kDa [Source:HGNC Symbol;Acc:11158]	Homo sapiens	9606	LSmx1	HsT2456; Sm-D1	\N	\N	\N
+1567	ENSG00000167100	2010-03-18	2010-04-25	SAMD14	sterile alpha motif domain containing 14 [Source:HGNC Symbol;Acc:27312]	Homo sapiens	9606	SAMx1	FLJ36890	\N	\N	\N
+1568	ENSG00000167281	2010-03-18	2010-04-07		Fox-1 homolog C  [Source:UniProtKB/Swiss-Prot;Acc:A6NFN3]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1571	ENSG00000168002	2010-03-18	2010-05-10	POLR2G	polymerase (RNA) II (DNA directed) polypeptide G [Source:HGNC Symbol;Acc:9194]	Homo sapiens	9606	S1x1	hRPB19; hsRPB7; RPB7	0	Binds RNA nonspecifically	\N
+1572	ENSG00000168066	2010-03-18	2010-07-08	SF1	splicing factor 1 [Source:HGNC Symbol;Acc:12950]	Homo sapiens	9606	KHx1; Znf_CCHCx1	ZFM1	\N	\N	\N
+1574	ENSG00000169045	2010-03-18	2010-04-25	HNRNPH1	heterogeneous nuclear ribonucleoprotein H1 (H) [Source:HGNC Symbol;Acc:5041]	Homo sapiens	9606	RRMx3; Znf_CHHCx1	hnRNPH	0	\N	\N
+1575	ENSG00000169249	2010-03-18	2010-04-25	ZRSR2	zinc finger (CCCH type), RNA-binding motif and serine/arginine rich 2 [Source:HGNC Symbol;Acc:23019]	Homo sapiens	9606	RRMx1; Znf_CCCHx1	U2AF1-RS2; URP	\N	\N	\N
+1576	ENSG00000169564	2010-03-18	2010-05-03	PCBP1	poly(rC) binding protein 1 [Source:HGNC Symbol;Acc:8647]	Homo sapiens	9606	KHx3	HNRPE1; hnRNP-E1; HNRPX; hnRNP-X	\N	\N	\N
+1577	ENSG00000169800	2010-03-18	2010-07-23	RBMY1F	RNA binding motif protein, Y-linked, family 1, member F [Source:HGNC Symbol;Acc:23974]	Homo sapiens	9606	RRMx1	MGC33094	\N	\N	\N
+1578	ENSG00000169813	2010-03-18	2010-04-25	HNRNPF	heterogeneous nuclear ribonucleoprotein F [Source:HGNC Symbol;Acc:5039]	Homo sapiens	9606	RRMx3; Znf_CHHCx1		\N	\N	\N
+1579	ENSG00000170144	2010-03-18	2010-05-20	HNRNPA3	heterogeneous nuclear ribonucleoprotein A3 [Source:HGNC Symbol;Acc:24941]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1580	ENSG00000170748	2010-03-18	2010-06-29	RBMXL2	RNA binding motif protein, X-linked-like 2 [Source:HGNC Symbol;Acc:17886]	Homo sapiens	9606	RRMx1	HNRNPG-T; HNRPGT	\N	\N	\N
+1581	ENSG00000170860	2010-03-18	2010-07-21	LSM3	LSM3 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:17874]	Homo sapiens	9606	LSmx1	YLR438C; SMX4; USS2	\N	\N	\N
+1582	ENSG00000170935	2010-03-18	2010-07-23	NCBP2L	nuclear cap binding protein subunit 2-like [Source:HGNC Symbol;Acc:31795]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1583	ENSG00000172346	2010-03-18	2010-05-15	CSDC2	cold shock domain containing C2, RNA binding [Source:HGNC Symbol;Acc:30359]	Homo sapiens	9606	CSDx1	PIPPin	\N	\N	\N
+1584	ENSG00000172660	2010-03-18	2010-06-01	TAF15	TAF15 RNA polymerase II, TATA box binding protein (TBP)-associated factor, 68kDa [Source:HGNC Symbol;Acc:11547]	Homo sapiens	9606	RRMx1; Znf_RanBP2x1	hTAFII68; RBP56; Npl3	\N	\N	\N
+1588	ENSG00000173914	2010-03-18	2010-05-06	RBM4B	RNA binding motif protein 4B [Source:HGNC Symbol;Acc:28842]	Homo sapiens	9606	RRMx2; Znf_CCHCx1	MGC10871; ZCCHC15; RBM4L; ZCRB3B	\N	\N	\N
+1589	ENSG00000173933	2010-03-18	2010-05-06	RBM4	RNA binding motif protein 4 [Source:HGNC Symbol;Acc:9901]	Homo sapiens	9606	RRMx2; Znf_CCHCx1	LARK; RBM4A; ZCRB3A; ZCCHC21	\N	\N	\N
+1590	ENSG00000174720	2010-03-18	2010-07-06	LARP7	La ribonucleoprotein domain family, member 7 [Source:HGNC Symbol;Acc:24912]	Homo sapiens	9606	RRMx2; Lax1	HDCMA18P; PIP7S; DKFZP564K112	\N	\N	\N
+1591	ENSG00000174740	2010-03-18	2010-04-06	PABPC5	poly(A) binding protein, cytoplasmic 5 [Source:HGNC Symbol;Acc:13629]	Homo sapiens	9606	RRMx4	PABP5	\N	\N	\N
+1593	ENSG00000175324	2010-03-18	2010-07-23	LSM1	LSM1 homolog, U6 small nuclear RNA associated (S. cerevisiae) [Source:HGNC Symbol;Acc:20472]	Homo sapiens	9606	LSmx1	CASM; YJL124C	\N	\N	\N
+1594	ENSG00000175718	2010-03-18	2010-06-29	RBMXL3	RNA binding motif protein, X-linked-like 3 [Source:HGNC Symbol;Acc:26859]	Homo sapiens	9606	RRMx1	FLJ40249	\N	\N	\N
+1595	ENSG00000176624	2010-03-18	2010-05-11	MEX3C	mex-3 homolog C (C. elegans) [Source:HGNC Symbol;Acc:28040]	Homo sapiens	9606	KHx2; Znf_RINGx1	FLJ38871; RNF194	\N	\N	\N
+1599	ENSG00000177483	2010-03-18	2010-07-23	RBM44	RNA binding motif protein 44 [Source:HGNC Symbol;Acc:24756]	Homo sapiens	9606	RRMx1	FLJ40411	\N	\N	\N
+1601	ENSG00000177613	2010-03-18	2010-05-03	CSTF2T	cleavage stimulation factor, 3' pre-RNA, subunit 2, 64kDa, tau variant [Source:HGNC Symbol;Acc:17086]	Homo sapiens	9606	RRMx1	DKFZp434C1013; KIAA0689; CstF-64T	\N	\N	\N
+1602	ENSG00000177733	2010-03-18	2010-05-07	HNRNPA0	heterogeneous nuclear ribonucleoprotein A0 [Source:HGNC Symbol;Acc:5030]	Homo sapiens	9606	RRMx2	hnRNPA0	\N	\N	\N
+1603	ENSG00000178199	2010-03-18	2010-04-28	ZC3H12D	zinc finger CCCH-type containing 12D [Source:HGNC Symbol;Acc:21175]	Homo sapiens	9606	Znf_CCCHx1	dJ281H8.1; MCPIP4	\N	\N	\N
+1604	ENSG00000179134	2010-03-18	2010-04-29	SAMD4B	sterile alpha motif domain containing 4B [Source:HGNC Symbol;Acc:25492]	Homo sapiens	9606	SAMx1	FLJ10211; MGC99832; SMGB; hSmaug2	\N	\N	\N
+1605	ENSG00000179172	2010-03-18	2010-05-07	HNRNPCL1	heterogeneous nuclear ribonucleoprotein C-like 1 [Source:HGNC Symbol;Acc:29295]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1606	ENSG00000179455	2010-03-18	2010-07-14	MKRN3	makorin ring finger protein 3 [Source:HGNC Symbol;Acc:7114]	Homo sapiens	9606	Znf_CCCHx3; Znf_RINGx1	RNF63; ZFP127; MGC88288	\N	\N	\N
+1607	ENSG00000179837	2010-03-18	2010-05-03	RBM15B	RNA binding motif protein 15B [Source:HGNC Symbol;Acc:24303]	Homo sapiens	9606	RRMx3	HUMAGCGB; OTT3	\N	\N	\N
+1608	ENSG00000179950	2010-03-18	2010-05-07	PUF60	poly-U binding splicing factor 60KDa [Source:HGNC Symbol;Acc:17042]	Homo sapiens	9606	RRMx3	FIR; SIAHBP1; RoBPI	\N	\N	\N
+1609	ENSG00000180098	2010-03-18	2010-07-14	TRNAU1AP	tRNA selenocysteine 1 associated protein 1 [Source:HGNC Symbol;Acc:30813]	Homo sapiens	9606	RRMx2	SECP43; FLJ20503	\N	\N	\N
+1610	ENSG00000180771	2010-03-18	2010-07-23	SFRS2B	splicing factor, arginine/serine-rich 2B [Source:HGNC Symbol;Acc:16988]	Homo sapiens	9606	RRMx1	SRP46	\N	\N	\N
+1611	ENSG00000181588	2010-03-18	2010-05-11	MEX3D	mex-3 homolog D (C. elegans) [Source:HGNC Symbol;Acc:16734]	Homo sapiens	9606	KHx2; Znf_RINGx1	Tino; KIAA2031; OK/SW-cl.4; RNF193	\N	\N	\N
+1612	ENSG00000181817	2010-03-18	2010-07-21	LSM10	LSM10, U7 small nuclear RNA associated [Source:HGNC Symbol;Acc:17562]	Homo sapiens	9606	LSmx1	MGC15749	\N	\N	\N
+1613	ENSG00000182004	2010-03-18	2010-07-14	SNRPE	small nuclear ribonucleoprotein polypeptide E [Source:HGNC Symbol;Acc:11161]	Homo sapiens	9606	LSmx1	Sm-E	\N	\N	\N
+1615	ENSG00000182134	2010-03-18	2010-07-14	TDRKH	tudor and KH domain containing [Source:HGNC Symbol;Acc:11713]	Homo sapiens	9606	KHx2	TDRD2	\N	\N	\N
+1617	ENSG00000182872	2010-03-18	2010-04-24	RBM10	RNA binding motif protein 10 [Source:HGNC Symbol;Acc:9896]	Homo sapiens	9606	RRMx2; Znf_C2H2x1; Znf_RanBP2x1	DXS8237E; KIAA0122; GPATC9; ZRANB5; GPATCH9	\N	\N	\N
+1618	ENSG00000182909	2010-03-18	2010-07-23	LENG9	leukocyte receptor cluster (LRC) member 9 [Source:HGNC Symbol;Acc:16306]	Homo sapiens	9606	Znf_CCCHx1		\N	\N	\N
+1619	ENSG00000182944	2010-03-18	2010-06-01	EWSR1	Ewing sarcoma breakpoint region 1 [Source:HGNC Symbol;Acc:3508]	Homo sapiens	9606	RRMx1; Znf_RanBP2	EWS	\N	\N	\N
+1620	ENSG00000183011	2010-03-18	2010-07-21	LSMD1	LSM domain containing 1 [Source:HGNC Symbol;Acc:28212]	Homo sapiens	9606	LSmx1	MGC14151; PFAAP2	\N	\N	\N
+1622	ENSG00000183403	2010-03-18	2010-07-23	DND1	dead end homolog 1 (zebrafish) [Source:HGNC Symbol;Acc:23799]	Homo sapiens	9606	RRMx2	MGC34750; RBMS4	\N	\N	\N
+1623	ENSG00000183496	2010-03-18	2010-05-11	MEX3B	mex-3 homolog B (C. elegans) [Source:HGNC Symbol;Acc:25297]	Homo sapiens	9606	KHx2; Znf_RINGx1	DKFZp434J0617; RNF195	\N	\N	\N
+1624	ENSG00000183570	2010-03-18	2010-05-03	PCBP3	poly(rC) binding protein 3 [Source:HGNC Symbol;Acc:8651]	Homo sapiens	9606	KHx3		\N	\N	\N
+1625	ENSG00000183684	2010-03-18	2010-06-29	THOC4	THO complex 4 [Source:HGNC Symbol;Acc:19071]	Homo sapiens	9606	RRMx1	ALY; BEF	\N	\N	\N
+1626	ENSG00000183808	2010-03-18	2010-07-21	RBM12B	RNA binding motif protein 12B [Source:HGNC Symbol;Acc:32310]	Homo sapiens	9606	RRMx5		\N	\N	\N
+1627	ENSG00000184209	2010-03-18	2010-07-23	SNRNP35	small nuclear ribonucleoprotein 35kDa (U11/U12) [Source:HGNC Symbol;Acc:30852]	Homo sapiens	9606	RRMx1	U1SNRNPBP	\N	\N	\N
+1628	ENSG00000184388	2010-03-18	2010-04-06	PABPC1L2B	poly(A) binding protein, cytoplasmic 1-like 2B [Source:HGNC Symbol;Acc:31852]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1629	ENSG00000184672	2010-03-18	2010-05-07	RALYL	RALY RNA binding protein-like [Source:HGNC Symbol;Acc:27036]	Homo sapiens	9606		HNRPCL3	\N	\N	\N
+1630	ENSG00000184735	2010-03-18	2010-07-21	DDX53	DEAD (Asp-Glu-Ala-Asp) box polypeptide 53 [Source:HGNC Symbol;Acc:20083]	Homo sapiens	9606	KHx1	CAGE; CT26	\N	\N	\N
+1631	ENSG00000184863	2010-03-18	2010-07-23	RBM33	RNA binding motif protein 33 [Source:HGNC Symbol;Acc:27223]	Homo sapiens	9606	RRMx1	DKFZp686F102; MGC20460; DKFZp434D1319	\N	\N	\N
+1632	ENSG00000184898	2010-03-18	2010-07-23	RBM43	RNA binding motif protein 43 [Source:HGNC Symbol;Acc:24790]	Homo sapiens	9606	RRMx1; Lax1	FLJ45645	\N	\N	\N
+1634	ENSG00000185272	2010-03-18	2010-04-05	RBM11	RNA binding motif protein 11 [Source:HGNC Symbol;Acc:9897]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1635	ENSG00000185650	2010-03-18	2010-04-27	ZFP36L1	zinc finger protein 36, C3H type-like 1 [Source:HGNC Symbol;Acc:1107]	Homo sapiens	9606	Znf_CCCHx2	RNF162B; Berg36; ERF1; TIS11B; cMG1	\N	\N	\N
+1636	ENSG00000185728	2010-03-18	2010-05-15	YTHDF3	YTH domain family, member 3 [Source:HGNC Symbol;Acc:26465]	Homo sapiens	9606	YTHx1	FLJ31657	\N	\N	\N
+1637	ENSG00000185946	2010-03-18	2010-04-07	RNPC3	RNA-binding region (RNP1, RRM) containing 3 [Source:HGNC Symbol;Acc:18666]	Homo sapiens	9606	RRMx2	KIAA1839; FLJ20008; RBM40	\N	\N	\N
+1638	ENSG00000186288	2010-03-18	2010-04-06	PABPC1L2A	poly(A) binding protein, cytoplasmic 1-like 2A [Source:HGNC Symbol;Acc:27989]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1642	ENSG00000187191	2010-03-18	2010-03-22	DAZ3	deleted in azoospermia 3 [Source:HGNC Symbol;Acc:15965]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1643	ENSG00000187456	2010-03-18	2010-07-23	RDM1	RAD52 motif 1 [Source:HGNC Symbol;Acc:19950]	Homo sapiens	9606	RRMx1	MGC33977	\N	\N	\N
+1645	ENSG00000187772	2010-03-18	2010-05-04	LIN28B	lin-28 homolog B (C. elegans) [Source:HGNC Symbol;Acc:32207]	Homo sapiens	9606	CSDx1; Znf_CCHCx2	FLJ16517; CSDD2	\N	\N	\N
+1646	ENSG00000187959	2010-03-18	2010-07-23	CPSF4L	cleavage and polyadenylation specific factor 4-like [Source:HGNC Symbol;Acc:33632]	Homo sapiens	9606	Znf_CCCHx5		\N	\N	\N
+1647	ENSG00000188120	2010-03-18	2010-03-22	DAZ1	deleted in azoospermia 1 [Source:HGNC Symbol;Acc:2682]	Homo sapiens	9606	RRMx3	SPGY	\N	\N	\N
+1648	ENSG00000188177	2010-03-18	2010-04-28	ZC3H6	zinc finger CCCH-type containing 6 [Source:HGNC Symbol;Acc:24762]	Homo sapiens	9606	Znf_CCCHx2	FLJ41410; FLJ45877; KIAA2035	\N	\N	\N
+1649	ENSG00000188529	2010-03-18	2010-04-07	SFRS13A	splicing factor, arginine/serine-rich 13A [Source:HGNC Symbol;Acc:16713]	Homo sapiens	9606	RRMx1	TASR1; TASR2; SRp38; SRrp40; SFRS13; FUSIP1; FUSIP2	\N	\N	\N
+1650	ENSG00000188739	2010-03-18	2010-05-03	RBM34	RNA binding motif protein 34 [Source:HGNC Symbol;Acc:28965]	Homo sapiens	9606	RRMx2	KIAA0117	\N	\N	\N
+1651	ENSG00000189306	2010-03-18	2010-05-03	RRP7A	ribosomal RNA processing 7 homolog A (S. cerevisiae) [Source:HGNC Symbol;Acc:24286]	Homo sapiens	9606	RRMx1	CGI-96	\N	\N	\N
+1654	ENSG00000196361	2010-03-18	2010-06-28	ELAVL3	ELAV (embryonic lethal, abnormal vision, Drosophila)-like 3 (Hu antigen C) [Source:HGNC Symbol;Acc:3314]	Homo sapiens	9606	RRMx3	HUC; PLE21; DKFZp547J036; HUCL; MGC20653	\N	\N	\N
+1656	ENSG00000196943	2010-03-18	2010-07-14	C14orf21	Pumilio domain-containing protein C14orf21  [Source:UniProtKB/Swiss-Prot;Acc:Q86U38]	Homo sapiens	9606	Pumx7		\N	\N	\N
+1657	ENSG00000197111	2010-03-18	2010-05-03	PCBP2	poly(rC) binding protein 2 [Source:HGNC Symbol;Acc:8648]	Homo sapiens	9606	KHx3	HNRPE2; hnRNP-E2	0	Binds ssDNA (PMID: 15331611)	\N
+1658	ENSG00000197114	2010-03-18	2010-04-25	ZGPAT	zinc finger, CCCH-type with G patch domain [Source:HGNC Symbol;Acc:15948]	Homo sapiens	9606	Znf_CCCHx1	dJ583P15.3; MGC44880; FLJ14972; ZC3HDC9; ZC3H9; GPATC6; GPATCH6; ZIP	\N	\N	\N
+1659	ENSG00000197451	2010-03-18	2010-05-05	HNRNPAB	heterogeneous nuclear ribonucleoprotein A/B [Source:HGNC Symbol;Acc:5034]	Homo sapiens	9606	RRMx2	ABBP1; FLJ40338	\N	\N	\N
+1661	ENSG00000198000	2010-03-18	2010-07-14	NOL8	nucleolar protein 8 [Source:HGNC Symbol;Acc:23387]	Homo sapiens	9606	RRMx1	FLJ20736; Nop132	\N	\N	\N
+1662	ENSG00000198265	2010-03-18	2010-04-28	HELZ	helicase with zinc finger [Source:HGNC Symbol;Acc:16878]	Homo sapiens	9606	Znf_CCCHx1	KIAA0054; HUMORF5; DHRC	\N	\N	\N
+1663	ENSG00000198492	2010-03-18	2010-05-15	YTHDF2	YTH domain family, member 2 [Source:HGNC Symbol;Acc:31675]	Homo sapiens	9606	YTHx1	HGRG8; NY-REN-2	\N	\N	\N
+1665	ENSG00000198879	2010-03-18	2010-07-23	SFMBT2	Scm-like with four mbt domains 2 [Source:HGNC Symbol;Acc:20256]	Homo sapiens	9606	RRMx1	KIAA1617	\N	\N	\N
+1666	ENSG00000198945	2010-03-18	2010-07-23	L3MBTL3	l(3)mbt-like 3 (Drosophila) [Source:HGNC Symbol;Acc:23035]	Homo sapiens	9606	RRMx1; Lax1	KIAA1798	\N	\N	\N
+1669	ENSG00000203759	2010-03-18	2010-05-11	MEX3A	mex-3 homolog A (C. elegans) [Source:HGNC Symbol;Acc:33482]	Homo sapiens	9606	KHx2; Znf_CCCHx1		\N	\N	\N
+1670	ENSG00000203867	2010-03-18	2010-07-23	RBM20	RNA binding motif protein 20 [Source:HGNC Symbol;Acc:27424]	Homo sapiens	9606	RRMx1; Znf_C2H2x2		\N	\N	\N
+1671	ENSG00000203909	2010-03-18	2010-07-23	DPPA5	developmental pluripotency associated 5 [Source:HGNC Symbol;Acc:19201]	Homo sapiens	9606	KHx1	Esg1	\N	\N	\N
+1673	ENSG00000204356	2010-03-18	2010-07-20	MIR1236	microRNA 1236 [Source:HGNC Symbol;Acc:33925]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1674	ENSG00000204392	2010-03-18	2010-07-14		U6 snRNA-associated Sm-like protein LSm2 (snRNP core Sm-like protein Sm-x5)(Small nuclear ribonuclear protein D homolog)(Protein G7b) [Source:UniProtKB/Swiss-Prot;Acc:Q9Y333]	Homo sapiens	9606	LSmx1		\N	\N	\N
+1675	ENSG00000204569	2010-03-18	2010-04-27	PPP1R10	Serine/threonine-protein phosphatase 1 regulatory subunit 10 (Phosphatase 1 nuclear targeting subunit)(MHC class I region proline-rich protein CAT53)(FB19 protein)(PP1-binding protein of 114 kDa)(p99) [Source:UniProtKB/Swiss-Prot;Acc:Q96QC0]	Homo sapiens	9606	Znf_CCCHx1		\N	\N	\N
+1676	ENSG00000204576	2010-03-18	2010-05-05	PRR3	Proline-rich protein 3 (MHC class I region proline-rich protein CAT56) [Source:UniProtKB/Swiss-Prot;Acc:P79522]	Homo sapiens	9606	Znf_CCCHx1		\N	\N	\N
+1677	ENSG00000205022	2010-03-18	2010-04-07	PABPN1L	poly(A) binding protein, nuclear 1-like (cytoplasmic) [Source:HGNC Symbol;Acc:37237]	Homo sapiens	9606	RRMx1	ePABP2	\N	\N	\N
+1679	ENSG00000205937	2010-03-18	2010-04-07	RNPS1	RNA binding protein S1, serine-rich domain [Source:HGNC Symbol;Acc:10080]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1680	ENSG00000205944	2010-03-18	2010-03-22	DAZ2	deleted in azoospermia 2 [Source:HGNC Symbol;Acc:15964]	Homo sapiens	9606	RRMx1	pDP1678; MGC126442	\N	\N	\N
+1686	ENSG00000212643	2010-03-18	2010-04-25	ZRSR1	U2 small nuclear ribonucleoprotein auxiliary factor 35 kDa subunit-related protein 1 (U2(RNU2) small nuclear RNA auxiliary factor 1-like 1)(CCCH type zinc finger, RNA-binding motif and serine/arginine rich protein 1) [Source:UniProtKB/Swiss-Prot;Acc:Q15695]	Homo sapiens	9606	RRMx1; Znf_CCCHx1		\N	\N	\N
+1687	ENSG00000213079	2010-03-18	2010-04-28	RBM16	RNA binding motif protein 16 [Source:HGNC Symbol;Acc:20959]	Homo sapiens	9606	RRMx1	KIAA1116	\N	\N	\N
+1688	ENSG00000213250	2010-03-18	2010-04-05		Putative uncharacterized protein ENSP00000395989  [Source:UniProtKB/TrEMBL;Acc:C9JFH9]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1690	ENSG00000213516	2010-03-18	2010-06-29	RBMXL1	RNA binding motif protein, X-linked-like 1 [Source:HGNC Symbol;Acc:25073]	Homo sapiens	9606	RRMx1	KAT3	\N	\N	\N
+1691	ENSG00000214575	2010-03-18	2010-04-01	CPEB1	cytoplasmic polyadenylation element binding protein 1 [Source:HGNC Symbol;Acc:21744]	Homo sapiens	9606	RRMx2	FLJ13203; CPEB	\N	\N	\N
+1693	ENSG00000215042	2010-03-18	2010-04-05		Putative uncharacterized protein ENSP00000388079 Fragment  [Source:UniProtKB/TrEMBL;Acc:C9JXI7]	Homo sapiens	9606	RRMx3		\N	\N	\N
+1694	ENSG00000215492	2010-03-18	2010-05-20		Putative uncharacterized protein ENSP00000383298  [Source:UniProtKB/TrEMBL;Acc:C9JCD7]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1703	ENSG00000226941	2010-03-18	2010-07-23	RBMY1J	RNA binding motif protein, Y-linked, family 1, member J [Source:HGNC Symbol;Acc:23917]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1704	ENSG00000227624	2010-03-18	2010-07-23	SNRPEL1	small nuclear ribonucleoprotein polypeptide E-like 1 [Source:HGNC Symbol;Acc:20733]	Homo sapiens	9606	LSmx1	bA390F4.4	\N	\N	\N
+1714	ENSG00000231942	2010-03-18	2010-04-05		Putative uncharacterized protein ENSP00000394145 Fragment  [Source:UniProtKB/TrEMBL;Acc:C9JK19]	Homo sapiens	9606	RRMx2		\N	\N	\N
+1715	ENSG00000232119	2010-03-18	2010-07-14	MCTS1	malignant T cell amplified sequence 1 [Source:HGNC Symbol;Acc:23357]	Homo sapiens	9606	PUAx1	MCT-1	\N	\N	\N
+1716	ENSG00000233034	2010-03-18	2010-04-06	PABPC4L	poly(A) binding protein, cytoplasmic 4-like [Source:HGNC Symbol;Acc:31955]	Homo sapiens	9606	RRMx4		\N	\N	\N
+1720	ENSG00000234414	2010-03-18	2010-07-23	RBMY1A1	RNA binding motif protein, Y-linked, family 1, member A1 [Source:HGNC Symbol;Acc:9912]	Homo sapiens	9606	RRMx1	YRRM1; YRRM2	\N	\N	\N
+1724	ENSG00000238222	2010-03-18	2010-07-14	MKRNP5	makorin ring finger protein pseudogene 5 [Source:HGNC Symbol;Acc:7115]	Homo sapiens	9606			\N	\N	\N
+1725	ENSG00000239306	2010-03-18	2010-05-13	RBM14	RNA binding motif protein 14 [Source:HGNC Symbol;Acc:14219]	Homo sapiens	9606	RRMx2	SIP; SYTIP1; COAA; DKFZp779J0927	\N	\N	\N
+1726	ENSG00000241058	2010-03-18	2010-07-21	NSUN6	NOP2/Sun domain family, member 6 [Source:HGNC Symbol;Acc:23529]	Homo sapiens	9606	PUAx1	FLJ23743	\N	\N	\N
+1727	ENSG00000242204	2010-03-18	2010-07-23	UNKL	unkempt homolog (Drosophila)-like [Source:HGNC Symbol;Acc:14184]	Homo sapiens	9606	Znf_CCCHx3	ZC3HDC5L; ZC3H5L; FLJ23360	\N	\N	\N
+1728	ENSG00000242389	2010-03-18	2010-07-23	RBMY1E	RNA binding motif protein, Y-linked, family 1, member E [Source:HGNC Symbol;Acc:23916]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1729	ENSG00000242466	2010-03-18	2010-07-23	HNRNPA1L2	heterogeneous nuclear ribonucleoprotein A1-like 2 [Source:HGNC Symbol;Acc:27067]	Homo sapiens	9606	RRMx2	LOC144983	\N	\N	\N
+1730	ENSG00000242875	2010-03-18	2010-04-05	RBMY1B	RNA binding motif protein, Y-linked, family 1, member B [Source:HGNC Symbol;Acc:23914]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1731	ENSG00000244395	2010-03-18	2010-07-23	RBMY1D	RNA binding motif protein, Y-linked, family 1, member D [Source:HGNC Symbol;Acc:23915]	Homo sapiens	9606	RRMx1		\N	\N	\N
+1732	ENSG00000244462	2010-03-18	2010-04-25	RBM12	RNA binding motif protein 12 [Source:HGNC Symbol;Acc:9898]	Homo sapiens	9606	RRMx4	HRIHFB2091; KIAA0765; SWAN	\N	\N	\N
+2465	ENSG00000205916	2010-05-12	2010-07-23	DAZ4	deleted in azoospermia 4 [Source:HGNC Symbol;Acc:15966]	Homo sapiens	9606	RRMx1		\N	\N	\N
+2466	ENSG00000145214	2010-05-12	2010-07-21	DGKQ	diacylglycerol kinase, theta 110kDa [Source:HGNC Symbol;Acc:2856]	Homo sapiens	9606	RRMx1	DAGK; DAGK7	\N	\N	\N
+2469	ENSG00000134453	2010-05-12	2010-07-21	RBM17	RNA binding motif protein 17 [Source:HGNC Symbol;Acc:16944]	Homo sapiens	9606	RRMx1	SPF45; MGC14439	\N	\N	\N
+2471	ENSG00000160294	2010-05-12	2010-07-20	MCM3AP	minichromosome maintenance complex component 3 associated protein [Source:HGNC Symbol;Acc:6946]	Homo sapiens	9606	RRMx1	Map80; KIAA0572; GANP	\N	\N	\N
+2472	ENSG00000140694	2010-05-12	2010-07-23	PARN	poly(A)-specific ribonuclease (deadenylation nuclease) [Source:HGNC Symbol;Acc:8609]	Homo sapiens	9606	RRMx1	DAN	\N	\N	\N
+2476	ENSG00000137462	2010-05-12	2010-07-23	TLR2	toll-like receptor 2 [Source:HGNC Symbol;Acc:11848]	Homo sapiens	9606	Lax1	TIL4; CD282	\N	\N	\N
+2477	ENSG00000178685	2010-05-12	2010-07-23	PARP10	poly (ADP-ribose) polymerase family, member 10 [Source:HGNC Symbol;Acc:25895]	Homo sapiens	9606	RRMx1	FLJ14464	\N	\N	\N
+2478	ENSG00000073146	2010-05-12	2010-07-23	MOV10L1	Mov10l1, Moloney leukemia virus 10-like 1, homolog (mouse) [Source:HGNC Symbol;Acc:7201]	Homo sapiens	9606	CSDx1	DJ402G11.8; DKFZp434B0717	\N	\N	\N
+2479	ENSG00000060339	2010-05-12	2010-07-23	CCAR1	cell division cycle and apoptosis regulator 1 [Source:HGNC Symbol;Acc:24236]	Homo sapiens	9606	CSDx1	FLJ10590; CARP-1; CARP1	\N	\N	\N
+2480	ENSG00000174106	2010-05-12	2010-07-23	LEMD3	LEM domain containing 3 [Source:HGNC Symbol;Acc:28887]	Homo sapiens	9606	RRMx1	MAN1	\N	\N	\N
+2481	ENSG00000125351	2010-05-12	2010-07-23	UPF3B	UPF3 regulator of nonsense transcripts homolog B (yeast) [Source:HGNC Symbol;Acc:20439]	Homo sapiens	9606	RRMx1	RENT3B; UPF3X; HUPF3B	\N	\N	\N
+2483	ENSG00000172348	2010-05-12	2010-07-23	RCAN2	regulator of calcineurin 2 [Source:HGNC Symbol;Acc:3041]	Homo sapiens	9606	RRMx1	ZAKI-4	\N	\N	\N
+2484	ENSG00000087087	2010-05-12	2010-07-24	SRRT	serrate RNA effector molecule homolog (Arabidopsis) [Source:HGNC Symbol;Acc:24101]	Homo sapiens	9606	RRMx1	Asr2; serrate; ARS2	\N	\N	\N
+2486	ENSG00000163874	2010-05-12	2010-05-13	ZC3H12A	zinc finger CCCH-type containing 12A [Source:HGNC Symbol;Acc:26259]	Homo sapiens	9606	Znf_CCCHx1	FLJ23231; MCPIP1	\N	\N	\N
+2487	ENSG00000146858	2010-05-12	2010-07-23	ZC3HAV1L	zinc finger CCCH-type, antiviral 1-like [Source:HGNC Symbol;Acc:22423]	Homo sapiens	9606	Znf_CCCHx1	MGC14289	\N	\N	\N
+2488	ENSG00000173193	2010-05-12	2010-07-23	PARP14	poly (ADP-ribose) polymerase family, member 14 [Source:HGNC Symbol;Acc:29232]	Homo sapiens	9606	RRMx1	KIAA1268; pART8	\N	\N	\N
+2489	ENSG00000196187	2010-05-12	2010-07-23	TMEM63A	transmembrane protein 63A [Source:HGNC Symbol;Acc:29118]	Homo sapiens	9606	RRMx1		\N	\N	\N
+2557	ENSG00000163950	2010-07-21	2010-07-24	SLBP	stem-loop binding protein [Source:HGNC Symbol;Acc:10904]	Homo sapiens	9606		HBP	\N	\N	\N
+2625	ENSG00000122034	2010-07-27	2010-07-28	GTF3A	general transcription factor IIIA [Source:HGNC Symbol;Acc:4662]	Homo sapiens	9606	Znf_C2H2x8	\N	\N	\N	\N
+2626	ENSG00000083635	2010-07-27	2010-07-28	NUFIP1	nuclear fragile X mental retardation protein interacting protein 1 [Source:HGNC Symbol;Acc:8057]	Homo sapiens	9606	Znf_C2H2x1	\N	\N	\N	\N
+2627	ENSG00000167978	2010-07-27	2010-07-28	SRRM2	serine/arginine repetitive matrix 2 [Source:HGNC Symbol;Acc:16639]	Homo sapiens	9606		\N	\N	\N	\N
+2628	ENSG00000137074	2010-07-27	2010-07-28	APTX	aprataxin [Source:HGNC Symbol;Acc:15984]	Homo sapiens	9606		\N	0		\N
+2629	ENSG00000056097	2010-07-27	2010-07-28	ZFR	zinc finger RNA binding protein [Source:HGNC Symbol;Acc:17277]	Homo sapiens	9606	Znf_C2H2x3	\N	\N	\N	\N
+2630	ENSG00000005007	2010-07-27	2010-07-28	UPF1	UPF1 regulator of nonsense transcripts homolog (yeast) [Source:HGNC Symbol;Acc:9962]	Homo sapiens	9606		\N	\N	\N	\N
+2631	ENSG00000151657	2010-07-27	2010-07-28	KIN	KIN, antigenic determinant of recA protein homolog (mouse) [Source:HGNC Symbol;Acc:6327]	Homo sapiens	9606	Znf_C2H2x1	\N	\N	\N	\N
+2632	ENSG00000196793	2010-07-27	2010-07-28	ZNF239	zinc finger protein 239 [Source:HGNC Symbol;Acc:13031]	Homo sapiens	9606	Znf_C2H2x8	\N	\N	\N	\N
+2633	ENSG00000185252	2010-07-27	2010-07-28	ZNF74	zinc finger protein 74 [Source:HGNC Symbol;Acc:13144]	Homo sapiens	9606	Znf_C2H2x12	\N	\N	\N	\N
+2634	ENSG00000124562	2010-07-27	2010-07-28	SNRPC	small nuclear ribonucleoprotein polypeptide C [Source:HGNC Symbol;Acc:11157]	Homo sapiens	9606	Znf_C2H2x1	\N	\N	\N	\N
+2635	ENSG00000121486	2010-07-27	2010-07-28	C1orf25	TRM1-like protein  [Source:UniProtKB/Swiss-Prot;Acc:Q7Z2T5]	Homo sapiens	9606	Znf_C2H2x1	\N	\N	\N	\N
+2654	ENSG00000105278	2010-07-27	2010-07-28	ZFR2	zinc finger RNA binding protein 2 [Source:HGNC Symbol;Acc:29189]	Homo sapiens	9606	Znf_C2H2x3	\N	\N	\N	\N
+2663	ENSG00000136381	2010-08-12	\N	IREB2	iron-responsive element binding protein 2 [Source:HGNC Symbol;Acc:6115]	Homo sapiens	9606		ACO3; IRP2; IRP2AD; FLJ23381; IREB2	\N	\N	\N
+2664	ENSG00000122729	2010-08-12	\N	ACO1	aconitase 1, soluble [Source:HGNC Symbol;Acc:117]	Homo sapiens	9606		IRP1; ACONS; IREB1; IREBP; IREBP1; ACO1	\N	\N	\N
+2911	ENSG00000116747	2010-10-07	2010-10-07	TROVE2	TROVE domain family, member 2 [Source:HGNC Symbol;Acc:11313]	Homo sapiens	9606	TROVEx1	RO60; SSA2; RORNP;	0	\N	\N
+2912	ENSG00000129566	2010-10-07	2010-10-07	TEP1	telomerase-associated protein 1 [Source:HGNC Symbol;Acc:11726]	Homo sapiens	9606	TROVEx1	p240; TLP1; TP1; TROVE1; VAULT2	0	\N	\N
+2915	ENSG00000111640	2010-11-23	2010-11-23	GAPDH	glyceraldehyde-3-phosphate dehydrogenase [Source:HGNC Symbol;Acc:4141]	Homo sapiens	9606	\N	GAPD	0	\N	\N
+2917	ENSG00000132485	2010-11-24	\N	ZRANB2	zinc finger, RAN-binding domain containing 2 [Source:HGNC Symbol;Acc:13058]	Homo sapiens	9606	Znf_RanBP2x2	\N	0	\N	\N
