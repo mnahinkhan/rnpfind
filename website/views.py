@@ -64,38 +64,42 @@ def analysis_request(request, gene):
     # # get reversed
     # reversed_gene = process(gene)
     # gene_entry.reverse_name = reversed_gene
+
+    total_steps = 13
+
     request_id = gene
     out = out_fn_gen(request_id)
-    out("Loading binding sites")
+    # out("Loading binding sites")
 
     # collect binding sites
     data_load_sources = ['rbpdb', 'attract', 'postar']
     rna_info = [gene, chr_n, start_coord, end_coord]
-    big_storage = load_data(data_load_sources, rna_info, out=out)
-    out("Done loading binding sites!")
+    big_storage = load_data(data_load_sources, rna_info, out=out, total_steps=total_steps)
+    # out("Done loading binding sites!")
 
     
-    out("Creating visualizations on UCSC")
+    out(f"4/{total_steps}. Creating visualizations on UCSC")
 
     analysis_method = 'ucsc'
     analysis_method_function = analysis_method_functions[analysis_method]
-    ucsc_url = analysis_method_function(big_storage, rna_info, out=out)
+    ucsc_url = analysis_method_function(big_storage, rna_info, out=out, total_steps=total_steps)
     gene_entry.ucsc_url = ucsc_url
 
     
 
-    out("Caching computed values")
+    out(f"11/{total_steps}. Caching computed values")
     gene_entry.chromosome_number = chr_n
     gene_entry.start_coord = start_coord
     gene_entry.end_coord = end_coord
 
     gene_entry.save()
 
-    out("Generating summary data")
+    out(f"12/{total_steps}. Generating summary data")
     # Save binding site summary info
     for data_source in big_storage:
         no_unique_rbps, no_unqiue_sites = big_storage[data_source].summary(is_return=True) 
         BindingSummaryInfo(data_source_type=data_source, gene=gene_entry, number_of_sites=no_unqiue_sites, number_of_rbps=no_unique_rbps).save()
 
     assert len(Gene.objects.filter(name=official_name)) == 1
+    out(f"13/{total_steps}. Complete! Refreshing your page now")
     return JsonResponse({"process_complete": True})

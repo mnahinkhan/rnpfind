@@ -4,7 +4,7 @@ from .populate_trackhub import populate_local_track_hub, convert_bed_to_bb, uplo
 from .config import genome_version
 
 
-def ucsc_visualize(big_storage, rna_info, out=None):
+def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     if not out:
         out = lambda s:print(s)
 
@@ -19,27 +19,28 @@ def ucsc_visualize(big_storage, rna_info, out=None):
 
     data_load_sources = big_storage.keys()
     # out[0] = "Thank you!"
-    out("Populating the local computer with bed files...")
+    start_step  = 5
+    out(f"{start_step}/{total_steps}. Populating the server with bed files...")
     overarching_path = populate_binding_sites(big_storage, rna_info, data_load_sources, main_rbp)
     # out("done!"
     # out(""
 
-    out("Converting all the bed files to bb files now...")
+    out(f"{start_step + 1}/{total_steps}. Converting all the bed files to bb files...")
     convert_bed_to_bb(overarching_path, data_load_sources)
     # out("Done!"
     # out(""
 
-    out("Generating density plot for RBP binding...")
+    out(f"{start_step + 2}/{total_steps}. Generating density plot for RBP binding...")
     rbp_no_dict = density_plot(big_storage, rna_info, data_load_sources, overarching_path, return_rbp_no=True)
     # out("done!"
     # out(""
 
-    out("Converting all the wig files to bw files now...")
+    out(f"{start_step + 3}/{total_steps}. Converting all the wig files to bw files...")
     convert_wig_to_bw(overarching_path, data_load_sources)
     # out("Done!"
     # out(""
 
-    out("uploading the bigBed and bigWig files on a local track hub...")
+    out(f"{start_step + 4}/{total_steps}. Uploading the bigBed and bigWig files to a local track hub server...")
     local_dir = "./website/output-data/ucsc/ucsc-genome-track-fake/"
 
     date_time_folder_name = overarching_path.split("/")[-2]
@@ -49,7 +50,7 @@ def ucsc_visualize(big_storage, rna_info, out=None):
     # out("done!"
 
     # out(""
-    out("Copying the local files to the internet now...")
+    out(f"{start_step + 5}/{total_steps}. Copying the local track files to a global server...")
     online_dir = "s3://rnpfind-data/ucsc-trackhub/"
     upload_online(local_dir, online_dir)
     # out("done!"

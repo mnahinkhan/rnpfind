@@ -30,7 +30,7 @@ from .config import experimental_binding_site_acceptable_coverage_ratio, annotat
 # from synonym_dict_build import deal_with_dictionary_building
 
 
-def load_data(data_load_sources, rna_info, out=None):
+def load_data(data_load_sources, rna_info, out=None, total_steps=7):
     # This function creates a big_storage variable that maps data sources to storage variables that store binding data
     # retrieved from the data source
     # TODO: investigate if the synonym_func is still relevant.
@@ -39,8 +39,8 @@ def load_data(data_load_sources, rna_info, out=None):
         out = lambda s:print(*s)
     
     big_storage = {}
-    for data_load_source in data_load_sources:
-        out(f"Loading binding sites from {data_load_source}")
+    for i, data_load_source in enumerate(data_load_sources):
+        out(f"{i+1}/{total_steps}. Loading binding sites from {data_load_source}")
         # TODO: is the merge func still relevant?
         merge_func = generate_merge_func(data_load_source)
         storageSpace = Storage(annotation_merge_func=merge_func)
