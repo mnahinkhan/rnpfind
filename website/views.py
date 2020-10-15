@@ -16,13 +16,17 @@ from website.scripts.analysis_functions import analysis_method_functions
 def index(request, bad_gene=""):
     # bad_gene = request.GET['gene_name'] if 'gene_name' in request.GET else ""
     return render(request, "website/index.html", {
-        'bad_gene': bad_gene
+        'bad_gene': bad_gene,
+        'analysed_genes': Gene.objects.all()
     })
 
-
-def gene_page(request):
-    # Gene.objects.all().delete();
+def gene_page_redirector(request):
     gene_name = request.GET['gene_name']
+    return gene_page(request, gene_name)
+
+def gene_page(request, gene_name):
+    # Gene.objects.all().delete();
+    # gene_name = request.GET['gene_name']
     success, _,_,_, official_name = gene_to_coord(gene_name)
     if not success:
         return index(request, bad_gene=gene_name)

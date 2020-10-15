@@ -38,14 +38,15 @@ p {
     }
 }
 .heading {
-    margin-top: 30vh;
+    margin-top: 10vh;
     animation-name: fade;
     animation-direction: forwards;
     animation-duration: 3s;
 }
 
 #search_form {
-    margin-left: 30vw;
+    // margin-left: 30vw;
+    margin-bottom: 60px;
     #search_button {
         height: 30px;
         padding-top: 0px;
@@ -73,4 +74,39 @@ p {
     #gene_name:focus {
         outline: none;
     }
+}
+
+
+
+.analysed_genes {
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+
+    .analysed_gene {
+        padding-left: 10vw;
+        padding-right: 10vw;
+        background-color: lightgray;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        padding-top: 14px;
+    }
+    margin-top: 60px;
+    h5 {
+        margin-bottom: 60px;
+    }
+    h6 {
+        color: black;
+    }
+    ul {
+        list-style-type:none;
+    }
+
+    li {
+        text-align: center;
+        color: black
+    }
+
 }

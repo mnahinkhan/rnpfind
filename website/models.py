@@ -21,7 +21,7 @@ class Gene(models.Model):
         return max(summary.number_of_rbps for summary in self.binding_summaries.all())
     
     def size(self):
-        return end_coord  - start_coord
+        return self.end_coord  - self.start_coord
 
 
 
