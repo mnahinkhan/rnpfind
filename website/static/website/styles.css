@@ -27,6 +27,10 @@ p {
 #binding_summaries {
   margin-top: 30px;
 }
+#binding_summaries li {
+  text-align: center;
+  color: black;
+}
 
 @keyframes fade {
   from {

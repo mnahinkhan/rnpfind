@@ -27,6 +27,10 @@ p {
 
 #binding_summaries {
     margin-top: 30px;
+    li {
+        text-align: center;
+        color: black;
+    }
 }
 
 @keyframes fade {
@@ -106,7 +110,7 @@ p {
 
     li {
         text-align: center;
-        color: black
+        color: black;
     }
 
 }
