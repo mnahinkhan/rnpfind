@@ -108,5 +108,5 @@ def analysis_request(request, gene):
         BindingSummaryInfo(data_source_type=data_source, gene=gene_entry, number_of_sites=no_unqiue_sites, number_of_rbps=no_unique_rbps).save()
 
     assert len(Gene.objects.filter(name=official_name)) == 1
-    out(f"13/{total_steps}. Complete! Refreshing your page now")
+    out(f"13/{total_steps}. Complete! Refreshing your page now... If it does not automatically, please refresh this page!")
     return JsonResponse({"process_complete": True})

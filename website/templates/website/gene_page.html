@@ -36,7 +36,7 @@
         .then(response => response.json())
         .then(info => {
             if (info.process_complete) {
-                setTimeout(() => window.location.reload());
+                setTimeout(() => window.location.reload(), 100);
             }
         })
         .catch(error => console.log(error));
