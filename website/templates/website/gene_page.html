@@ -37,10 +37,6 @@
             if (info.process_complete) {
                 setTimeout(() => window.location.reload());
             }
-            else {
-                console.log(info);
-                document.querySelector("#output").innerHTML = "Server error, sorry :(";
-            }
         })
         .catch(error => console.log(error));
 

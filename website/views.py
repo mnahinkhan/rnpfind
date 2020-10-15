@@ -59,6 +59,9 @@ def analysis_request(request, gene):
     assert success
     assert official_name == gene
     assert len(Gene.objects.filter(name=official_name)) == 0
+
+    if len(AnalysisStatus.objects.filter(request_id=gene)) > 0:
+        return JsonResponse({"process_complete": True})
     gene_entry = Gene(name=gene)
 
     # # get reversed
