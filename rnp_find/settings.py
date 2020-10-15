@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "192.168.99.100",
-    "quiet-headland-02127.herokuapp.com",
+    "rnp-find.herokuapp.com",
     "0.0.0.0",
 ]
 

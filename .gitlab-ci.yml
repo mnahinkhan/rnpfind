@@ -5,7 +5,7 @@ stages:
 
 variables:
   IMAGE: ${CI_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
-  HEROKU_APP_NAME: quiet-headland-02127
+  HEROKU_APP_NAME: rnp-find
   HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/web
 
 build:
