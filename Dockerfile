@@ -64,4 +64,4 @@ RUN chown myuser db.sqlite3 || true
 RUN chown myuser /app
 # RUN ./website/ucsc-tools/linux/bedToBigBed
 USER myuser
-CMD gunicorn rnp_find.wsgi:application --bind 0.0.0.0:$PORT -w 2 --timeout 480
+CMD gunicorn rnp_find.wsgi:application --bind 0.0.0.0:$PORT -w 2 --timeout 960
