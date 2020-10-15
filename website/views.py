@@ -42,7 +42,7 @@ def process(gene_name):
 
 def analysis_status(request, request_id):
     status = AnalysisStatus.objects.get(request_id=request_id).status if len(AnalysisStatus.objects.filter(request_id=request_id)) > 0 else ""
-    return JsonResponse({"status": status if status else "no request made"})
+    return JsonResponse({"status": status if status else "0/13. Sending request to server for analysis"})
 
 def out_fn_gen(request_id):
     def out(msg):
@@ -61,7 +61,7 @@ def analysis_request(request, gene):
     assert len(Gene.objects.filter(name=official_name)) == 0
 
     if len(AnalysisStatus.objects.filter(request_id=gene)) > 0:
-        return JsonResponse({"process_complete": True})
+        return JsonResponse({"process_complete": False})
     gene_entry = Gene(name=gene)
 
     # # get reversed
