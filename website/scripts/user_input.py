@@ -57,7 +57,7 @@ def get_rna_coord(rna_gene_name):
     return RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord
 
 
-def get_user_rna_preference():
+def get_user_rna_preference() -> dict:
     print("")
     print("")
     print("Welcome to RNPFind!")

@@ -59,7 +59,7 @@ def analysis_script():
     analysis_script: runs command line version of RNPFind
     """
     # Start by getting the transcript of interest to analyze
-    rna_info = get_user_rna_preference()
+    rna_info: dict = get_user_rna_preference()
 
     # what data sources does the user want to collect data from today?
     # (e.g. attract, postar, etc.)
