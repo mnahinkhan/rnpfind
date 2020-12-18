@@ -171,10 +171,16 @@ def gene_to_coord(gene):
             pickle.dump([nameToOfficial, officialToCoord], handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     gene = gene.upper()
+    rna_info = {}
     if gene in nameToOfficial and nameToOfficial[gene] in officialToCoord:
-        return [True] + list(officialToCoord[nameToOfficial[gene]]) + [nameToOfficial[gene]]
+        rna_info['success'] = True
+        rna_info['chr_n'], rna_info['start_coord'], rna_info['end_coord'] = (
+            officialToCoord[nameToOfficial[gene]]
+        )
+        rna_info['official_name'] = nameToOfficial[gene]
     else:
-        return [False, -1, -1, -1] + [""]
+        rna_info['success'] = False
+    return rna_info
 
 
 if __name__ == "__main__":

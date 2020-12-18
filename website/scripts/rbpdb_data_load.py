@@ -144,8 +144,7 @@ def rbpdb_data_load(rna_info, out=None):
     rbpdb_protein_file_path = "./website/data/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
     letter_strength = rbpdb_motif_pwm_letter_strength
     n_repeat_req = rbpdb_motif_n_repeat_req
-    RNA, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord = rna_info
-    rna_seq = get_human_seq(RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord)
+    rna_seq = get_human_seq(rna_info)
 
     experiment_id_to_pwm_dict = picklify(generate_rbpdb_experimental_to_pwm, letter_strength, n_repeat_req)
     protein_id_to_experimental_ids_dict = picklify(generate_rbpdb_protein_to_experiment_id)

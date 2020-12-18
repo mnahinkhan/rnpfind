@@ -32,8 +32,7 @@ def generate_matrix_to_pwm_dict():
 
 def attract_data_load(rna_info, out=None):
     attract_protein_file_path = "./website/data/ATtRACT_db.txt"
-    RNA, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord = rna_info
-    rna_seq = get_human_seq(RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord)
+    rna_seq = get_human_seq(rna_info)
     matrix_to_pwm_dict = picklify(generate_matrix_to_pwm_dict)
     with open(attract_protein_file_path) as handle:
         columns = handle.readline().strip().split('\t')

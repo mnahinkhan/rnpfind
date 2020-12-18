@@ -121,10 +121,10 @@ def analysis_request(request, gene):
     completion. The client may then refresh their page to see the newly
     populated data for their transcript of interest.
     """
-    success, chr_n, start_coord, end_coord, official_name = gene_to_coord(gene)
-    assert success
-    assert official_name == gene
-    assert len(Gene.objects.filter(name=official_name)) == 0
+    rna_info = gene_to_coord(gene)
+    assert rna_info['success']
+    assert rna_info['official_name'] == gene
+    assert len(Gene.objects.filter(name=rna_info['official_name'])) == 0
 
     if len(AnalysisStatus.objects.filter(request_id=gene)) > 0:
         return JsonResponse({"process_complete": False})
@@ -135,7 +135,6 @@ def analysis_request(request, gene):
 
     # collect binding sites
     data_load_sources = ['rbpdb', 'attract', 'postar']
-    rna_info = [gene, chr_n, start_coord, end_coord]
     big_storage = load_data(data_load_sources, rna_info, out=out,
                                                         total_steps=TOTAL_STEPS)
 
@@ -149,9 +148,9 @@ def analysis_request(request, gene):
 
 
     out(f"11/{TOTAL_STEPS}. Caching computed values")
-    gene_entry.chromosome_number = chr_n
-    gene_entry.start_coord = start_coord
-    gene_entry.end_coord = end_coord
+    gene_entry.chromosome_number = rna_info['chr_n']
+    gene_entry.start_coord = rna_info['start_coord']
+    gene_entry.end_coord = rna_info['end_coord']
 
     gene_entry.save()
 
@@ -166,7 +165,7 @@ def analysis_request(request, gene):
                            number_of_sites=no_unqiue_sites,
                            number_of_rbps=no_unique_rbps).save()
 
-    assert len(Gene.objects.filter(name=official_name)) == 1
+    assert len(Gene.objects.filter(name=rna_info['official_name'])) == 1
     out(
         f"13/{TOTAL_STEPS}. Complete! Refreshing your page now..."
         " If it does not automatically, please refresh this page!")

@@ -2,7 +2,7 @@
 
 
 def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
-    [RNA, _, _, _] = rna_info
+    RNA = rna_info['official_name']
 
     path_to_save = "./website/data/csv_files/" + RNA + "_" + "_".join(data_load_sources) + "_" + str(stringency) + ".csv"
     with open(path_to_save, 'w+') as csv_file:
@@ -20,7 +20,7 @@ def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
 
 
 def generate_heat_map(_, rna_info, __, ___):
-    [_, _, _, _] = rna_info
+    del rna_info
     print("HEAT MAP GENERATED")
     return
 

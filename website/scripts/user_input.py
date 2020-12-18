@@ -7,9 +7,14 @@ def get_rna_coord(rna_gene_name):
     user_input_required = True
     deduction_attempt_made = False
 
-    is_success, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord, _ = gene_to_coord(rna_gene_name)
+    rna_info = gene_to_coord(rna_gene_name)
 
+    is_success = rna_info['success']
     if is_success:
+        RNA_chr_no = rna_info['chr_n']
+        RNA_start_chr_coord = rna_info['start_coord']
+        RNA_end_chr_coord = rna_info['end_coord']
+
         deduction_attempt_made = True
         print("We have automatically deduced that this gene lies on chromosome " + str(RNA_chr_no) + " from " +
               str(RNA_start_chr_coord) + " to " + str(RNA_end_chr_coord) + " (with length " +
@@ -62,7 +67,12 @@ def get_user_rna_preference():
     RNA = input()  # "Neat1"
 
     RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord = get_rna_coord(RNA)
-    return RNA.upper(), RNA_chr_no, int(RNA_start_chr_coord), int(RNA_end_chr_coord)
+    rna_info = {}
+    rna_info['official_name'] = RNA.upper()
+    rna_info['chr_n'] = RNA_chr_no
+    rna_info['start_coord'] = int(RNA_start_chr_coord)
+    rna_info['end_coord'] = int(RNA_end_chr_coord)
+    return rna_info
 
 
 def get_user_data_source_preference():

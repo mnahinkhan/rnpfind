@@ -47,7 +47,10 @@ import os
 bases = ["A", "G", "C", "T"]
 
 seqs = {}
-def get_human_seq(chr_no, chr_start, chr_end):
+def get_human_seq(rna_info):
+    chr_no = rna_info['chr_n']
+    chr_start = rna_info['start_coord']
+    chr_end = rna_info['end_coord']
     if (chr_no, chr_start, chr_end) in seqs:
         print("memoising")
         return seqs[(chr_no, chr_start, chr_end)]

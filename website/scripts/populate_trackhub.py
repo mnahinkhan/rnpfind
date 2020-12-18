@@ -11,7 +11,8 @@ from .data_load_functions import column_data
 from sys import platform
 
 def populate_local_track_hub(overarching_path, rbp, rna_info, local_stage, rbp_no_dict, rbp_peaks):
-    [RNA, RNA_chr_no, _, _] = rna_info
+    RNA = rna_info['official_name']
+    RNA_chr_no = rna_info['chr_n']
 
     f = open(overarching_path + "threshold_config.txt")
     _str = f.read()
@@ -191,7 +192,9 @@ def upload_online(local_dir, github_dir):
 
 
 def density_plot(big_storage, rna_info, data_load_sources, overarching_path, return_rbp_no=False):
-    [RNA, RNA_chr_no, RNA_start_chr_coord, _] = rna_info
+    RNA = rna_info['official_name']
+    RNA_chr_no = rna_info['chr_n']
+    RNA_start_chr_coord = rna_info['start_coord']
     rbp_no_dict = {}
     for data_load_source in data_load_sources:
         print("")

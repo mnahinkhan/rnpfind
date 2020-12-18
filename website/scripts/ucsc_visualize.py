@@ -8,8 +8,6 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     if not out:
         out = lambda s:print(s)
 
-    [_, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord] = rna_info
-
     # out[0] = "For this analysis method,"
     #       + " may pick one RBP of interest to compare cooperation and competition against, if you like.")
     # out[0] = "Please type the name of one RBP you are interested in (if not, just press enter): ")
@@ -61,8 +59,8 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
               date_time_folder_name + "/" + hub_name.replace(" ", "+") + ".hub.txt"
 
     ucsc_url = "http://genome.ucsc.edu/cgi-bin/hgTracks?db=" + genome_version + "&hubUrl=" + \
-               hub_url + "&position=chr" + str(RNA_chr_no) + ":" + str(RNA_start_chr_coord) + "-" + str(
-                RNA_end_chr_coord)
+               hub_url + "&position=chr" + str(rna_info['chr_n']) + ":" + str(rna_info['start_coord']) + "-" + str(
+                rna_info['end_coord'])
 
     out(ucsc_url)
     return ucsc_url

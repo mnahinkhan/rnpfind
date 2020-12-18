@@ -59,9 +59,7 @@ def analysis_script():
     analysis_script: runs command line version of RNPFind
     """
     # Start by getting the transcript of interest to analyze
-    [rna_name, rna_chr_no, rna_start_chr_coord,
-                              rna_end_chr_coord] = get_user_rna_preference()
-    rna_info = [rna_name, rna_chr_no, rna_start_chr_coord, rna_end_chr_coord]
+    rna_info = get_user_rna_preference()
 
     # what data sources does the user want to collect data from today?
     # (e.g. attract, postar, etc.)
@@ -93,9 +91,10 @@ def analysis_script():
         no_sites += no_site
 
     print("We have populated " + str(no_rbps) + " different RBPs with " +
-          str(no_sites) + " different binding sites on the " + rna_name +
-          " rna_name sequence across the " +
-          str(rna_end_chr_coord - rna_start_chr_coord) + " bases specified!")
+          str(no_sites) + " different binding sites on the " +
+          rna_info['official_name'] + " rna_name sequence across the " +
+          str(rna_info['end_coord'] - rna_info['start_coord']) +
+          " bases specified!")
 
     # We now proceed to perform any number of analysis methods that the user may
     # wish to apply to the data obtained

@@ -82,7 +82,9 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
     if not out:
         out = lambda s: print(s)
     # TODO: Fix a bug here that causes genes without any data to start collecting the whole genome!!
-    RNA, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord = rna_info
+    RNA_chr_no = rna_info['chr_n']
+    RNA_start_chr_coord = rna_info['start_coord']
+    RNA_end_chr_coord = rna_info['end_coord']
     query = Query((RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord))
 
     # transport_params = {
