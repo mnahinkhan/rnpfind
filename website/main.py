@@ -92,7 +92,7 @@ def analysis_script():
 
     print("We have populated " + str(no_rbps) + " different RBPs with " +
           str(no_sites) + " different binding sites on the " +
-          rna_info['official_name'] + " rna_name sequence across the " +
+          rna_info['official_name'] + " sequence across the " +
           str(rna_info['end_coord'] - rna_info['start_coord']) +
           " bases specified!")
 
