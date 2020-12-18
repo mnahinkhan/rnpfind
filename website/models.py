@@ -1,3 +1,4 @@
+# pylint: disable=no-member
 """
 Defines the database models used by RNPFind.
 Classes defined are:
