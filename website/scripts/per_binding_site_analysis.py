@@ -13,6 +13,12 @@ thirdItem = itemgetter(2)
 
 
 def per_binding_site_analysis(big_storage, rna_info):
+    """
+
+    :param big_storage: 
+    :param rna_info: 
+
+    """
     # This function previously required these inputs
     # bigStorage, AUF1Filter, analysis_per_binding_site_window,
     #                       analysis_per_binding_site_competitive_range, analysis_sources):

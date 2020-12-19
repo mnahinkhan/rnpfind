@@ -17,6 +17,7 @@ thirdItem = itemgetter(2)
 # Justification: most people will iterate through the storage instead of testing with 'in'.
 
 class Storage:
+    """ """
     # This class stores data about a lncRNA and RBPs that might bind to it, as well as
     # the sites at which they bind (using dictionaries that store BindingSites values)
 
@@ -80,12 +81,15 @@ class Storage:
         return self._RBPs.__iter__()
 
     def get_rbps(self):
+        """ """
         return self._RBPs.keys()
 
     def items(self):
+        """ """
         return self._RBPs.items()
 
     def values(self):
+        """ """
         return self._RBPs.values()
 
     def __getitem__(self, item):
@@ -118,8 +122,9 @@ class Storage:
 
     def corr_reset(self):
         """Resets correlation data stored internally.
-
+        
         In case new data is added, it's a good idea to reset correlation data
+
 
         """
         self.corr_table = -1
@@ -294,9 +299,12 @@ class Storage:
 
     def summary(self, sort_by='NumberOfSites', is_return=False):
         """If you ever want to inspect the a storage variable, use summary().
-
+        
         Show binding site information in sorted order:
         Example usage: neat1_storage.summary()
+
+        :param sort_by:  (Default value = 'NumberOfSites')
+        :param is_return:  (Default value = False)
 
         """
 
@@ -323,8 +331,13 @@ class Storage:
     def self_analysis(self, bp_threshold=30, display_threshold=0.8, verbose=False, progress_feedback=True):
         """In case you are looking for fun and want to do a correlation study between
         all the RBPs pairwise on the lncRNA you are studying.
-
+        
         Especially useful if you have real binding data in my opinion.
+
+        :param bp_threshold:  (Default value = 30)
+        :param display_threshold:  (Default value = 0.8)
+        :param verbose:  (Default value = False)
+        :param progress_feedback:  (Default value = True)
 
         """
 
@@ -381,6 +394,15 @@ class Storage:
         return self.corr_table, self.corr_table_f_measure, self.corr_sorted, self.corr_bp_threshold
 
     def lookup(self, x, y=-1, display_threshold=-0.1, display_mode=True, bp_threshold=30):
+        """
+
+        :param x: 
+        :param y:  (Default value = -1)
+        :param display_threshold:  (Default value = -0.1)
+        :param display_mode:  (Default value = True)
+        :param bp_threshold:  (Default value = 30)
+
+        """
         if self.corr_table == -1 or self.corr_bp_threshold != bp_threshold:
             self.self_analysis(bp_threshold=bp_threshold, display_threshold=1.1)
 
@@ -401,11 +423,17 @@ class Storage:
             return self.corr_table_f_measure.get(x, {}).get(y, 0)
 
     def lookup_table(self):
+        """ """
         return self.corr_table_f_measure
 
     def binds_near(self, p, bp_threshold=30):
         """This function takes a tuple representing an interval that one wants to test
-        on the lncRNA and returns a Storage of RBPs binding to on near that interval"""
+        on the lncRNA and returns a Storage of RBPs binding to on near that interval
+
+        :param p: 
+        :param bp_threshold:  (Default value = 30)
+
+        """
         start, end, *m = p
         q = (start - bp_threshold, end + bp_threshold)
 
@@ -420,7 +448,11 @@ class Storage:
     def filter(self, f):
         """This function returns a new storage of RBPs based on the filter
         function passed. The function should take a RBP name and return True or
-        False."""
+        False.
+
+        :param f: 
+
+        """
         to_return = Storage()
         for k in self._RBPs:
             if f(k):
@@ -429,12 +461,15 @@ class Storage:
         return to_return
 
     def sites_analysis(self, gene, bp_threshold=0):
-        """
-
-        This function returns a dictionary mapping the binding sites of an input gene
+        """This function returns a dictionary mapping the binding sites of an input gene
         to a Storage variable that stores RBPs that bind within a threshold range of the
         site. The Storage variable only contains binding site information for the sites
-        that are nearby to the key site and excludes data about other binding sites."""
+        that are nearby to the key site and excludes data about other binding sites.
+
+        :param gene: 
+        :param bp_threshold:  (Default value = 0)
+
+        """
         # sanity check
         if gene not in self._RBPs:
             gene = self.synonym_func(gene)
@@ -449,12 +484,20 @@ class Storage:
         return to_return_dict
 
     def print(self):
+        """ """
         print(self)
 
     def len(self):
+        """ """
         return len(self)
 
     def all_sites_in(self, site, bp_threshold=0):
+        """
+
+        :param site: 
+        :param bp_threshold:  (Default value = 0)
+
+        """
         filtered_storage = Storage()
         for rbp, binding_sites in self._RBPs.items():
             filtered_rbp = binding_sites.filter_overlap(site, bp_threshold=bp_threshold)
@@ -465,6 +508,23 @@ class Storage:
     def printBED(self, chrN=1, displacement=0, endInclusion=False, addAnnotation=False, includeScore=False,
                  scoreMax=1000, scoreBase=1000, includeColor=False, conditionalColor_func=-1, includeHeader=False,
                  isBar=False, is_additional_columns=False, annotation_to_additional_columns=None):
+        """
+
+        :param chrN:  (Default value = 1)
+        :param displacement:  (Default value = 0)
+        :param endInclusion:  (Default value = False)
+        :param addAnnotation:  (Default value = False)
+        :param includeScore:  (Default value = False)
+        :param scoreMax:  (Default value = 1000)
+        :param scoreBase:  (Default value = 1000)
+        :param includeColor:  (Default value = False)
+        :param conditionalColor_func:  (Default value = -1)
+        :param includeHeader:  (Default value = False)
+        :param isBar:  (Default value = False)
+        :param is_additional_columns:  (Default value = False)
+        :param annotation_to_additional_columns:  (Default value = None)
+
+        """
         outputStr = ""
         for rbp, binding_sites in self._RBPs.items():
             outputStr += binding_sites.printBED(name=rbp, chrN=chrN, displacement=displacement,
@@ -484,7 +544,10 @@ class Storage:
 
     def sum_over_all(self):
         """Creates and returns a new binding site object with all of the binding sites across all RBPs stored in the
-        current storage. Overlap mode is set to True for the returned binding site object."""
+        current storage. Overlap mode is set to True for the returned binding site object.
+
+
+        """
 
         newBindingSite = BindingSites(overlap_mode=True)
         for rbp in self:
@@ -495,6 +558,17 @@ class Storage:
 
     def print_wig(self, chr_no=1, displacement=0, include_name=False, include_description=False, name="",
                   description="", include_header=True):
+        """
+
+        :param chr_no:  (Default value = 1)
+        :param displacement:  (Default value = 0)
+        :param include_name:  (Default value = False)
+        :param include_description:  (Default value = False)
+        :param name:  (Default value = "")
+        :param description:  (Default value = "")
+        :param include_header:  (Default value = True)
+
+        """
 
         return self.sum_over_all().print_wig(chr_no=chr_no, displacement=displacement, include_name=include_name,
                                              include_description=include_description, name=name,

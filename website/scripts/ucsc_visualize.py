@@ -5,6 +5,14 @@ from .config import genome_version
 
 
 def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
+    """
+
+    :param big_storage: 
+    :param rna_info: 
+    :param out:  (Default value = None)
+    :param total_steps:  (Default value = 7)
+
+    """
     if not out:
         out = lambda s:print(s)
 

@@ -13,6 +13,7 @@ overlap_conflict = 'union'
 # Todo: implement a map function
 # Todo: Go through the class functions and change replace "-1" default arguments with "None" instead
 class BindingSites:
+    """ """
     # Note that, in order to store binding sites in an ordered and non-redundant fashion from
     # multiple sources, a BindingSites class was implemented here.
     # The underlying implementation uses an ordered set to keep track of the ranges,
@@ -88,13 +89,24 @@ class BindingSites:
         return self.sorted_sites[item]
 
     def is_overlap_ranges(p, q):
-        """True iff the ranges (intervals) p and q overlap"""
+        """True iff the ranges (intervals) p and q overlap
+
+        :param p: 
+        :param q: 
+
+        """
 
         s1, e1, *m1 = p
         s2, e2, *m2 = q
         return s1 <= e2 and s2 <= e1
 
     def _merge_meta(l, f=None):
+        """
+
+        :param l: 
+        :param f:  (Default value = None)
+
+        """
         # assert(not self.overlap_mode)
         # TODO: fix the poor style of this function
         """Internal function for merging the annotations of multiple
@@ -133,7 +145,12 @@ class BindingSites:
             return new_l_set.pop()
 
     def _collapse(l, f=None):
-        """Takes a list of overlapping ranges and collapses them into one"""
+        """Takes a list of overlapping ranges and collapses them into one
+
+        :param l: 
+        :param f:  (Default value = None)
+
+        """
 
         # assert(not self.overlap_mode)
 
@@ -151,9 +168,12 @@ class BindingSites:
     def add(self, new_site, f=None):
         """Dynamic addition of a range to a sorted set of non-overlapping ranges
         while maintaining the sorted property and merging any produced overlaps.
-
+        
         May not be the most efficent way of doing this, as _collapse function does
         not take advantage of the sortedness of the ranges.
+
+        :param new_site: 
+        :param f:  (Default value = None)
 
         """
 
@@ -198,18 +218,26 @@ class BindingSites:
         self.sorted_sites.add(BindingSites._collapse(to_merge, f))
 
     def remove(self, site):
+        """
+
+        :param site: 
+
+        """
         self.sorted_sites.remove(site)
 
     def dist(self, p, bp_threshold=30):
         """Checks for correlation between binding sites of two BindingSites.
         Returns a value from 0 to 1.
-
+        
         WARNING: a.dist(b) and b.dist(a) can give VERY different answers!
         This is because this function checks the "distances" of each of the
         binding sites of one set of BindingSites with all of the other set
         to count the minimal distance and give a scoring based on that.
         Since one of the set of BindingSites could be ubiquitous, the scores
         may vary greatly.
+
+        :param p: 
+        :param bp_threshold:  (Default value = 30)
 
         """
         if self.overlap_mode:
@@ -245,7 +273,11 @@ class BindingSites:
 
     def is_overlap(self, q):
         """This checks if an input tuple range overlaps one of those present in
-        the set of binding sites stored in self"""
+        the set of binding sites stored in self
+
+        :param q: 
+
+        """
 
         if self.overlap_mode:
             raise ValueError("isOverlap() is not supported for BindingSites with overlap_mode set to True")
@@ -267,7 +299,11 @@ class BindingSites:
 
     def nearest_site(self, q):
         """This returns the closest range to the input tuple range
-        present in the set of binding sites stored in self"""
+        present in the set of binding sites stored in self
+
+        :param q: 
+
+        """
 
         if self.overlap_mode:
             raise ValueError("nearestSite() is not supported for BindingSites with overlap_mode set to True")
@@ -292,18 +328,32 @@ class BindingSites:
                 return self.sorted_sites[pos - 1], max(0, dist_start)
 
     def distance(p, q):
+        """
+
+        :param p: 
+        :param q: 
+
+        """
         if BindingSites.is_overlap_ranges(p, q): return 0
         s1, e1, *m = p
         s2, e2, *m = q
         return min(abs(s1 - e2), abs(s2 - e1))
 
     def print(self):
+        """ """
         print(self)
 
     def len(self):
+        """ """
         return len(self)
 
     def filter_overlap(self, q, bp_threshold=0):
+        """
+
+        :param q: 
+        :param bp_threshold:  (Default value = 0)
+
+        """
         if self.overlap_mode:
             raise ValueError("filterOverlap() is not supported for BindingSites with overlap_mode set to True")
 
@@ -328,6 +378,23 @@ class BindingSites:
     def printBED(self, name="Generic Binding Site", chrN=1, displacement=0, endInclusion=False, addAnnotation=False,
                  includeScore=False, scoreMax=1000, scoreBase=1000, includeColor=False, conditionalColor_func=None,
                  isBar=False, is_additional_columns=False, annotation_to_additional_columns=None):
+        """
+
+        :param name:  (Default value = "Generic Binding Site")
+        :param chrN:  (Default value = 1)
+        :param displacement:  (Default value = 0)
+        :param endInclusion:  (Default value = False)
+        :param addAnnotation:  (Default value = False)
+        :param includeScore:  (Default value = False)
+        :param scoreMax:  (Default value = 1000)
+        :param scoreBase:  (Default value = 1000)
+        :param includeColor:  (Default value = False)
+        :param conditionalColor_func:  (Default value = None)
+        :param isBar:  (Default value = False)
+        :param is_additional_columns:  (Default value = False)
+        :param annotation_to_additional_columns:  (Default value = None)
+
+        """
         # TOdo: Possibly remove the functionality for isBar, it seems misplaced!
         outputStr = ""
         if type(chrN) is not str:
@@ -386,8 +453,12 @@ class BindingSites:
 
     def return_depth(self, length=-1):
         """Returns the density array of length (length+1) for binding sites stored.
+        
+        Note that binding sites can bind on the 0th nucleotide, and cannot bind on the length'th nucleotide
 
-        Note that binding sites can bind on the 0th nucleotide, and cannot bind on the length'th nucleotide """
+        :param length:  (Default value = -1)
+
+        """
 
         if length == -1:
             if len(self) == 0:
@@ -412,45 +483,51 @@ class BindingSites:
     def overlap_collapse(self, mode, number, in_place=False, annotation_merger=None):
         """Collapses the overlapping ranges to non-overlapping ones, based on preset
         conditions.
-
+        
         This function will always look at the 'depths' of how much coverage support
         each nucleotide position has and chooses a cutoff point - e.g. all nucleotides
         above depth level of 5 is kept as binding sites and the rest are discarded.
         The cutoff point can  be chosen through multiple means.
         The modes supported right now are 'baseCoverNumber', 'TopDepthRatio',
         'TopDepthNumber', 'MinimumDepthNumber', 'TopSitesNumber','TopSitesRatio'
-
+        
             'baseCoverNumber': Choose cut off based on number of bases that should be
                 covered by the selected sites. The most stringent cutoff that achieves this
                 criteria is selected, unless not possible*.
-
+        
             'TopDepthRatio': Choose cutoff based on the fraction of highest depth
                 coverage that should be supported as binding sites. For example,
                 if the deepest coverage provided is 10 and number=0.4, then depth
                 coverage of 10,9,8,7,and 6 is counted as binding sites and the
                 rest are disregarded.
-
+        
             'TopDepthNumber': The number of layers of depth from the highest depth support
                 that should be selected is input, and the cutoff is accordingly selected.
-
+        
             'MinimumDepthNumber': The cut-off is selected based on the minimum depth
                 support each binding site should have.
-
+        
             'TopSitesNumber': The cut-off is selected such that the top selected number
                 of binding sites remains supported. For example, the top 100 sites may
                 be preserved (from a set of, say, 1000 overlapping sites)
-
+        
             'TopSitesRatio': The cut-off is selected much like above, but the ratio of
                 top sites that should be selected is specified instead. For example,
                 in the above example, 0.1 could be specified instead.
-
+        
         As of now, calling overlap_collapse() loses all annotation data associated with
         the original range interval data.
-
+        
         If inPlace is set to True, the BindingSites variable changes and collpases,
         otherwise a new BindingSites variable is generated and returned.
-
+        
         *In general, no nucleotide with support<1 is kept.
+
+        :param mode: 
+        :param number: 
+        :param in_place:  (Default value = False)
+        :param annotation_merger:  (Default value = None)
+
         """
         if not self.overlap_mode:
             print("WARNING: overlap_collapse() called although overlap_mode is set to off!")
@@ -528,14 +605,26 @@ class BindingSites:
             return binding_site_to_add_to
 
     def base_cover(self):
+        """ """
         depth_array = self.return_depth()
         return len(list(filter(lambda k: k > 0, depth_array)))
 
     def print_wig(self, chr_no=1, displacement=0, include_name=False, include_description=False, name="",
                   description="", include_header=True, length=-1):
         """Prints a wig file depicting density of binding sites by the RBP.
+        
+        Optional parameter length allows for plotting 0 beyond the rightmost binding site if needed.
 
-        Optional parameter length allows for plotting 0 beyond the rightmost binding site if needed."""
+        :param chr_no:  (Default value = 1)
+        :param displacement:  (Default value = 0)
+        :param include_name:  (Default value = False)
+        :param include_description:  (Default value = False)
+        :param name:  (Default value = "")
+        :param description:  (Default value = "")
+        :param include_header:  (Default value = True)
+        :param length:  (Default value = -1)
+
+        """
 
         output_str = ""
         if include_header:

@@ -48,6 +48,11 @@ bases = ["A", "G", "C", "T"]
 
 seqs = {}
 def get_human_seq(rna_info):
+    """
+
+    :param rna_info: 
+
+    """
     chr_no = rna_info['chr_n']
     chr_start = rna_info['start_coord']
     chr_end = rna_info['end_coord']
@@ -81,7 +86,11 @@ def get_human_seq(rna_info):
 
 
 def product(list_of_numbers):
-    """Returns a product of numbers."""
+    """Returns a product of numbers.
+
+    :param list_of_numbers: 
+
+    """
     answer = 1
     for number in list_of_numbers:
         answer *= number
@@ -91,7 +100,12 @@ def product(list_of_numbers):
 def pwm_scan_naive_brute_force(gene, pwm):
     """Scans gene, a string of nucleotide bases, for positions where pwm could bind using a naive brute force
     approach. Slower than pwm_scan most of the times, but much faster when the degree of freedom (total number of
-    strings represented) of pwm is very high (recommended to use this if degree of freedom of pwm is > 2000)."""
+    strings represented) of pwm is very high (recommended to use this if degree of freedom of pwm is > 2000).
+
+    :param gene: 
+    :param pwm: 
+
+    """
     len_gene = len(gene)
     len_pwm = len(pwm["A"])
     highest_scores = [max([pwm[b][i] for b in bases]) for i in range(len_pwm)]
@@ -115,7 +129,11 @@ def pwm_scan_naive_brute_force(gene, pwm):
 
 def pwm_degree_of_freedom(pwm):
     """Counts the number of binding strings described by a pwm. Can be useful in picking between
-    pwm_scan_naive_brute_force and pwm_scan"""
+    pwm_scan_naive_brute_force and pwm_scan
+
+    :param pwm: 
+
+    """
     # I think that this function can sometimes overestimate the "degree of freedom", because it's just multiplying
     # by the number of bases possibly described at each position by checking if it's above the cutoff percentage of
     # the maximum score at that position, instead of looking holistically. So this function should be considered an
@@ -129,6 +147,12 @@ def pwm_degree_of_freedom(pwm):
 
 
 def findall(needle, haystack):
+    """
+
+    :param needle: 
+    :param haystack: 
+
+    """
     # https://stackoverflow.com/a/34445090/8551394
     """Yields all the positions of the pattern needle in the string haystack."""
     i = haystack.find(needle)
@@ -142,7 +166,12 @@ def pwm_scan(gene, pwm):
     generate all possible strings of bases that the pwm could represent, and use Python's inbuilt substring searching
     algorithm to get all places where the collection of strings could bind on the RNA string. Usually fast, but if the
     pwm represents too many strings (e.g. your pwm has a stretch of 15 bases with equi-possible bases (think "N"), this
-    algorithm will likely not terminate ever). Consider using pwm_scan_naive_brute_force instead in such occasions."""
+    algorithm will likely not terminate ever). Consider using pwm_scan_naive_brute_force instead in such occasions.
+
+    :param gene: 
+    :param pwm: 
+
+    """
     len_pwm = len(pwm["A"])
     cut_off_percentage = pwm_scan_cut_off_percentage
 
@@ -170,7 +199,12 @@ def motif_to_pwm(motif, letter_strength=4):
     defaulted to 4) represents the number of times more likely a base is considered to be when represented by the
     motif string at a particular position. For example, in "AGCNNNYWS", the first position is A but we don't represent
     it as a 100% A frequency, instead we give A a probability of 4/7 while G,C,T each get a probability of 1/7 (when
-    letter_strength = 4)."""
+    letter_strength = 4).
+
+    :param motif: 
+    :param letter_strength:  (Default value = 4)
+
+    """
     # In practice, the letter_strength might not matter much if it's 4, since our cutoff threshold overall for
     # binding is 80% (so the moment a letter is only 25% it fails). But maybe that's good!
     motif = motif.strip()
@@ -218,7 +252,11 @@ def motif_to_pwm(motif, letter_strength=4):
 
 
 def pwm_summary(pwm):
-    """Returns a string representing the most likely string represented by the pwm"""
+    """Returns a string representing the most likely string represented by the pwm
+
+    :param pwm: 
+
+    """
     len_pwm = len(pwm["A"])
     return "".join([max(bases, key=lambda b: pwm[b][i]) for i in range(len_pwm)])
 
@@ -226,7 +264,12 @@ def pwm_summary(pwm):
 def str_to_pwm(raw_motif_str, is_transpose=False):
     """Converts a string containing numbers representing motif frequencies into a pwm. is_transpose allows for
     working with strings oriented differently. Go with default if your string has many rows and 4 columns; otherwise
-    set is_transpose=True"""
+    set is_transpose=True
+
+    :param raw_motif_str: 
+    :param is_transpose:  (Default value = False)
+
+    """
     motif = raw_motif_str.split()
     motif = [float(k) for k in motif]
     base_index = {"A": 0, "G": 1, "C": 2, "T": 3}

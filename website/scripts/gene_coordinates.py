@@ -12,6 +12,7 @@ path_to_pickle = "./website/output-data/pickles/biomart-gene-coordinates.pickle"
 
 
 class Chromosome:
+    """ """
     def __init__(self, n: Union[int, str]):
 
         if type(n) == int and n <= 22:
@@ -50,6 +51,11 @@ class Chromosome:
 
 
 def file_to_dicts(path):
+    """
+
+    :param path: 
+
+    """
     # This function converts the BioMart file given by the path into two dictionaries: the first one takes a gene name
     # as a key and gives as value the official symbol for the gene. The second one then takes the official symbol as
     # key and gives back the chromosome number, the start coordinate, and the end coordinate as its value.
@@ -145,6 +151,11 @@ def file_to_dicts(path):
 
 
 def remove_outliers(array):
+    """
+
+    :param array: 
+
+    """
     return array
     # m = statistics.median(array)
     # d = [x - m for x in array]
@@ -155,6 +166,11 @@ def remove_outliers(array):
 
 # TODO: Consider the potential role of picklify in this file
 def gene_to_coord(gene):
+    """
+
+    :param gene: 
+
+    """
 
     b = True
     if os.path.isfile(path_to_pickle):

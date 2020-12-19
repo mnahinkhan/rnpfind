@@ -31,6 +31,14 @@ from .config import experimental_binding_site_acceptable_coverage_ratio, annotat
 
 
 def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
+    """
+
+    :param data_load_sources: 
+    :param rna_info: dict: 
+    :param out:  (Default value = None)
+    :param total_steps:  (Default value = 7)
+
+    """
     # This function creates a big_storage variable that maps data sources to storage variables that store binding data
     # retrieved from the data source
     # TODO: investigate if the synonym_func is still relevant.
@@ -67,6 +75,11 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
 
 def annotation_to_columns(annotation):
+    """
+
+    :param annotation: 
+
+    """
     rows = annotation.split(annotation_row_delimiter)
     array = [tuple(r.split(annotation_column_delimiter)) for r in rows]
     array = list(set(array))

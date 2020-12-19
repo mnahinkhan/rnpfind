@@ -11,6 +11,16 @@ from .data_load_functions import column_data
 from sys import platform
 
 def populate_local_track_hub(overarching_path, rbp, rna_info, local_stage, rbp_no_dict, rbp_peaks):
+    """
+
+    :param overarching_path: 
+    :param rbp: 
+    :param rna_info: 
+    :param local_stage: 
+    :param rbp_no_dict: 
+    :param rbp_peaks: 
+
+    """
     RNA = rna_info['official_name']
     RNA_chr_no = rna_info['chr_n']
 
@@ -109,6 +119,11 @@ def populate_local_track_hub(overarching_path, rbp, rna_info, local_stage, rbp_n
 
 
 def prepare_auto_sql(data_load_source):
+    """
+
+    :param data_load_source: 
+
+    """
     source_columns_of_interest = range(len(column_data[data_load_source]["names"]))
     no_of_extra_fields = len(source_columns_of_interest)
     name_of_file = data_load_source + "".join([str(c) for c in source_columns_of_interest]) + ".as"
@@ -135,6 +150,12 @@ def prepare_auto_sql(data_load_source):
 
 
 def convert_bed_to_bb(overarching_path, data_load_sources):
+    """
+
+    :param overarching_path: 
+    :param data_load_sources: 
+
+    """
     debug = True
     if genome_version != "hg38":
         raise ValueError("Update this function for this genome version!")
@@ -163,6 +184,12 @@ def convert_bed_to_bb(overarching_path, data_load_sources):
 
 
 def upload_online(local_dir, github_dir):
+    """
+
+    :param local_dir: 
+    :param github_dir: 
+
+    """
     debug = True
     terminator = " >/dev/null 2>&1" if not debug else ""
     # CUR = os.getcwd()
@@ -192,6 +219,15 @@ def upload_online(local_dir, github_dir):
 
 
 def density_plot(big_storage, rna_info, data_load_sources, overarching_path, return_rbp_no=False):
+    """
+
+    :param big_storage: 
+    :param rna_info: 
+    :param data_load_sources: 
+    :param overarching_path: 
+    :param return_rbp_no:  (Default value = False)
+
+    """
     RNA = rna_info['official_name']
     RNA_chr_no = rna_info['chr_n']
     RNA_start_chr_coord = rna_info['start_coord']
@@ -227,6 +263,12 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path, ret
 
 
 def convert_wig_to_bw(overarching_path, data_load_sources):
+    """
+
+    :param overarching_path: 
+    :param data_load_sources: 
+
+    """
     if genome_version != "hg38":
         raise ValueError("Update this function for this genome version!")
 

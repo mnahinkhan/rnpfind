@@ -8,6 +8,11 @@ from .data_load_functions import data_load_source_colors
 
 
 def get_overarching_path(rna):
+    """
+
+    :param rna: 
+
+    """
     if not dedicated_analysis:
         year, month, day, hour, minute, sec, x, y, z = datetime.now().timetuple()
         year, month, day, hour, minute, sec = [str(x) for x in [year, month, day, hour, minute, sec]]
@@ -18,6 +23,15 @@ def get_overarching_path(rna):
 
 
 def populate_binding_sites(big_storage, rna_info, data_load_sources, main_rbp, out=None):
+    """
+
+    :param big_storage: 
+    :param rna_info: 
+    :param data_load_sources: 
+    :param main_rbp: 
+    :param out:  (Default value = None)
+
+    """
     if not out:
         out = lambda s: print(s)
     RNA = rna_info['official_name']
@@ -56,6 +70,11 @@ def populate_binding_sites(big_storage, rna_info, data_load_sources, main_rbp, o
         coop_color = green
 
         def coloring_func(binding_site):
+            """
+
+            :param binding_site: 
+
+            """
             competitive = main_rbp in storage.binds_near(binding_site, bp_threshold=competitive_threshold_bp)
             cooperative = main_rbp in storage.binds_near(binding_site, bp_threshold=cooperative_threshold_bp)
             return comp_color if competitive else coop_color if cooperative else default_color

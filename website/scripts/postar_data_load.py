@@ -23,6 +23,7 @@ postar_column_descriptions = [postar_all_column_descriptions[i] for i in postar_
 
 
 class Query(object):
+    """ """
 
     def __init__(self, query):
         self.query = query
@@ -36,6 +37,7 @@ class Query(object):
 
 
 class FileSearcher(object):
+    """ """
 
     def __init__(self, file_pointer):
         self.file_pointer = file_pointer
@@ -79,6 +81,14 @@ class FileSearcher(object):
 
 
 def binary_search_populate(file_path, rna_info, debug=False, out=None):
+    """
+
+    :param file_path: 
+    :param rna_info: 
+    :param debug:  (Default value = False)
+    :param out:  (Default value = None)
+
+    """
     if not out:
         out = lambda s: print(s)
     # TODO: Fix a bug here that causes genes without any data to start collecting the whole genome!!
@@ -133,6 +143,12 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
 
 
 def postar_data_load(rna_info, out=None):
+    """
+
+    :param rna_info: 
+    :param out:  (Default value = None)
+
+    """
     file_path = "s3://rnpfind-data/postar-human-RBP-binding-sites-sorted.txt"
     # print(file_path)
     return binary_search_populate(file_path, rna_info, out)

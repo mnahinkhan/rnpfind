@@ -2,6 +2,14 @@
 
 
 def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
+    """
+
+    :param symmetric_corr_table: 
+    :param rna_info: 
+    :param data_load_sources: 
+    :param stringency: 
+
+    """
     RNA = rna_info['official_name']
 
     path_to_save = "./website/data/csv_files/" + RNA + "_" + "_".join(data_load_sources) + "_" + str(stringency) + ".csv"
@@ -20,6 +28,14 @@ def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
 
 
 def generate_heat_map(_, rna_info, __, ___):
+    """
+
+    :param _: 
+    :param rna_info: 
+    :param __: 
+    :param ___: 
+
+    """
     del rna_info
     print("HEAT MAP GENERATED")
     return
@@ -27,6 +43,12 @@ def generate_heat_map(_, rna_info, __, ___):
 
 # As of now, takes two rna arguments only.
 def overall_correlation_analysis(big_storage, rna_info):
+    """
+
+    :param big_storage: 
+    :param rna_info: 
+
+    """
     print("For this analysis method, we need the nucleotide base distance stringency threshold number.")
     print('''This number indicates the number of bases away that two binding sites can be before they are ''' +
           '''considered "too far"''')

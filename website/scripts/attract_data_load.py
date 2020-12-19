@@ -18,6 +18,7 @@ attract_column_descriptions = [attract_all_column_descriptions[i]
 
 
 def generate_matrix_to_pwm_dict():
+    """ """
     attract_pwm_file_path = "./website/data/attract-pwm.txt"
     matrix_to_pwm_dict = {}
     with open(attract_pwm_file_path) as handle:
@@ -36,6 +37,12 @@ def generate_matrix_to_pwm_dict():
 
 
 def attract_data_load(rna_info, out=None):
+    """
+
+    :param rna_info: 
+    :param out:  (Default value = None)
+
+    """
     del out
     attract_protein_file_path = "./website/data/ATtRACT_db.txt"
     rna_seq = get_human_seq(rna_info)

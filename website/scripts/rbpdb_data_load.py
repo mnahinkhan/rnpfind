@@ -21,6 +21,7 @@ rbpdb_column_descriptions = [rbpdb_all_column_descriptions[i] for i in rbpdb_col
 
 
 def generate_rbpdb_experiment_to_columns():
+    """ """
     rbpdb_experiment_file_path = "./website/data/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
     experiment_id_to_columns_dict = {}
     with open(rbpdb_experiment_file_path) as handle:
@@ -41,6 +42,7 @@ def generate_rbpdb_experiment_to_columns():
 
 
 def generate_rbpdb_protein_to_experiment_id():
+    """ """
     rbpdb_protein_experiment_file_path = \
         "./website/data/RBPDB_v1.3.1_protExp_human_2012-11-21.tdt"
     protein_id_to_experimental_ids_dict = {}
@@ -59,6 +61,12 @@ def generate_rbpdb_protein_to_experiment_id():
 
 
 def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
+    """
+
+    :param letter_strength: 
+    :param n_repeat_req: 
+
+    """
     rbpdb_experiment_file_path = "./website/data/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
     rbpdb_pfm_file_directory = "./website/data/rbpdb-human-pfm-matrices/"
     experimental_to_pwm_dict = {}
@@ -141,6 +149,12 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
 
 
 def rbpdb_data_load(rna_info, out=None):
+    """
+
+    :param rna_info: 
+    :param out:  (Default value = None)
+
+    """
     rbpdb_protein_file_path = "./website/data/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
     letter_strength = rbpdb_motif_pwm_letter_strength
     n_repeat_req = rbpdb_motif_n_repeat_req

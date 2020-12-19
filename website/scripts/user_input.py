@@ -4,6 +4,11 @@ from .gene_coordinates import gene_to_coord
 
 
 def get_rna_coord(rna_gene_name):
+    """
+
+    :param rna_gene_name: 
+
+    """
     user_input_required = True
     deduction_attempt_made = False
 
@@ -58,6 +63,7 @@ def get_rna_coord(rna_gene_name):
 
 
 def get_user_rna_preference() -> dict:
+    """ """
     print("")
     print("")
     print("Welcome to RNPFind!")
@@ -76,6 +82,7 @@ def get_user_rna_preference() -> dict:
 
 
 def get_user_data_source_preference():
+    """ """
     print("")
     print("")
     print("Which sources of data would you like to collect RBP binding data from today?")
@@ -93,6 +100,7 @@ def get_user_data_source_preference():
 
 
 def get_user_analysis_preference():
+    """ """
     print("")
     print("")
     print("Which method of analysis on the data would you like to employ today?")

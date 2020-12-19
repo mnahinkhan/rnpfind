@@ -7,6 +7,13 @@ import pickle
 
 
 def picklify(dict_generator, *args, **kwargs):
+    """
+
+    :param dict_generator: 
+    :param *args: 
+    :param **kwargs: 
+
+    """
     # Danger! Never call picklify with functions that have the same name!
     pickle_path = "./website/output-data/pickles/" + dict_generator.__name__ + ".pickle"
     try:
