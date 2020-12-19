@@ -62,10 +62,13 @@ def gene_page(request, gene_name):
     Serves up a page dedicated to the requested gene name. If the requested gene
     is not a real gene, it serves the index page with a "bad gene" marker.
     """
-    success, _,_,_, official_name = gene_to_coord(gene_name)
+    rna_info = gene_to_coord(gene_name)
+    success = rna_info['success']
+    
     if not success:
         return index(request, bad_gene=gene_name)
 
+    official_name = rna_info['official_name']
     is_in_database = len(Gene.objects.filter(name=official_name)) != 0
 
     return render(request, "website/gene_page.html", {

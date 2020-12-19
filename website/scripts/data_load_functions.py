@@ -41,7 +41,7 @@ from .colors import orange, blue, dark_green
 from .rbpdb_data_load import rbpdb_data_load, rbpdb_column_names, rbpdb_default_label_index, \
     rbpdb_default_mouse_over_index, rbpdb_column_descriptions
 from .attract_data_load import attract_data_load, attract_column_names, attract_default_label_index, \
-    attract_default_mouse_over_index, attract_column_descriptions
+    ATTRACT_DEFAULT_MOUSE_OVER_INDEX, attract_column_descriptions
 from .postar_data_load import postar_data_load, postar_column_names, postar_default_label_index, \
     postar_default_mouse_over_index, postar_column_descriptions
 from .custom_data_load import custom_data_load
@@ -73,7 +73,7 @@ column_data = {"postar": {"names": postar_column_names, "default_label": postar_
                           "descriptions": postar_column_descriptions},
 
                "attract": {"names": attract_column_names, "default_label": attract_default_label_index,
-                           "default_mouse_over": attract_default_mouse_over_index,
+                           "default_mouse_over": ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
                            "descriptions": attract_column_descriptions},
 
                "rbpdb": {"names": rbpdb_column_names, "default_label": rbpdb_default_label_index,
