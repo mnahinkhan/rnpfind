@@ -6,7 +6,7 @@ import boto3
 
 from .config import genome_version, data_load_sources_supported, data_load_sources_supported_short_form, \
     ucsc_track_visibility
-from .binding_analysis_binding_sites import overlap_conflict
+from .binding_analysis_binding_sites import OVERLAP_CONFLICT
 from .data_load_functions import column_data
 from sys import platform
 
@@ -29,14 +29,14 @@ def populate_local_track_hub(overarching_path, rbp, rna_info, local_stage, rbp_n
     competitive_threshold_bp = _str.split("\n")[0].split()[-1]
     cooperative_threshold_bp = _str.split("\n")[1].split()[-1]
 
-    print(overlap_conflict)
+    print(OVERLAP_CONFLICT)
 
     rnas = RNA
     proteins = rbp
-    hub_name = "RBPs on " + rnas + " " + overlap_conflict
+    hub_name = "RBPs on " + rnas + " " + OVERLAP_CONFLICT
     hub, genomes_file, genome, trackdb = trackhub.default_hub(
         hub_name=hub_name,
-        short_label=("RBPs on " + rnas + " w.r.t. " + proteins + ": " + overlap_conflict),
+        short_label=("RBPs on " + rnas + " w.r.t. " + proteins + ": " + OVERLAP_CONFLICT),
         long_label=("RNA binding proteins on long non-coding RNAs " +
                     rnas + " with respect to the binding sites of " + proteins +
                     ". The red sites are the places where proteins have " +
