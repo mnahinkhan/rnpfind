@@ -6,3 +6,4 @@ website/output-data/
 staticfiles/website/*
 !staticfiles/website/styles.?css*
 .DS_Store
+.vscode/
