@@ -1,6 +1,13 @@
-from .config import annotation_column_delimiter
+"""
+This module defines functions relevant to loading RBP binding sites from the
+ATTRACT database.
+
+"""
+
+from .config import ANNOTATION_COLUMN_DELIMITER
 from .picklify import picklify
 from .pwm_scan import get_human_seq, str_to_pwm, pwm_scan
+
 
 attract_all_column_names = ["Gene_name", "Gene_id", "Mutated", "Organism",
                             "Motif", "Len", "Experiment_description",
@@ -18,7 +25,11 @@ attract_column_descriptions = [attract_all_column_descriptions[i]
 
 
 def generate_matrix_to_pwm_dict():
-    """ """
+    """
+    Preprocesses ATTRACT database files. In particular, this function generates
+    and returns a dictionary that maps position weight matrix IDs to the PWM
+    data structures used in this program (RNPFind).
+    """
     attract_pwm_file_path = "./website/data/attract-pwm.txt"
     matrix_to_pwm_dict = {}
     with open(attract_pwm_file_path) as handle:
@@ -38,9 +49,13 @@ def generate_matrix_to_pwm_dict():
 
 def attract_data_load(rna_info, out=None):
     """
-
-    :param rna_info: 
-    :param out:  (Default value = None)
+    Loads RBP binding sites from the ATTRACT database for a given RNA molecule,
+    and returns the sites as a Generator / Iterator object.
+    :param rna_info: a dictionary containing the location of the RNA on the
+        hg38 genome by specifying its chromosome location, start coordinates,
+        and end coordinates.
+    :param out: if specified, redirects stdout progress output to the specified
+        function. (Default value = None)
 
     """
     del out
@@ -68,7 +83,7 @@ def attract_data_load(rna_info, out=None):
                 continue
 
             annotation = (
-                    annotation_column_delimiter.join(
+                    ANNOTATION_COLUMN_DELIMITER.join(
                     [protein_columns[i]for i in attract_columns_of_interest])
             )
 

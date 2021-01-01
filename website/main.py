@@ -85,8 +85,10 @@ def analysis_script():
     # interest
     no_rbps = 0
     no_sites = 0
-    for no_rbp, no_site in [big_storage[k].summary(is_return=True)
-                                                        for k in big_storage]:
+    for no_rbp, no_site in [
+        big_storage[k].summary()
+        for k in big_storage
+    ]:
         no_rbps += no_rbp
         no_sites += no_site
 

@@ -1,11 +1,13 @@
-# In principle, one could automate the process for merging data annotations between binding sites that overlap and
-# need to be merged together. For now, this function does nothing, and merging is handled in other ways.
+"""
+In principle, one could automate the process for merging data annotations
+between binding sites that overlap and need to be merged together. For now, this
+function and file does nothing, and merging is handled in other ways.
+"""
 
-
-def generate_merge_func(data_load_source):
+def generate_merge_func(_):
     """
-
-    :param data_load_source: 
+    Returns the identity function
+    :param _: the inputt paramter is ignored
 
     """
     return lambda x: x

@@ -6,13 +6,13 @@ RNPFind, this is the file to edit!
 The way any analysis function works in RNPFind is as follows. RNPFind will call
 the analysis function like this:
 
-analysis_method_function_name(bigStorage, RNAInfo)
+analysis_method_function_name(big_storage, rna_info)
 
-where bigStorage is a dictionary that maps a data_source string to a Storage
+where big_storage is a dictionary that maps a data_source string to a Storage
 variable (which in turn maps rbp names to a list of binding sites; for more
-details see load_data.py), and RNAInfo is a list that stores the RNA name and
-its chromosomal location on the hg38 chromosome. If you preferred to have the
-RNA sequence, get_human_seq() from pwm_scan should help you (see
+details see load_data.py), and rna_info is a dictionary that stores the RNA name
+and its chromosomal location on the hg38 chromosome. If you preferred to have
+the RNA sequence, get_human_seq() from pwm_scan should help you (see
 attract_data_load.py for an example of that).
 
 Upon getting the above input, an analysis function is free to do with the
@@ -27,7 +27,7 @@ should be edited to incorporate the function on RNPFind!
 # """
 
 # First, import the function from wherever it is defined:
-from .overAllCorrAnalysis import overall_correlation_analysis
+from .over_all_corr_analysis import overall_correlation_analysis
 from .per_binding_site_analysis import per_binding_site_analysis
 from .ucsc_visualize import ucsc_visualize
 

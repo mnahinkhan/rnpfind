@@ -499,25 +499,26 @@ class BindingSites:
                 output_binding_sites.add(site)
         return output_binding_sites
 
-    def printBED(self, name="Generic Binding Site", chrN=1, displacement=0,
-                 endInclusion=False, addAnnotation=False, includeScore=False,
-                 scoreMax=1000, scoreBase=1000, includeColor=False,
-                 conditionalColor_func=None, isBar=False,
+
+    def print_bed(self, name="Generic Binding Site", chr_n=1, displacement=0,
+                 end_inclusion=False, add_annotation=False, include_score=False,
+                 score_max=1000, score_base=1000, include_color=False,
+                 conditional_color_func=None, is_bar=False,
                  is_additional_columns=False,
                  annotation_to_additional_columns=None):
         """
 
         :param name:  (Default value = "Generic Binding Site")
-        :param chrN:  (Default value = 1)
+        :param chr_n:  (Default value = 1)
         :param displacement:  (Default value = 0)
-        :param endInclusion:  (Default value = False)
-        :param addAnnotation:  (Default value = False)
-        :param includeScore:  (Default value = False)
-        :param scoreMax:  (Default value = 1000)
-        :param scoreBase:  (Default value = 1000)
-        :param includeColor:  (Default value = False)
-        :param conditionalColor_func:  (Default value = None)
-        :param isBar:  (Default value = False)
+        :param end_inclusion:  (Default value = False)
+        :param add_annotation:  (Default value = False)
+        :param include_score:  (Default value = False)
+        :param score_max:  (Default value = 1000)
+        :param score_base:  (Default value = 1000)
+        :param include_color:  (Default value = False)
+        :param conditional_color_func:  (Default value = None)
+        :param is_bar:  (Default value = False)
         :param is_additional_columns:  (Default value = False)
         :param annotation_to_additional_columns:  (Default value = None)
 
@@ -525,53 +526,54 @@ class BindingSites:
 
         # Todo: investigate the reason for add_annotation being an unused
         # argument
-        del addAnnotation
+        del add_annotation
 
-        # Todo: Possibly remove the functionality for isBar, it seems misplaced!
+        # Todo: Possibly remove the functionality for is_bar, it seems
+        # misplaced!
         output_str = ""
-        if not isinstance(chrN, str):
-            chrN = "chr" + str(chrN)
+        if not isinstance(chr_n, str):
+            chr_n = "chr" + str(chr_n)
         else:
-            chrN = ("chr" + chrN) if chrN[:3] != "chr" else chrN
+            chr_n = ("chr" + chr_n) if chr_n[:3] != "chr" else chr_n
 
         for _tuple in self.sorted_sites:
             start, end, annotation = _tuple
             start, end = displacement + start, (displacement + end +
-                                                (1 if endInclusion else 0))
+                                                (1 if end_inclusion else 0))
 
             name_display = name
-            to_join = [chrN, start, end, name_display]
+            to_join = [chr_n, start, end, name_display]
 
-            if includeColor and not includeScore:
+            if include_color and not include_score:
                 score = 1000
                 to_join.append(score)
-            elif includeScore:
+            elif include_score:
 
                 assert len(annotation) == 1
 
                 score = float("".join(filter(
                     lambda k: k.isdigit() or k == "." or k == "-",
                     annotation[0])))
-                score = int(score / scoreBase * scoreMax)
+                score = int(score / score_base * score_max)
                 to_join.append(score)
 
-            if includeColor and isBar:
+            if include_color and is_bar:
                 raise ValueError("Cant be both color and bar!")
 
-            if includeColor:
+            if include_color:
                 strand = "+"  # default
 
-                if conditionalColor_func is None:
+                if conditional_color_func is None:
                     color = "0,0,0"  # black
                 else:
-                    red, green, blue = conditionalColor_func(_tuple)
+                    red, green, blue = conditional_color_func(_tuple)
                     color = ','.join(map(str, [red, green, blue]))
 
                 to_join += [strand, start, end, color]
 
-            if isBar and not includeScore:
+            if is_bar and not include_score:
                 raise ValueError("What height for bar?")
-            if isBar:
+            if is_bar:
                 strand = "+"  # default
                 number_of_bars = 1
                 to_join += [strand, name, number_of_bars, score]
@@ -584,6 +586,7 @@ class BindingSites:
             output_str += "\t".join(map(str, to_join)) + "\n"
 
         return output_str
+
 
     def return_depth(self, length=-1):
         """
@@ -767,6 +770,8 @@ class BindingSites:
                 )
         if not in_place:
             return binding_site_to_add_to
+
+        return BindingSites()
 
     def base_cover(self):
         """

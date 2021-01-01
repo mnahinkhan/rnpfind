@@ -64,7 +64,7 @@ def gene_page(request, gene_name):
     """
     rna_info = gene_to_coord(gene_name)
     success = rna_info['success']
-    
+
     if not success:
         return index(request, bad_gene=gene_name)
 
@@ -84,6 +84,8 @@ def analysis_status(request, request_id):
     """
     Returns the current status of a request as a JSON object.
     """
+    del request
+
     if len(AnalysisStatus.objects.filter(request_id=request_id)) > 0:
         status = AnalysisStatus.objects.get(request_id=request_id).status
     else:
@@ -124,6 +126,8 @@ def analysis_request(request, gene):
     completion. The client may then refresh their page to see the newly
     populated data for their transcript of interest.
     """
+    del request
+
     rna_info = gene_to_coord(gene)
     assert rna_info['success']
     assert rna_info['official_name'] == gene
@@ -161,7 +165,7 @@ def analysis_request(request, gene):
     # Save binding site summary info
     for data_source in big_storage:
         no_unique_rbps, no_unqiue_sites = (
-            big_storage[data_source].summary(is_return=True)
+            big_storage[data_source].summary()
         )
         BindingSummaryInfo(data_source_type=data_source,
                            gene=gene_entry,
