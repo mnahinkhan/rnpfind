@@ -119,9 +119,9 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
             spectrum="on",
             visibility=visibility,
             chromosomes="chr" + str(rna_chr_no),
-            labelFields="",
-            defaultLabelFields="",
-            mouseOverField=""
+            # labelFields="", l
+            # defaultLabelFields="", l
+            # mouseOverField="" l
             # labelFields=",".join(
             #     [column_data[category]["names"][i]
             #     for i in column_data[category]["interest"]]
