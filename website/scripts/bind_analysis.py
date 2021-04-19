@@ -512,7 +512,7 @@ class Storage:
                 )
             )
 
-        rbps = self.get_rbps()
+        rbps = list(self.get_rbps())
         num_rbps = min(len(rbps), 3)
         rbps = rbps[:num_rbps]
 
