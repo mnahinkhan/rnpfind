@@ -9,6 +9,9 @@ variables:
   HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/web
 
 build:
+  only:
+    refs:
+      - master
   stage: build
   image: docker:stable
   services:
@@ -35,6 +38,9 @@ build:
     - docker push $IMAGE:production
 
 test:
+  only:
+    refs:
+      - master
   stage: test
   image: $IMAGE:production
   services:
@@ -51,6 +57,9 @@ test:
     - isort rnp_find --check
 
 deploy:
+  only:
+    refs:
+      - master
   stage: deploy
   image: docker:stable
   services:
