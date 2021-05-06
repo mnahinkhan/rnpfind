@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "192.168.99.100",
     "rnp-find.herokuapp.com",
     "0.0.0.0",
+    "172.105.247.72"
 ]
 
 
