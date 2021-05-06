@@ -1,0 +1,40 @@
+## CLI
+ - Fix up CLI tool to take command line options instead of being interactive
+
+## Architecture
+ - Come up with a suitable architecture for the web service
+ - Think about relation between web service and cli tool
+
+## Containerization
+ - Reduce image size (base from Alpine, remoe apt-caches)
+ - Create multiple containers for different processes (computation, web serving, database)
+ - Orchestrate with compose (read up on diff between compose and Kubernetes)
+ - Mount docker volume for large read-only binding site data (separate data from logic)
+ - Push to Docker Hub or other suitable registry
+
+## Testing
+ - Finish up unit tests
+ - Test binding site accuracy
+
+## Methods
+ - Implement methods straight from paper methodologies so each data source matches database exactly
+
+## Binding Strength
+ - Make use of binding strength; add shade on UCSC
+ - Make binding density plots a weighted sum based on strengths
+
+## Migrating
+ - Migrate from Heroku to personal server, ensure easy docker set up
+ - Modify GitLab CI accordingly
+ - Figure out daemonization of Django process, fault tolerance, etc.
+ - Get d for web
+
+## UI
+ - Add chromosome diagrams for anaysis completion view
+
+## Long term analysis
+ - Perform background continuous analysis of RNA binding sites
+ - Create a single UCSC track for binding site densities for each method, host on S3 or server
+
+## Write-up
+ - Add explanation on "About" section
