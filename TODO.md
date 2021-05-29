@@ -38,3 +38,7 @@
 
 ## Write-up
  - Add explanation on "About" section
+
+## Migrating to GitHub
+ - Convert jobs on GitLab to GitHub Actions
+ - Disable mirroring on GitLab
