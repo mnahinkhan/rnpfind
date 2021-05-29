@@ -7,7 +7,7 @@
  - Remove dependence on AWS
 
 ## Containerization
- - Reduce image size (base from Alpine, remoe apt-caches)
+ - Reduce image size (base from Alpine, remove apt-caches)
  - Create multiple containers for different processes (computation, web
    serving, database)
  - Orchestrate with compose (read up on diff between compose and Kubernetes)
