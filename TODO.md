@@ -4,6 +4,7 @@
 ## Architecture
  - Come up with a suitable architecture for the web service
  - Think about relation between web service and cli tool
+ - Remove dependence on AWS
 
 ## Containerization
  - Reduce image size (base from Alpine, remoe apt-caches)
