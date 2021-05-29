@@ -1,10 +1,10 @@
-FROM python:3.8.6-slim AS build-python
+FROM python:3.8-slim AS build-python
 COPY ./requirements.txt /
 RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r requirements.txt
 
 
 
-FROM python:3.8.6-slim
+FROM python:3.8-slim
 # RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 # RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.32-r0/glibc-2.32-r0.apk
 # RUN apk add glibc-2.32-r0.apk
