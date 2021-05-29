@@ -7,9 +7,11 @@
 
 ## Containerization
  - Reduce image size (base from Alpine, remoe apt-caches)
- - Create multiple containers for different processes (computation, web serving, database)
+ - Create multiple containers for different processes (computation, web
+   serving, database)
  - Orchestrate with compose (read up on diff between compose and Kubernetes)
- - Mount docker volume for large read-only binding site data (separate data from logic)
+ - Mount docker volume for large read-only binding site data (separate data
+   from logic)
  - Push to Docker Hub or other suitable registry
 
 ## Testing
@@ -17,7 +19,8 @@
  - Test binding site accuracy
 
 ## Methods
- - Implement methods straight from paper methodologies so each data source matches database exactly
+ - Implement methods straight from paper methodologies so each data source
+   matches database exactly
 
 ## Binding Strength
  - Make use of binding strength; add shade on UCSC
@@ -34,7 +37,8 @@
 
 ## Long term analysis
  - Perform background continuous analysis of RNA binding sites
- - Create a single UCSC track for binding site densities for each method, host on S3 or server
+ - Create a single UCSC track for binding site densities for each method,
+   host on S3 or server
 
 ## Write-up
  - Add explanation on "About" section
