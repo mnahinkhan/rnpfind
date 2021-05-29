@@ -53,6 +53,8 @@ RUN pip install --no-cache /wheels/*
 WORKDIR /app
 COPY . .
 RUN python manage.py collectstatic --noinput
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 RUN adduser --disabled-password myuser
 RUN mkdir -p website/output-data/pickles
 RUN chown myuser website/output-data/
