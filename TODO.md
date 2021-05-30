@@ -51,3 +51,11 @@
 ## Migrating to GitHub
  - Convert jobs on GitLab to GitHub Actions
  - Disable mirroring on GitLab
+
+## Bugs
+ - If gene has no binding sites it could raise errors (at least for POSTAR,
+   e.g. SPRR4)
+
+## Security
+ - Direct to HTTPS for UCSC Genome Browser
+ - Make personal server use SSL as well
