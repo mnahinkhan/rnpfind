@@ -3,19 +3,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    bash \
-    gcc \
-    libpq-dev \
-    postgresql \
-    python3-dev \
-    python3-psycopg2 \
+    libkrb5-dev \                   # used by bedToBigBed tool
  && rm -rf /var/lib/apt/lists/*
 
-# psycopg2 is separate because it might depend on python3-psycopg2
+
 # awscli has conflicts when included in requirements.txt, so these flags are
 # used, I think ...
-RUN pip install psycopg2
 RUN pip install awscli --force-reinstall --upgrade
 
 WORKDIR /app
@@ -35,6 +30,7 @@ RUN python manage.py collectstatic --noinput; \
     chmod -R 755 website/ucsc-tools/linux; \
     chown myuser db.sqlite3 || true; \
     chown myuser /app
+
 
 USER myuser
 CMD gunicorn rnp_find.wsgi:application --bind 0.0.0.0:$PORT -w 2 --timeout 960
