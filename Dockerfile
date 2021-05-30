@@ -12,9 +12,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-psycopg2 \
  && rm -rf /var/lib/apt/lists/*
 
+# psycopg2 is separate because it might depend on python3-psycopg2
+# awscli has conflicts when included in requirements.txt, so these flags are
+# used, I think ...
 RUN pip install psycopg2
 RUN pip install awscli --force-reinstall --upgrade
-# RUN aws --version
 
 WORKDIR /app
 COPY ./requirements.txt .
