@@ -59,3 +59,11 @@
 ## Security
  - Direct to HTTPS for UCSC Genome Browser
  - Make personal server use SSL as well
+
+## RBPs
+ - Allow generating a track dedicated for a particular RBP showing binding
+   sites for all genes analyzed so far
+
+## Genome Browsing
+ - Consider using a different genome browser (e.g.
+   (JBrowse)[https://github.com/GMOD/jbrowse])
