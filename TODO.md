@@ -66,4 +66,5 @@
 
 ## Genome Browsing
  - Consider using a different genome browser (e.g.
-   (JBrowse)[https://github.com/GMOD/jbrowse])
+   (JBrowse)[https://github.com/GMOD/jbrowse]) or
+   (IGV)[https://github.com/igvteam/igv.js/]
