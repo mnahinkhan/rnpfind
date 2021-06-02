@@ -28,6 +28,8 @@ deduced binding sites for the transcriptome for all RBPs, so we simply query.
 The various analysis methods are detailed elsewhere.
 
 ## Steps for Running
+Use Python 3.8 or higher (might not be important)
+
 For now, `rnpfind` requires my AWS credentials to fetch data. This will be
 fixed soon, but for now the following steps are just for me.
 
