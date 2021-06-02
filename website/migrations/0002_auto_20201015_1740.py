@@ -6,60 +6,82 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('website', '0001_initial'),
-    ]
+    dependencies = [("website", "0001_initial")]
 
     operations = [
         migrations.CreateModel(
-            name='AnalysisStatus',
+            name="AnalysisStatus",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('request_id', models.CharField(max_length=200)),
-                ('status', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("request_id", models.CharField(max_length=200)),
+                ("status", models.CharField(max_length=200)),
             ],
         ),
-        migrations.RemoveField(
-            model_name='gene',
-            name='reverse_name',
-        ),
+        migrations.RemoveField(model_name="gene", name="reverse_name"),
         migrations.AddField(
-            model_name='gene',
-            name='chromosome_number',
-            field=models.CharField(default='chr0', max_length=200),
+            model_name="gene",
+            name="chromosome_number",
+            field=models.CharField(default="chr0", max_length=200),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='gene',
-            name='end_coord',
+            model_name="gene",
+            name="end_coord",
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='gene',
-            name='start_coord',
+            model_name="gene",
+            name="start_coord",
             field=models.IntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='gene',
-            name='ucsc_url',
-            field=models.URLField(default=''),
+            model_name="gene",
+            name="ucsc_url",
+            field=models.URLField(default=""),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='gene',
-            name='name',
-            field=models.CharField(max_length=200),
+            model_name="gene", name="name", field=models.CharField(max_length=200)
         ),
         migrations.CreateModel(
-            name='BindingSummaryInfo',
+            name="BindingSummaryInfo",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('data_source_type', models.CharField(choices=[('RB', 'RBPDB'), ('AT', 'ATTRACT'), ('PO', 'POSTAR')], max_length=200)),
-                ('number_of_sites', models.IntegerField()),
-                ('number_of_rbps', models.IntegerField()),
-                ('gene', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='binding_summaries', to='website.gene')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "data_source_type",
+                    models.CharField(
+                        choices=[("RB", "RBPDB"), ("AT", "ATTRACT"), ("PO", "POSTAR")],
+                        max_length=200,
+                    ),
+                ),
+                ("number_of_sites", models.IntegerField()),
+                ("number_of_rbps", models.IntegerField()),
+                (
+                    "gene",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="binding_summaries",
+                        to="website.gene",
+                    ),
+                ),
             ],
         ),
     ]

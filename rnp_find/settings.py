@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
     "192.168.99.100",
     "rnp-find.herokuapp.com",
     "0.0.0.0",
-    "172.105.247.72"
+    "172.105.247.72",
 ]
 
 
@@ -96,7 +96,7 @@ DATABASES = {
         "NAME": database_name,
         "USER": database_user,
         "PASSWORD": database_password,
-        "HOST": "db"
+        "HOST": "db",
     }
 }
 

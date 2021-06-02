@@ -6,6 +6,8 @@ import unittest
 
 from .attract_data_load import attract_data_load
 from .gene_coordinates import Chromosome
+
+
 class TestCorrectBindingSites(unittest.TestCase):
     """
     Tests to ensure that the ATTRACT data load function loads binding sites
@@ -20,21 +22,19 @@ class TestCorrectBindingSites(unittest.TestCase):
         """
 
         test_rna_info = {}
-        test_rna_info['official_name'] = 'Malat1'
-        test_rna_info['chr_n'] = Chromosome(11)
-        test_rna_info['start_coord'] = 65497738
-        test_rna_info['end_coord'] = 65506516
+        test_rna_info["official_name"] = "Malat1"
+        test_rna_info["chr_n"] = Chromosome(11)
+        test_rna_info["start_coord"] = 65497738
+        test_rna_info["end_coord"] = 65506516
 
         attract_binding_sites = attract_data_load(test_rna_info)
         self.assertEqual(
-            len(analysis_methods_supported_short),
-            len(analysis_methods_supported_long)
+            len(analysis_methods_supported_short), len(analysis_methods_supported_long)
         )
         self.assertEqual(
-            len(analysis_method_functions),
-            len(analysis_methods_supported_short)
+            len(analysis_method_functions), len(analysis_methods_supported_short)
         )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

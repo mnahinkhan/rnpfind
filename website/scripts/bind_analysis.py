@@ -31,6 +31,7 @@ thirdItem = itemgetter(2)
 # Justification: most people will iterate through the storage instead of testing
 # with 'in'.
 
+
 class Storage:
     """
     Storage stores a collection of BindingSites together. It allows for
@@ -90,13 +91,15 @@ class Storage:
         for rbp, binding_sites in self._rbps.items():
             site_str = binding_sites.__repr__(display_meta=display_meta)
             i = site_str[50:].find("),")
-            rbp_reprs += [rbp + ": " + site_str[0:52 + i] + "..."]
+            rbp_reprs += [rbp + ": " + site_str[0 : 52 + i] + "..."]
 
         if len(rbp_reprs) > 20:
             rbp_reprs = rbp_reprs[:8] + ["..."] * 2 + rbp_reprs[-8:]
         return (
             "\nA storage variable containing binding sites for "
-            + "the following " + str(len(self)) + " RBPs: \n\n"
+            + "the following "
+            + str(len(self))
+            + " RBPs: \n\n"
             + "\n".join(rbp_reprs)
         )
 
@@ -135,7 +138,7 @@ class Storage:
         return self._rbps.values()
 
     def __getitem__(self, item):
-        if isinstance(item,  str):
+        if isinstance(item, str):
             item = item.upper()
             item = item.strip()
             if item in self._rbps:
@@ -162,9 +165,7 @@ class Storage:
 
         except TypeError as err:
             print("You indexed with type:", type(item))
-            raise ValueError(
-                    "Please index with iterables containing strings"
-            ) from err
+            raise ValueError("Please index with iterables containing strings") from err
 
     def corr_reset(self):
         """
@@ -187,7 +188,6 @@ class Storage:
         else:
             raise ValueError("Assign gene names to BindingSites please")
 
-
     def summary(self):
         """
         Allows user to inspect the Storage instance.
@@ -203,9 +203,13 @@ class Storage:
 
         return len(self._rbps), sum([k for (a, k) in summary_info])
 
-
-    def self_analysis(self, bp_threshold=30, display_threshold=0.8,
-                      verbose=False, progress_feedback=True):
+    def self_analysis(
+        self,
+        bp_threshold=30,
+        display_threshold=0.8,
+        verbose=False,
+        progress_feedback=True,
+    ):
         """
         In case you are looking for fun and want to do a correlation study
         between all the RBPs pairwise on the lncRNA you are studying.
@@ -237,22 +241,15 @@ class Storage:
                 for num_j, j in enumerate(self._rbps):
                     if i not in corr_table:
                         corr_table[i] = {}
-                    corr_table[i][j] = (
-                        self._rbps[i].dist(self._rbps[j], bp_threshold)
-                    )
+                    corr_table[i][j] = self._rbps[i].dist(self._rbps[j], bp_threshold)
 
                 # Progress should be printed since this can take some time
                 percentage = (
-                    (num_i * len(self._rbps) + num_j)
-                    / len(self._rbps) ** 2 / 0.01
+                    (num_i * len(self._rbps) + num_j) / len(self._rbps) ** 2 / 0.01
                 )
                 if progress_feedback:
-                    if (
-                        round(percentage) % 20 == 0
-                        and
-                        round(percentage) != prev_num
-                    ):
-                        print(round(percentage), '%' + "complete")
+                    if round(percentage) % 20 == 0 and round(percentage) != prev_num:
+                        print(round(percentage), "%" + "complete")
                         prev_num = percentage
 
             # Stores the same scores as corr_table above but f-scores instead
@@ -288,8 +285,7 @@ class Storage:
 
         if verbose:
             print(
-                "Some of the highest score pairs above threshold"
-                " (0.8 by default):"
+                "Some of the highest score pairs above threshold" " (0.8 by default):"
             )
 
             for output in self.corr_sorted:  # sorted three element tuple list
@@ -297,12 +293,13 @@ class Storage:
                     print(output)
 
         return (
-            self.corr_table, self.corr_table_f_measure, self.corr_sorted,
-            self.corr_bp_threshold
+            self.corr_table,
+            self.corr_table_f_measure,
+            self.corr_sorted,
+            self.corr_bp_threshold,
         )
 
-    def lookup(self, first_rbp, second_rbp=-1, display_threshold=-0.1,
-               bp_threshold=30):
+    def lookup(self, first_rbp, second_rbp=-1, display_threshold=-0.1, bp_threshold=30):
         """
         gets the correlation value for a specific RBP and all RBPs or a specific
         RBP and another one.
@@ -330,10 +327,7 @@ class Storage:
 
             return to_return_list
 
-        return (
-            self.corr_table_f_measure.get(first_rbp, {}).get(second_rbp, 0)
-        )
-
+        return self.corr_table_f_measure.get(first_rbp, {}).get(second_rbp, 0)
 
     def lookup_table(self):
         """
@@ -419,9 +413,7 @@ class Storage:
         to_return_dict = {}  # rbp keys mapping to nearest site and distance
 
         for site in self[gene]:
-            to_return_dict[site] = (
-                self.all_sites_in(site, bp_threshold=bp_threshold)
-            )
+            to_return_dict[site] = self.all_sites_in(site, bp_threshold=bp_threshold)
 
         return to_return_dict
 
@@ -450,20 +442,29 @@ class Storage:
         """
         filtered_storage = Storage()
         for rbp, binding_sites in self._rbps.items():
-            filtered_rbp = (
-                binding_sites
-                .filter_overlap(interval_range, bp_threshold=bp_threshold)
+            filtered_rbp = binding_sites.filter_overlap(
+                interval_range, bp_threshold=bp_threshold
             )
             if len(filtered_rbp) > 0:
                 filtered_storage[rbp] = filtered_rbp
         return filtered_storage
 
-    def print_bed(self, chr_n=1, displacement=0, end_inclusion=False,
-                 add_annotation=False, include_score=False, score_max=1000,
-                 score_base=1000, include_color=False,
-                 conditional_color_func=-1, include_header=False, is_bar=False,
-                 is_additional_columns=False,
-                 annotation_to_additional_columns=None):
+    def print_bed(
+        self,
+        chr_n=1,
+        displacement=0,
+        end_inclusion=False,
+        add_annotation=False,
+        include_score=False,
+        score_max=1000,
+        score_base=1000,
+        include_color=False,
+        conditional_color_func=-1,
+        include_header=False,
+        is_bar=False,
+        is_additional_columns=False,
+        annotation_to_additional_columns=None,
+    ):
         """
         Prints the BED files representing the binding sites of all RBPs
         contained within the Storage instance (RNA molecule).
@@ -499,29 +500,34 @@ class Storage:
         """
         output_str = ""
         for rbp, binding_sites in self._rbps.items():
-            output_str += (
-                binding_sites.print_bed(
-                    name=rbp, chr_n=chr_n, displacement=displacement,
-                    end_inclusion=end_inclusion, add_annotation=add_annotation,
-                    include_score=include_score, score_max=score_max,
-                    score_base=score_base, include_color=include_color,
-                    conditional_color_func=conditional_color_func,
-                    is_bar=is_bar, is_additional_columns=is_additional_columns,
-                    annotation_to_additional_columns=
-                    annotation_to_additional_columns
-                )
+            output_str += binding_sites.print_bed(
+                name=rbp,
+                chr_n=chr_n,
+                displacement=displacement,
+                end_inclusion=end_inclusion,
+                add_annotation=add_annotation,
+                include_score=include_score,
+                score_max=score_max,
+                score_base=score_base,
+                include_color=include_color,
+                conditional_color_func=conditional_color_func,
+                is_bar=is_bar,
+                is_additional_columns=is_additional_columns,
+                annotation_to_additional_columns=annotation_to_additional_columns,
             )
 
         rbps = list(self.get_rbps())
         num_rbps = min(len(rbps), 3)
         rbps = rbps[:num_rbps]
 
-
         if include_header:
             header = (
-                'track name="' + "-".join(rbps)
+                'track name="'
+                + "-".join(rbps)
                 + '" description="A list of binding sites of various RBPs,'
-                + ' including ' + ",".join(rbps) + '"'
+                + " including "
+                + ",".join(rbps)
+                + '"'
                 + (' itemRgb="On"' if include_color else "")
                 + (' useScore="1"' if include_score else "")
                 + "\n"
@@ -545,9 +551,16 @@ class Storage:
                 new_binding_site.add(site)
         return new_binding_site
 
-    def print_wig(self, chr_no=1, displacement=0, include_name=False,
-                  include_description=False, name="", description="",
-                  include_header=True):
+    def print_wig(
+        self,
+        chr_no=1,
+        displacement=0,
+        include_name=False,
+        include_description=False,
+        name="",
+        description="",
+        include_header=True,
+    ):
         """
         Prints a WIG file represeting the density of binding by the RBPs on the
         RNA molecule (Storage) instance.
@@ -564,11 +577,12 @@ class Storage:
 
         """
 
-        return (
-            self.sum_over_all().print_wig(
-                chr_no=chr_no, displacement=displacement,
-                include_name=include_name,
-                include_description=include_description, name=name,
-                description=description, include_header=include_header
-            )
+        return self.sum_over_all().print_wig(
+            chr_no=chr_no,
+            displacement=displacement,
+            include_name=include_name,
+            include_description=include_description,
+            name=name,
+            description=description,
+            include_header=include_header,
         )

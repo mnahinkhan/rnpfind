@@ -22,14 +22,19 @@ def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
     :returns: a filepath to the saved CSV file.
 
     """
-    rna = rna_info['official_name']
+    rna = rna_info["official_name"]
 
     path_to_save = (
-        "./website/data/csv_files/" + rna + "_" + "_".join(data_load_sources)
-        + "_" + str(stringency) + ".csv"
+        "./website/data/csv_files/"
+        + rna
+        + "_"
+        + "_".join(data_load_sources)
+        + "_"
+        + str(stringency)
+        + ".csv"
     )
 
-    with open(path_to_save, 'w+') as csv_file:
+    with open(path_to_save, "w+") as csv_file:
         rbps = list(symmetric_corr_table.keys())
         csv_file.write("," + ",".join(rbps))
         csv_file.write("\n")
@@ -78,7 +83,7 @@ def overall_correlation_analysis(big_storage, rna_info):
     )
 
     print(
-        'This number indicates the number of bases away that two binding sites'
+        "This number indicates the number of bases away that two binding sites"
         ' can be before they are considered "too far"'
     )
 
@@ -90,7 +95,6 @@ def overall_correlation_analysis(big_storage, rna_info):
             " threshold number? (e.g. 30)"
         )
         threshold = input(">")
-
 
     threshold = int(threshold)
 
@@ -104,12 +108,9 @@ def overall_correlation_analysis(big_storage, rna_info):
 
         storage = big_storage[data_load_source]
 
-        _, symmetric_corr_table, _, _ = (
-            storage.self_analysis(bp_threshold=threshold)
-        )
+        _, symmetric_corr_table, _, _ = storage.self_analysis(bp_threshold=threshold)
         symmetric_corr_tables[data_load_source] = symmetric_corr_table
         print("Done!")
-
 
     output_type = ""
     while output_type not in ("0", "1", "01", "10"):
@@ -119,7 +120,7 @@ def overall_correlation_analysis(big_storage, rna_info):
         )
         print("[0]: Heat map")
         print("[1]: CSV file")
-        print('''Write any combination [e.g. "01"]''')
+        print("""Write any combination [e.g. "01"]""")
         output_type = input(">")
 
     if "1" in output_type:

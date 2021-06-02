@@ -29,17 +29,13 @@ def picklify(dict_generator, *args, **kwargs):
 
     """
     # Danger! Never call picklify with functions that have the same name!
-    pickle_path = (
-        "./website/output-data/pickles/" + dict_generator.__name__ + ".pickle"
-    )
+    pickle_path = "./website/output-data/pickles/" + dict_generator.__name__ + ".pickle"
 
     try:
-        with open(pickle_path, 'rb') as pickle_handle:
+        with open(pickle_path, "rb") as pickle_handle:
             dict_to_return = pickle.load(pickle_handle)
     except FileNotFoundError:
         dict_to_return = dict_generator(*args, **kwargs)
-        with open(pickle_path, 'wb') as pickle_handle:
-            pickle.dump(
-                dict_to_return, pickle_handle, protocol=pickle.HIGHEST_PROTOCOL
-            )
+        with open(pickle_path, "wb") as pickle_handle:
+            pickle.dump(dict_to_return, pickle_handle, protocol=pickle.HIGHEST_PROTOCOL)
     return dict_to_return

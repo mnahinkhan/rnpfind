@@ -18,6 +18,7 @@ from .config import GENOME_VERSION
 
 UCSC_START_STEP = 5
 
+
 def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     """
     This function takes care of generating binding sites, converting them to
@@ -53,15 +54,10 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     # main_rbp: str = input()
     # main_rbp: str = ""
 
-
     data_load_sources = big_storage.keys()
 
     out(f"{UCSC_START_STEP}/{total_steps}. Populating the server with bed files...")
-    overarching_path = (
-        populate_binding_sites(
-            big_storage, rna_info, data_load_sources
-        )
-    )
+    overarching_path = populate_binding_sites(big_storage, rna_info, data_load_sources)
 
     out(
         f"{UCSC_START_STEP + 1}/{total_steps}."
@@ -69,16 +65,13 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     )
     convert_bed_to_bb(overarching_path, data_load_sources)
 
-
     out(
         f"{UCSC_START_STEP + 2}/{total_steps}."
         " Generating density plot for RBP binding..."
     )
 
-    rbp_no_dict = (
-        density_plot(
-            big_storage, rna_info, data_load_sources, overarching_path
-        )
+    rbp_no_dict = density_plot(
+        big_storage, rna_info, data_load_sources, overarching_path
     )
 
     out(
@@ -98,14 +91,11 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     date_time_folder_name = overarching_path.split("/")[-2]
     local_stage = local_dir + date_time_folder_name + "/"
     rbp_peaks = {
-        k: max(big_storage[k].sum_over_all().return_depth())
-        for k in big_storage
+        k: max(big_storage[k].sum_over_all().return_depth()) for k in big_storage
     }
 
-    hub_name = (
-        populate_local_track_hub(
-            overarching_path, rna_info, local_stage, rbp_no_dict, rbp_peaks
-        )
+    hub_name = populate_local_track_hub(
+        overarching_path, rna_info, local_stage, rbp_no_dict, rbp_peaks
     )
 
     out(
@@ -120,13 +110,23 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
 
     hub_url = (
         "https://rnpfind-data.s3-us-west-1.amazonaws.com/ucsc-trackhub/"
-        + date_time_folder_name + "/" + hub_name.replace(" ", "+") + ".hub.txt"
+        + date_time_folder_name
+        + "/"
+        + hub_name.replace(" ", "+")
+        + ".hub.txt"
     )
 
     ucsc_url = (
-        "http://genome.ucsc.edu/cgi-bin/hgTracks?db=" + GENOME_VERSION
-        + "&hubUrl=" + hub_url + "&position=chr" + str(rna_info['chr_n']) + ":"
-        + str(rna_info['start_coord']) + "-" + str(rna_info['end_coord'])
+        "http://genome.ucsc.edu/cgi-bin/hgTracks?db="
+        + GENOME_VERSION
+        + "&hubUrl="
+        + hub_url
+        + "&position=chr"
+        + str(rna_info["chr_n"])
+        + ":"
+        + str(rna_info["start_coord"])
+        + "-"
+        + str(rna_info["end_coord"])
     )
 
     out(ucsc_url)

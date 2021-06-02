@@ -29,7 +29,7 @@ class Chromosome:
 
         if isinstance(n, int) and n <= 22:
             self.chr_n = n
-        elif isinstance(n, str) and n.upper()in ("X","Y","MT","M"):
+        elif isinstance(n, str) and n.upper() in ("X", "Y", "MT", "M"):
             if n.upper() == "X":
                 self.chr_n = 23
             elif n.upper() == "Y":
@@ -43,10 +43,13 @@ class Chromosome:
 
     def __str__(self):
         return (
-            str(self.chr_n) if self.chr_n <= 22 else
-            "X" if self.chr_n == 23 else
-            "Y" if self.chr_n == 24 else
-            "M"
+            str(self.chr_n)
+            if self.chr_n <= 22
+            else "X"
+            if self.chr_n == 23
+            else "Y"
+            if self.chr_n == 24
+            else "M"
         )
 
     def __lt__(self, other):
@@ -96,12 +99,20 @@ def file_to_dicts(path):
     line = bio_mart_file.readline()
     while line:
 
-        (start_coord, end_coord, gene_name, gene_syn_name, wiki_name,
-        uniprot_name, str_chr_no) = [wss.strip() for wss in line.split('\t')]
+        (
+            start_coord,
+            end_coord,
+            gene_name,
+            gene_syn_name,
+            wiki_name,
+            uniprot_name,
+            str_chr_no,
+        ) = [wss.strip() for wss in line.split("\t")]
 
         names = [
-            name for name in
-            [gene_name, gene_syn_name, wiki_name, uniprot_name] if name != ""
+            name
+            for name in [gene_name, gene_syn_name, wiki_name, uniprot_name]
+            if name != ""
         ]
 
         if str_chr_no in ("X", "Y", "MT"):
@@ -111,10 +122,9 @@ def file_to_dicts(path):
             chr_no = Chromosome(int(str_chr_no))
 
         elif "HSCHR" in str_chr_no.upper():
-            str_chr_no = (
-                str_chr_no[str_chr_no.upper()
-                .find("HSCHR"):str_chr_no.upper().find("HSCHR") + 7]
-            )
+            str_chr_no = str_chr_no[
+                str_chr_no.upper().find("HSCHR") : str_chr_no.upper().find("HSCHR") + 7
+            ]
 
             str_chr_no = str_chr_no[5:]
 
@@ -148,9 +158,9 @@ def file_to_dicts(path):
                 if official_name not in official_to_coord:
                     continue
 
-                prev_chr_no, prev_start_coord, prev_end_coord = (
-                    official_to_coord[official_name]
-                )
+                prev_chr_no, prev_start_coord, prev_end_coord = official_to_coord[
+                    official_name
+                ]
 
                 if prev_chr_no != chr_no:
                     name_to_official[name] = name
@@ -160,8 +170,8 @@ def file_to_dicts(path):
             name_to_official[name] = official_name
 
         # Now get the start and end coord of this row:
-        prev_chr_no, prev_start_coord, prev_end_coord = (
-            official_to_coord.get(official_name, (-1, [], []))
+        prev_chr_no, prev_start_coord, prev_end_coord = official_to_coord.get(
+            official_name, (-1, [], [])
         )
 
         if int(prev_chr_no) != -1 and prev_chr_no != chr_no:
@@ -172,12 +182,9 @@ def file_to_dicts(path):
         new_start_coord = prev_start_coord + [start_coord]
         new_end_coord = prev_end_coord + [end_coord]
 
-        official_to_coord[official_name] = (
-            new_chr_no, new_start_coord, new_end_coord
-        )
+        official_to_coord[official_name] = (new_chr_no, new_start_coord, new_end_coord)
 
         line = bio_mart_file.readline()
-
 
     print("Done with going through the file...")
     for official_name, coords in official_to_coord.items():
@@ -221,8 +228,6 @@ def remove_outliers(array):
     return array
 
 
-
-
 def gene_to_coord(gene):
     """
     Given a string containing a gene name from the human genome, returns its
@@ -242,7 +247,7 @@ def gene_to_coord(gene):
     is_not_pickled = True
     if os.path.isfile(PATH_TO_PICKLE):
         is_not_pickled = False
-        with open(PATH_TO_PICKLE, 'rb') as handle:
+        with open(PATH_TO_PICKLE, "rb") as handle:
             try:
                 name_to_official, official_to_coord = pickle.load(handle)
             except ModuleNotFoundError:
@@ -250,25 +255,25 @@ def gene_to_coord(gene):
 
     if is_not_pickled:
         name_to_official, official_to_coord = file_to_dicts(PATH_TO_BIO_MART)
-        with open(PATH_TO_PICKLE, 'wb') as handle:
+        with open(PATH_TO_PICKLE, "wb") as handle:
             pickle.dump(
                 [name_to_official, official_to_coord],
                 handle,
-                protocol=pickle.HIGHEST_PROTOCOL
+                protocol=pickle.HIGHEST_PROTOCOL,
             )
 
     gene = gene.upper()
     rna_info = {}
 
     if gene in name_to_official and name_to_official[gene] in official_to_coord:
-        rna_info['success'] = True
-        rna_info['chr_n'], rna_info['start_coord'], rna_info['end_coord'] = (
-            official_to_coord[name_to_official[gene]]
-        )
-        rna_info['official_name'] = name_to_official[gene]
+        rna_info["success"] = True
+        rna_info["chr_n"], rna_info["start_coord"], rna_info[
+            "end_coord"
+        ] = official_to_coord[name_to_official[gene]]
+        rna_info["official_name"] = name_to_official[gene]
 
     else:
-        rna_info['success'] = False
+        rna_info["success"] = False
 
     return rna_info
 

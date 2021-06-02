@@ -14,7 +14,7 @@ def custom_data_load(rna_info):
         specified under its 'official_name' key.
 
     """
-    rna = rna_info['official_name']
+    rna = rna_info["official_name"]
     for rbp, binding_sites in custom_data[rna].items():
         for start, end in binding_sites:
             annotation = ""

@@ -20,23 +20,19 @@ def get_overarching_path(rna):
 
     """
     if not DEDICATED_ANALYSIS:
-        year, month, day, hour, minute, sec, _, _, _ = (
-            datetime.now().timetuple()
-        )
-        year, month, day, hour, minute, sec = (
-            [str(x) for x in [year, month, day, hour, minute, sec]]
-        )
+        year, month, day, hour, minute, sec, _, _, _ = datetime.now().timetuple()
+        year, month, day, hour, minute, sec = [
+            str(x) for x in [year, month, day, hour, minute, sec]
+        ]
         time_date = "_".join([year, month, day, hour, minute, sec])
     else:
         time_date = rna
-    return (
-        "./website/output-data/ucsc/rbp_binding_sites_bed_files/"
-        + time_date + "/"
-    )
+    return "./website/output-data/ucsc/rbp_binding_sites_bed_files/" + time_date + "/"
 
 
-def populate_binding_sites(big_storage, rna_info, data_load_sources,
-                           main_rbp="", out=None):
+def populate_binding_sites(
+    big_storage, rna_info, data_load_sources, main_rbp="", out=None
+):
     """
     Saves binding sites as BED files
     :param big_storage: a Storage instance containing binding sites data for
@@ -53,9 +49,9 @@ def populate_binding_sites(big_storage, rna_info, data_load_sources,
     """
     if not out:
         out = print
-    rna = rna_info['official_name']
-    rna_chr_no = rna_info['chr_n']
-    rna_start_chr_coord = rna_info['start_coord']
+    rna = rna_info["official_name"]
+    rna_chr_no = rna_info["chr_n"]
+    rna_start_chr_coord = rna_info["start_coord"]
 
     # TODO: check if this -1 patch is necessary for all data sources or just
     # RBPDB
@@ -67,7 +63,6 @@ def populate_binding_sites(big_storage, rna_info, data_load_sources,
     coop_color = green
     competitive_threshold_bp = 15
     cooperative_threshold_bp = 56
-
 
     for data_load_source in data_load_sources:
         out(f"populating {data_load_source} binding sites!")
@@ -83,26 +78,18 @@ def populate_binding_sites(big_storage, rna_info, data_load_sources,
         else:
             out(f"Directory {folder_path} already exists...")
 
-
-
-        threshold_config_file = (
-            open(overarching_path + "threshold_config.txt", "w")
+        threshold_config_file = open(overarching_path + "threshold_config.txt", "w")
+        threshold_config_file.write(
+            "competitive threshold used: " + str(competitive_threshold_bp) + "\n"
         )
         threshold_config_file.write(
-            "competitive threshold used: " + str(competitive_threshold_bp)
-            + "\n"
-        )
-        threshold_config_file.write(
-            "cooperative threshold used: " + str(cooperative_threshold_bp)
-            + "\n"
+            "cooperative threshold used: " + str(cooperative_threshold_bp) + "\n"
         )
         threshold_config_file.close()
 
-
         default_color = data_load_source_colors[data_load_source]
 
-        def coloring_func(binding_site, storage=storage,
-                          default_color=default_color):
+        def coloring_func(binding_site, storage=storage, default_color=default_color):
             """
             Defines a coloring function for the print_bed function of the Storage
             instance. This one in particular colors based on competitive and
@@ -114,36 +101,37 @@ def populate_binding_sites(big_storage, rna_info, data_load_sources,
             :param binding_site: binding site under consideration
 
             """
-            competitive = (
-                main_rbp in storage.binds_near(
-                    binding_site, bp_threshold=competitive_threshold_bp
-                )
+            competitive = main_rbp in storage.binds_near(
+                binding_site, bp_threshold=competitive_threshold_bp
             )
-            cooperative = (
-                main_rbp in storage.binds_near(
-                    binding_site, bp_threshold=cooperative_threshold_bp
-                )
+            cooperative = main_rbp in storage.binds_near(
+                binding_site, bp_threshold=cooperative_threshold_bp
             )
             return (
-                comp_color if competitive else
-                coop_color if cooperative else default_color
+                comp_color
+                if competitive
+                else coop_color
+                if cooperative
+                else default_color
             )
 
         for rbp in storage:
-            total_sites = (
-                storage[[rbp]].print_bed(
-                    chr_n=rna_chr_no, displacement=displacement,
-                    end_inclusion=True, add_annotation=True, include_color=True,
-                    include_header=False, conditional_color_func=coloring_func,
-                    is_additional_columns=True,
-                    annotation_to_additional_columns=
-                    data_source_annotation_to_columns[data_load_source]
-                )
+            total_sites = storage[[rbp]].print_bed(
+                chr_n=rna_chr_no,
+                displacement=displacement,
+                end_inclusion=True,
+                add_annotation=True,
+                include_color=True,
+                include_header=False,
+                conditional_color_func=coloring_func,
+                is_additional_columns=True,
+                annotation_to_additional_columns=data_source_annotation_to_columns[
+                    data_load_source
+                ],
             )
 
             filepath = (
-                rbp + "_" + data_load_source + "_" + GENOME_VERSION
-                + "_sites.bed"
+                rbp + "_" + data_load_source + "_" + GENOME_VERSION + "_sites.bed"
             )
 
             filepath = folder_path + filepath

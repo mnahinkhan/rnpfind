@@ -8,8 +8,9 @@ import inspect
 from .analysis_functions import (
     analysis_methods_supported_short,
     analysis_methods_supported_long,
-    analysis_method_functions
+    analysis_method_functions,
 )
+
 
 class TestAnalysisMethods(unittest.TestCase):
     """
@@ -25,12 +26,10 @@ class TestAnalysisMethods(unittest.TestCase):
 
         """
         self.assertEqual(
-            len(analysis_methods_supported_short),
-            len(analysis_methods_supported_long)
+            len(analysis_methods_supported_short), len(analysis_methods_supported_long)
         )
         self.assertEqual(
-            len(analysis_method_functions),
-            len(analysis_methods_supported_short)
+            len(analysis_method_functions), len(analysis_methods_supported_short)
         )
 
     def test_appropriate_name(self):
@@ -38,12 +37,10 @@ class TestAnalysisMethods(unittest.TestCase):
         Checks that the analysis functions are given appropriate 'short' names.
         """
         for short_name, long_name in zip(
-            analysis_methods_supported_short,
-            analysis_methods_supported_long
+            analysis_methods_supported_short, analysis_methods_supported_long
         ):
-            for token in short_name.split('_'):
+            for token in short_name.split("_"):
                 self.assertIn(token.lower(), long_name.lower())
-
 
     def test_method_dict_keys(self):
         """
@@ -57,7 +54,6 @@ class TestAnalysisMethods(unittest.TestCase):
         for method in analysis_methods_supported_short:
             self.assertIn(method, analysis_method_functions)
 
-
     def test_appropriate_method_type(self):
         """
         Checks that each of the analysis methods have a consistent type
@@ -68,15 +64,11 @@ class TestAnalysisMethods(unittest.TestCase):
 
         for method in analysis_method_functions.values():
             self.assertEqual(
-                list(inspect.signature(method).parameters)[0],
-                'big_storage'
+                list(inspect.signature(method).parameters)[0], "big_storage"
             )
 
-            self.assertEqual(
-                list(inspect.signature(method).parameters)[1],
-                'rna_info'
-            )
+            self.assertEqual(list(inspect.signature(method).parameters)[1], "rna_info")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

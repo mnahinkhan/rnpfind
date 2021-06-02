@@ -29,15 +29,13 @@ big_storage['postar']['HNRNPC']
 
 from .data_load_functions import data_load_sources_functions
 from .merge_annotation_funcs import generate_merge_func
-from .bind_analysis import (
-    BindingSites,
-    Storage
-)
+from .bind_analysis import BindingSites, Storage
 from .config import (
     ANNOTATION_COLUMN_DELIMITER,
     ANNOTATION_ROW_DELIMITER,
     EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO,
 )
+
 
 def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
     """
@@ -64,25 +62,21 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
     big_storage = {}
     for i, data_load_source in enumerate(data_load_sources):
-        out(
-            f"{i+1}/{total_steps}."
-            f" Loading binding sites from {data_load_source}"
-        )
+        out(f"{i+1}/{total_steps}." f" Loading binding sites from {data_load_source}")
 
         # TODO: is the merge func still relevant?
         merge_func = generate_merge_func(data_load_source)
 
         storage_space = Storage(annotation_merge_func=merge_func)
         big_storage[data_load_source] = storage_space
-        collected_data = (
-            data_load_sources_functions[data_load_source](rna_info, out=out)
+        collected_data = data_load_sources_functions[data_load_source](
+            rna_info, out=out
         )
 
         for rbp, start, end, annotation in collected_data:
             if rbp not in storage_space:
                 storage_space[rbp] = BindingSites(overlap_mode=True)
             storage_space[rbp].add((start, end, annotation))
-
 
         # Now we merge all the binding sites that overlap.
 
@@ -91,10 +85,7 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
         # Get max coverage
         max_coverage = max(
-            [
-                binding_site.base_cover()
-                for rbp, binding_site in storage_space.items()
-            ]
+            [binding_site.base_cover() for rbp, binding_site in storage_space.items()]
         )
 
         # Filter the allowed amount
@@ -104,8 +95,10 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
         for binding_site in storage_space.values():
             binding_site.overlap_collapse(
-                "baseCoverNumber", allowed_coverage, in_place=True,
-                annotation_merger=ANNOTATION_ROW_DELIMITER.join
+                "baseCoverNumber",
+                allowed_coverage,
+                in_place=True,
+                annotation_merger=ANNOTATION_ROW_DELIMITER.join,
             )
 
     return big_storage
@@ -129,8 +122,7 @@ def annotation_to_columns(annotation):
     no_of_rows = len(array)
 
     array_of_strings = [
-        '______'.join([array[i][j] for i in range(no_of_rows)])
-        for j in range(len_row)
+        "______".join([array[i][j] for i in range(no_of_rows)]) for j in range(len_row)
     ]
 
     return array_of_strings
@@ -139,5 +131,5 @@ def annotation_to_columns(annotation):
 keys = ["rbpdb", "attract", "rbpmap", "postar", "custom"]
 data_source_annotation_to_columns = {k: annotation_to_columns for k in keys}
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass

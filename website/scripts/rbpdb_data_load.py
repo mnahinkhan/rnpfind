@@ -7,7 +7,7 @@ import math
 from .config import (
     ANNOTATION_COLUMN_DELIMITER,
     RBPDB_MOTIF_N_REPEAT_REQ,
-    RBPDB_MOTIF_PWM_LETTER_STRENGTH
+    RBPDB_MOTIF_PWM_LETTER_STRENGTH,
 )
 from .picklify import picklify
 from .pwm_scan import (
@@ -16,30 +16,47 @@ from .pwm_scan import (
     pwm_degree_of_freedom,
     pwm_scan,
     pwm_scan_naive_brute_force,
-    str_to_pwm
+    str_to_pwm,
 )
 
 rbpdb_all_column_names = [
-    "protein_id", "annotation_id", "creation_date", "update_date", "gene_name",
-    "gene_description", "species", "taxID", "domains", "aliases",
-    "flag_protein", "flag_notes", "some_other_id", "experimental_id",
-    "PUBMED_ID", "exp_type", "notes", "seq_motif", "selex_file",
-    "aligned_selex_file", "aligned_motif_file", "PWM_file", "PFM_file",
-    "logo_file", "secondary_structure", "in_vivo_notes", "in_vivo_file",
-    "flag_experimental"
+    "protein_id",
+    "annotation_id",
+    "creation_date",
+    "update_date",
+    "gene_name",
+    "gene_description",
+    "species",
+    "taxID",
+    "domains",
+    "aliases",
+    "flag_protein",
+    "flag_notes",
+    "some_other_id",
+    "experimental_id",
+    "PUBMED_ID",
+    "exp_type",
+    "notes",
+    "seq_motif",
+    "selex_file",
+    "aligned_selex_file",
+    "aligned_motif_file",
+    "PWM_file",
+    "PFM_file",
+    "logo_file",
+    "secondary_structure",
+    "in_vivo_notes",
+    "in_vivo_file",
+    "flag_experimental",
 ]
 
 rbpdb_all_column_descriptions = rbpdb_all_column_names
-rbpdb_columns_of_interest = [
-    0, 1, 3, 4, 5, 8, 9, 13, 14, 15, 16, 17, 22, 24, 25
-]
+rbpdb_columns_of_interest = [0, 1, 3, 4, 5, 8, 9, 13, 14, 15, 16, 17, 22, 24, 25]
 rbpdb_default_label_index = [8]
 
 RBPDB_DEFAULT_MOUSE_OVER_INDEX = 9
 
-rbpdb_column_names = [
-    rbpdb_all_column_names[i] for i in rbpdb_columns_of_interest
-]
+rbpdb_column_names = [rbpdb_all_column_names[i] for i in rbpdb_columns_of_interest]
 rbpdb_column_descriptions = [
     rbpdb_all_column_descriptions[i] for i in rbpdb_columns_of_interest
 ]
@@ -82,8 +99,9 @@ def generate_rbpdb_protein_to_experiment_id():
     the experiment ID that investigates their binding data.
     Run once in initialization of RNPFind
     """
-    rbpdb_protein_experiment_file_path = \
+    rbpdb_protein_experiment_file_path = (
         "./website/data/RBPDB_v1.3.1_protExp_human_2012-11-21.tdt"
+    )
     protein_id_to_experimental_ids_dict = {}
     with open(rbpdb_protein_experiment_file_path) as handle:
         line = handle.readline()
@@ -93,10 +111,11 @@ def generate_rbpdb_protein_to_experiment_id():
             # protein_id, experiment_id, homolog, unique_id
             protein_id = columns[0]
             experimental_id = columns[1]
-            protein_id_to_experimental_ids_dict[protein_id] = (
-                protein_id_to_experimental_ids_dict.get(protein_id, [])
-                + [experimental_id]
-            )
+            protein_id_to_experimental_ids_dict[
+                protein_id
+            ] = protein_id_to_experimental_ids_dict.get(protein_id, []) + [
+                experimental_id
+            ]
             line = handle.readline()
     return protein_id_to_experimental_ids_dict
 
@@ -173,59 +192,43 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
                         # "15-30". Take minimum to be conservative.
                         # Note that most cases would be a single number like
                         # "15".
-                        num_of_repeats = (
-                            min(
-                                [
-                                    int(s) if s != "n" else
-                                    math.ceil(
-                                        n_repeat_req
-                                        / (repeat_end - repeat_start - 1)
-                                    )
-                                    for s in
-                                    seq_motif[number_start: number_end]
-                                    .split("-")
-                                ]
-                            )
+                        num_of_repeats = min(
+                            [
+                                int(s)
+                                if s != "n"
+                                else math.ceil(
+                                    n_repeat_req / (repeat_end - repeat_start - 1)
+                                )
+                                for s in seq_motif[number_start:number_end].split("-")
+                            ]
                         )
 
-                        seq_motif = (
-                            seq_motif.replace(
-                                seq_motif[repeat_start: number_end + 1],
-                                seq_motif[repeat_start + 1: repeat_end]
-                                * num_of_repeats
-                            )
+                        seq_motif = seq_motif.replace(
+                            seq_motif[repeat_start : number_end + 1],
+                            seq_motif[repeat_start + 1 : repeat_end] * num_of_repeats,
                         )
-
 
                     maketrans = str.maketrans
-                    all_letters = 'wruysn'
+                    all_letters = "wruysn"
                     upper_map = maketrans(all_letters, all_letters.upper())
                     seq_motif = seq_motif.translate(upper_map)
                     if "/" in seq_motif:
-                        bracket_start = bracket_end = middle = (
-                            seq_motif.find("/")
-                        )
+                        bracket_start = bracket_end = middle = seq_motif.find("/")
                         while seq_motif[bracket_start] != "(":
                             bracket_start -= 1
                         while seq_motif[bracket_end] != ")":
                             bracket_end += 1
-                        seq_motif_1 = (
-                            seq_motif.replace(
-                                seq_motif[bracket_start: bracket_end + 1],
-                                seq_motif[bracket_start + 1: middle]
-                            )
+                        seq_motif_1 = seq_motif.replace(
+                            seq_motif[bracket_start : bracket_end + 1],
+                            seq_motif[bracket_start + 1 : middle],
                         )
-                        seq_motif_2 = (
-                            seq_motif.replace(
-                                seq_motif[bracket_start: bracket_end + 1],
-                                seq_motif[middle + 1: bracket_end]
-                            )
+                        seq_motif_2 = seq_motif.replace(
+                            seq_motif[bracket_start : bracket_end + 1],
+                            seq_motif[middle + 1 : bracket_end],
                         )
                         seq_motifs += [seq_motif_1, seq_motif_2]
                     else:
-                        pwm = motif_to_pwm(
-                            seq_motif, letter_strength=letter_strength
-                        )
+                        pwm = motif_to_pwm(seq_motif, letter_strength=letter_strength)
                         pwms += [pwm]
                     i += 1
 
@@ -247,7 +250,7 @@ def rbpdb_data_load(rna_info, out=None):
         function instead of stdout. (Default value = None)
 
     """
-    del out # this function doesn't emit progress status (yet)!
+    del out  # this function doesn't emit progress status (yet)!
     rbpdb_protein_file_path = (
         "./website/data/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
     )
@@ -255,67 +258,49 @@ def rbpdb_data_load(rna_info, out=None):
     n_repeat_req = RBPDB_MOTIF_N_REPEAT_REQ
     rna_seq = get_human_seq(rna_info)
 
-    experiment_id_to_pwm_dict = (
-        picklify(
-            generate_rbpdb_experimental_to_pwm, letter_strength, n_repeat_req
-        )
+    experiment_id_to_pwm_dict = picklify(
+        generate_rbpdb_experimental_to_pwm, letter_strength, n_repeat_req
     )
-    protein_id_to_experimental_ids_dict = (
-        picklify(generate_rbpdb_protein_to_experiment_id)
+    protein_id_to_experimental_ids_dict = picklify(
+        generate_rbpdb_protein_to_experiment_id
     )
-    experiment_id_to_columns_dict = (
-        picklify(generate_rbpdb_experiment_to_columns)
-    )
+    experiment_id_to_columns_dict = picklify(generate_rbpdb_experiment_to_columns)
     with open(rbpdb_protein_file_path) as handle:
-        _ = handle.readline().strip().split('\t')
+        _ = handle.readline().strip().split("\t")
         # columns here is expected to have the following information in the
         # following order:
         # protein_id, annotation_id, creation_date, update_date, gene_name,
         # gene_description, species, taxID, domains, aliases, flag, flag_notes,
         # some_other_id
-        protein_columns = handle.readline().replace("\n", "").split('\t')
-        while protein_columns != ['']:
+        protein_columns = handle.readline().replace("\n", "").split("\t")
+        while protein_columns != [""]:
             assert len(protein_columns) == 13
             # We only care about human RBPs for now.
             if protein_columns[10] == "0":
-                protein_columns = (
-                    handle.readline().replace("\n", "").split('\t')
-                )
+                protein_columns = handle.readline().replace("\n", "").split("\t")
                 continue
             rbp = protein_columns[4]
             protein_id = protein_columns[0]
 
             if protein_id not in protein_id_to_experimental_ids_dict:
                 # No experiments associated. So no data to be had
-                protein_columns = (
-                    handle.readline().replace("\n", "").split('\t')
-                )
+                protein_columns = handle.readline().replace("\n", "").split("\t")
                 continue
 
-            for experiment_id in (
-                protein_id_to_experimental_ids_dict[protein_id]
-            ):
+            for experiment_id in protein_id_to_experimental_ids_dict[protein_id]:
                 assert (
-                    experiment_id in experiment_id_to_pwm_dict
-                    or experiment_id == "410"
+                    experiment_id in experiment_id_to_pwm_dict or experiment_id == "410"
                 )
                 if experiment_id == "410":
                     continue
                 pwms = experiment_id_to_pwm_dict[experiment_id]
                 for pwm in pwms:
                     assert len(pwm["A"]) > 0
-                    experimental_columns = (
-                        experiment_id_to_columns_dict[experiment_id]
-                    )
+                    experimental_columns = experiment_id_to_columns_dict[experiment_id]
                     assert len(experimental_columns) == 15
                     total_columns = protein_columns + experimental_columns
-                    annotation = (
-                        ANNOTATION_COLUMN_DELIMITER.join(
-                            [
-                                total_columns[i]
-                                for i in rbpdb_columns_of_interest
-                            ]
-                        )
+                    annotation = ANNOTATION_COLUMN_DELIMITER.join(
+                        [total_columns[i] for i in rbpdb_columns_of_interest]
                     )
 
                     if pwm_degree_of_freedom(pwm) >= 2048:
@@ -332,4 +317,4 @@ def rbpdb_data_load(rna_info, out=None):
                     for start, end in sites:
                         yield rbp, start, end, annotation
 
-            protein_columns = handle.readline().replace("\n", "").split('\t')
+            protein_columns = handle.readline().replace("\n", "").split("\t")

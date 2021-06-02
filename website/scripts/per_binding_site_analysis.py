@@ -5,6 +5,7 @@ An old file that I did not integrate into RNPFind. But maybe it has potential?
 
 # from bind_analysis import BindingSites
 from operator import itemgetter
+
 # from merge_annotation_funcs import generate_merge_func
 # import statistics  # Standard deviation mostly
 # import operator
@@ -77,79 +78,79 @@ def per_binding_site_analysis(big_storage, rna_info):
     #     # AUF1 binding site being considered
     #     dB_storage = filtered_storage_dict[site]
     #
-        # print(
-        #     "\nanalysing binding site from",
-        #     str(site[0]) + "bps to " + str(site[1]) + "bps; readCount =",
-        #     readCount, 'from', site[2].split()[0]
-        # )
+    # print(
+    #     "\nanalysing binding site from",
+    #     str(site[0]) + "bps to " + str(site[1]) + "bps; readCount =",
+    #     readCount, 'from', site[2].split()[0]
+    # )
 
     #     # We'll collect data in a list then sort them later.
     #     listOfThingsToPrint = []
     #
     #     # For each RBP and its binding sites:
-        # for rbp, binding_sites in dB_storage.items():
-        #     # Get the distances away from the current AUF1 site being considered
-        #     distances = list(
-        #         map(lambda s: BindingSites.distance(s, site), binding_sites)
-        #     )
+    # for rbp, binding_sites in dB_storage.items():
+    #     # Get the distances away from the current AUF1 site being considered
+    #     distances = list(
+    #         map(lambda s: BindingSites.distance(s, site), binding_sites)
+    #     )
 
-        #     # Separate binding sites and annotation:
-        #     closest_sites = list(map(firstTwoItems, binding_sites))
-        #     annotations = list(map(thirdItem, binding_sites))
+    #     # Separate binding sites and annotation:
+    #     closest_sites = list(map(firstTwoItems, binding_sites))
+    #     annotations = list(map(thirdItem, binding_sites))
 
-        #     # Check if the RBP has experimental evidence for binding AUF1:
-        #     isBindAUF1 = AUF1Filter(rbp)
+    #     # Check if the RBP has experimental evidence for binding AUF1:
+    #     isBindAUF1 = AUF1Filter(rbp)
 
-        #     listOfThingsToPrint.append(
-        #         (rbp, closest_sites, distances, annotations, isBindAUF1))
+    #     listOfThingsToPrint.append(
+    #         (rbp, closest_sites, distances, annotations, isBindAUF1))
 
-        #     # Variables to analyse later
-        #     distance_read_collection[rbp] = (
-        #         distance_read_collection.get(rbp, [])
-        #         + list(map(lambda d: (d, readCount), distances))
-        #     )
+    #     # Variables to analyse later
+    #     distance_read_collection[rbp] = (
+    #         distance_read_collection.get(rbp, [])
+    #         + list(map(lambda d: (d, readCount), distances))
+    #     )
 
-        # # Now sort and print!
-        # for toPrint in sorted(listOfThingsToPrint,
-        #                       key=lambda k: min(k[2])):
+    # # Now sort and print!
+    # for toPrint in sorted(listOfThingsToPrint,
+    #                       key=lambda k: min(k[2])):
 
-        #     # Unpack
-        #     rbp, closest_sites, distances, annotations, isBindAUF1 = toPrint
+    #     # Unpack
+    #     rbp, closest_sites, distances, annotations, isBindAUF1 = toPrint
 
-        #     # Modify
-        #     closest_sites = str(closest_sites)[1:-1]
-        #     isBindAUF1 = 'yes' if isBindAUF1 else 'no'
-        #     isAllCompetitive = (
-        #         all(map(
-        #         lambda k: k <= analysis_per_binding_site_competititive_range,
-        #         distances
-        #         ))
-        #     )
+    #     # Modify
+    #     closest_sites = str(closest_sites)[1:-1]
+    #     isBindAUF1 = 'yes' if isBindAUF1 else 'no'
+    #     isAllCompetitive = (
+    #         all(map(
+    #         lambda k: k <= analysis_per_binding_site_competititive_range,
+    #         distances
+    #         ))
+    #     )
 
-        #     isAllCooperative = (
-        #         all(map(
-        #         lambda k: k >= analysis_per_binding_site_competititive_range,
-        #         distances))
-        #     )
-        #     isAllCooperativeORCompetitive = (
-        #         'competitive' if isAllCompetitive else
-        #         ('cooperative' if isAllCooperative else 'neither')
-        #     )
-        #     distances = str(distances)[1:-1]
+    #     isAllCooperative = (
+    #         all(map(
+    #         lambda k: k >= analysis_per_binding_site_competititive_range,
+    #         distances))
+    #     )
+    #     isAllCooperativeORCompetitive = (
+    #         'competitive' if isAllCompetitive else
+    #         ('cooperative' if isAllCooperative else 'neither')
+    #     )
+    #     distances = str(distances)[1:-1]
 
-        #     # TODO: Consider methods of tracking datasources despite multiple
-        #     # source merges
+    #     # TODO: Consider methods of tracking datasources despite multiple
+    #     # source merges
 
-        #     data_load_source = analysis_sources[0]
-        #     merge_func = generate_merge_func(data_load_source)
+    #     data_load_source = analysis_sources[0]
+    #     merge_func = generate_merge_func(data_load_source)
 
-        #     annotations = merge_func(annotations)
+    #     annotations = merge_func(annotations)
 
-        #     # Repack
-        #     toPrint = (
-        #         rbp, closest_sites, distances, annotations, isBindAUF1,
-        #         isAllCooperativeORCompetitive
-        #     )
+    #     # Repack
+    #     toPrint = (
+    #         rbp, closest_sites, distances, annotations, isBindAUF1,
+    #         isAllCooperativeORCompetitive
+    #     )
 
     #         if False:
     #             # Print
@@ -264,16 +265,16 @@ def per_binding_site_analysis(big_storage, rna_info):
     #     rbp = item[0]
     #     scores = item[1]
     #     norm_scores = list(map(operator.truediv, scores, normalization))
-        # What should I prioritize?
-        # scores [a , b, c, d]
-        #		 ^   ^  ^  ^
-        #		 |   |  |  |
-        #		/   /    \  \
-        #	Malat1 		  Neat1
-        # comp., cooper     comp., cooperative...
+    # What should I prioritize?
+    # scores [a , b, c, d]
+    # 		 ^   ^  ^  ^
+    # 		 |   |  |  |
+    # 		/   /    \  \
+    # 	Malat1 		  Neat1
+    # comp., cooper     comp., cooperative...
 
-        # Presumably, Malat1 and Neat1 have a similar level
-        # of binding to AUF1... In that case, perhaps there isn't
+    # Presumably, Malat1 and Neat1 have a similar level
+    # of binding to AUF1... In that case, perhaps there isn't
     #     # as much competitive inhibition, and the thing that
     #     # destabiilzes Neat1 but not Malat1 is a cooperative helper
     #     # that's with Neat1 but not on Malat1.
@@ -290,7 +291,7 @@ def per_binding_site_analysis(big_storage, rna_info):
     #     coOP_malat1 = norm_scores[1]
     #     comp_neat1 = norm_scores[2]
     #     coOP_neat1 = norm_scores[3]
-        # return max(abs(coOP_neat1 - coOP_malat1), abs(comp_malat1 - comp_neat1))
+    # return max(abs(coOP_neat1 - coOP_malat1), abs(comp_malat1 - comp_neat1))
     #
     # for rbp, scores in sorted(countofInvolvement.items(),
     #                           key=sorter, reverse=True):

@@ -63,6 +63,8 @@ from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE
 bases = ["A", "G", "C", "T"]
 
 seqs = {}
+
+
 def get_human_seq(rna_info):
     """
     Returns the human genomic sequence of the specified chromosome from the
@@ -76,9 +78,9 @@ def get_human_seq(rna_info):
             'end_coord' : end coordinate on the chromosome
 
     """
-    chr_no = rna_info['chr_n']
-    chr_start = rna_info['start_coord']
-    chr_end = rna_info['end_coord']
+    chr_no = rna_info["chr_n"]
+    chr_start = rna_info["start_coord"]
+    chr_end = rna_info["end_coord"]
 
     if (chr_no, chr_start, chr_end) in seqs:
         print("memoising")
@@ -96,8 +98,7 @@ def get_human_seq(rna_info):
         # (maybe the -1 part).
 
         handle.seek(
-            4 + len(str(chr_no)) + 1 + 51 * (chr_start // 50) + chr_start % 50
-            - 1
+            4 + len(str(chr_no)) + 1 + 51 * (chr_start // 50) + chr_start % 50 - 1
         )
 
         # Once at the required position, keep adding lines of bases as long as
@@ -105,8 +106,7 @@ def get_human_seq(rna_info):
         gene = ""
         while len(gene) < chr_end - chr_start:
             gene += handle.readline().strip()
-        gene = gene[:chr_end - chr_start]
-
+        gene = gene[: chr_end - chr_start]
 
     seq = gene.upper()
     seqs[(chr_no, chr_start, chr_end)] = seq
@@ -176,13 +176,8 @@ def pwm_degree_of_freedom(pwm):
     freedom = 1
     for i in range(len_pwm):
         max_score = max([pwm[b][i] for b in bases])
-        freedom *= (
-            len(
-                [
-                    1 for b in bases
-                    if pwm[b][i] >= PWM_SCAN_CUT_OFF_PERCENTAGE * max_score
-                ]
-            )
+        freedom *= len(
+            [1 for b in bases if pwm[b][i] >= PWM_SCAN_CUT_OFF_PERCENTAGE * max_score]
         )
     return freedom
 
@@ -227,9 +222,9 @@ def pwm_scan(gene, pwm):
         for seq, score in possible_seqs:
             for base in bases:
                 if score * pwm[base][i] / max_base_score >= cut_off_percentage:
-                    new_possible_seqs += (
-                        [(seq + base, score * pwm[base][i] / max_base_score)]
-                    )
+                    new_possible_seqs += [
+                        (seq + base, score * pwm[base][i] / max_base_score)
+                    ]
         possible_seqs = new_possible_seqs
 
     possible_seqs = [x for x, y in possible_seqs]
@@ -278,53 +273,63 @@ def motif_to_pwm(motif, letter_strength=4):
             elif nucleotide == "Y":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "TC" else 1 / (2 * letter_strength + 2)
+                    if base in "TC"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "W":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "TA" else 1 / (2 * letter_strength + 2)
+                    if base in "TA"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "S":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "GC" else 1 / (2 * letter_strength + 2)
+                    if base in "GC"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "K":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "GT" else 1 / (2 * letter_strength + 2)
+                    if base in "GT"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "M":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "AC" else 1 / (2 * letter_strength + 2)
+                    if base in "AC"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "R":
                 pwm[base].append(
                     letter_strength / (2 * letter_strength + 2)
-                    if base in "GA" else 1 / (2 * letter_strength + 2)
+                    if base in "GA"
+                    else 1 / (2 * letter_strength + 2)
                 )
             elif nucleotide == "D":
                 pwm[base].append(
                     letter_strength / (3 * letter_strength + 1)
-                    if base != "C" else 1 / (3 * letter_strength + 1)
+                    if base != "C"
+                    else 1 / (3 * letter_strength + 1)
                 )
             elif nucleotide == "H":
                 pwm[base].append(
                     letter_strength / (3 * letter_strength + 1)
-                    if base != "G" else 1 / (3 * letter_strength + 1)
+                    if base != "G"
+                    else 1 / (3 * letter_strength + 1)
                 )
             elif nucleotide == "B":
                 pwm[base].append(
                     letter_strength / (3 * letter_strength + 1)
-                    if base != "A" else 1 / (3 * letter_strength + 1)
+                    if base != "A"
+                    else 1 / (3 * letter_strength + 1)
                 )
             else:
                 assert nucleotide in bases
                 pwm[base].append(
                     letter_strength / (letter_strength + 3)
-                    if nucleotide == base else 1 / (letter_strength + 3)
+                    if nucleotide == base
+                    else 1 / (letter_strength + 3)
                 )
 
     return pwm
@@ -339,21 +344,15 @@ def pwm_summary(pwm):
     """
     len_pwm = len(pwm["A"])
 
-    def get_pwm_base_index(base,index):
+    def get_pwm_base_index(base, index):
         return pwm[base][index]
 
     return_before = "".join(
-        [
-            max(bases, key=lambda b: pwm[b][i])
-            for i in range(len_pwm)
-        ]
+        [max(bases, key=lambda b: pwm[b][i]) for i in range(len_pwm)]
     )
 
     return_new = "".join(
-        [
-            max(bases, key=partial(get_pwm_base_index, index=i))
-            for i in range(len_pwm)
-        ]
+        [max(bases, key=partial(get_pwm_base_index, index=i)) for i in range(len_pwm)]
     )
 
     assert return_before == return_new
@@ -382,20 +381,17 @@ def str_to_pwm(raw_motif_str, is_transpose=False):
     for base in bases:
         for i in range(len(motif) // 4):
             if is_transpose:
-                pwm[base].append(
-                    motif[i + (len(motif) // 4) * base_index[base]]
-                )
+                pwm[base].append(motif[i + (len(motif) // 4) * base_index[base]])
             else:
                 pwm[base].append(motif[i * 4 + base_index[base]])
 
     return pwm
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # Example usage
     # from user_input import get_user_rna_preference
-
 
     # [RNA, RNA_chr_no, RNA_start_chr_coord, RNA_end_chr_coord] = user_input()
 
@@ -433,12 +429,7 @@ if __name__ == '__main__':
 
     # print(pwm_motif_to_dict("(U)(2)"))
 
-
-    print(
-        pwm_scan(
-            "CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")
-        )
-    )
+    print(pwm_scan("CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")))
     print(
         pwm_scan_naive_brute_force(
             "CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")

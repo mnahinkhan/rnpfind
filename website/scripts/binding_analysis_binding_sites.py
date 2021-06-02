@@ -21,7 +21,7 @@ secondItem = itemgetter(1)
 firstTwoItems = itemgetter(0, 1)
 thirdItem = itemgetter(2)
 
-OVERLAP_CONFLICT = 'union'
+OVERLAP_CONFLICT = "union"
 
 
 # Todo: implement a feature that allows belonging relationship to mean overlap
@@ -116,14 +116,14 @@ class BindingSites:
         """
         overlap_add = "OverlapOn" if self.overlap_mode else ""
         if display_meta:
-            return (
-                self.sorted_sites.__repr__()
-                    .replace("SortedSet", "BindingSites" + overlap_add)
+            return self.sorted_sites.__repr__().replace(
+                "SortedSet", "BindingSites" + overlap_add
             )
 
         return (
             SortedSet(map(firstTwoItems, self.sorted_sites))
-            .__repr__().replace("SortedSet", "BindingSites" + overlap_add)
+            .__repr__()
+            .replace("SortedSet", "BindingSites" + overlap_add)
         )
 
     def __str__(self):
@@ -216,23 +216,24 @@ class BindingSites:
         # assert(not self.overlap_mode)
 
         if OVERLAP_CONFLICT == "union":
-            to_return = (min(interval_list, key=firstItem)[0],
-                         max(interval_list, key=secondItem)[1],
-                         BindingSites._merge_meta(
-                            list(map(thirdItem, interval_list)),
-                            user_merge_func)
-                        )
+            to_return = (
+                min(interval_list, key=firstItem)[0],
+                max(interval_list, key=secondItem)[1],
+                BindingSites._merge_meta(
+                    list(map(thirdItem, interval_list)), user_merge_func
+                ),
+            )
 
         elif OVERLAP_CONFLICT == "intersect":
-            to_return = (max(interval_list, key=firstItem)[0],
-                         min(interval_list, key=secondItem)[1],
-                         BindingSites._merge_meta(
-                            list(map(thirdItem, interval_list)),
-                            user_merge_func)
-                        )
+            to_return = (
+                max(interval_list, key=firstItem)[0],
+                min(interval_list, key=secondItem)[1],
+                BindingSites._merge_meta(
+                    list(map(thirdItem, interval_list)), user_merge_func
+                ),
+            )
 
         return to_return
-
 
     def add(self, new_site, user_merge_func=None):
         """Dynamic addition of a range to a sorted set of non-overlapping ranges
@@ -260,8 +261,9 @@ class BindingSites:
             start, end = new_site
             new_site = (start, end, None)
         elif len(new_site) != 3:
-            raise ValueError("Please keep three values in the tuple: " +
-                             "(start, end, annotation)")
+            raise ValueError(
+                "Please keep three values in the tuple: " + "(start, end, annotation)"
+            )
 
         start, end, _ = new_site
         if not isinstance(start, int) or not isinstance(end, int):
@@ -270,7 +272,8 @@ class BindingSites:
         if start > end:
             raise ValueError(
                 "Please make sure the interval end point is greater than the"
-                " start point!")
+                " start point!"
+            )
 
         if self.overlap_mode:
             self.sorted_sites.add(new_site)
@@ -329,13 +332,14 @@ class BindingSites:
         """
 
         if self.overlap_mode:
-            raise ValueError("dist() is not supported for BindingSites with"
-                             " overlap_mode set to True")
-
+            raise ValueError(
+                "dist() is not supported for BindingSites with"
+                " overlap_mode set to True"
+            )
 
         # Todo: break this function into two: one that accepts one site, and
         # another that accepts a BindingSite
-        if isinstance(sites, tuple): # only one tuple input
+        if isinstance(sites, tuple):  # only one tuple input
             start = sites[0]
             end = sites[1]
             pos = self.sorted_sites.bisect_left((start, 0))
@@ -353,10 +357,10 @@ class BindingSites:
             # tuple in the middle
             dist_start = max(0, start - self.sorted_sites[pos - 1][1])
             dist_end = max(0, self.sorted_sites[pos][0] - end)
-                # return the closer distance
+            # return the closer distance
             return max(0, 1 - min(dist_start, dist_end) / bp_threshold)
 
-        if isinstance(sites, BindingSites): # a set of tuples given
+        if isinstance(sites, BindingSites):  # a set of tuples given
             cum = 0
             for site in sites:
                 cum += self.dist(site, bp_threshold)
@@ -365,9 +369,9 @@ class BindingSites:
 
         # non-supported input type
         print("sites is of type", type(sites))
-        raise ValueError("Unsupported type for sites, should be a tuple" +
-                            " or BindingSites")
-
+        raise ValueError(
+            "Unsupported type for sites, should be a tuple" + " or BindingSites"
+        )
 
     def is_overlap(self, query_site):
         """This checks if an input tuple range overlaps one of those present in
@@ -380,8 +384,10 @@ class BindingSites:
         """
 
         if self.overlap_mode:
-            raise ValueError("isOverlap() is not supported for BindingSites"
-                             " with overlap_mode set to True")
+            raise ValueError(
+                "isOverlap() is not supported for BindingSites"
+                " with overlap_mode set to True"
+            )
 
         start, end, *_ = query_site
 
@@ -409,8 +415,10 @@ class BindingSites:
         """
 
         if self.overlap_mode:
-            raise ValueError("nearestSite() is not supported for BindingSites"
-                             " with overlap_mode set to True")
+            raise ValueError(
+                "nearestSite() is not supported for BindingSites"
+                " with overlap_mode set to True"
+            )
 
         start, end, *_ = query_site
         pos = self.sorted_sites.bisect_left((start, 0))
@@ -476,8 +484,10 @@ class BindingSites:
 
         """
         if self.overlap_mode:
-            raise ValueError("filterOverlap() is not supported for BindingSites"
-                             " with overlap_mode set to True")
+            raise ValueError(
+                "filterOverlap() is not supported for BindingSites"
+                " with overlap_mode set to True"
+            )
 
         # Returns all the sites which overlap with the input range query_range
         # given
@@ -499,13 +509,22 @@ class BindingSites:
                 output_binding_sites.add(site)
         return output_binding_sites
 
-
-    def print_bed(self, name="Generic Binding Site", chr_n=1, displacement=0,
-                 end_inclusion=False, add_annotation=False, include_score=False,
-                 score_max=1000, score_base=1000, include_color=False,
-                 conditional_color_func=None, is_bar=False,
-                 is_additional_columns=False,
-                 annotation_to_additional_columns=None):
+    def print_bed(
+        self,
+        name="Generic Binding Site",
+        chr_n=1,
+        displacement=0,
+        end_inclusion=False,
+        add_annotation=False,
+        include_score=False,
+        score_max=1000,
+        score_base=1000,
+        include_color=False,
+        conditional_color_func=None,
+        is_bar=False,
+        is_additional_columns=False,
+        annotation_to_additional_columns=None,
+    ):
         """
 
         :param name:  (Default value = "Generic Binding Site")
@@ -538,8 +557,10 @@ class BindingSites:
 
         for _tuple in self.sorted_sites:
             start, end, annotation = _tuple
-            start, end = displacement + start, (displacement + end +
-                                                (1 if end_inclusion else 0))
+            start, end = (
+                displacement + start,
+                (displacement + end + (1 if end_inclusion else 0)),
+            )
 
             name_display = name
             to_join = [chr_n, start, end, name_display]
@@ -551,9 +572,13 @@ class BindingSites:
 
                 assert len(annotation) == 1
 
-                score = float("".join(filter(
-                    lambda k: k.isdigit() or k == "." or k == "-",
-                    annotation[0])))
+                score = float(
+                    "".join(
+                        filter(
+                            lambda k: k.isdigit() or k == "." or k == "-", annotation[0]
+                        )
+                    )
+                )
                 score = int(score / score_base * score_max)
                 to_join.append(score)
 
@@ -567,7 +592,7 @@ class BindingSites:
                     color = "0,0,0"  # black
                 else:
                     red, green, blue = conditional_color_func(_tuple)
-                    color = ','.join(map(str, [red, green, blue]))
+                    color = ",".join(map(str, [red, green, blue]))
 
                 to_join += [strand, start, end, color]
 
@@ -579,14 +604,13 @@ class BindingSites:
                 to_join += [strand, name, number_of_bars, score]
 
             if is_additional_columns:
-                to_join += (
-                    [s.replace(" ", "_") if s else ".'"
-                    for s in annotation_to_additional_columns(annotation)]
-                )
+                to_join += [
+                    s.replace(" ", "_") if s else ".'"
+                    for s in annotation_to_additional_columns(annotation)
+                ]
             output_str += "\t".join(map(str, to_join)) + "\n"
 
         return output_str
-
 
     def return_depth(self, length=-1):
         """
@@ -603,9 +627,11 @@ class BindingSites:
 
         if length == -1:
             if len(self) == 0:
-                raise ValueError("If the BindingSites object is empty, please"
-                                 " do not call return_depth without "
-                                 "specifying the length parameter.")
+                raise ValueError(
+                    "If the BindingSites object is empty, please"
+                    " do not call return_depth without "
+                    "specifying the length parameter."
+                )
             length = max(map(secondItem, self)) + 1
 
         # Stores 'depth' of support for each nucleotide in the
@@ -622,8 +648,7 @@ class BindingSites:
 
         return binding_depth
 
-    def overlap_collapse(self, mode, number, in_place=False,
-                                                        annotation_merger=None):
+    def overlap_collapse(self, mode, number, in_place=False, annotation_merger=None):
         """Collapses the overlapping ranges to non-overlapping ones, based on
         preset conditions.
 
@@ -688,18 +713,18 @@ class BindingSites:
 
         """
         if not self.overlap_mode:
-            print("WARNING: overlap_collapse() called although overlap_mode is"
-                  " set to off!")
+            print(
+                "WARNING: overlap_collapse() called although overlap_mode is"
+                " set to off!"
+            )
 
         depth_array = self.return_depth()
 
         max_depth = max(depth_array)
 
-        if mode == 'baseCoverNumber':
+        if mode == "baseCoverNumber":
             depth_cutoff = -1
-            while len(list(filter(
-                            lambda k: k > depth_cutoff, depth_array)
-                    )) > number:
+            while len(list(filter(lambda k: k > depth_cutoff, depth_array))) > number:
                 depth_cutoff += 1
 
             if depth_cutoff == -1:
@@ -707,25 +732,24 @@ class BindingSites:
                 #       " achieve!")
                 pass
 
-        elif mode == 'TopDepthRatio':
+        elif mode == "TopDepthRatio":
             if not 0 <= number <= 1:
                 raise ValueError("Ratio should be between 0 and 1")
 
             depth_cutoff = max_depth * (1 - number)
 
-        elif mode == 'TopDepthNumber':
+        elif mode == "TopDepthNumber":
             depth_cutoff = max_depth - number
 
-        elif mode == 'MinimumDepthNumber':
+        elif mode == "MinimumDepthNumber":
             depth_cutoff = number - 1
 
-        elif mode == 'TopSitesNumber':
+        elif mode == "TopSitesNumber":
             raise ValueError("Unimplemented function")
-        elif mode == 'TopSitesRatio':
+        elif mode == "TopSitesRatio":
             raise ValueError("Unimplemented function")
         else:
-            raise ValueError("The mode selected, '" + mode + "' is not"
-                             " supported!")
+            raise ValueError("The mode selected, '" + mode + "' is not" " supported!")
 
         sites = self.sorted_sites
         depth_cutoff = max(0, depth_cutoff)
@@ -749,15 +773,12 @@ class BindingSites:
                 if in_range:
                     end_range = nucleotide - 1
                     in_range = False
-                    binding_site_to_add_to.add(
-                        (start_range, end_range))
+                    binding_site_to_add_to.add((start_range, end_range))
 
         if in_range:
             end_range = nucleotide
             in_range = False
-            binding_site_to_add_to.add(
-                (start_range, end_range)
-            )
+            binding_site_to_add_to.add((start_range, end_range))
 
         # Add annotations
         for site in sites:
@@ -765,9 +786,7 @@ class BindingSites:
             # print(start, end, annotation)
             site, distance = binding_site_to_add_to.nearest_site(site)
             if distance == 0:
-                binding_site_to_add_to.add(
-                        (start, end, annotation), annotation_merger
-                )
+                binding_site_to_add_to.add((start, end, annotation), annotation_merger)
         if not in_place:
             return binding_site_to_add_to
 
@@ -784,9 +803,17 @@ class BindingSites:
         depth_array = self.return_depth()
         return len(list(filter(lambda k: k > 0, depth_array)))
 
-    def print_wig(self, chr_no=1, displacement=0, include_name=False,
-                  include_description=False, name="",
-                  description="", include_header=True, length=-1):
+    def print_wig(
+        self,
+        chr_no=1,
+        displacement=0,
+        include_name=False,
+        include_description=False,
+        name="",
+        description="",
+        include_header=True,
+        length=-1,
+    ):
         """Prints a wig file depicting density of binding sites by the RBP.
 
         Optional parameter length allows for plotting 0 beyond the rightmost
@@ -811,12 +838,17 @@ class BindingSites:
             if include_description:
                 output_str += 'description="' + description + '" '
             output_str += "visibility=full"
-            output_str += '\n'
+            output_str += "\n"
 
         # Note the +1 below. I suspect this is necessary as wig files are
         # 1-based...
-        output_str += ("fixedStep chrom=chr" + str(chr_no) + " start="
-                      + str(displacement + 1) + " step=1")
+        output_str += (
+            "fixedStep chrom=chr"
+            + str(chr_no)
+            + " start="
+            + str(displacement + 1)
+            + " step=1"
+        )
 
         output_str += "\n"
 
@@ -830,33 +862,33 @@ class BindingSites:
 if __name__ == "__main__":
     # testing return_depth here:
     test_sites = BindingSites(
-                    [
-                        (3, 100, "my name"),
-                        (102, 1000, "hey this is nahin"),
-                        (456, 1004, "What's good"),
-                        (600, 2000, "more random stuff"),
-                        (4, 20, "What's good")
-                    ]
-                 )
+        [
+            (3, 100, "my name"),
+            (102, 1000, "hey this is nahin"),
+            (456, 1004, "What's good"),
+            (600, 2000, "more random stuff"),
+            (4, 20, "What's good"),
+        ]
+    )
     print(test_sites.return_depth(3000))
     print(len(test_sites.return_depth(3000)))
 
     # testing overlap mode capabilities
     overlap_sites = BindingSites(
-                        [
-                            (3, 100, "my name"),
-                            (102, 1000, "hey this is nahin"),
-                            (456, 1004, "What's good"),
-                            (600, 2000, "more random stuff"),
-                            (4, 20, "What's good")
-                        ],
-                        overlap_mode=True
-                    )
+        [
+            (3, 100, "my name"),
+            (102, 1000, "hey this is nahin"),
+            (456, 1004, "What's good"),
+            (600, 2000, "more random stuff"),
+            (4, 20, "What's good"),
+        ],
+        overlap_mode=True,
+    )
     print(overlap_sites.return_depth(3000))
     print(len(overlap_sites.return_depth(3000)))
     print(test_sites)
     print(overlap_sites)
-    merger = '; '.join
-    print(overlap_sites.overlap_collapse(
-        'TopDepthRatio', 1.0, annotation_merger=merger)
+    merger = "; ".join
+    print(
+        overlap_sites.overlap_collapse("TopDepthRatio", 1.0, annotation_merger=merger)
     )

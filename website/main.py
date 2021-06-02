@@ -46,7 +46,7 @@ from scripts.load_data import load_data
 from scripts.user_input import (
     get_user_analysis_preference,
     get_user_data_source_preference,
-    get_user_rna_preference
+    get_user_rna_preference,
 )
 
 # Responsible for managing the analysis functions that manipulate the RNA-RBP
@@ -85,18 +85,21 @@ def analysis_script():
     # interest
     no_rbps = 0
     no_sites = 0
-    for no_rbp, no_site in [
-        big_storage[k].summary()
-        for k in big_storage
-    ]:
+    for no_rbp, no_site in [big_storage[k].summary() for k in big_storage]:
         no_rbps += no_rbp
         no_sites += no_site
 
-    print("We have populated " + str(no_rbps) + " different RBPs with " +
-          str(no_sites) + " different binding sites on the " +
-          rna_info['official_name'] + " sequence across the " +
-          str(rna_info['end_coord'] - rna_info['start_coord']) +
-          " bases specified!")
+    print(
+        "We have populated "
+        + str(no_rbps)
+        + " different RBPs with "
+        + str(no_sites)
+        + " different binding sites on the "
+        + rna_info["official_name"]
+        + " sequence across the "
+        + str(rna_info["end_coord"] - rna_info["start_coord"])
+        + " bases specified!"
+    )
 
     # We now proceed to perform any number of analysis methods that the user may
     # wish to apply to the data obtained
@@ -122,5 +125,5 @@ def analysis_script():
     analysis_script()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     analysis_script()

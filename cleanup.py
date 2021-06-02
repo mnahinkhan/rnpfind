@@ -1,7 +1,8 @@
 from website.models import Gene, AnalysisStatus
 
 bad_records = [
-    x for x in AnalysisStatus.objects.all()
+    x
+    for x in AnalysisStatus.objects.all()
     if not Gene.objects.filter(name=x.request_id).exists()
 ]
 

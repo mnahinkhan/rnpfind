@@ -59,58 +59,46 @@ from .rbpdb_data_load import (
     rbpdb_column_names,
     rbpdb_data_load,
     rbpdb_default_label_index,
-    RBPDB_DEFAULT_MOUSE_OVER_INDEX
+    RBPDB_DEFAULT_MOUSE_OVER_INDEX,
 )
 from .attract_data_load import (
     attract_column_descriptions,
     attract_column_names,
     attract_data_load,
     attract_default_label_index,
-    ATTRACT_DEFAULT_MOUSE_OVER_INDEX
+    ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
 )
 from .postar_data_load import (
     postar_column_descriptions,
     postar_column_names,
     postar_data_load,
     postar_default_label_index,
-    POSTAR_DEFAULT_MOUSE_OVER_INDEX
+    POSTAR_DEFAULT_MOUSE_OVER_INDEX,
 )
 from .custom_data_load import custom_data_load
 
 # First, add a short name for your data source method to this list
-data_load_sources_supported_short = (
-    [
-        "rbpdb",
-        "attract",
-        "rbpmap",
-        "postar",
-        "custom"
-    ]
-)
+data_load_sources_supported_short = ["rbpdb", "attract", "rbpmap", "postar", "custom"]
 
 # Now give it a long name
-data_load_sources_supported_long = (
-    [
-        'RBPDB (computational)',
-        'ATTRACT (computational)',
-        'RBPMap (computational',
-        'POSTAR (experimental)',
-        'User custom data'
-    ]
-)
+data_load_sources_supported_long = [
+    "RBPDB (computational)",
+    "ATTRACT (computational)",
+    "RBPMap (computational",
+    "POSTAR (experimental)",
+    "User custom data",
+]
 
 # Link your short name to the actual data loading function that complies with
 # the above specifications here.
 
 # This is where importing is useful!
-data_load_sources_functions = (
-    {
-        'rbpdb': rbpdb_data_load,
-        'attract': attract_data_load,
-        'postar': postar_data_load,
-        "custom": custom_data_load
-    }
-)
+data_load_sources_functions = {
+    "rbpdb": rbpdb_data_load,
+    "attract": attract_data_load,
+    "postar": postar_data_load,
+    "custom": custom_data_load,
+}
 
 # Finally, for the sake of UCSC visualization, give a little bit info about your
 # data source function's annotations. Map the short name of your data load
@@ -127,42 +115,32 @@ data_load_sources_functions = (
 #       headings. This could be the same as names, if the names are
 #       self-explanatory.
 
-column_data = (
-    {
-        "postar": {
-            "names": postar_column_names,
-            "default_label": postar_default_label_index,
-            "default_mouse_over": POSTAR_DEFAULT_MOUSE_OVER_INDEX,
-            "descriptions": postar_column_descriptions
-        },
-
-        "attract": {
-            "names": attract_column_names,
-            "default_label": attract_default_label_index,
-            "default_mouse_over": ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
-            "descriptions": attract_column_descriptions
-        },
-
-        "rbpdb": {
-            "names": rbpdb_column_names,
-            "default_label": rbpdb_default_label_index,
-            "default_mouse_over": RBPDB_DEFAULT_MOUSE_OVER_INDEX,
-            "descriptions": rbpdb_column_descriptions
-        }
-    }
-)
+column_data = {
+    "postar": {
+        "names": postar_column_names,
+        "default_label": postar_default_label_index,
+        "default_mouse_over": POSTAR_DEFAULT_MOUSE_OVER_INDEX,
+        "descriptions": postar_column_descriptions,
+    },
+    "attract": {
+        "names": attract_column_names,
+        "default_label": attract_default_label_index,
+        "default_mouse_over": ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
+        "descriptions": attract_column_descriptions,
+    },
+    "rbpdb": {
+        "names": rbpdb_column_names,
+        "default_label": rbpdb_default_label_index,
+        "default_mouse_over": RBPDB_DEFAULT_MOUSE_OVER_INDEX,
+        "descriptions": rbpdb_column_descriptions,
+    },
+}
 
 # When the data source is viewed on UCSC, what color should the binding sites
 # be? Give a tuple with three numbers, indicating the rgb values of the color
 # (each ranging from 0 to 255, as is common).
 
-data_load_source_colors = (
-    {
-        "postar": orange,
-        "attract": blue,
-        "rbpdb": dark_green
-    }
-)
+data_load_source_colors = {"postar": orange, "attract": blue, "rbpdb": dark_green}
 
 # To consider: right now, I have mainly filtered through the "columns of
 # interest" for each of the data loading functions WITHIN the data loading

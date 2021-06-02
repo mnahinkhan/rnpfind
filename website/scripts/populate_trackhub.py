@@ -15,14 +15,15 @@ from .config import (
     data_load_sources_supported,
     data_load_sources_supported_short_form,
     GENOME_VERSION,
-    UCSC_TRACK_VISIBILITY
+    UCSC_TRACK_VISIBILITY,
 )
 from .binding_analysis_binding_sites import OVERLAP_CONFLICT
 from .data_load_functions import column_data
 
 
-def populate_local_track_hub(overarching_path, rna_info, local_stage,
-                             rbp_no_dict, rbp_peaks, rbp=""):
+def populate_local_track_hub(
+    overarching_path, rna_info, local_stage, rbp_no_dict, rbp_peaks, rbp=""
+):
     """
     Populates a local directory with files conforming to structure required by
     the UCSC specification for displaying trackhubs on their servers.
@@ -60,8 +61,8 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
 
     """
 
-    rna = rna_info['official_name']
-    rna_chr_no = rna_info['chr_n']
+    rna = rna_info["official_name"]
+    rna_chr_no = rna_info["chr_n"]
 
     threshold_config_file = open(overarching_path + "threshold_config.txt")
     _str = threshold_config_file.read()
@@ -76,20 +77,27 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
     hub, _, _, trackdb = trackhub.default_hub(
         hub_name=hub_name,
         short_label=(
-            "RBPs on " + rnas + " w.r.t. " + proteins + ": "+ OVERLAP_CONFLICT
+            "RBPs on " + rnas + " w.r.t. " + proteins + ": " + OVERLAP_CONFLICT
         ),
         long_label=(
-            "RNA binding proteins on long non-coding RNAs " + rnas
-            + " with respect to the binding sites of " + proteins
+            "RNA binding proteins on long non-coding RNAs "
+            + rnas
+            + " with respect to the binding sites of "
+            + proteins
             + ". The red sites are the places where proteins have competitive"
             " binding with " + proteins + ", whereas green sites are places"
             " where cooperative binding occurs. The thresholds used for"
-            " competitive binding was 0bp to " + str(competitive_threshold_bp)
-            + "bp and " + str(competitive_threshold_bp) + "bp to "
-            + str(cooperative_threshold_bp) + "bp for cooperative binding"
+            " competitive binding was 0bp to "
+            + str(competitive_threshold_bp)
+            + "bp and "
+            + str(competitive_threshold_bp)
+            + "bp to "
+            + str(cooperative_threshold_bp)
+            + "bp for cooperative binding"
         ),
         genome=GENOME_VERSION,
-        email="mnk1@andrew.cmu.edu")
+        email="mnk1@andrew.cmu.edu",
+    )
 
     print("Hub set up")
     for filename in glob.iglob(overarching_path + "**/*.bb", recursive=True):
@@ -108,13 +116,15 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
             name=rbp + "_" + category + "binding_sites",
             short_label=rbp + "_" + category,
             long_label=(
-                "Binding sites of " + rbp + " derived from " +
-                data_load_sources_supported[
+                "Binding sites of "
+                + rbp
+                + " derived from "
+                + data_load_sources_supported[
                     data_load_sources_supported_short_form.index(category)
                 ]
             ),
             source=filename,
-            tracktype='bigBed 9 +',
+            tracktype="bigBed 9 +",
             itemRgb="on",
             spectrum="on",
             visibility=visibility,
@@ -135,13 +145,11 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
             #     ["default_mouse_over"]]
             # ),
             # maxItems=25
-
         )
 
         # TODO: Add options for mouse hover views of information
 
         trackdb.add_tracks(track)
-
 
     for filename in glob.iglob(overarching_path + "**/*.bw", recursive=True):
         _, _, _, _, _, _, data_load_source, name = filename.split("/")
@@ -156,21 +164,24 @@ def populate_local_track_hub(overarching_path, rna_info, local_stage,
             name=rna + "_" + data_load_source + "_density_plot",
             short_label="00 " + rna + "_density",
             long_label=(
-                "Density plot of " + str(rbp_no) + " RBPs on " + rna
-                + " using data from " + data_load_source.upper()
+                "Density plot of "
+                + str(rbp_no)
+                + " RBPs on "
+                + rna
+                + " using data from "
+                + data_load_source.upper()
             ),
             source=filename,
-            tracktype='bigWig',
+            tracktype="bigWig",
             color="128,0,0",  # TODO: what color ought bigWig density plots be?
             visibility=visibility,
             chromosomes="chr" + str(rna_chr_no),
             viewLimits="0:" + str(rbp_peak),
             maxHeightPixels="128:50:8",
-            autoScale="on"
+            autoScale="on",
         )
 
         trackdb.add_tracks(track)
-
 
     print(hub)
     print(local_stage)
@@ -190,52 +201,43 @@ def prepare_auto_sql(data_load_source):
         created.
 
     """
-    source_columns_of_interest = (
-        range(len(column_data[data_load_source]["names"]))
-    )
+    source_columns_of_interest = range(len(column_data[data_load_source]["names"]))
 
     no_of_extra_fields = len(source_columns_of_interest)
     name_of_file = (
-        data_load_source
-        + "".join([str(c) for c in source_columns_of_interest]) + ".as"
+        data_load_source + "".join([str(c) for c in source_columns_of_interest]) + ".as"
     )
 
     file_path = "./website/data/autosql_files/" + name_of_file
     template_file_path = "./website/data/autosql_files/general_template.as"
     try:
-        open(file_path, 'r').close()
+        open(file_path, "r").close()
     except FileNotFoundError:
-        with open(file_path, 'w') as handle:
+        with open(file_path, "w") as handle:
             # TODO: make an auto generator of auto_sql template files here
             with open(template_file_path, "r") as template_handle:
                 template_string = template_handle.read()
-                template_string = (
-                    template_string.replace(
-                        "insert_source_name_here", data_load_source
-                    )
+                template_string = template_string.replace(
+                    "insert_source_name_here", data_load_source
                 )
 
             handle.write(template_string)
-            column_names = (
-                [column_data[data_load_source]["names"][i]
-                for i in source_columns_of_interest]
-            )
-            descriptions = (
-                [column_data[data_load_source]["descriptions"][i]
-                for i in source_columns_of_interest]
-            )
+            column_names = [
+                column_data[data_load_source]["names"][i]
+                for i in source_columns_of_interest
+            ]
+            descriptions = [
+                column_data[data_load_source]["descriptions"][i]
+                for i in source_columns_of_interest
+            ]
             additional_str = ""
             for column, description in zip(column_names, descriptions):
                 additional_str += (
-                    "\t".join(
-                        ["lstring", column + ";", '"' + description + '"']
-                    )
-                    + "\n"
+                    "\t".join(["lstring", column + ";", '"' + description + '"']) + "\n"
                 )
 
             additional_str += ")"
             handle.write(additional_str)
-
 
     return no_of_extra_fields, name_of_file
 
@@ -275,10 +277,13 @@ def convert_bed_to_bb(overarching_path, data_load_sources):
         os.system(
             f"for file in * .bed;"
             f" do ../../../../../ucsc-tools/{os_folder}/bedToBigBed"
-            " -as=../../../../../data/autosql_files/" + as_file_name
-            + " type=bed9+" + str(no_of_extra_fields) + ' "$file" ' +
-            '../../../../../ucsc-tools/hg38.chrom.sizes "$file.bb"; done'
-            + (' >/dev/null 2>&1' if not debug else '')
+            " -as=../../../../../data/autosql_files/"
+            + as_file_name
+            + " type=bed9+"
+            + str(no_of_extra_fields)
+            + ' "$file" '
+            + '../../../../../ucsc-tools/hg38.chrom.sizes "$file.bb"; done'
+            + (" >/dev/null 2>&1" if not debug else "")
         )
 
         os.chdir(starting_working_directory)
@@ -327,9 +332,9 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
 
     """
 
-    rna = rna_info['official_name']
-    rna_chr_no = rna_info['chr_n']
-    rna_start_chr_coord = rna_info['start_coord']
+    rna = rna_info["official_name"]
+    rna_chr_no = rna_info["chr_n"]
+    rna_start_chr_coord = rna_info["start_coord"]
     rbp_no_dict = {}
     for data_load_source in data_load_sources:
         print("")
@@ -340,20 +345,20 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
         # TODO: check if displacement needs to be shifted by one for all data
         # sources or just RBPDB
         wig_string = storage.print_wig(
-            chr_no=rna_chr_no, displacement=rna_start_chr_coord - 1,
-            include_name=True, include_description=True, name=rna,
-            description=(
-                "Density plot of " + str(len(storage)) + " RBPs on " + rna
-            ),
-            include_header=True
+            chr_no=rna_chr_no,
+            displacement=rna_start_chr_coord - 1,
+            include_name=True,
+            include_description=True,
+            name=rna,
+            description=("Density plot of " + str(len(storage)) + " RBPs on " + rna),
+            include_header=True,
         )
 
         rbp_no_dict[data_load_source] = len(storage)
 
         folder_path = overarching_path + data_load_source + "/"
         filepath = (
-            rna + "_" + data_load_source + "_" + GENOME_VERSION
-            + "_density_plot.wig"
+            rna + "_" + data_load_source + "_" + GENOME_VERSION + "_density_plot.wig"
         )
 
         filepath = folder_path + filepath
@@ -399,10 +404,9 @@ def convert_wig_to_bw(overarching_path, data_load_sources):
 
         assert os_folder
 
-
         os.system(
-            'for file in *.wig;'
-            f' do ../../../../../ucsc-tools/{os_folder}/wigToBigWig'
+            "for file in *.wig;"
+            f" do ../../../../../ucsc-tools/{os_folder}/wigToBigWig"
             ' "$file" ../../../../../ucsc-tools/hg38.chrom.sizes '
             '"$file.bw"; done >/dev/null 2>&1'
         )
