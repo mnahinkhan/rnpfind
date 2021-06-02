@@ -85,18 +85,27 @@ WSGI_APPLICATION = "rnp_find.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+database_name = os.environ.get("POSTGRES_DB")
+database_user = os.environ.get("POSTGRES_USER")
+database_password = os.environ.get("POSTGRES_PASSWORD")
+
+# Consider HOST or PORT options if below does not work
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": database_name,
+        "USER": database_user,
+        "PASSWORD": database_password,
+        "HOST": "db"
     }
 }
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-db_from_env = dj_database_url.config(
-    default=DATABASE_URL, conn_max_age=500, ssl_require=True
-)
-DATABASES["default"].update(db_from_env)
+# Edit out temporarily
+# DATABASE_URL = os.environ.get("DATABASE_URL")
+# db_from_env = dj_database_url.config(
+#     default=DATABASE_URL, conn_max_age=500, ssl_require=True
+# )
+# DATABASES["default"].update(db_from_env)
 
 
 # Password validation

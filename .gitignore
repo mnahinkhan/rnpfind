@@ -7,3 +7,6 @@ staticfiles/website/*
 !staticfiles/website/styles.?css*
 .DS_Store
 .vscode/
+data/
+db.env
+web.env

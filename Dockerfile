@@ -3,9 +3,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
-
+# used by bedToBigBed tool
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    libkrb5-dev \                   # used by bedToBigBed tool
+    libkrb5-dev \                   
  && rm -rf /var/lib/apt/lists/*
 
 
@@ -18,19 +18,14 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
 
-RUN python manage.py collectstatic --noinput; \
-    python manage.py makemigrations; \
-    python manage.py migrate; \
-    adduser --disabled-password myuser; \
+RUN adduser --disabled-password myuser; \
     mkdir -p website/output-data/pickles; \
     chown myuser website/output-data/; \
     chown myuser website/output-data/pickles; \
     chown -R myuser website/data; \
-    chown -R myuser website/ucsc-tools/linux; \
-    chmod -R 755 website/ucsc-tools/linux; \
-    chown myuser db.sqlite3 || true; \
+    chown -R myuser staticfiles; \
     chown myuser /app
 
 
 USER myuser
-CMD gunicorn rnp_find.wsgi:application --bind 0.0.0.0:$PORT -w 2 --timeout 960
+CMD ./web-entrypoint.sh

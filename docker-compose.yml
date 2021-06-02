@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+ db:
+   image: postgres
+   volumes:
+     - ./data/db:/var/lib/postgresql/data
+   env_file:
+     - db.env
+   container_name: db-container
+
+ web:
+   build: .
+   environment:
+     - PORT=8000
+   env_file:
+     - web.env
+     - db.env
+   # volumes:
+   #   - .:/app
+   ports:
+     - "80:8000"
+   depends_on:
+     - db
+   container_name: web-container
