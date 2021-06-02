@@ -31,38 +31,36 @@ The various analysis methods are detailed elsewhere.
 For now, `rnpfind` requires my AWS credentials to fetch data. This will be
 fixed soon, but for now the following steps are just for me.
 
-Load AWS credentials into the environment
+Create a file called `db.env` (choose a db, username, and password):
+(I've only tested with `db`=`username`=`postgres`)
 ```bash
-source env/bin/activate
+# Set PostgreSQL credential env variables
+POSTGRES_DB=******
+POSTGRES_USER=*******
+POSTGRES_PASSWORD=*****************
+```
+
+Create a file called `web.env` (fill in your AWS credentials):
+```bash
+# Set web credential env variables
+AWS_ACCESS_KEY_ID=*************
+AWS_SECRET_ACCESS_KEY=**************
 ```
 
 *Note:* In the following commands, docker might need `sudo` prepended depending
 on your setup.
 
-Build the Docker image if needed
+Build the Docker image(s) if needed
 ```bash
-docker build --tag rnpfind-test .
+docker-compose build
 ```
 
-Run it on any port (here we run on port 80)
+Run it
 ```bash
-docker run -p 80:8000 -e PORT=8000 -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
--e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --name rnpfind rnpfind-test
+docker-compose up
 ```
-
-or just run `./start.sh` (which does the same)
 
 Now you should be able to use `rnpfind` by navigating to localhost:80 (or the
 public IP of your machine)
 
-Once done, stop and remove by:
-```bash
-docker stop rnpfind
-docker rm rnpfind
-```
-
-or `./stop.sh` (which does the same)
-
-
-
-
+Once done, stop and remove by typing Ctrl+C or using `docker-compose down`
