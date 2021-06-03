@@ -6,7 +6,6 @@ This module contains functions for loading data from the postar database.
 import os
 import bisect
 
-from smart_open import open as smart_open
 
 from .config import ANNOTATION_COLUMN_DELIMITER
 
@@ -128,7 +127,7 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
     rna_end_chr_coord = rna_info["end_coord"]
     query = Query((rna_chr_no, rna_start_chr_coord, rna_end_chr_coord))
 
-    postar_data_file = smart_open(file_path)
+    postar_data_file = open(file_path)
 
     search_file = FileSearcher(postar_data_file)
     out("binary searching POSTAR files... This could take a few minutes :(")
@@ -182,7 +181,7 @@ def postar_data_load(rna_info, out=None):
         specified function. (Default value = None)
 
     """
-    file_path = "s3://rnpfind-data/postar-human-RBP-binding-sites-sorted.txt"
+    file_path = "ro-data/postar-data/postar-human-RBP-binding-sites-sorted.txt"
     return binary_search_populate(file_path, rna_info, out)
 
 

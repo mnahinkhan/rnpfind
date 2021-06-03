@@ -16,8 +16,10 @@ services:
    env_file:
      - web.env
      - db.env
-   # volumes:
-   #   - .:/app
+   volumes:
+   #   - ./src:/app # Introduce if needed for dev
+     - ./ro-data/postar-data:/app/ro-data/postar-data
+     - ./ro-data/hg38-human-genome:/app/ro-data/hg38-human-genome
    ports:
      - "80:8000"
    depends_on:

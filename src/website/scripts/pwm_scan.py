@@ -56,7 +56,6 @@ represented by "pwm".
 
 
 from functools import partial
-from smart_open import open as smart_open
 from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE
 
 
@@ -86,11 +85,11 @@ def get_human_seq(rna_info):
         print("memoising")
         return seqs[(chr_no, chr_start, chr_end)]
 
-    chr_files_dir = "s3://rnpfind-data/" + GENOME_VERSION + "-human-genome/"
+    chr_files_dir = "ro-data/" + GENOME_VERSION + "-human-genome/"
     chr_file = chr_files_dir + "chr" + str(chr_no) + ".fa"
     print(chr_file)
 
-    with smart_open(chr_file) as handle:
+    with open(chr_file) as handle:
         # Need to skip the first line, and then a bunch more to reach the line
         # that has the chr_start numbered base. Note that the .fa file comes in
         # lines of 50 nucleotides with "\n" at the end. Admittedly, a part of

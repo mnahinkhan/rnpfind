@@ -10,3 +10,4 @@ src/staticfiles/website/*
 data/
 db.env
 web.env
+ro-data/
