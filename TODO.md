@@ -4,7 +4,7 @@
 ## Architecture
  - Come up with a suitable architecture for the web service
  - Think about relation between web service and cli tool
- - Remove dependence on AWS
+ - Remove dependence on AWS (for ro-data) ✅
  - Create database container or data storage that is permanent to store
    gene analysis results ✅
  - Consider hosting bedfiles directly on running machine for UCSC Genome
