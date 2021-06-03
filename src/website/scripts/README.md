@@ -23,11 +23,11 @@ For data analysis, we plan on adding multiple forms of analysis, including:
   [2]: Visualize on UCSC Genome Browser
   [3]: Competition-Cooperation Visualization
   [4]: SumOverAll Analysis
-  
-  
+
+
  For a detailed explanation of each of the above analysis methods, consult the manual (to be updated).
- 
- 
+
+
  Note that the repository hosts only the script files and misses key data files necessary for the tool's function. These files will be added later once the tool is ready for deployment.
- 
+
  For further information on how the scripts work together, read "main.py" and work your way from there!

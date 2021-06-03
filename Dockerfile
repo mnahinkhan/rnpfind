@@ -16,7 +16,7 @@ RUN pip install awscli --force-reinstall --upgrade
 WORKDIR /app
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-COPY . .
+COPY ./src .
 
 RUN adduser --disabled-password myuser; \
     mkdir -p website/output-data/pickles; \
