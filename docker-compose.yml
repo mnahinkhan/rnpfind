@@ -21,7 +21,7 @@ services:
      - ./ro-data/postar-data:/app/ro-data/postar-data
      - ./ro-data/hg38-human-genome:/app/ro-data/hg38-human-genome
    ports:
-     - "80:8000"
+     - "8000:8000"
    depends_on:
      - db
    container_name: web-container
