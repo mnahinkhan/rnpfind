@@ -59,6 +59,7 @@
 ## Bugs
  - If gene has no binding sites it could raise errors (at least for POSTAR,
    e.g. SPRR4)
+ - Unrecognized 'db' errors (no idea how to reproduce)
 
 ## Security
  - Direct to HTTPS for UCSC Genome Browser
