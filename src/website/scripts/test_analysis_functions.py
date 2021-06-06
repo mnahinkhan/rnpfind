@@ -26,10 +26,12 @@ class TestAnalysisMethods(unittest.TestCase):
 
         """
         self.assertEqual(
-            len(analysis_methods_supported_short), len(analysis_methods_supported_long)
+            len(analysis_methods_supported_short),
+            len(analysis_methods_supported_long),
         )
         self.assertEqual(
-            len(analysis_method_functions), len(analysis_methods_supported_short)
+            len(analysis_method_functions),
+            len(analysis_methods_supported_short),
         )
 
     def test_appropriate_name(self):
@@ -67,7 +69,9 @@ class TestAnalysisMethods(unittest.TestCase):
                 list(inspect.signature(method).parameters)[0], "big_storage"
             )
 
-            self.assertEqual(list(inspect.signature(method).parameters)[1], "rna_info")
+            self.assertEqual(
+                list(inspect.signature(method).parameters)[1], "rna_info"
+            )
 
 
 if __name__ == "__main__":

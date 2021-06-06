@@ -78,7 +78,13 @@ from .postar_data_load import (
 from .custom_data_load import custom_data_load
 
 # First, add a short name for your data source method to this list
-data_load_sources_supported_short = ["rbpdb", "attract", "rbpmap", "postar", "custom"]
+data_load_sources_supported_short = [
+    "rbpdb",
+    "attract",
+    "rbpmap",
+    "postar",
+    "custom",
+]
 
 # Now give it a long name
 data_load_sources_supported_long = [
@@ -140,7 +146,11 @@ column_data = {
 # be? Give a tuple with three numbers, indicating the rgb values of the color
 # (each ranging from 0 to 255, as is common).
 
-data_load_source_colors = {"postar": orange, "attract": blue, "rbpdb": dark_green}
+data_load_source_colors = {
+    "postar": orange,
+    "attract": blue,
+    "rbpdb": dark_green,
+}
 
 # To consider: right now, I have mainly filtered through the "columns of
 # interest" for each of the data loading functions WITHIN the data loading

@@ -97,7 +97,12 @@ def get_human_seq(rna_info):
         # (maybe the -1 part).
 
         handle.seek(
-            4 + len(str(chr_no)) + 1 + 51 * (chr_start // 50) + chr_start % 50 - 1
+            4
+            + len(str(chr_no))
+            + 1
+            + 51 * (chr_start // 50)
+            + chr_start % 50
+            - 1
         )
 
         # Once at the required position, keep adding lines of bases as long as
@@ -176,7 +181,11 @@ def pwm_degree_of_freedom(pwm):
     for i in range(len_pwm):
         max_score = max([pwm[b][i] for b in bases])
         freedom *= len(
-            [1 for b in bases if pwm[b][i] >= PWM_SCAN_CUT_OFF_PERCENTAGE * max_score]
+            [
+                1
+                for b in bases
+                if pwm[b][i] >= PWM_SCAN_CUT_OFF_PERCENTAGE * max_score
+            ]
         )
     return freedom
 
@@ -351,7 +360,10 @@ def pwm_summary(pwm):
     )
 
     return_new = "".join(
-        [max(bases, key=partial(get_pwm_base_index, index=i)) for i in range(len_pwm)]
+        [
+            max(bases, key=partial(get_pwm_base_index, index=i))
+            for i in range(len_pwm)
+        ]
     )
 
     assert return_before == return_new
@@ -380,7 +392,9 @@ def str_to_pwm(raw_motif_str, is_transpose=False):
     for base in bases:
         for i in range(len(motif) // 4):
             if is_transpose:
-                pwm[base].append(motif[i + (len(motif) // 4) * base_index[base]])
+                pwm[base].append(
+                    motif[i + (len(motif) // 4) * base_index[base]]
+                )
             else:
                 pwm[base].append(motif[i * 4 + base_index[base]])
 
@@ -428,7 +442,11 @@ if __name__ == "__main__":
 
     # print(pwm_motif_to_dict("(U)(2)"))
 
-    print(pwm_scan("CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")))
+    print(
+        pwm_scan(
+            "CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")
+        )
+    )
     print(
         pwm_scan_naive_brute_force(
             "CCCCCCTTTTCGCGCGCGCTTTTCGCGCGCGCGCGTTTTTTT", motif_to_pwm("TTTT")

@@ -100,7 +100,9 @@ def attract_data_load(rna_info, out=None):
 
             # We only care about human RBPs for now.
             if protein_columns[3] != "Homo_sapiens":
-                protein_columns = handle.readline().replace("\n", "").split("\t")
+                protein_columns = (
+                    handle.readline().replace("\n", "").split("\t")
+                )
                 continue
 
             annotation = ANNOTATION_COLUMN_DELIMITER.join(
@@ -114,7 +116,9 @@ def attract_data_load(rna_info, out=None):
             pwm = matrix_to_pwm_dict[matrix_id]
             sites = pwm_scan(rna_seq, pwm)
             if not sites:
-                protein_columns = handle.readline().replace("\n", "").split("\t")
+                protein_columns = (
+                    handle.readline().replace("\n", "").split("\t")
+                )
                 continue
 
             for start, end in sites:

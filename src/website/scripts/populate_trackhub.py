@@ -201,11 +201,15 @@ def prepare_auto_sql(data_load_source):
         created.
 
     """
-    source_columns_of_interest = range(len(column_data[data_load_source]["names"]))
+    source_columns_of_interest = range(
+        len(column_data[data_load_source]["names"])
+    )
 
     no_of_extra_fields = len(source_columns_of_interest)
     name_of_file = (
-        data_load_source + "".join([str(c) for c in source_columns_of_interest]) + ".as"
+        data_load_source
+        + "".join([str(c) for c in source_columns_of_interest])
+        + ".as"
     )
 
     file_path = "./website/data/autosql_files/" + name_of_file
@@ -233,7 +237,10 @@ def prepare_auto_sql(data_load_source):
             additional_str = ""
             for column, description in zip(column_names, descriptions):
                 additional_str += (
-                    "\t".join(["lstring", column + ";", '"' + description + '"']) + "\n"
+                    "\t".join(
+                        ["lstring", column + ";", '"' + description + '"']
+                    )
+                    + "\n"
                 )
 
             additional_str += ")"
@@ -350,7 +357,9 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
             include_name=True,
             include_description=True,
             name=rna,
-            description=("Density plot of " + str(len(storage)) + " RBPs on " + rna),
+            description=(
+                "Density plot of " + str(len(storage)) + " RBPs on " + rna
+            ),
             include_header=True,
         )
 
@@ -358,7 +367,12 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
 
         folder_path = overarching_path + data_load_source + "/"
         filepath = (
-            rna + "_" + data_load_source + "_" + GENOME_VERSION + "_density_plot.wig"
+            rna
+            + "_"
+            + data_load_source
+            + "_"
+            + GENOME_VERSION
+            + "_density_plot.wig"
         )
 
         filepath = folder_path + filepath

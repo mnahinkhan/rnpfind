@@ -29,10 +29,12 @@ class TestCorrectBindingSites(unittest.TestCase):
 
         attract_binding_sites = attract_data_load(test_rna_info)
         self.assertEqual(
-            len(analysis_methods_supported_short), len(analysis_methods_supported_long)
+            len(analysis_methods_supported_short),
+            len(analysis_methods_supported_long),
         )
         self.assertEqual(
-            len(analysis_method_functions), len(analysis_methods_supported_short)
+            len(analysis_method_functions),
+            len(analysis_methods_supported_short),
         )
 
 

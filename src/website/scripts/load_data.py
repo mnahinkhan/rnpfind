@@ -62,7 +62,10 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
     big_storage = {}
     for i, data_load_source in enumerate(data_load_sources):
-        out(f"{i+1}/{total_steps}." f" Loading binding sites from {data_load_source}")
+        out(
+            f"{i+1}/{total_steps}."
+            f" Loading binding sites from {data_load_source}"
+        )
 
         # TODO: is the merge func still relevant?
         merge_func = generate_merge_func(data_load_source)
@@ -85,7 +88,10 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
 
         # Get max coverage
         max_coverage = max(
-            [binding_site.base_cover() for rbp, binding_site in storage_space.items()]
+            [
+                binding_site.base_cover()
+                for rbp, binding_site in storage_space.items()
+            ]
         )
 
         # Filter the allowed amount
@@ -122,7 +128,8 @@ def annotation_to_columns(annotation):
     no_of_rows = len(array)
 
     array_of_strings = [
-        "______".join([array[i][j] for i in range(no_of_rows)]) for j in range(len_row)
+        "______".join([array[i][j] for i in range(no_of_rows)])
+        for j in range(len_row)
     ]
 
     return array_of_strings

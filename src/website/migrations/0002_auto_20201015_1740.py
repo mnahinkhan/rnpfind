@@ -51,7 +51,9 @@ class Migration(migrations.Migration):
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name="gene", name="name", field=models.CharField(max_length=200)
+            model_name="gene",
+            name="name",
+            field=models.CharField(max_length=200),
         ),
         migrations.CreateModel(
             name="BindingSummaryInfo",
@@ -68,7 +70,11 @@ class Migration(migrations.Migration):
                 (
                     "data_source_type",
                     models.CharField(
-                        choices=[("RB", "RBPDB"), ("AT", "ATTRACT"), ("PO", "POSTAR")],
+                        choices=[
+                            ("RB", "RBPDB"),
+                            ("AT", "ATTRACT"),
+                            ("PO", "POSTAR"),
+                        ],
                         max_length=200,
                     ),
                 ),

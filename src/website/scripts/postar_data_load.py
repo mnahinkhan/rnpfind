@@ -41,7 +41,9 @@ postar_columns_of_interest = [3, 7, 8, 9, 10]
 postar_default_label_index = [8]
 POSTAR_DEFAULT_MOUSE_OVER_INDEX = 9
 
-postar_column_names = [postar_all_column_names[i] for i in postar_columns_of_interest]
+postar_column_names = [
+    postar_all_column_names[i] for i in postar_columns_of_interest
+]
 
 postar_column_descriptions = [
     postar_all_column_descriptions[i] for i in postar_columns_of_interest

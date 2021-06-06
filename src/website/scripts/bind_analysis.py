@@ -165,7 +165,9 @@ class Storage:
 
         except TypeError as err:
             print("You indexed with type:", type(item))
-            raise ValueError("Please index with iterables containing strings") from err
+            raise ValueError(
+                "Please index with iterables containing strings"
+            ) from err
 
     def corr_reset(self):
         """
@@ -241,14 +243,21 @@ class Storage:
                 for num_j, j in enumerate(self._rbps):
                     if i not in corr_table:
                         corr_table[i] = {}
-                    corr_table[i][j] = self._rbps[i].dist(self._rbps[j], bp_threshold)
+                    corr_table[i][j] = self._rbps[i].dist(
+                        self._rbps[j], bp_threshold
+                    )
 
                 # Progress should be printed since this can take some time
                 percentage = (
-                    (num_i * len(self._rbps) + num_j) / len(self._rbps) ** 2 / 0.01
+                    (num_i * len(self._rbps) + num_j)
+                    / len(self._rbps) ** 2
+                    / 0.01
                 )
                 if progress_feedback:
-                    if round(percentage) % 20 == 0 and round(percentage) != prev_num:
+                    if (
+                        round(percentage) % 20 == 0
+                        and round(percentage) != prev_num
+                    ):
                         print(round(percentage), "%" + "complete")
                         prev_num = percentage
 
@@ -285,7 +294,8 @@ class Storage:
 
         if verbose:
             print(
-                "Some of the highest score pairs above threshold" " (0.8 by default):"
+                "Some of the highest score pairs above threshold"
+                " (0.8 by default):"
             )
 
             for output in self.corr_sorted:  # sorted three element tuple list
@@ -299,7 +309,9 @@ class Storage:
             self.corr_bp_threshold,
         )
 
-    def lookup(self, first_rbp, second_rbp=-1, display_threshold=-0.1, bp_threshold=30):
+    def lookup(
+        self, first_rbp, second_rbp=-1, display_threshold=-0.1, bp_threshold=30
+    ):
         """
         gets the correlation value for a specific RBP and all RBPs or a specific
         RBP and another one.
@@ -316,12 +328,16 @@ class Storage:
 
         """
         if self.corr_table == -1 or self.corr_bp_threshold != bp_threshold:
-            self.self_analysis(bp_threshold=bp_threshold, display_threshold=1.1)
+            self.self_analysis(
+                bp_threshold=bp_threshold, display_threshold=1.1
+            )
 
         if second_rbp == -1:
             to_return_list = []
             corr_entries = self.corr_table_f_measure.get(first_rbp, {})
-            for key in sorted(corr_entries, key=corr_entries.get, reverse=True):
+            for key in sorted(
+                corr_entries, key=corr_entries.get, reverse=True
+            ):
                 if float(corr_entries[key]) > display_threshold:
                     to_return_list.append((key, corr_entries[key]))
 
@@ -413,7 +429,9 @@ class Storage:
         to_return_dict = {}  # rbp keys mapping to nearest site and distance
 
         for site in self[gene]:
-            to_return_dict[site] = self.all_sites_in(site, bp_threshold=bp_threshold)
+            to_return_dict[site] = self.all_sites_in(
+                site, bp_threshold=bp_threshold
+            )
 
         return to_return_dict
 

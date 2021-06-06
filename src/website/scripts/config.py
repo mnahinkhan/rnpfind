@@ -40,7 +40,9 @@ ncbi_gene_files = [
 # Add modified custom data?
 # custom_data_add = True
 
-EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO = 1  # Professor Ihab has decided
+EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO = (
+    1
+)  # Professor Ihab has decided
 
 # For now, we support two types of data: experimental and computational
 data_load_sources_supported = [

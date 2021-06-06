@@ -51,12 +51,30 @@ rbpdb_all_column_names = [
 ]
 
 rbpdb_all_column_descriptions = rbpdb_all_column_names
-rbpdb_columns_of_interest = [0, 1, 3, 4, 5, 8, 9, 13, 14, 15, 16, 17, 22, 24, 25]
+rbpdb_columns_of_interest = [
+    0,
+    1,
+    3,
+    4,
+    5,
+    8,
+    9,
+    13,
+    14,
+    15,
+    16,
+    17,
+    22,
+    24,
+    25,
+]
 rbpdb_default_label_index = [8]
 
 RBPDB_DEFAULT_MOUSE_OVER_INDEX = 9
 
-rbpdb_column_names = [rbpdb_all_column_names[i] for i in rbpdb_columns_of_interest]
+rbpdb_column_names = [
+    rbpdb_all_column_names[i] for i in rbpdb_columns_of_interest
+]
 rbpdb_column_descriptions = [
     rbpdb_all_column_descriptions[i] for i in rbpdb_columns_of_interest
 ]
@@ -197,15 +215,19 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
                                 int(s)
                                 if s != "n"
                                 else math.ceil(
-                                    n_repeat_req / (repeat_end - repeat_start - 1)
+                                    n_repeat_req
+                                    / (repeat_end - repeat_start - 1)
                                 )
-                                for s in seq_motif[number_start:number_end].split("-")
+                                for s in seq_motif[
+                                    number_start:number_end
+                                ].split("-")
                             ]
                         )
 
                         seq_motif = seq_motif.replace(
                             seq_motif[repeat_start : number_end + 1],
-                            seq_motif[repeat_start + 1 : repeat_end] * num_of_repeats,
+                            seq_motif[repeat_start + 1 : repeat_end]
+                            * num_of_repeats,
                         )
 
                     maketrans = str.maketrans
@@ -213,7 +235,9 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
                     upper_map = maketrans(all_letters, all_letters.upper())
                     seq_motif = seq_motif.translate(upper_map)
                     if "/" in seq_motif:
-                        bracket_start = bracket_end = middle = seq_motif.find("/")
+                        bracket_start = bracket_end = middle = seq_motif.find(
+                            "/"
+                        )
                         while seq_motif[bracket_start] != "(":
                             bracket_start -= 1
                         while seq_motif[bracket_end] != ")":
@@ -228,7 +252,9 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
                         )
                         seq_motifs += [seq_motif_1, seq_motif_2]
                     else:
-                        pwm = motif_to_pwm(seq_motif, letter_strength=letter_strength)
+                        pwm = motif_to_pwm(
+                            seq_motif, letter_strength=letter_strength
+                        )
                         pwms += [pwm]
                     i += 1
 
@@ -264,7 +290,9 @@ def rbpdb_data_load(rna_info, out=None):
     protein_id_to_experimental_ids_dict = picklify(
         generate_rbpdb_protein_to_experiment_id
     )
-    experiment_id_to_columns_dict = picklify(generate_rbpdb_experiment_to_columns)
+    experiment_id_to_columns_dict = picklify(
+        generate_rbpdb_experiment_to_columns
+    )
     with open(rbpdb_protein_file_path) as handle:
         _ = handle.readline().strip().split("\t")
         # columns here is expected to have the following information in the
@@ -277,26 +305,35 @@ def rbpdb_data_load(rna_info, out=None):
             assert len(protein_columns) == 13
             # We only care about human RBPs for now.
             if protein_columns[10] == "0":
-                protein_columns = handle.readline().replace("\n", "").split("\t")
+                protein_columns = (
+                    handle.readline().replace("\n", "").split("\t")
+                )
                 continue
             rbp = protein_columns[4]
             protein_id = protein_columns[0]
 
             if protein_id not in protein_id_to_experimental_ids_dict:
                 # No experiments associated. So no data to be had
-                protein_columns = handle.readline().replace("\n", "").split("\t")
+                protein_columns = (
+                    handle.readline().replace("\n", "").split("\t")
+                )
                 continue
 
-            for experiment_id in protein_id_to_experimental_ids_dict[protein_id]:
+            for experiment_id in protein_id_to_experimental_ids_dict[
+                protein_id
+            ]:
                 assert (
-                    experiment_id in experiment_id_to_pwm_dict or experiment_id == "410"
+                    experiment_id in experiment_id_to_pwm_dict
+                    or experiment_id == "410"
                 )
                 if experiment_id == "410":
                     continue
                 pwms = experiment_id_to_pwm_dict[experiment_id]
                 for pwm in pwms:
                     assert len(pwm["A"]) > 0
-                    experimental_columns = experiment_id_to_columns_dict[experiment_id]
+                    experimental_columns = experiment_id_to_columns_dict[
+                        experiment_id
+                    ]
                     assert len(experimental_columns) == 15
                     total_columns = protein_columns + experimental_columns
                     annotation = ANNOTATION_COLUMN_DELIMITER.join(

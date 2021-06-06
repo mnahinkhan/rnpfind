@@ -11,7 +11,9 @@ urlpatterns = [
     path("gene", views.gene_page_redirector, name="gene-page-redirector"),
     path("gene/<str:gene_name>", views.gene_page, name="gene-page"),
     path(
-        "analysis-request/<str:gene>", views.analysis_request, name="analysis-request"
+        "analysis-request/<str:gene>",
+        views.analysis_request,
+        name="analysis-request",
     ),
     path(
         "analysis-status/<str:request_id>",

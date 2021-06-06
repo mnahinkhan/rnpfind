@@ -84,8 +84,7 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     rna = rna_info["official_name"]
     overarching_path = get_overarching_path(rna)
     populate_binding_sites(
-        big_storage, rna_info, data_load_sources,
-        overarching_path
+        big_storage, rna_info, data_load_sources, overarching_path
     )
 
     out(
@@ -141,7 +140,6 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
 
     print(output)
     print(error)
-
 
     out("The link to your hub has been generated:")
 

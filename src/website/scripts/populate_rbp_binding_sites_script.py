@@ -13,8 +13,12 @@ from .data_load_functions import data_load_source_colors
 
 
 def populate_binding_sites(
-    big_storage, rna_info, data_load_sources, overarching_path, main_rbp="",
-    out=None
+    big_storage,
+    rna_info,
+    data_load_sources,
+    overarching_path,
+    main_rbp="",
+    out=None,
 ):
     """
     Saves binding sites as BED files
@@ -59,18 +63,26 @@ def populate_binding_sites(
         else:
             out(f"Directory {folder_path} already exists...")
 
-        threshold_config_file = open(overarching_path + "threshold_config.txt", "w")
-        threshold_config_file.write(
-            "competitive threshold used: " + str(competitive_threshold_bp) + "\n"
+        threshold_config_file = open(
+            overarching_path + "threshold_config.txt", "w"
         )
         threshold_config_file.write(
-            "cooperative threshold used: " + str(cooperative_threshold_bp) + "\n"
+            "competitive threshold used: "
+            + str(competitive_threshold_bp)
+            + "\n"
+        )
+        threshold_config_file.write(
+            "cooperative threshold used: "
+            + str(cooperative_threshold_bp)
+            + "\n"
         )
         threshold_config_file.close()
 
         default_color = data_load_source_colors[data_load_source]
 
-        def coloring_func(binding_site, storage=storage, default_color=default_color):
+        def coloring_func(
+            binding_site, storage=storage, default_color=default_color
+        ):
             """
             Defines a coloring function for the print_bed function of the Storage
             instance. This one in particular colors based on competitive and
@@ -112,7 +124,12 @@ def populate_binding_sites(
             )
 
             filepath = (
-                rbp + "_" + data_load_source + "_" + GENOME_VERSION + "_sites.bed"
+                rbp
+                + "_"
+                + data_load_source
+                + "_"
+                + GENOME_VERSION
+                + "_sites.bed"
             )
 
             filepath = folder_path + filepath

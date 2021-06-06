@@ -13,7 +13,9 @@ with DNA).
 """
 
 from operator import itemgetter
-from sortedcontainers import SortedSet  # Allow sorted brackets of binding sites
+from sortedcontainers import (
+    SortedSet,
+)  # Allow sorted brackets of binding sites
 
 
 firstItem = itemgetter(0)
@@ -262,7 +264,8 @@ class BindingSites:
             new_site = (start, end, None)
         elif len(new_site) != 3:
             raise ValueError(
-                "Please keep three values in the tuple: " + "(start, end, annotation)"
+                "Please keep three values in the tuple: "
+                + "(start, end, annotation)"
             )
 
         start, end, _ = new_site
@@ -298,7 +301,9 @@ class BindingSites:
                 self.sorted_sites.remove(site)
                 to_merge.append(site)
 
-        self.sorted_sites.add(BindingSites._collapse(to_merge, user_merge_func))
+        self.sorted_sites.add(
+            BindingSites._collapse(to_merge, user_merge_func)
+        )
 
     def remove(self, site):
         """
@@ -370,7 +375,8 @@ class BindingSites:
         # non-supported input type
         print("sites is of type", type(sites))
         raise ValueError(
-            "Unsupported type for sites, should be a tuple" + " or BindingSites"
+            "Unsupported type for sites, should be a tuple"
+            + " or BindingSites"
         )
 
     def is_overlap(self, query_site):
@@ -575,7 +581,8 @@ class BindingSites:
                 score = float(
                     "".join(
                         filter(
-                            lambda k: k.isdigit() or k == "." or k == "-", annotation[0]
+                            lambda k: k.isdigit() or k == "." or k == "-",
+                            annotation[0],
                         )
                     )
                 )
@@ -648,7 +655,9 @@ class BindingSites:
 
         return binding_depth
 
-    def overlap_collapse(self, mode, number, in_place=False, annotation_merger=None):
+    def overlap_collapse(
+        self, mode, number, in_place=False, annotation_merger=None
+    ):
         """Collapses the overlapping ranges to non-overlapping ones, based on
         preset conditions.
 
@@ -724,7 +733,10 @@ class BindingSites:
 
         if mode == "baseCoverNumber":
             depth_cutoff = -1
-            while len(list(filter(lambda k: k > depth_cutoff, depth_array))) > number:
+            while (
+                len(list(filter(lambda k: k > depth_cutoff, depth_array)))
+                > number
+            ):
                 depth_cutoff += 1
 
             if depth_cutoff == -1:
@@ -749,7 +761,9 @@ class BindingSites:
         elif mode == "TopSitesRatio":
             raise ValueError("Unimplemented function")
         else:
-            raise ValueError("The mode selected, '" + mode + "' is not" " supported!")
+            raise ValueError(
+                "The mode selected, '" + mode + "' is not" " supported!"
+            )
 
         sites = self.sorted_sites
         depth_cutoff = max(0, depth_cutoff)
@@ -786,7 +800,9 @@ class BindingSites:
             # print(start, end, annotation)
             site, distance = binding_site_to_add_to.nearest_site(site)
             if distance == 0:
-                binding_site_to_add_to.add((start, end, annotation), annotation_merger)
+                binding_site_to_add_to.add(
+                    (start, end, annotation), annotation_merger
+                )
         if not in_place:
             return binding_site_to_add_to
 
@@ -890,5 +906,7 @@ if __name__ == "__main__":
     print(overlap_sites)
     merger = "; ".join
     print(
-        overlap_sites.overlap_collapse("TopDepthRatio", 1.0, annotation_merger=merger)
+        overlap_sites.overlap_collapse(
+            "TopDepthRatio", 1.0, annotation_merger=merger
+        )
     )

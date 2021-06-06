@@ -97,7 +97,11 @@ def analysis_status(request, request_id):
         status = ""
 
     return JsonResponse(
-        {"status": status if status else "0/13. Sending request to server for analysis"}
+        {
+            "status": status
+            if status
+            else "0/13. Sending request to server for analysis"
+        }
     )
 
 
@@ -114,7 +118,9 @@ def out_fn_gen(request_id):
 
     def out(msg):
         if len(AnalysisStatus.objects.filter(request_id=request_id)) > 0:
-            analysis_status_obj = AnalysisStatus.objects.get(request_id=request_id)
+            analysis_status_obj = AnalysisStatus.objects.get(
+                request_id=request_id
+            )
             analysis_status_obj.status = msg
             analysis_status_obj.save()
         else:

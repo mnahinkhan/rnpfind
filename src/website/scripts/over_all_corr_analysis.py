@@ -5,7 +5,9 @@ a data analysis function
 """
 
 
-def generate_csv(symmetric_corr_table, rna_info, data_load_sources, stringency):
+def generate_csv(
+    symmetric_corr_table, rna_info, data_load_sources, stringency
+):
     """
     Given a correlation table of RBPs binding to an RNA molecule of interest,
     generates and saves a CSV file containing the correlation values.
@@ -108,7 +110,9 @@ def overall_correlation_analysis(big_storage, rna_info):
 
         storage = big_storage[data_load_source]
 
-        _, symmetric_corr_table, _, _ = storage.self_analysis(bp_threshold=threshold)
+        _, symmetric_corr_table, _, _ = storage.self_analysis(
+            bp_threshold=threshold
+        )
         symmetric_corr_tables[data_load_source] = symmetric_corr_table
         print("Done!")
 

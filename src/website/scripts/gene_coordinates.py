@@ -14,7 +14,9 @@ from typing import Union, Dict
 # import statistics
 
 PATH_TO_BIO_MART = "./website/data/biomart-gene-coordinates.txt"
-PATH_TO_PICKLE = "./website/output-data/pickles/biomart-gene-coordinates.pickle"
+PATH_TO_PICKLE = (
+    "./website/output-data/pickles/biomart-gene-coordinates.pickle"
+)
 
 
 class Chromosome:
@@ -123,7 +125,10 @@ def file_to_dicts(path):
 
         elif "HSCHR" in str_chr_no.upper():
             str_chr_no = str_chr_no[
-                str_chr_no.upper().find("HSCHR") : str_chr_no.upper().find("HSCHR") + 7
+                str_chr_no.upper()
+                .find("HSCHR") : str_chr_no.upper()
+                .find("HSCHR")
+                + 7
             ]
 
             str_chr_no = str_chr_no[5:]
@@ -182,7 +187,11 @@ def file_to_dicts(path):
         new_start_coord = prev_start_coord + [start_coord]
         new_end_coord = prev_end_coord + [end_coord]
 
-        official_to_coord[official_name] = (new_chr_no, new_start_coord, new_end_coord)
+        official_to_coord[official_name] = (
+            new_chr_no,
+            new_start_coord,
+            new_end_coord,
+        )
 
         line = bio_mart_file.readline()
 
@@ -265,7 +274,10 @@ def gene_to_coord(gene):
     gene = gene.upper()
     rna_info = {}
 
-    if gene in name_to_official and name_to_official[gene] in official_to_coord:
+    if (
+        gene in name_to_official
+        and name_to_official[gene] in official_to_coord
+    ):
         rna_info["success"] = True
         rna_info["chr_n"], rna_info["start_coord"], rna_info[
             "end_coord"

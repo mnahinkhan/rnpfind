@@ -2,7 +2,10 @@
 Defines functions that are involved in getting some data from the user.
 Used for the command line interface variant of RNPFind.
 """
-from .config import data_load_sources_supported, data_load_sources_supported_short_form
+from .config import (
+    data_load_sources_supported,
+    data_load_sources_supported_short_form,
+)
 from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
@@ -138,15 +141,22 @@ def get_user_data_source_preference():
     while not (
         input_digits.isdigit()
         and all(
-            [int(c) < len(data_load_sources_supported_short_form) for c in input_digits]
+            [
+                int(c) < len(data_load_sources_supported_short_form)
+                for c in input_digits
+            ]
         )
     ):
-        print("Please choose any combination from above as you like (e.g. 124)")
+        print(
+            "Please choose any combination from above as you like (e.g. 124)"
+        )
         print(">")
         input_digits = input()
 
     print("Thank you")
-    return [data_load_sources_supported_short_form[int(i)] for i in input_digits]
+    return [
+        data_load_sources_supported_short_form[int(i)] for i in input_digits
+    ]
 
 
 def get_user_analysis_preference():
@@ -157,7 +167,9 @@ def get_user_analysis_preference():
     """
     print("")
     print("")
-    print("Which method of analysis on the data would you like to employ today?")
+    print(
+        "Which method of analysis on the data would you like to employ today?"
+    )
     print("")
     for i, source in enumerate(analysis_methods_supported_long):
         print("[" + str(i) + "]: " + source)

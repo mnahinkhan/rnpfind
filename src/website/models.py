@@ -31,14 +31,18 @@ class Gene(models.Model):
         """
         computes total number of binding sites stored for the gene
         """
-        return sum(summary.number_of_sites for summary in self.binding_summaries.all())
+        return sum(
+            summary.number_of_sites for summary in self.binding_summaries.all()
+        )
 
     def max_unique_rbps(self):
         """
         returns maximum number of unique RBPs that bound to this gene, amongst
         the various data sources that were used
         """
-        return max(summary.number_of_rbps for summary in self.binding_summaries.all())
+        return max(
+            summary.number_of_rbps for summary in self.binding_summaries.all()
+        )
 
     def size(self):
         """
@@ -55,8 +59,14 @@ class BindingSummaryInfo(models.Model):
     RBPDB = "RB"
     ATTRACT = "AT"
     POSTAR = "PO"
-    DATABASE_CHOICES = [(RBPDB, "RBPDB"), (ATTRACT, "ATTRACT"), (POSTAR, "POSTAR")]
-    data_source_type = models.CharField(max_length=200, choices=DATABASE_CHOICES)
+    DATABASE_CHOICES = [
+        (RBPDB, "RBPDB"),
+        (ATTRACT, "ATTRACT"),
+        (POSTAR, "POSTAR"),
+    ]
+    data_source_type = models.CharField(
+        max_length=200, choices=DATABASE_CHOICES
+    )
     gene = models.ForeignKey(
         Gene, on_delete=models.CASCADE, related_name="binding_summaries"
     )
