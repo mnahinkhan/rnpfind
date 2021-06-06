@@ -72,3 +72,10 @@
  - Consider using a different genome browser (e.g.
    (JBrowse)[https://github.com/GMOD/jbrowse]) or
    (IGV)[https://github.com/igvteam/igv.js/]
+
+## Stack and setup
+ - Consider the scalability of the current set up
+ - Consider security against DOS or otherwise
+ - Set up production vs development envs
+ - Automate production-push
+ - Consider serving static files via Apache / nginx instead of Django
