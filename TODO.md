@@ -2,8 +2,12 @@
  - Fix up CLI tool to take command line options instead of being interactive
 
 ## Architecture
- - Come up with a suitable architecture for the web service
- - Think about relation between web service and cli tool
+ - Come up with a suitable architecture for the web service ✅
+ - Think about relation between web service and cli tool ✅
+
+ *Result from above two*:
+ ![alt text](images/architecture.jpg "Diagram showing proposed architecture")
+
  - Remove dependence on AWS (for ro-data) ✅
  - Create database container or data storage that is permanent to store
    gene analysis results ✅
