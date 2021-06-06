@@ -73,7 +73,7 @@ def populate_local_track_hub(
 
     rnas = rna
     proteins = rbp
-    hub_name = "RBPs on " + rnas + " " + OVERLAP_CONFLICT
+    hub_name = f"rbps-on-{rnas}-{OVERLAP_CONFLICT.lower()}"
     hub, _, _, trackdb = trackhub.default_hub(
         hub_name=hub_name,
         short_label=(

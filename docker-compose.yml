@@ -20,6 +20,8 @@ services:
    #   - ./src:/app # Introduce if needed for dev
      - ./ro-data/postar-data:/app/ro-data/postar-data
      - ./ro-data/hg38-human-genome:/app/ro-data/hg38-human-genome
+     - ./src/website/static/ucsc-tracks:/app/website/static/ucsc-tracks
+     - ./staticfiles:/app/staticfiles
    ports:
      - "8000:8000"
    depends_on:

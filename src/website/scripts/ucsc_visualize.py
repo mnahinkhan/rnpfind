@@ -6,17 +6,37 @@ generating density plots, setting them up as a track hub structure, and finally
 uploading them to a server online, so that the binding sites can be visualized.
 """
 
+from datetime import datetime
+from .config import DEDICATED_ANALYSIS
 from .populate_rbp_binding_sites_script import populate_binding_sites
 from .populate_trackhub import (
     convert_bed_to_bb,
     convert_wig_to_bw,
     density_plot,
     populate_local_track_hub,
-    upload_online,
 )
 from .config import GENOME_VERSION
 
 UCSC_START_STEP = 5
+
+
+def get_overarching_path(rna):
+    """
+    Returns a filepath to a unqiue folder for saving BED files in.
+    :param rna: name of RNA gene of interest
+
+    """
+    if not DEDICATED_ANALYSIS:
+        time_list = datetime.now().timetuple()
+        time_list = [str(x) for x in time_list]
+        time_date = "_".join(time_list[0:6])  # year to seconds
+    else:
+        time_date = rna
+
+    return (
+        "./website/output-data/ucsc/rbp_binding_sites_bed_files"
+        f"/{time_date}/"
+    )
 
 
 def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
@@ -56,8 +76,17 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
 
     data_load_sources = big_storage.keys()
 
-    out(f"{UCSC_START_STEP}/{total_steps}. Populating the server with bed files...")
-    overarching_path = populate_binding_sites(big_storage, rna_info, data_load_sources)
+    out(
+        f"{UCSC_START_STEP}/{total_steps}."
+        " Populating the server with bed files..."
+    )
+
+    rna = rna_info["official_name"]
+    overarching_path = get_overarching_path(rna)
+    populate_binding_sites(
+        big_storage, rna_info, data_load_sources,
+        overarching_path
+    )
 
     out(
         f"{UCSC_START_STEP + 1}/{total_steps}."
@@ -86,12 +115,13 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
         " Uploading the bigBed and bigWig files to a local track hub server..."
     )
 
-    local_dir = "./website/output-data/ucsc/ucsc-genome-track-fake/"
+    local_dir = "./website/static/ucsc-tracks/"
 
     date_time_folder_name = overarching_path.split("/")[-2]
     local_stage = local_dir + date_time_folder_name + "/"
     rbp_peaks = {
-        k: max(big_storage[k].sum_over_all().return_depth()) for k in big_storage
+        k: max(big_storage[k].sum_over_all().return_depth())
+        for k in big_storage
     }
 
     hub_name = populate_local_track_hub(
@@ -103,13 +133,20 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
         " Copying the local track files to a global server..."
     )
 
-    online_dir = "s3://rnpfind-data/ucsc-trackhub/"
-    upload_online(local_dir, online_dir)
+    bash_command = "python /app/manage.py collectstatic --no-input"
+    import subprocess
+
+    process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
+    output, error = process.communicate()
+
+    print(output)
+    print(error)
+
 
     out("The link to your hub has been generated:")
 
     hub_url = (
-        "https://rnpfind-data.s3-us-west-1.amazonaws.com/ucsc-trackhub/"
+        "https://rnpfind.com/static/ucsc-tracks/"
         + date_time_folder_name
         + "/"
         + hub_name.replace(" ", "+")
@@ -117,7 +154,7 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     )
 
     ucsc_url = (
-        "http://genome.ucsc.edu/cgi-bin/hgTracks?db="
+        "https://genome.ucsc.edu/cgi-bin/hgTracks?db="
         + GENOME_VERSION
         + "&hubUrl="
         + hub_url

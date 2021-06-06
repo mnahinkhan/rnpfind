@@ -4,7 +4,6 @@ RNA transcript, as BED files.
 
 This module is useful for ucsc_visualize data analysis method.
 """
-from datetime import datetime
 import os
 
 from .colors import red, green
@@ -13,25 +12,9 @@ from .load_data import data_source_annotation_to_columns
 from .data_load_functions import data_load_source_colors
 
 
-def get_overarching_path(rna):
-    """
-    Returns a filepath to a unqiue folder for saving BED files in.
-    :param rna: name of RNA gene of interest
-
-    """
-    if not DEDICATED_ANALYSIS:
-        year, month, day, hour, minute, sec, _, _, _ = datetime.now().timetuple()
-        year, month, day, hour, minute, sec = [
-            str(x) for x in [year, month, day, hour, minute, sec]
-        ]
-        time_date = "_".join([year, month, day, hour, minute, sec])
-    else:
-        time_date = rna
-    return "./website/output-data/ucsc/rbp_binding_sites_bed_files/" + time_date + "/"
-
-
 def populate_binding_sites(
-    big_storage, rna_info, data_load_sources, main_rbp="", out=None
+    big_storage, rna_info, data_load_sources, overarching_path, main_rbp="",
+    out=None
 ):
     """
     Saves binding sites as BED files
@@ -49,15 +32,13 @@ def populate_binding_sites(
     """
     if not out:
         out = print
-    rna = rna_info["official_name"]
+
     rna_chr_no = rna_info["chr_n"]
     rna_start_chr_coord = rna_info["start_coord"]
 
     # TODO: check if this -1 patch is necessary for all data sources or just
     # RBPDB
     displacement = rna_start_chr_coord - 1
-
-    overarching_path = get_overarching_path(rna)
 
     comp_color = red
     coop_color = green

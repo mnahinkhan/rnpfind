@@ -8,7 +8,7 @@
  - Create database container or data storage that is permanent to store
    gene analysis results ✅
  - Consider hosting bedfiles directly on running machine for UCSC Genome
-   Browser
+   Browser ✅
 
 ## Containerization
  - Reduce image size (base from Alpine, remove apt-caches)

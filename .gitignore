@@ -11,3 +11,5 @@ data/
 db.env
 web.env
 ro-data/
+ucsc-tracks/
+output-data/
