@@ -14,6 +14,9 @@
  - Consider hosting bedfiles directly on running machine for UCSC Genome
    Browser ✅
 
+## Search Engines
+ - Look into `robots.txt` and consider creating one
+
 ## Containerization
  - Reduce image size (base from Alpine, remove apt-caches)
  - Create multiple containers for different processes (computation, web
