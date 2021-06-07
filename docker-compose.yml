@@ -3,8 +3,8 @@ version: "3.9"
 services:
  db:
    image: postgres
-   volumes:
-     - ./data/db:/var/lib/postgresql/data
+   # volumes:
+     # - ./data/db:/var/lib/postgresql/data # dev
    env_file:
      - db.env
    container_name: db-container
@@ -17,11 +17,8 @@ services:
      - web.env
      - db.env
    volumes:
-   #   - ./src:/app # Introduce if needed for dev
      - ./ro-data/postar-data:/app/ro-data/postar-data
      - ./ro-data/hg38-human-genome:/app/ro-data/hg38-human-genome
-     - ./src/website/static/ucsc-tracks:/app/website/static/ucsc-tracks
-     - ./staticfiles:/app/staticfiles
    ports:
      - "8000:8000"
    depends_on:
