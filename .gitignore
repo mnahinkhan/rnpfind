@@ -3,8 +3,8 @@ __pycache__
 env/
 db.sqlite3
 website/output-data/
-src/staticfiles/website/*
-!src/staticfiles/website/styles.?css*
+web/staticfiles/website/*
+!web/staticfiles/website/styles.?css*
 .DS_Store
 .vscode/
 data/

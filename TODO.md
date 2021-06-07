@@ -17,6 +17,9 @@
 ## Search Engines
  - Look into `robots.txt` and consider creating one
 
+## Requirements
+ - Prune suitable requirements for each of the services
+
 ## Containerization
  - Reduce image size (base from Alpine, remove apt-caches)
  - Create multiple containers for different processes (computation, web
