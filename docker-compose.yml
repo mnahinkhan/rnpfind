@@ -14,7 +14,6 @@ services:
    environment:
      - PORT=8000
    env_file:
-     - web.env
      - db.env
    volumes:
      - ./ro-data/postar-data:/app/ro-data/postar-data

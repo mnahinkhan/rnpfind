@@ -30,9 +30,6 @@ The various analysis methods are detailed elsewhere.
 ## Steps for Running
 Use Python 3.8 or higher (might not be important)
 
-For now, `rnpfind` requires my AWS credentials to fetch data. This will be
-fixed soon, but for now the following steps are just for me.
-
 Create a file called `db.env` (choose a db, username, and password):
 (I've only tested with `db`=`username`=`postgres`)
 ```bash
@@ -40,13 +37,6 @@ Create a file called `db.env` (choose a db, username, and password):
 POSTGRES_DB=******
 POSTGRES_USER=*******
 POSTGRES_PASSWORD=*****************
-```
-
-Create a file called `web.env` (fill in your AWS credentials):
-```bash
-# Set web credential env variables
-AWS_ACCESS_KEY_ID=*************
-AWS_SECRET_ACCESS_KEY=**************
 ```
 
 *Note:* In the following commands, docker might need `sudo` prepended depending
