@@ -30,4 +30,4 @@ RUN adduser --disabled-password myuser; \
 
 
 USER myuser
-CMD ./web-entrypoint.sh
+ENTRYPOINT ["./web-entrypoint.sh"]

@@ -15,4 +15,4 @@ echo 'import cleanup' | python manage.py shell
 
 # Start server
 echo "Starting server"
-gunicorn rnp_find.wsgi:application --bind 0.0.0.0:"$PORT" -w 2 --timeout 960
+exec gunicorn rnp_find.wsgi:application --bind 0.0.0.0:"$PORT" -w 2 --timeout 960
