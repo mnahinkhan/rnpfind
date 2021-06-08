@@ -17,10 +17,12 @@ from .config import (
     GENOME_VERSION,
     UCSC_TRACK_VISIBILITY,
     UCSCTOOL_PATH,
-    data_load_sources_supported,
-    data_load_sources_supported_short_form,
 )
-from .data_load_functions import column_data
+from .data_load_functions import (
+    column_data,
+    data_load_sources_supported_long,
+    data_load_sources_supported_short,
+)
 
 
 def populate_local_track_hub(
@@ -121,8 +123,8 @@ def populate_local_track_hub(
                 "Binding sites of "
                 + rbp
                 + " derived from "
-                + data_load_sources_supported[
-                    data_load_sources_supported_short_form.index(category)
+                + data_load_sources_supported_long[
+                    data_load_sources_supported_short.index(category)
                 ]
             ),
             source=filename,

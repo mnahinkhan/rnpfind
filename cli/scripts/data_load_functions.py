@@ -107,8 +107,8 @@ data_load_sources_functions = {
     "custom": custom_data_load,
 }
 
-# Finally, for the sake of UCSC visualization, give a little bit info about your
-# data source function's annotations. Map the short name of your data load
+# Finally, for the sake of UCSC visualization, give a little bit info about
+# your data source function's annotations. Map the short name of your data load
 # function to another dictionary, which has the following mappings:
 #   "names": mapped to a list of column headings (strings) that the annotations
 #       have
@@ -155,8 +155,8 @@ data_load_source_colors = {
 
 # To consider: right now, I have mainly filtered through the "columns of
 # interest" for each of the data loading functions WITHIN the data loading
-# functions, just to be selective about which columns are interesting to view on
-# the UCSC visualization feature. This seems like bad practice; maybe in the
+# functions, just to be selective about which columns are interesting to view
+# on the UCSC visualization feature. This seems like bad practice; maybe in the
 # future someone will develop more analysis functions that are interested in
 # some of the other columns of the data; it might be wise to consider loading
 # all columns of data at the data loading level and letting the analysis

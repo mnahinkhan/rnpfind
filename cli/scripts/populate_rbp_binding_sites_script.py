@@ -7,7 +7,7 @@ This module is useful for ucsc_visualize data analysis method.
 import os
 
 from .colors import green, red
-from .config import DEDICATED_ANALYSIS, GENOME_VERSION
+from .config import GENOME_VERSION
 from .data_load_functions import data_load_source_colors
 from .load_data import data_source_annotation_to_columns
 

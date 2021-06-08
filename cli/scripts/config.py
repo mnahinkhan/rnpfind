@@ -15,8 +15,8 @@ ncbi_gene_files = [
 
 # refreshSynonymDict = False
 
-# Loading the data for RBP binding sites on lncRNA, as well as BIOGRID protein-protein
-# interactions.
+# Loading the data for RBP binding sites on lncRNA, as well as BIOGRID
+# protein-protein interactions.
 # dataLoad = True
 
 
@@ -33,7 +33,8 @@ ncbi_gene_files = [
 # analysis_per_binding_site_competititive_range = 15
 
 # Some of the variables that take long to load will not be loaded again if this
-# parameter is set to False. Namely, neat1_storage, malat1_storage, and synonym_dict.
+# parameter is set to False. Namely, neat1_storage, malat1_storage, and
+# synonym_dict.
 
 # refreshStorages = True
 
@@ -43,32 +44,6 @@ ncbi_gene_files = [
 EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO = (
     1
 )  # Professor Ihab has decided
-
-# For now, we support two types of data: experimental and computational
-data_load_sources_supported = [
-    "RBPDB (computational)",
-    "ATTRACT (computational)",
-    "RBPMap (computational",
-    "POSTAR (experimental)",
-    "User custom data",
-]
-
-data_load_sources_supported_short_form = [
-    "rbpdb",
-    "attract",
-    "rbpmap",
-    "postar",
-    "custom",
-]
-
-
-# Filter top sites on Neat1 and Malat1
-
-# filterTopSites = True
-# filterRBPs = ['AUF1']
-# filteredContainers = ['experimental']
-# Top how many percent of binding sites should I keep?
-# topSitesFilterPercentage = 0.30
 
 # Genome version being used
 GENOME_VERSION = "hg38"

@@ -6,9 +6,9 @@ from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
 )
-from .config import (
-    data_load_sources_supported,
-    data_load_sources_supported_short_form,
+from .data_load_functions import (
+    data_load_sources_supported_long,
+    data_load_sources_supported_short,
 )
 from .gene_coordinates import gene_to_coord
 
@@ -133,7 +133,7 @@ def get_user_data_source_preference():
         " from today?"
     )
     print("")
-    for i, source in enumerate(data_load_sources_supported):
+    for i, source in enumerate(data_load_sources_supported_long):
         print("[" + str(i) + "]: " + source)
     print("")
 
@@ -142,7 +142,7 @@ def get_user_data_source_preference():
         input_digits.isdigit()
         and all(
             [
-                int(c) < len(data_load_sources_supported_short_form)
+                int(c) < len(data_load_sources_supported_short)
                 for c in input_digits
             ]
         )
@@ -154,9 +154,7 @@ def get_user_data_source_preference():
         input_digits = input()
 
     print("Thank you")
-    return [
-        data_load_sources_supported_short_form[int(i)] for i in input_digits
-    ]
+    return [data_load_sources_supported_short[int(i)] for i in input_digits]
 
 
 def get_user_analysis_preference():

@@ -355,18 +355,12 @@ def pwm_summary(pwm):
     def get_pwm_base_index(base, index):
         return pwm[base][index]
 
-    return_before = "".join(
-        [max(bases, key=lambda b: pwm[b][i]) for i in range(len_pwm)]
-    )
-
     return_new = "".join(
         [
             max(bases, key=partial(get_pwm_base_index, index=i))
             for i in range(len_pwm)
         ]
     )
-
-    assert return_before == return_new
 
     return return_new
 

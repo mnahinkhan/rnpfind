@@ -6,6 +6,7 @@ generating density plots, setting them up as a track hub structure, and finally
 uploading them to a server online, so that the binding sites can be visualized.
 """
 
+import subprocess
 from datetime import datetime
 
 from .config import DEDICATED_ANALYSIS, GENOME_VERSION
@@ -133,7 +134,6 @@ def ucsc_visualize(big_storage, rna_info, out=None, total_steps=7):
     )
 
     bash_command = "python /app/manage.py collectstatic --no-input"
-    import subprocess
 
     process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
     output, error = process.communicate()
