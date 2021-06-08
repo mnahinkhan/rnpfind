@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """   iY Lab
   Project: Developing a tool for exploring  RNA-Protein interactions
   Name 	: Muhammad Nahin Khan

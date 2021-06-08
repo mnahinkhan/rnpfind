@@ -10,13 +10,12 @@ representing a gene name to its coordinates on the hg38 chromosome.
 import os
 import pickle
 from typing import Union, Dict
+from pathlib import Path
 
-# import statistics
+from .config import BIOMART_PATH, PICKLE_PATH
 
-PATH_TO_BIO_MART = "./website/data/biomart-gene-coordinates.txt"
-PATH_TO_PICKLE = (
-    "./website/output-data/pickles/biomart-gene-coordinates.pickle"
-)
+PATH_TO_BIO_MART = f"{BIOMART_PATH}/biomart-gene-coordinates.txt"
+PATH_TO_PICKLE = f"{PICKLE_PATH}/biomart-gene-coordinates.pickle"
 
 
 class Chromosome:
@@ -264,6 +263,8 @@ def gene_to_coord(gene):
 
     if is_not_pickled:
         name_to_official, official_to_coord = file_to_dicts(PATH_TO_BIO_MART)
+        # Create parent dir if needed
+        Path(PATH_TO_PICKLE).parent.mkdir(parents=True, exist_ok=True)
         with open(PATH_TO_PICKLE, "wb") as handle:
             pickle.dump(
                 [name_to_official, official_to_coord],

@@ -4,7 +4,7 @@ ATTRACT database.
 
 """
 
-from .config import ANNOTATION_COLUMN_DELIMITER
+from .config import ANNOTATION_COLUMN_DELIMITER, ATTRACT_PATH
 from .picklify import picklify
 from .pwm_scan import get_human_seq, str_to_pwm, pwm_scan
 
@@ -43,7 +43,7 @@ def generate_matrix_to_pwm_dict():
     and returns a dictionary that maps position weight matrix IDs to the PWM
     data structures used in this program (RNPFind).
     """
-    attract_pwm_file_path = "./website/data/attract-pwm.txt"
+    attract_pwm_file_path = f"{ATTRACT_PATH}/attract-pwm.txt"
     matrix_to_pwm_dict = {}
     with open(attract_pwm_file_path) as handle:
         line = handle.readline()
@@ -72,7 +72,7 @@ def attract_data_load(rna_info, out=None):
 
     """
     del out
-    attract_protein_file_path = "./website/data/ATtRACT_db.txt"
+    attract_protein_file_path = f"{ATTRACT_PATH}/ATtRACT_db.txt"
     rna_seq = get_human_seq(rna_info)
     matrix_to_pwm_dict = picklify(generate_matrix_to_pwm_dict)
     with open(attract_protein_file_path) as handle:

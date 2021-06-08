@@ -95,3 +95,22 @@ PWM_SCAN_CUT_OFF_PERCENTAGE = 0.80
 # you should change the strings below!
 ANNOTATION_COLUMN_DELIMITER = ",,,,,"
 ANNOTATION_ROW_DELIMITER = ";;;;;"
+
+# Path for all cached data
+CACHE_PATH = "./.cache"
+# Path for pickled data
+PICKLE_PATH = f"{CACHE_PATH}/pickles"
+# Path for all (input) read-only data
+RO_DATA_PATH = "./ro-data"
+# Path for BioMart data
+BIOMART_PATH = f"{RO_DATA_PATH}/biomart"
+# Path for RBPDB data
+RBPDB_PATH = f"{RO_DATA_PATH}/rbpdb"
+# Path for ATTRACT data
+ATTRACT_PATH = f"{RO_DATA_PATH}/attract"
+# Path for POSTAR data
+POSTAR_PATH = f"{RO_DATA_PATH}/postar"
+# Path for AutoSQL files
+AUTOSQL_PATH = f"{RO_DATA_PATH}/autosql"
+# Path for UCSC tools
+UCSCTOOL_PATH = "./ucsc-tools"

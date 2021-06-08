@@ -1,13 +1,14 @@
 """
 Picklify is a function that works similar to memoization; it is meant for
 functions that return a dictionary. Often, such functions will parse a file to
-generate a dictionary that maps certain keys to values. To save on such overhead
-costs, we "picklify" them the first time they are called (save the dictionary in
-a pickle file), and then simply load the dictionary from the saved pickle files
-the next time around.
+generate a dictionary that maps certain keys to values. To save on such
+overhead costs, we "picklify" them the first time they are called (save the
+dictionary in a pickle file), and then simply load the dictionary from the
+saved pickle files the next time around.
 
 """
 import pickle
+from .config import PICKLE_PATH
 
 
 def picklify(dict_generator, *args, **kwargs):
@@ -19,8 +20,8 @@ def picklify(dict_generator, *args, **kwargs):
     returned instead. Thus getting the dicttionary by wrapping this function
     speeds up the dictionary creation overall.
 
-    Note that this function should not be called by two different functions with
-    the same name.
+    Note that this function should not be called by two different functions
+    with the same name.
 
     :param dict_generator: the function which generates a dictionary.
     :param *args: Any args to pass to the dictionary
@@ -29,9 +30,7 @@ def picklify(dict_generator, *args, **kwargs):
 
     """
     # Danger! Never call picklify with functions that have the same name!
-    pickle_path = (
-        "./website/output-data/pickles/" + dict_generator.__name__ + ".pickle"
-    )
+    pickle_path = f"{PICKLE_PATH}/{dict_generator.__name__}.pickle"
 
     try:
         with open(pickle_path, "rb") as pickle_handle:

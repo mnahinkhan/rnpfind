@@ -8,6 +8,7 @@ from .config import (
     ANNOTATION_COLUMN_DELIMITER,
     RBPDB_MOTIF_N_REPEAT_REQ,
     RBPDB_MOTIF_PWM_LETTER_STRENGTH,
+    RBPDB_PATH,
 )
 from .picklify import picklify
 from .pwm_scan import (
@@ -88,7 +89,7 @@ def generate_rbpdb_experiment_to_columns():
 
     """
     rbpdb_experiment_file_path = (
-        "./website/data/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
+        f"{RBPDB_PATH}/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
     )
     experiment_id_to_columns_dict = {}
     with open(rbpdb_experiment_file_path) as handle:
@@ -118,7 +119,7 @@ def generate_rbpdb_protein_to_experiment_id():
     Run once in initialization of RNPFind
     """
     rbpdb_protein_experiment_file_path = (
-        "./website/data/RBPDB_v1.3.1_protExp_human_2012-11-21.tdt"
+        f"{RBPDB_PATH}/RBPDB_v1.3.1_protExp_human_2012-11-21.tdt"
     )
     protein_id_to_experimental_ids_dict = {}
     with open(rbpdb_protein_experiment_file_path) as handle:
@@ -153,9 +154,9 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
 
     """
     rbpdb_experiment_file_path = (
-        "./website/data/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
+        f"{RBPDB_PATH}/RBPDB_v1.3.1_experiments_human_2012-11-21.tdt"
     )
-    rbpdb_pfm_file_directory = "./website/data/rbpdb-human-pfm-matrices/"
+    rbpdb_pfm_file_directory = f"{RBPDB_PATH}/rbpdb-human-pfm-matrices/"
     experimental_to_pwm_dict = {}
     with open(rbpdb_experiment_file_path) as handle:
         line = handle.readline()
@@ -278,7 +279,7 @@ def rbpdb_data_load(rna_info, out=None):
     """
     del out  # this function doesn't emit progress status (yet)!
     rbpdb_protein_file_path = (
-        "./website/data/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
+        f"{RBPDB_PATH}/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
     )
     letter_strength = RBPDB_MOTIF_PWM_LETTER_STRENGTH
     n_repeat_req = RBPDB_MOTIF_N_REPEAT_REQ

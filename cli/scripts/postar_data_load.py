@@ -7,7 +7,7 @@ import os
 import bisect
 
 
-from .config import ANNOTATION_COLUMN_DELIMITER
+from .config import ANNOTATION_COLUMN_DELIMITER, POSTAR_PATH
 
 postar_all_column_names = [
     "chrom",
@@ -183,7 +183,7 @@ def postar_data_load(rna_info, out=None):
         specified function. (Default value = None)
 
     """
-    file_path = "ro-data/postar-data/postar-human-RBP-binding-sites-sorted.txt"
+    file_path = f"{POSTAR_PATH}/postar-human-RBP-binding-sites-sorted.txt"
     return binary_search_populate(file_path, rna_info, out)
 
 

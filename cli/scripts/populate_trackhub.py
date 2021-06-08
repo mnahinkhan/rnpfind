@@ -12,10 +12,12 @@ from sys import platform
 import trackhub
 
 from .config import (
+    AUTOSQL_PATH,
     data_load_sources_supported,
     data_load_sources_supported_short_form,
     GENOME_VERSION,
     UCSC_TRACK_VISIBILITY,
+    UCSCTOOL_PATH,
 )
 from .binding_analysis_binding_sites import OVERLAP_CONFLICT
 from .data_load_functions import column_data
@@ -212,8 +214,8 @@ def prepare_auto_sql(data_load_source):
         + ".as"
     )
 
-    file_path = "./website/data/autosql_files/" + name_of_file
-    template_file_path = "./website/data/autosql_files/general_template.as"
+    file_path = f"{AUTOSQL_PATH}/{name_of_file}"
+    template_file_path = f"{AUTOSQL_PATH}/general_template.as"
     try:
         open(file_path, "r").close()
     except FileNotFoundError:
@@ -265,35 +267,32 @@ def convert_bed_to_bb(overarching_path, data_load_sources):
     if GENOME_VERSION != "hg38":
         raise ValueError("Update this function for this genome version!")
 
-    starting_working_directory = os.getcwd()
+    os_folder = ""
+    if platform in ("linux", "linux2"):
+        # linux
+        os_folder = "linux"
+    elif platform == "darwin":
+        # OS X
+        os_folder = "mac-os"
+    assert os_folder
+
+    # starting_working_directory = os.getcwd()
     for data_load_source in data_load_sources:
         no_of_extra_fields, as_file_name = prepare_auto_sql(data_load_source)
-        os.chdir(overarching_path + data_load_source + "/")
-
-        os_folder = ""
-
-        if platform in ("linux", "linux2"):
-            # linux
-            os_folder = "linux"
-        elif platform == "darwin":
-            # OS X
-            os_folder = "mac-os"
-
-        assert os_folder
+        # os.chdir(overarching_path + data_load_source + "/")
 
         os.system(
-            f"for file in * .bed;"
-            f" do ../../../../../ucsc-tools/{os_folder}/bedToBigBed"
-            " -as=../../../../../data/autosql_files/"
-            + as_file_name
+            f"for file in {overarching_path+data_load_source}/*.bed;"
+            f" do echo $file; {UCSCTOOL_PATH}/{os_folder}/bedToBigBed"
+            f" -as={AUTOSQL_PATH}/{as_file_name}"
             + " type=bed9+"
             + str(no_of_extra_fields)
             + ' "$file" '
-            + '../../../../../ucsc-tools/hg38.chrom.sizes "$file.bb"; done'
+            + f'{UCSCTOOL_PATH}/hg38.chrom.sizes "$file.bb"; done'
             + (" >/dev/null 2>&1" if not debug else "")
         )
 
-        os.chdir(starting_working_directory)
+        # os.chdir(starting_working_directory)
 
     # end of function
 
@@ -404,25 +403,24 @@ def convert_wig_to_bw(overarching_path, data_load_sources):
     if GENOME_VERSION != "hg38":
         raise ValueError("Update this function for this genome version!")
 
-    starting_working_directory = os.getcwd()
+    os_folder = ""
+    if platform in ("linux", "linux2"):
+        # linux
+        os_folder = "linux"
+    elif platform == "darwin":
+        # OS X
+        os_folder = "mac-os"
+    assert os_folder
+
+    # starting_working_directory = os.getcwd()
     for data_load_source in data_load_sources:
-        os.chdir(overarching_path + data_load_source + "/")
-
-        os_folder = ""
-        if platform in ("linux", "linux2"):
-            # linux
-            os_folder = "linux"
-        elif platform == "darwin":
-            # OS X
-            os_folder = "mac-os"
-
-        assert os_folder
+        # os.chdir(overarching_path + data_load_source + "/")
 
         os.system(
-            "for file in *.wig;"
-            f" do ../../../../../ucsc-tools/{os_folder}/wigToBigWig"
-            ' "$file" ../../../../../ucsc-tools/hg38.chrom.sizes '
+            f"for file in {overarching_path+data_load_source}/*.wig;"
+            f" do echo $file; {UCSCTOOL_PATH}/{os_folder}/wigToBigWig"
+            f' "$file" {UCSCTOOL_PATH}/hg38.chrom.sizes '
             '"$file.bw"; done >/dev/null 2>&1'
         )
 
-        os.chdir(starting_working_directory)
+        # os.chdir(starting_working_directory)
