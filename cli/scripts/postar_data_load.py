@@ -3,9 +3,8 @@ This module contains functions for loading data from the postar database.
 
 """
 
-import os
 import bisect
-
+import os
 
 from .config import ANNOTATION_COLUMN_DELIMITER, POSTAR_PATH
 

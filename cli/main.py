@@ -41,6 +41,10 @@ functions that you may be interested in contributing, check out
 "analysis_functions.py"!"""
 
 
+# Responsible for managing the analysis functions that manipulate the RNA-RBP
+# interaction data to get a useful output:
+from scripts.analysis_functions import analysis_method_functions
+
 # Responsible for managing the loading of RNA-RBP interaction data:
 from scripts.load_data import load_data
 
@@ -50,10 +54,6 @@ from scripts.user_input import (
     get_user_data_source_preference,
     get_user_rna_preference,
 )
-
-# Responsible for managing the analysis functions that manipulate the RNA-RBP
-# interaction data to get a useful output:
-from scripts.analysis_functions import analysis_method_functions
 
 
 def analysis_script():

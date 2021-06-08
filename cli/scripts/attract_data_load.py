@@ -6,8 +6,7 @@ ATTRACT database.
 
 from .config import ANNOTATION_COLUMN_DELIMITER, ATTRACT_PATH
 from .picklify import picklify
-from .pwm_scan import get_human_seq, str_to_pwm, pwm_scan
-
+from .pwm_scan import get_human_seq, pwm_scan, str_to_pwm
 
 attract_all_column_names = [
     "Gene_name",

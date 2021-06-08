@@ -56,8 +56,8 @@ represented by "pwm".
 
 
 from functools import partial
-from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE
 
+from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE
 
 bases = ["A", "G", "C", "T"]
 

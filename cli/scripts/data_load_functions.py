@@ -52,30 +52,31 @@ If you make a data loading function to the above specification, the below lines
 should be edited to incorporate the function on RNPFind!
 """
 
-# These imports are more obvious once you see below
-from .colors import orange, blue, dark_green
-from .rbpdb_data_load import (
-    rbpdb_column_descriptions,
-    rbpdb_column_names,
-    rbpdb_data_load,
-    rbpdb_default_label_index,
-    RBPDB_DEFAULT_MOUSE_OVER_INDEX,
-)
 from .attract_data_load import (
+    ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
     attract_column_descriptions,
     attract_column_names,
     attract_data_load,
     attract_default_label_index,
-    ATTRACT_DEFAULT_MOUSE_OVER_INDEX,
 )
+
+# These imports are more obvious once you see below
+from .colors import blue, dark_green, orange
+from .custom_data_load import custom_data_load
 from .postar_data_load import (
+    POSTAR_DEFAULT_MOUSE_OVER_INDEX,
     postar_column_descriptions,
     postar_column_names,
     postar_data_load,
     postar_default_label_index,
-    POSTAR_DEFAULT_MOUSE_OVER_INDEX,
 )
-from .custom_data_load import custom_data_load
+from .rbpdb_data_load import (
+    RBPDB_DEFAULT_MOUSE_OVER_INDEX,
+    rbpdb_column_descriptions,
+    rbpdb_column_names,
+    rbpdb_data_load,
+    rbpdb_default_label_index,
+)
 
 # First, add a short name for your data source method to this list
 data_load_sources_supported_short = [

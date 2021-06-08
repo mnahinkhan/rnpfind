@@ -10,11 +10,10 @@ differet RNA binding proteins (RBPs) can bind. Thus each BindingSite represents
 an RBP molecule, within a Storage.
 """
 
+import difflib  # Just to suggest keys when mis-spelt!
 from operator import itemgetter
 
-import difflib  # Just to suggest keys when mis-spelt!
 from .binding_analysis_binding_sites import BindingSites
-
 
 firstItem = itemgetter(0)
 secondItem = itemgetter(1)

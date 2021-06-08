@@ -2,13 +2,13 @@
 Defines functions that are involved in getting some data from the user.
 Used for the command line interface variant of RNPFind.
 """
-from .config import (
-    data_load_sources_supported,
-    data_load_sources_supported_short_form,
-)
 from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
+)
+from .config import (
+    data_load_sources_supported,
+    data_load_sources_supported_short_form,
 )
 from .gene_coordinates import gene_to_coord
 

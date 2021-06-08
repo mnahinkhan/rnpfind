@@ -7,7 +7,8 @@ uploading them to a server online, so that the binding sites can be visualized.
 """
 
 from datetime import datetime
-from .config import DEDICATED_ANALYSIS
+
+from .config import DEDICATED_ANALYSIS, GENOME_VERSION
 from .populate_rbp_binding_sites_script import populate_binding_sites
 from .populate_trackhub import (
     convert_bed_to_bb,
@@ -15,7 +16,6 @@ from .populate_trackhub import (
     density_plot,
     populate_local_track_hub,
 )
-from .config import GENOME_VERSION
 
 UCSC_START_STEP = 5
 

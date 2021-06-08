@@ -9,24 +9,21 @@ Important views needed for RNPFind are:
  3. A view used for clients to ask on the status of a previously requested
     analysis
 """
+from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
 from django.shortcuts import render
-
-# from time import sleep
-
-from django.http import (
-    # HttpResponse,
-    # HttpResponseRedirect,
-    JsonResponse,
-)
-
-# from django.urls import reverse
+from website.scripts.analysis_functions import analysis_method_functions
 
 # RNPFind source script files
 from website.scripts.gene_coordinates import gene_to_coord
 from website.scripts.load_data import load_data
-from website.scripts.analysis_functions import analysis_method_functions
 
 from .models import AnalysisStatus, BindingSummaryInfo, Gene
+
+# from time import sleep
+
+
+# from django.urls import reverse
+
 
 # total number of steps it takes to analyse a gene - useful for outputting
 # status messages.

@@ -13,10 +13,10 @@ with DNA).
 """
 
 from operator import itemgetter
-from sortedcontainers import (
-    SortedSet,
-)  # Allow sorted brackets of binding sites
 
+from sortedcontainers import (  # Allow sorted brackets of binding sites
+    SortedSet,
+)
 
 firstItem = itemgetter(0)
 secondItem = itemgetter(1)

@@ -2,13 +2,13 @@
 Tests the RNPFind analysis functions module for internal consistency.
 
 """
-import unittest
 import inspect
+import unittest
 
 from .analysis_functions import (
-    analysis_methods_supported_short,
-    analysis_methods_supported_long,
     analysis_method_functions,
+    analysis_methods_supported_long,
+    analysis_methods_supported_short,
 )
 
 

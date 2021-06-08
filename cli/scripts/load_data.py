@@ -27,14 +27,14 @@ big_storage['postar']['HNRNPC']
 
 """
 
-from .data_load_functions import data_load_sources_functions
-from .merge_annotation_funcs import generate_merge_func
 from .bind_analysis import BindingSites, Storage
 from .config import (
     ANNOTATION_COLUMN_DELIMITER,
     ANNOTATION_ROW_DELIMITER,
     EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO,
 )
+from .data_load_functions import data_load_sources_functions
+from .merge_annotation_funcs import generate_merge_func
 
 
 def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):

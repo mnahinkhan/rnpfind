@@ -8,6 +8,7 @@ saved pickle files the next time around.
 
 """
 import pickle
+
 from .config import PICKLE_PATH
 
 

@@ -1,4 +1,4 @@
-from website.models import Gene, AnalysisStatus
+from website.models import AnalysisStatus, Gene
 
 bad_records = [
     x

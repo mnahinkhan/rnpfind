@@ -5,21 +5,21 @@ as simple intervals of sites or as density (dense barchart/histogram) plots.
 
 """
 
-import os
 import glob
+import os
 from sys import platform
 
 import trackhub
 
+from .binding_analysis_binding_sites import OVERLAP_CONFLICT
 from .config import (
     AUTOSQL_PATH,
-    data_load_sources_supported,
-    data_load_sources_supported_short_form,
     GENOME_VERSION,
     UCSC_TRACK_VISIBILITY,
     UCSCTOOL_PATH,
+    data_load_sources_supported,
+    data_load_sources_supported_short_form,
 )
-from .binding_analysis_binding_sites import OVERLAP_CONFLICT
 from .data_load_functions import column_data
 
 

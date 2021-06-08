@@ -4,6 +4,7 @@ This file contains functions for loading data from the rbpdb database.
 """
 
 import math
+
 from .config import (
     ANNOTATION_COLUMN_DELIMITER,
     RBPDB_MOTIF_N_REPEAT_REQ,

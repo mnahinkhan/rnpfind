@@ -9,8 +9,8 @@ representing a gene name to its coordinates on the hg38 chromosome.
 
 import os
 import pickle
-from typing import Union, Dict
 from pathlib import Path
+from typing import Dict, Union
 
 from .config import BIOMART_PATH, PICKLE_PATH
 

@@ -6,10 +6,10 @@ This module is useful for ucsc_visualize data analysis method.
 """
 import os
 
-from .colors import red, green
-from .config import GENOME_VERSION, DEDICATED_ANALYSIS
-from .load_data import data_source_annotation_to_columns
+from .colors import green, red
+from .config import DEDICATED_ANALYSIS, GENOME_VERSION
 from .data_load_functions import data_load_source_colors
+from .load_data import data_source_annotation_to_columns
 
 
 def populate_binding_sites(
