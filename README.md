@@ -28,7 +28,7 @@ deduced binding sites for the transcriptome for all RBPs, so we simply query.
 The various analysis methods are detailed elsewhere.
 
 ## Steps for Running
-Use Python 3.8 or higher (might not be important)
+Use Python 3.8 or higher
 
 Create a file called `db.env` (choose a db, username, and password):
 (I've only tested with `db`=`username`=`postgres`)
