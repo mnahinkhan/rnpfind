@@ -162,9 +162,11 @@ def file_to_dicts(path):
                 if official_name not in official_to_coord:
                     continue
 
-                prev_chr_no, prev_start_coord, prev_end_coord = official_to_coord[
-                    official_name
-                ]
+                (
+                    prev_chr_no,
+                    prev_start_coord,
+                    prev_end_coord,
+                ) = official_to_coord[official_name]
 
                 if prev_chr_no != chr_no:
                     name_to_official[name] = name
@@ -280,9 +282,11 @@ def gene_to_coord(gene):
         and name_to_official[gene] in official_to_coord
     ):
         rna_info["success"] = True
-        rna_info["chr_n"], rna_info["start_coord"], rna_info[
-            "end_coord"
-        ] = official_to_coord[name_to_official[gene]]
+        (
+            rna_info["chr_n"],
+            rna_info["start_coord"],
+            rna_info["end_coord"],
+        ) = official_to_coord[name_to_official[gene]]
         rna_info["official_name"] = name_to_official[gene]
 
     else:

@@ -42,8 +42,8 @@ ncbi_gene_files = [
 # custom_data_add = True
 
 EXPERIMENTAL_BINDING_SITE_ACCEPTABLE_COVERAGE_RATIO = (
-    1
-)  # Professor Ihab has decided
+    1  # Professor Ihab has decided
+)
 
 # Genome version being used
 GENOME_VERSION = "hg38"
