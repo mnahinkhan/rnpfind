@@ -28,23 +28,20 @@ should be edited to incorporate the function on RNPFind!
 
 # First, import the function from wherever it is defined:
 from .over_all_corr_analysis import overall_correlation_analysis
-from .per_binding_site_analysis import per_binding_site_analysis
 from .ucsc_visualize import ucsc_visualize
 
 # Give your method a short name:
-analysis_methods_supported_short = ["binding", "per_binding", "ucsc"]
+analysis_methods_supported_short = ["csv", "ucsc"]
 
 # Give your method a long name:
 analysis_methods_supported_long = [
     "Binding correlation analysis",
-    "Per-binding-site analysis",
     "Visualize on UCSC Genome Browser",
 ]
 
 # Map your short name to the variable imported above that corresponds to your
 # function!
 analysis_method_functions = {
-    "binding": overall_correlation_analysis,
-    "per_binding": per_binding_site_analysis,
+    "csv": overall_correlation_analysis,
     "ucsc": ucsc_visualize,
 }

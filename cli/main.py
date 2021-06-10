@@ -103,8 +103,8 @@ def analysis_script():
         + " bases specified!"
     )
 
-    # We now proceed to perform any number of analysis methods that the user may
-    # wish to apply to the data obtained
+    # We now proceed to perform any number of analysis methods that the user
+    # may wish to apply to the data obtained
     while True:
         analysis_method = get_user_analysis_preference()
         print(analysis_method)
@@ -128,4 +128,69 @@ def analysis_script():
 
 
 if __name__ == "__main__":
+    import argparse
+
+    from scripts.data_load_functions import data_load_sources_supported_short
+
+    out_formats = analysis_method_functions.keys()
+    DEFAULT_BASE_STRINGENCY = 30  # check if available elsewhere
+
+    parser = argparse.ArgumentParser(
+        add_help=False,
+        description="Get binding sites of RBPs on a given transcript",
+    )
+    parser.add_argument(
+        "transcript",
+        help="Specify with the name of a gene (e.g. 'Malat1')"
+        " or as hg38 chromosome coordinates given as"
+        " <chr_no>:<start_coord>-<end_coord> (e.g. 5:4000-14000)"
+        ". Note that chromosome number is X, Y, M(T), or a number between"
+        " 1 and 22",
+    )
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit.",
+    )
+    parser.add_argument(
+        "-s",
+        "--sources",
+        choices=data_load_sources_supported_short,
+        nargs="+",
+        help="Pick source(s) for RBP binding data. Pick any non-empty subset"
+        f" of values from {{{', '.join(data_load_sources_supported_short)}}}."
+        " If unspecified, all sources are selected.",
+        metavar=("<source 1>", "<source 2>"),
+    )
+    parser.add_argument(
+        "-o",
+        "--out-dir",
+        metavar="<dir>",
+        help="Directory to write output files in. If unspecified, a folder is"
+        " created and written to (if possible)",
+    )
+    parser.add_argument(
+        "-f",
+        "--out-format",
+        choices=out_formats,
+        nargs="+",
+        metavar=("<format 1>", "<format 2>"),
+        help="Choose format(s) to store binding site data in. Pick any"
+        f" non-empty subset from {{{', '.join(out_formats)}}}."
+        " If unspecified, all formats are created in the output directory.",
+    )
+    parser.add_argument(
+        "-b",
+        "--base-stringency",
+        type=int,
+        help="The number of bases beween two RBP-binding-sites before they"
+        " are considered to be competing (used only for csv output format)."
+        f" The default value is {DEFAULT_BASE_STRINGENCY}.",
+        metavar="<N>",
+        default=DEFAULT_BASE_STRINGENCY,
+    )
+    args = parser.parse_args()
+
     analysis_script()

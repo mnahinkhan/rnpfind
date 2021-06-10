@@ -79,21 +79,13 @@ from .rbpdb_data_load import (
 )
 
 # First, add a short name for your data source method to this list
-data_load_sources_supported_short = [
-    "rbpdb",
-    "attract",
-    "rbpmap",
-    "postar",
-    "custom",
-]
+data_load_sources_supported_short = ["rbpdb", "attract", "postar"]
 
 # Now give it a long name
 data_load_sources_supported_long = [
     "RBPDB (computational)",
     "ATTRACT (computational)",
-    "RBPMap (computational",
     "POSTAR (experimental)",
-    "User custom data",
 ]
 
 # Link your short name to the actual data loading function that complies with
