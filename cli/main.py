@@ -105,26 +105,10 @@ def analysis_script(transcript):
 
     # We now proceed to perform any number of analysis methods that the user
     # may wish to apply to the data obtained
-    while True:
-        analysis_method = get_user_analysis_preference()
-        print(analysis_method)
-        analysis_method_function = analysis_method_functions[analysis_method]
-        analysis_method_function(big_storage, rna_info)
-
-        print("")
-        print("Thanks!")
-        print("")
-        print("Would you like to try another analysis method?")
-        print(">")
-        yes_or_no = input()
-        if "n" in yes_or_no:
-            break
-
-    # Being here means the user does not want to analyze the same RNA anymore.
-    # We re-run this script, so the user could maybe analyze a different RNA
-    # molecule if they want to. Yes, this means there is no smooth way to exit
-    # the application as of now except by terminating the program.
-    analysis_script()
+    analysis_method = get_user_analysis_preference()
+    print(analysis_method)
+    analysis_method_function = analysis_method_functions[analysis_method]
+    analysis_method_function(big_storage, rna_info)
 
 
 if __name__ == "__main__":
