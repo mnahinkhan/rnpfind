@@ -2,6 +2,8 @@
 Defines functions that are involved in getting some data from the user.
 Used for the command line interface variant of RNPFind.
 """
+import sys
+
 from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
@@ -10,7 +12,60 @@ from .data_load_functions import (
     data_load_sources_supported_long,
     data_load_sources_supported_short,
 )
-from .gene_coordinates import gene_to_coord
+from .gene_coordinates import Chromosome, gene_to_coord
+
+
+def parse_genome_coord(transcript: str) -> dict:
+    """
+    Given a string of the form <chr>:<start>-<end> representing genomic
+    coordinates, extracts each of the chromosome number, start, and end
+    coordinates.
+
+    The input may be malformed.
+
+    :param transcript: input genomic coordinates
+    :returns: a dictionary containing the following keys and associated values:
+        'success': whether the conversion worked or not. If this is False, the
+            other keys below are not guaranteed to exist.
+        'chr_n': the Chromosome object on which the gene lies
+        'start_coord': the start coordinate of the gene on the chromosome
+        'end_coord': the end coordinate of the gene on the chromosome
+    """
+
+    fail_output = {"success": False}
+
+    # import pdb
+    # pdb.set_trace()
+
+    # Check if structure seems correct
+    if len([c for c in transcript if c == ":"]) != 1:
+        return fail_output
+    if len([c for c in transcript if c == "-"]) != 1:
+        return fail_output
+    if transcript.find(":") > transcript.find("-"):
+        return fail_output
+
+    chr_n = transcript.split(":")[0]
+    try:
+        chr_n = Chromosome(chr_n)
+        start_coord = transcript.split(":")[1].split("-")[0]
+        end_coord = transcript.split(":")[1].split("-")[1]
+        start_coord = int(start_coord)
+        end_coord = int(end_coord)
+    except ValueError:
+        return fail_output
+
+    if start_coord > end_coord:
+        return fail_output
+
+    success_output = {
+        "success": True,
+        "chr_n": chr_n,
+        "start_coord": start_coord,
+        "end_coord": end_coord,
+    }
+
+    return success_output
 
 
 def get_rna_coord(rna_gene_name):
@@ -21,80 +76,41 @@ def get_rna_coord(rna_gene_name):
     :param rna_gene_name: input RNA gene name (string)
 
     """
-    user_input_required = True
-    deduction_attempt_made = False
 
     rna_info = gene_to_coord(rna_gene_name)
 
-    is_success = rna_info["success"]
-    if is_success:
-        rna_chr_no = rna_info["chr_n"]
-        rna_start_chr_coord = rna_info["start_coord"]
-        rna_end_chr_coord = rna_info["end_coord"]
-
-        deduction_attempt_made = True
-        print(
-            "We have automatically deduced that this gene lies on chromosome "
-            + str(rna_chr_no)
-            + " from "
-            + str(rna_start_chr_coord)
-            + " to "
-            + str(rna_end_chr_coord)
-            + " (with length "
-            + str(rna_end_chr_coord - rna_start_chr_coord)
-            + " bases)"
-        )
-        print("Are you okay with the above coordinates? [y/n]: ")
-        user_input = input()
-        while len(user_input) != 1 or user_input.lower() not in "yn":
-            print("")
-            print("Please type 'y' or 'n'")
-            print("Are you okay with the above coordinates? [y/n]: ")
-            user_input = input()
-        print("")
-        if user_input.lower() == "y":
-            print("Thank you!")
-            user_input_required = False
-        else:
-            print("Alright, please give us the coordinates: ")
-            print("")
-            user_input_required = True
-
-    if user_input_required:
-        if not deduction_attempt_made:
-            print("")
+    if not rna_info["success"]:
+        # Transcript might have been given in <chr no>:<start>-<end> form
+        rna_info = parse_genome_coord(rna_gene_name)
+        if not rna_info["success"]:
             print(
-                "Sorry, we are having trouble figuring out the location of this"
-                " gene on the genome. Could you tell us?"
+                "Error parsing transcript. Please give a correct gene name"
+                "or a genomic coordinate of the form <chr>:<start>-<end>",
+                file=sys.stderr,
             )
-            print("")
+            sys.exit(1)
 
-        print("Chromosome number (1-23): > ")
-        rna_chr_no = input()
-        print("")
-        print(
-            "Thanks! What about the start coordinate of this gene on chromosome"
-            + " "
-            + rna_chr_no
-            + "?:"
-        )
-        print("")
-        print("Start coordinate: > ")
-        rna_start_chr_coord = input()
-        print("")
-        print(
-            "Thanks! What about the end coordinate of this gene on chromosome"
-            + " "
-            + rna_chr_no
-            + "?:"
-        )
-        print("")
-        print("End coordinate: > ")
-        rna_end_chr_coord = input()
+    rna_chr_no = rna_info["chr_n"]
+    rna_start_chr_coord = rna_info["start_coord"]
+    rna_end_chr_coord = rna_info["end_coord"]
+
+    print(
+        "We have deduced that this gene lies on chromosome "
+        + str(rna_chr_no)
+        + " from "
+        + str(rna_start_chr_coord)
+        + " to "
+        + str(rna_end_chr_coord)
+        + " (with length "
+        + str(rna_end_chr_coord - rna_start_chr_coord)
+        + " bases)",
+        file=sys.stderr,
+    )
+
     return rna_chr_no, rna_start_chr_coord, rna_end_chr_coord
 
 
-def get_user_rna_preference() -> dict:
+def get_user_rna_preference(transcript: str) -> dict:
     """
     Asks the user for the RNA molecule they wish to analyze (the name of the
     gene is expected). Converts the gene name into coordinates.
@@ -103,17 +119,11 @@ def get_user_rna_preference() -> dict:
               its chrosome number, start coordinate, and end coordinate on the
               human genome.
     """
-    print("")
-    print("")
-    print("Welcome to RNPFind!")
-    print("")
-    print("")
-    print("Which RNA transcript would you like to analyse today?")
-    rna = input()  # "Neat1"
-
-    rna_chr_no, rna_start_chr_coord, rna_end_chr_coord = get_rna_coord(rna)
+    rna_chr_no, rna_start_chr_coord, rna_end_chr_coord = get_rna_coord(
+        transcript
+    )
     rna_info = {}
-    rna_info["official_name"] = rna.upper()
+    rna_info["official_name"] = transcript.upper()
     rna_info["chr_n"] = rna_chr_no
     rna_info["start_coord"] = int(rna_start_chr_coord)
     rna_info["end_coord"] = int(rna_end_chr_coord)

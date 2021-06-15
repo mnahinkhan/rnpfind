@@ -56,12 +56,12 @@ from scripts.user_input import (
 )
 
 
-def analysis_script():
+def analysis_script(transcript):
     """
     analysis_script: runs command line version of RNPFind
     """
     # Start by getting the transcript of interest to analyze
-    rna_info: dict = get_user_rna_preference()
+    rna_info: dict = get_user_rna_preference(transcript)
 
     # what data sources does the user want to collect data from today?
     # (e.g. attract, postar, etc.)
@@ -193,4 +193,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    analysis_script()
+    analysis_script(args.transcript)
