@@ -8,6 +8,7 @@ from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
 )
+from .config import GENOME_VERSION
 from .data_load_functions import (
     data_load_sources_supported_long,
     data_load_sources_supported_short,
@@ -95,15 +96,8 @@ def get_rna_coord(rna_gene_name):
     rna_end_chr_coord = rna_info["end_coord"]
 
     print(
-        "We have deduced that this gene lies on chromosome "
-        + str(rna_chr_no)
-        + " from "
-        + str(rna_start_chr_coord)
-        + " to "
-        + str(rna_end_chr_coord)
-        + " (with length "
-        + str(rna_end_chr_coord - rna_start_chr_coord)
-        + " bases)",
+        f"Analyzing {GENOME_VERSION}"
+        f" {rna_chr_no}:{rna_start_chr_coord}-{rna_end_chr_coord}",
         file=sys.stderr,
     )
 

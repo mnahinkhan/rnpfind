@@ -41,9 +41,12 @@ functions that you may be interested in contributing, check out
 "analysis_functions.py"!"""
 
 
+import sys
+
 # Responsible for managing the analysis functions that manipulate the RNA-RBP
 # interaction data to get a useful output:
 from scripts.analysis_functions import analysis_method_functions
+from scripts.data_load_functions import data_load_sources_supported_short
 
 # Responsible for managing the loading of RNA-RBP interaction data:
 from scripts.load_data import load_data
@@ -56,7 +59,7 @@ from scripts.user_input import (
 )
 
 
-def analysis_script(transcript):
+def analysis_script(transcript, sources=None):
     """
     analysis_script: runs command line version of RNPFind
     """
@@ -65,15 +68,18 @@ def analysis_script(transcript):
 
     # what data sources does the user want to collect data from today?
     # (e.g. attract, postar, etc.)
-    data_load_sources = get_user_data_source_preference()
-    print(data_load_sources)
+    data_load_sources = (
+        sources if sources else data_load_sources_supported_short
+    )
+    print(
+        f"Collecting data from: {', '.join(data_load_sources)}",
+        file=sys.stderr,
+    )
     # load RNA-RBP interaction data using the selected data sources on the RNA
     # molecule of interest big_storage stores data on binding sites of RBPs on
     # the RNA molecule from each data source. For more details on how
     # big_storage is structured, consult load_data.py!
-    print("Collecting data now...")
     big_storage = load_data(data_load_sources, rna_info)
-    print("complete!")
 
     # BIOGRID is a database that stores information on protein-protein
     # interaction evidence in the literature from experiment. In future versions
@@ -113,8 +119,6 @@ def analysis_script(transcript):
 
 if __name__ == "__main__":
     import argparse
-
-    from scripts.data_load_functions import data_load_sources_supported_short
 
     out_formats = analysis_method_functions.keys()
     DEFAULT_BASE_STRINGENCY = 30  # check if available elsewhere
@@ -177,4 +181,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    analysis_script(args.transcript)
+    analysis_script(args.transcript, args.sources)
