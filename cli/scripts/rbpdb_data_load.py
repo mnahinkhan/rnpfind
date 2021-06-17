@@ -268,7 +268,7 @@ def generate_rbpdb_experimental_to_pwm(letter_strength, n_repeat_req):
     return experimental_to_pwm_dict
 
 
-def rbpdb_data_load(rna_info, out=None):
+def rbpdb_data_load(rna_info):
     """
     Returns a Generator(/Iterator?) that represent binding sites loaded from the
     RBPDB database on an RNA molecule of interest.
@@ -278,7 +278,6 @@ def rbpdb_data_load(rna_info, out=None):
         function instead of stdout. (Default value = None)
 
     """
-    del out  # this function doesn't emit progress status (yet)!
     rbpdb_protein_file_path = (
         f"{RBPDB_PATH}/RBPDB_v1.3.1_proteins_human_2012-11-21.tdt"
     )

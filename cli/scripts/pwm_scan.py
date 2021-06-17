@@ -82,12 +82,10 @@ def get_human_seq(rna_info):
     chr_end = rna_info["end_coord"]
 
     if (chr_no, chr_start, chr_end) in seqs:
-        print("memoising")
         return seqs[(chr_no, chr_start, chr_end)]
 
     chr_files_dir = "ro-data/" + GENOME_VERSION + "-human-genome/"
     chr_file = chr_files_dir + "chr" + str(chr_no) + ".fa"
-    print(chr_file)
 
     with open(chr_file) as handle:
         # Need to skip the first line, and then a bunch more to reach the line

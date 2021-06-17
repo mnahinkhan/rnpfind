@@ -102,7 +102,7 @@ class FileSearcher:
         return self.file_pointer.readline()
 
 
-def binary_search_populate(file_path, rna_info, debug=False, out=None):
+def binary_search_populate(file_path, rna_info, debug=False):
     """
     Searches a file containing sorted binding sites for a region of interest.
     Returns the subset of binding sites required as a generator / iterator
@@ -113,13 +113,7 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
         coordinate to slice out of the genome-wide binding sites file.
     :param debug: prints useful information if set to True, for debugging.
         (Default value = False)
-    :param out: redirects output from stdout, if specified.
-        (Default value = None)
-
     """
-    if not out:
-        out = print
-
     # TODO: Fix a bug here that causes genes without any data to start
     # collecting the whole genome!!
 
@@ -131,7 +125,6 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
     postar_data_file = open(file_path)
 
     search_file = FileSearcher(postar_data_file)
-    out("binary searching POSTAR files... This could take a few minutes :(")
     to_seek = bisect.bisect(search_file, query)
     postar_data_file.seek(to_seek)
     postar_line_parts = postar_data_file.readline().split()
@@ -172,18 +165,16 @@ def binary_search_populate(file_path, rna_info, debug=False, out=None):
         postar_line_parts = postar_data_file.readline().split()
 
 
-def postar_data_load(rna_info, out=None):
+def postar_data_load(rna_info):
     """
     Returns a generator containing binding sites on input RNA molecule, as
     found on the POSTAR database.
     :param rna_info: dictionary containing input RNA information, such as
         chromosome number, start coordinate, and end coordinate.
-    :param out: if specified, redirects progress output from stdout to the
-        specified function. (Default value = None)
 
     """
     file_path = f"{POSTAR_PATH}/postar-human-RBP-binding-sites-sorted.txt"
-    return binary_search_populate(file_path, rna_info, out)
+    return binary_search_populate(file_path, rna_info)
 
 
 if __name__ == "__main__":

@@ -97,7 +97,8 @@ def get_rna_coord(rna_gene_name):
 
     print(
         f"Analyzing {GENOME_VERSION}"
-        f" {rna_chr_no}:{rna_start_chr_coord}-{rna_end_chr_coord}",
+        f" {rna_chr_no}:{rna_start_chr_coord}-{rna_end_chr_coord}"
+        f" (length = {rna_end_chr_coord - rna_start_chr_coord} bases)",
         file=sys.stderr,
     )
 

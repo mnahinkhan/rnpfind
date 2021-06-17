@@ -59,18 +59,15 @@ def generate_matrix_to_pwm_dict():
     return matrix_to_pwm_dict
 
 
-def attract_data_load(rna_info, out=None):
+def attract_data_load(rna_info):
     """
     Loads RBP binding sites from the ATTRACT database for a given RNA molecule,
     and returns the sites as a Generator / Iterator object.
     :param rna_info: a dictionary containing the location of the RNA on the
         hg38 genome by specifying its chromosome location, start coordinates,
         and end coordinates.
-    :param out: if specified, redirects stdout progress output to the specified
-        function. (Default value = None)
 
     """
-    del out
     attract_protein_file_path = f"{ATTRACT_PATH}/ATtRACT_db.txt"
     rna_seq = get_human_seq(rna_info)
     matrix_to_pwm_dict = picklify(generate_matrix_to_pwm_dict)

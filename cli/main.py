@@ -98,15 +98,8 @@ def analysis_script(transcript, sources=None):
         no_sites += no_site
 
     print(
-        "We have populated "
-        + str(no_rbps)
-        + " different RBPs with "
-        + str(no_sites)
-        + " different binding sites on the "
-        + rna_info["official_name"]
-        + " sequence across the "
-        + str(rna_info["end_coord"] - rna_info["start_coord"])
-        + " bases specified!"
+        f"Collected data for {no_rbps} RBPs with {no_sites} binding sites",
+        file=sys.stderr,
     )
 
     # We now proceed to perform any number of analysis methods that the user

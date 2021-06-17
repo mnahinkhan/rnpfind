@@ -27,6 +27,8 @@ big_storage['postar']['HNRNPC']
 
 """
 
+import sys
+
 from .bind_analysis import BindingSites, Storage
 from .config import (
     ANNOTATION_COLUMN_DELIMITER,
@@ -37,7 +39,7 @@ from .data_load_functions import data_load_sources_functions
 from .merge_annotation_funcs import generate_merge_func
 
 
-def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
+def load_data(data_load_sources, rna_info: dict):
     """
     Goes over a list of data sources of interest for a particular RNA and
     populates a Storage instance (for each of the data sources) with binding
@@ -49,22 +51,15 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
         'postar', etc.
     :param rna_info: dict: a dictionary consisting of information about the RNA
         of interest, such as its name and genomic location.
-    :param out: redirects progress status output if specified.
-        (Default value = None)
-    :param total_steps: will be deprecated soon, don't use. (Default value = 7)
     :returns: a dictionary mapping data load source to a Storage instance
         containing binding sites obtained from that data source.
 
     """
 
-    if not out:
-        out = print
-
     big_storage = {}
     for i, data_load_source in enumerate(data_load_sources):
-        out(
-            f"{i+1}/{total_steps}."
-            f" Loading binding sites from {data_load_source}"
+        print(
+            f"Loading binding sites from {data_load_source}", file=sys.stderr
         )
 
         # TODO: is the merge func still relevant?
@@ -73,7 +68,7 @@ def load_data(data_load_sources, rna_info: dict, out=None, total_steps=7):
         storage_space = Storage(annotation_merge_func=merge_func)
         big_storage[data_load_source] = storage_space
         collected_data = data_load_sources_functions[data_load_source](
-            rna_info, out=out
+            rna_info
         )
 
         for rbp, start, end, annotation in collected_data:
