@@ -41,25 +41,54 @@ functions that you may be interested in contributing, check out
 "analysis_functions.py"!"""
 
 
+import os
+import shutil
 import sys
+from datetime import datetime
+from pathlib import Path
 
 # Responsible for managing the analysis functions that manipulate the RNA-RBP
 # interaction data to get a useful output:
-from scripts.analysis_functions import analysis_method_functions
+from scripts.analysis_functions import (
+    analysis_method_functions,
+    analysis_methods_supported_short,
+)
+from scripts.config import DEFAULT_BASE_STRINGENCY
 from scripts.data_load_functions import data_load_sources_supported_short
 
 # Responsible for managing the loading of RNA-RBP interaction data:
 from scripts.load_data import load_data
 
 # Functions that help with interacting with the user to get their preference:
-from scripts.user_input import (
-    get_user_analysis_preference,
-    get_user_data_source_preference,
-    get_user_rna_preference,
-)
+from scripts.user_input import get_user_rna_preference
 
 
-def analysis_script(transcript, sources=None):
+def rm_folder_contents(folder):
+    """
+    Remove all the contents in a directory.
+    From: https://stackoverflow.com/a/185941/8551394
+
+    """
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except OSError:
+            print("Failed to delete %s.")
+
+
+def analysis_script(
+    transcript,
+    sources=None,
+    methods=None,
+    base_stringency=None,
+    out_dir=None,
+    is_trackhub=False,
+    is_trackhub_only=False,
+):
     """
     analysis_script: runs command line version of RNPFind
     """
@@ -71,10 +100,10 @@ def analysis_script(transcript, sources=None):
     data_load_sources = (
         sources if sources else data_load_sources_supported_short
     )
-    print(
-        f"Collecting data from: {', '.join(data_load_sources)}",
-        file=sys.stderr,
-    )
+    # print(
+    #     f"Collecting data from: {', '.join(data_load_sources)}",
+    #     file=sys.stderr,
+    # )
     # load RNA-RBP interaction data using the selected data sources on the RNA
     # molecule of interest big_storage stores data on binding sites of RBPs on
     # the RNA molecule from each data source. For more details on how
@@ -104,17 +133,59 @@ def analysis_script(transcript, sources=None):
 
     # We now proceed to perform any number of analysis methods that the user
     # may wish to apply to the data obtained
-    analysis_method = get_user_analysis_preference()
-    print(analysis_method)
-    analysis_method_function = analysis_method_functions[analysis_method]
-    analysis_method_function(big_storage, rna_info)
+    analysis_methods = methods if methods else analysis_methods_supported_short
+    # print(
+    #     "Producing the following output formats:"
+    #     f" {', '.join(analysis_methods)}",
+    #     file=sys.stderr,
+    # )
+
+    if out_dir:
+        # The user specified an out directory
+        # Create it if it does not exist
+        # TODO: consider error handling
+        Path(out_dir).mkdir(parents=True, exist_ok=True)
+    else:
+        # The user did not specify an out directory
+        default_path = Path.cwd() / rna_info["official_name"]
+
+        while default_path.is_dir():
+            # The default path already exists, append the folder name with
+            # current date and time
+            time_list = datetime.now().timetuple()
+            time_list = [str(x) for x in time_list]
+            time_date = "-".join(time_list[0:6])  # year to seconds
+            default_path = default_path.parent / (
+                f"{default_path.name}-{time_date}"
+            )
+
+        default_path.mkdir(parents=True)
+        out_dir = str(default_path)
+
+    rm_folder_contents(out_dir)
+
+    for analysis_method in analysis_methods:
+        print(f"Generating {analysis_method}", file=sys.stderr)
+        analysis_method_function = analysis_method_functions[analysis_method]
+
+        configs = {"out_dir": out_dir}
+        if analysis_method == "csv":
+            configs["base_stringency"] = (
+                base_stringency if base_stringency else DEFAULT_BASE_STRINGENCY
+            )
+        if analysis_method == "bed":
+            configs["trackhub"] = is_trackhub
+            configs["trackhub-only"] = is_trackhub_only
+
+        analysis_method_function(big_storage, rna_info, configs=configs)
+
+    print("Done!", file=sys.stderr)
 
 
 if __name__ == "__main__":
     import argparse
 
     out_formats = analysis_method_functions.keys()
-    DEFAULT_BASE_STRINGENCY = 30  # check if available elsewhere
 
     parser = argparse.ArgumentParser(
         add_help=False,
@@ -172,6 +243,29 @@ if __name__ == "__main__":
         metavar="<N>",
         default=DEFAULT_BASE_STRINGENCY,
     )
-    args = parser.parse_args()
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--trackhub",
+        action="store_true",
+        help="If specified, generates a trackhub structure using bed files"
+        " (only used for 'bed' output format)",
+        default=False,
+    )
+    group.add_argument(
+        "--trackhub-only",
+        action="store_true",
+        help="If specified, generates a trackhub structure using bed files and"
+        " deletes all original bed files (only used for 'bed' output format)",
+        default=False,
+    )
 
-    analysis_script(args.transcript, args.sources)
+    args = parser.parse_args()
+    analysis_script(
+        args.transcript,
+        args.sources,
+        args.out_format,
+        args.base_stringency,
+        args.out_dir,
+        args.trackhub,
+        args.trackhub_only,
+    )

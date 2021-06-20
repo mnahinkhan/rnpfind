@@ -7,6 +7,7 @@ as simple intervals of sites or as density (dense barchart/histogram) plots.
 
 import glob
 import os
+from pathlib import Path
 from sys import platform
 
 import trackhub
@@ -68,46 +69,30 @@ def populate_local_track_hub(
     rna = rna_info["official_name"]
     rna_chr_no = rna_info["chr_n"]
 
-    threshold_config_file = open(overarching_path + "threshold_config.txt")
-    _str = threshold_config_file.read()
-    competitive_threshold_bp = _str.split("\n")[0].split()[-1]
-    cooperative_threshold_bp = _str.split("\n")[1].split()[-1]
+    # # threshold_config_file = open(overarching_path + "threshold_config.txt")
+    # with open(
+    #     Path(overarching_path) / "threshold_config.txt"
+    # ) as threshold_config_file:
+    #     _str = threshold_config_file.read()
 
-    print(OVERLAP_CONFLICT)
-
-    rnas = rna
-    proteins = rbp
-    hub_name = f"rbps-on-{rnas}-{OVERLAP_CONFLICT.lower()}"
+    assert OVERLAP_CONFLICT == "union"
+    hub_name = f"rbps-on-{rna}-{OVERLAP_CONFLICT.lower()}"
     hub, _, _, trackdb = trackhub.default_hub(
         hub_name=hub_name,
-        short_label=(
-            "RBPs on " + rnas + " w.r.t. " + proteins + ": " + OVERLAP_CONFLICT
-        ),
+        short_label=f"RBPs on {rna}",
         long_label=(
-            "RNA binding proteins on long non-coding RNAs "
-            + rnas
-            + " with respect to the binding sites of "
-            + proteins
-            + ". The red sites are the places where proteins have competitive"
-            " binding with " + proteins + ", whereas green sites are places"
-            " where cooperative binding occurs. The thresholds used for"
-            " competitive binding was 0bp to "
-            + str(competitive_threshold_bp)
-            + "bp and "
-            + str(competitive_threshold_bp)
-            + "bp to "
-            + str(cooperative_threshold_bp)
-            + "bp for cooperative binding"
+            "RNA binding proteins on the transcript at {rna}. Overlapping"
+            " sites were merged into one."
         ),
         genome=GENOME_VERSION,
-        email="mnk1@andrew.cmu.edu",
+        email="mnk1@alumni.cmu.edu",
     )
 
-    print("Hub set up")
-    for filename in glob.iglob(overarching_path + "**/*.bb", recursive=True):
-        # print(filename)
-        _, _, _, _, _, _, category, name = filename.split("/")
-        rbp = name.split("_")[0]
+    for filename in glob.iglob(f"{overarching_path}/**/*.bb", recursive=True):
+        category = Path(filename).parent.name
+        name = Path(filename).name
+        # _, _, _, _, _, _, category, name = filename.split("/")
+        rbp = name.split("-")[0]
         rbp = rbp.replace(",", "_")
         rbp = rbp.replace("*", "_mut_")
         rbp = rbp.replace("(", "")
@@ -117,8 +102,8 @@ def populate_local_track_hub(
         # TODO: consider options for this for the user (add to Config at least)
 
         track = trackhub.Track(
-            name=rbp + "_" + category + "binding_sites",
-            short_label=rbp + "_" + category,
+            name=rbp + "-" + category + "-binding-sites",
+            short_label=rbp + "-" + category,
             long_label=(
                 "Binding sites of "
                 + rbp
@@ -155,8 +140,10 @@ def populate_local_track_hub(
 
         trackdb.add_tracks(track)
 
-    for filename in glob.iglob(overarching_path + "**/*.bw", recursive=True):
-        _, _, _, _, _, _, data_load_source, name = filename.split("/")
+    for filename in glob.iglob(f"{overarching_path}/**/*.bw", recursive=True):
+        data_load_source = Path(filename).parent.name
+        name = Path(filename).name
+        # _, _, _, _, _, _, data_load_source, name = filename.split("/")
         rbp_no = rbp_no_dict[data_load_source]
         rbp_peak = max(rbp_peaks.values())
         rbp_peak = (rbp_peak // 10 + 1) * 10
@@ -165,8 +152,8 @@ def populate_local_track_hub(
         # TODO: consider options for this for the user (add to Config at least)
 
         track = trackhub.Track(
-            name=rna + "_" + data_load_source + "_density_plot",
-            short_label="00 " + rna + "_density",
+            name=rna + "-" + data_load_source + "-density-plot",
+            short_label="00 " + rna + "-density",
             long_label=(
                 "Density plot of "
                 + str(rbp_no)
@@ -186,9 +173,6 @@ def populate_local_track_hub(
         )
 
         trackdb.add_tracks(track)
-
-    print(hub)
-    print(local_stage)
 
     trackhub.upload.stage_hub(hub, staging=local_stage)
 
@@ -265,7 +249,7 @@ def convert_bed_to_bb(overarching_path, data_load_sources):
         desired.
 
     """
-    debug = True
+    debug = False
     if GENOME_VERSION != "hg38":
         raise ValueError("Update this function for this genome version!")
 
@@ -284,13 +268,13 @@ def convert_bed_to_bb(overarching_path, data_load_sources):
         # os.chdir(overarching_path + data_load_source + "/")
 
         os.system(
-            f"for file in {overarching_path+data_load_source}/*.bed;"
+            f"for file in {Path(overarching_path) / data_load_source}/*.bed;"
             f" do echo $file; {UCSCTOOL_PATH}/{os_folder}/bedToBigBed"
             f" -as={AUTOSQL_PATH}/{as_file_name}"
             + " type=bed9+"
             + str(no_of_extra_fields)
             + ' "$file" '
-            + f'{UCSCTOOL_PATH}/hg38.chrom.sizes "$file.bb"; done'
+            + f'{UCSCTOOL_PATH}/hg38.chrom.sizes "${{file%.*}}".bb; done'
             + (" >/dev/null 2>&1" if not debug else "")
         )
 
@@ -311,7 +295,7 @@ def upload_online(local_dir, github_dir):
     :param github_dir: Directory on s3 to save the files on.
 
     """
-    debug = True
+    debug = False
     terminator = " >/dev/null 2>&1" if not debug else ""
 
     os.system("aws s3 sync " + local_dir + " " + github_dir + terminator)
@@ -345,9 +329,6 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
     rna_start_chr_coord = rna_info["start_coord"]
     rbp_no_dict = {}
     for data_load_source in data_load_sources:
-        print("")
-        print("Starting with", data_load_source, "data...")
-
         storage = big_storage[data_load_source]
 
         # TODO: check if displacement needs to be shifted by one for all data
@@ -366,26 +347,17 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
 
         rbp_no_dict[data_load_source] = len(storage)
 
-        folder_path = overarching_path + data_load_source + "/"
+        folder_path = Path(overarching_path) / data_load_source
         filepath = (
-            rna
-            + "_"
-            + data_load_source
-            + "_"
-            + GENOME_VERSION
-            + "_density_plot.wig"
+            f"{rna}-{data_load_source}-{GENOME_VERSION}-density-plot.wig"
         )
 
-        filepath = folder_path + filepath
+        filepath = folder_path / filepath
 
-        try:
-            density_plot_wig_file = open(filepath, "w")
-        except FileNotFoundError:
-            os.makedirs(folder_path)
-            density_plot_wig_file = open(filepath, "w")
+        folder_path.mkdir(parents=True, exist_ok=True)
 
-        density_plot_wig_file.write(wig_string)
-        density_plot_wig_file.close()
+        with open(filepath, "w") as density_plot_wig_file:
+            density_plot_wig_file.write(wig_string)
 
     return rbp_no_dict
 

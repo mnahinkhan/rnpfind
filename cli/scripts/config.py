@@ -50,6 +50,9 @@ GENOME_VERSION = "hg38"
 
 UCSC_TRACK_VISIBILITY = "dense"
 
+# Used for csv output format
+DEFAULT_BASE_STRINGENCY = 30
+
 # This should be False normally. Only set to True if you want to make a
 # dedicated directory for your RNA of interest.
 # Note that this flag only affects UCSC browser visualization method.

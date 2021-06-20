@@ -31,7 +31,7 @@ from .over_all_corr_analysis import overall_correlation_analysis
 from .ucsc_visualize import ucsc_visualize
 
 # Give your method a short name:
-analysis_methods_supported_short = ["csv", "ucsc"]
+analysis_methods_supported_short = ["csv", "bed"]
 
 # Give your method a long name:
 analysis_methods_supported_long = [
@@ -43,5 +43,5 @@ analysis_methods_supported_long = [
 # function!
 analysis_method_functions = {
     "csv": overall_correlation_analysis,
-    "ucsc": ucsc_visualize,
+    "bed": ucsc_visualize,
 }

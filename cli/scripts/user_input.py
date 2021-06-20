@@ -118,7 +118,11 @@ def get_user_rna_preference(transcript: str) -> dict:
         transcript
     )
     rna_info = {}
-    rna_info["official_name"] = transcript.upper()
+    rna_info["official_name"] = (
+        transcript.upper()
+        if ":" not in transcript
+        else f"chr{rna_chr_no}-gene"
+    )
     rna_info["chr_n"] = rna_chr_no
     rna_info["start_coord"] = int(rna_start_chr_coord)
     rna_info["end_coord"] = int(rna_end_chr_coord)
