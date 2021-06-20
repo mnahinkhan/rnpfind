@@ -7,6 +7,7 @@ uploading them to a server online, so that the binding sites can be visualized.
 """
 
 import os
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -98,7 +99,8 @@ def ucsc_visualize(big_storage, rna_info, configs=None):
     )
 
     # Resolving links
-    os.system(f"cp -r {local_dir} {local_dir}-copy")
+    shutil.copytree(local_dir, f"{local_dir}-copy")
+    # os.system(f"cp -rL {local_dir} {local_dir}-copy")
     os.system(f"rm -rf {local_dir}")
     os.system(f"mv {local_dir}-copy {local_dir}")
 
