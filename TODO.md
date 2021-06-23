@@ -1,5 +1,5 @@
 ## CLI
- - Fix up CLI tool to take command line options instead of being interactive
+ - Fix up CLI tool to take command line options instead of being interactive ✅
 
 ## Architecture
  - Come up with a suitable architecture for the web service ✅
