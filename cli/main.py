@@ -41,6 +41,7 @@ functions that you may be interested in contributing, check out
 "analysis_functions.py"!"""
 
 
+import argparse
 import os
 import shutil
 import sys
@@ -182,9 +183,11 @@ def analysis_script(
     print("Done!", file=sys.stderr)
 
 
-if __name__ == "__main__":
-    import argparse
+def main():
+    """
+    main function responsible for parsing commandline args
 
+    """
     out_formats = analysis_method_functions.keys()
 
     parser = argparse.ArgumentParser(
@@ -269,3 +272,7 @@ if __name__ == "__main__":
         args.trackhub,
         args.trackhub_only,
     )
+
+
+if __name__ == "__main__":
+    main()
