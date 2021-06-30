@@ -4,6 +4,8 @@ Used for the command line interface variant of RNPFind.
 """
 import sys
 
+from hgfind import WrongGeneName, hgfind
+
 from .analysis_functions import (
     analysis_methods_supported_long,
     analysis_methods_supported_short,
@@ -13,7 +15,7 @@ from .data_load_functions import (
     data_load_sources_supported_long,
     data_load_sources_supported_short,
 )
-from .gene_coordinates import Chromosome, gene_to_coord
+from .gene_coordinates import Chromosome
 
 
 def parse_genome_coord(transcript: str) -> dict:
@@ -78,9 +80,9 @@ def get_rna_coord(rna_gene_name):
 
     """
 
-    rna_info = gene_to_coord(rna_gene_name)
-
-    if not rna_info["success"]:
+    try:
+        rna_info = hgfind(rna_gene_name)
+    except WrongGeneName:
         # Transcript might have been given in <chr no>:<start>-<end> form
         rna_info = parse_genome_coord(rna_gene_name)
         if not rna_info["success"]:

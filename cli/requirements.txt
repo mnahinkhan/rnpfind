@@ -1,3 +1,4 @@
 docutils==0.17.1
+hgfind==0.0.2
 sortedcontainers==2.4.0
 trackhub==0.2.4
