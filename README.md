@@ -64,8 +64,8 @@ git config --local core.hooksPath .githooks/
 ```
 The above will run the following to ensure code consistency every time you
 commit:
- - (black)[https://github.com/psf/black]
- - (isort)[https://github.com/PyCQA/isort]
+ - [black](https://github.com/psf/black)
+ - [isort](https://github.com/PyCQA/isort)
 
-Also use (fit-commit)[https://github.com/m1foley/fit-commit] to ensure
+Also use [fit-commit](https://github.com/m1foley/fit-commit) to ensure
 consistent commit message style.
