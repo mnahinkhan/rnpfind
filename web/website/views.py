@@ -11,23 +11,15 @@ Important views needed for RNPFind are:
 """
 from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
 from django.shortcuts import render
-from website.scripts.analysis_functions import analysis_method_functions
-
-# RNPFind source script files
-from website.scripts.gene_coordinates import gene_to_coord
-from website.scripts.load_data import load_data
+from hgfind import WrongGeneName, hgfind
 
 from .models import AnalysisStatus, BindingSummaryInfo, Gene
 
+# RNPFind source script files
+
+
 # from time import sleep
-
-
 # from django.urls import reverse
-
-
-# total number of steps it takes to analyse a gene - useful for outputting
-# status messages.
-TOTAL_STEPS = 13
 
 
 def index(request, bad_gene=""):
@@ -59,10 +51,9 @@ def gene_page(request, gene_name):
     Serves up a page dedicated to the requested gene name. If the requested gene
     is not a real gene, it serves the index page with a "bad gene" marker.
     """
-    rna_info = gene_to_coord(gene_name)
-    success = rna_info["success"]
-
-    if not success:
+    try:
+        rna_info = hgfind(gene_name)
+    except WrongGeneName:
         return index(request, bad_gene=gene_name)
 
     official_name = rna_info["official_name"]
