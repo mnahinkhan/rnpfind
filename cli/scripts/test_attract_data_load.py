@@ -4,7 +4,13 @@ Tests the Attract data loading functions for correctness
 """
 import unittest
 
-from .attract_data_load import attract_data_load
+from .analysis_functions import (
+    analysis_method_functions,
+    analysis_methods_supported_long,
+    analysis_methods_supported_short,
+)
+
+# from .attract_data_load import attract_data_load
 from .gene_coordinates import Chromosome
 
 
@@ -27,7 +33,7 @@ class TestCorrectBindingSites(unittest.TestCase):
         test_rna_info["start_coord"] = 65497738
         test_rna_info["end_coord"] = 65506516
 
-        attract_binding_sites = attract_data_load(test_rna_info)
+        # attract_binding_sites = attract_data_load(test_rna_info)
         self.assertEqual(
             len(analysis_methods_supported_short),
             len(analysis_methods_supported_long),

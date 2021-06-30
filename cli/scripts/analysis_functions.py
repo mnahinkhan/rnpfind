@@ -35,8 +35,8 @@ analysis_methods_supported_short = ["csv", "bed"]
 
 # Give your method a long name:
 analysis_methods_supported_long = [
-    "Binding correlation analysis",
-    "Visualize on UCSC Genome Browser",
+    "Binding correlation csv",
+    "Bed files with binding data",
 ]
 
 # Map your short name to the variable imported above that corresponds to your
