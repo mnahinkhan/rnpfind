@@ -16,16 +16,9 @@ RUN pip install awscli --force-reinstall --upgrade
 WORKDIR /app
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-COPY ./src .
+COPY . .
 
 RUN adduser --disabled-password myuser; \
-    mkdir -p website/output-data/pickles; \
-    mkdir -p website/static/ucsc-tracks; \
-    chown myuser website/output-data/; \
-    chown myuser website/output-data/pickles; \
-    chown -R myuser website/data; \
-    chown -R myuser staticfiles; \
-    chown -R myuser website/static/ucsc-tracks; \
     chown myuser /app
 
 
