@@ -19,7 +19,9 @@ RUN pip install -r requirements.txt
 COPY . .
 
 RUN adduser --disabled-password myuser; \
-    chown myuser /app
+    mkdir /app/staticfiles; \
+    chown myuser /app; \
+    chown myuser /app/staticfiles
 
 
 USER myuser
