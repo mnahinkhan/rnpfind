@@ -3,8 +3,8 @@ version: "3.9"
 services:
  db:
    image: postgres
-   # volumes:
-     # - ./data/db:/var/lib/postgresql/data # dev
+   volumes:
+     - postgres_data:/var/lib/postgresql/data
    env_file:
      - db.env
    container_name: db-container
@@ -45,4 +45,5 @@ services:
    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
+ postgres_data:
  static_volume:
