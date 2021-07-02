@@ -80,8 +80,6 @@ CACHE_PATH = "./.cache"
 PICKLE_PATH = f"{CACHE_PATH}/pickles"
 # Path for all (input) read-only data
 RO_DATA_PATH = "./ro-data"
-# Path for BioMart data
-BIOMART_PATH = f"{RO_DATA_PATH}/biomart"
 # Path for RBPDB data
 RBPDB_PATH = f"{RO_DATA_PATH}/rbpdb"
 # Path for ATTRACT data

@@ -6,11 +6,6 @@ representing a gene name to its coordinates on the hg38 chromosome.
 
 from typing import Union
 
-from .config import BIOMART_PATH, PICKLE_PATH
-
-PATH_TO_BIO_MART = f"{BIOMART_PATH}/biomart-gene-coordinates.txt"
-PATH_TO_PICKLE = f"{PICKLE_PATH}/biomart-gene-coordinates.pickle"
-
 
 def is_int(in_obj):
     """
