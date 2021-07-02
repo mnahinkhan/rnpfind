@@ -29,6 +29,7 @@ services:
      - static_volume:/app/staticfiles
      - ./data/certbot/conf:/etc/letsencrypt
      - ./data/certbot/www:/var/www/certbot
+     - ./ro-data:/app/ro-data
    ports:
      - 80:80
      - 443:443
