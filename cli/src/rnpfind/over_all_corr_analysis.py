@@ -32,7 +32,7 @@ def generate_csv(
     path_to_save = (
         Path(out_dir)
         / "csv"
-        / f"{rna}-{'-'.join(data_load_sources)}-{stringency}.csv"
+        / f"{rna.lower()}-{'-'.join(data_load_sources)}-{stringency}.csv"
     )
 
     path_to_save.parent.mkdir(parents=True, exist_ok=True)

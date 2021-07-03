@@ -184,7 +184,7 @@ def analysis_script(
         Path(out_dir).mkdir(parents=True, exist_ok=True)
     else:
         # The user did not specify an out directory
-        default_path = Path.cwd() / rna_info["official_name"]
+        default_path = Path.cwd() / rna_info["official_name"].lower()
 
         while default_path.is_dir():
             # The default path already exists, append the folder name with
