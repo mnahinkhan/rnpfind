@@ -50,23 +50,23 @@ from pathlib import Path
 
 # Responsible for managing the analysis functions that manipulate the RNA-RBP
 # interaction data to get a useful output:
-from scripts.analysis_functions import (
+from .analysis_functions import (
     analysis_method_functions,
     analysis_methods_supported_short,
 )
-from scripts.config import (
+from .config import (
     DEFAULT_BASE_STRINGENCY,
     RO_DATA_PATH,
     RO_DATA_TAR_NAME,
     RO_DATA_URL,
 )
-from scripts.data_load_functions import data_load_sources_supported_short
+from .data_load_functions import data_load_sources_supported_short
 
 # Responsible for managing the loading of RNA-RBP interaction data:
-from scripts.load_data import load_data
+from .load_data import load_data
 
 # Functions that help with interacting with the user to get their preference:
-from scripts.user_input import get_user_rna_preference
+from .user_input import get_user_rna_preference
 
 
 def rm_folder_contents(folder):

@@ -2,11 +2,10 @@
 Tests the user input functions module for correctness.
 
 """
-import inspect
 import unittest
 
-from .gene_coordinates import Chromosome
-from .user_input import parse_genome_coord
+from src.rnpfind.gene_coordinates import Chromosome
+from src.rnpfind.user_input import parse_genome_coord
 
 
 class TestParseGenomeCoord(unittest.TestCase):

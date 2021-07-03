@@ -4,14 +4,14 @@ Tests the Attract data loading functions for correctness
 """
 import unittest
 
-from .analysis_functions import (
+from src.rnpfind.analysis_functions import (
     analysis_method_functions,
     analysis_methods_supported_long,
     analysis_methods_supported_short,
 )
 
 # from .attract_data_load import attract_data_load
-from .gene_coordinates import Chromosome
+from src.rnpfind.gene_coordinates import Chromosome
 
 
 class TestCorrectBindingSites(unittest.TestCase):

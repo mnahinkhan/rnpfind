@@ -5,7 +5,7 @@ Tests the RNPFind analysis functions module for internal consistency.
 import inspect
 import unittest
 
-from .analysis_functions import (
+from src.rnpfind.analysis_functions import (
     analysis_method_functions,
     analysis_methods_supported_long,
     analysis_methods_supported_short,
