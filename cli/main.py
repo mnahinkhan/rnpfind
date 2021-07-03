@@ -54,7 +54,12 @@ from scripts.analysis_functions import (
     analysis_method_functions,
     analysis_methods_supported_short,
 )
-from scripts.config import DEFAULT_BASE_STRINGENCY
+from scripts.config import (
+    DEFAULT_BASE_STRINGENCY,
+    RO_DATA_PATH,
+    RO_DATA_TAR_NAME,
+    RO_DATA_URL,
+)
 from scripts.data_load_functions import data_load_sources_supported_short
 
 # Responsible for managing the loading of RNA-RBP interaction data:
@@ -81,6 +86,26 @@ def rm_folder_contents(folder):
             print("Failed to delete %s.")
 
 
+def download_ro_data():
+    """
+    Deletes the ro-data directory and downloads the contents from
+    rnpfind.com
+
+    """
+    # Delete folder
+    os.system(f"rm -rf {RO_DATA_PATH}")
+    # Create folder
+    os.system(f"mkdir {RO_DATA_PATH}")
+    # Download contents and extract
+    os.system(
+        f"wget -c {RO_DATA_URL}"
+        " && echo 'Extracting tar file...' >&2"
+        f" && tar xf {RO_DATA_TAR_NAME} --checkpoint=.10000 >&2"
+        f" && rm {RO_DATA_TAR_NAME}"
+        " && echo 'Done!' >&2"
+    )
+
+
 def analysis_script(
     transcript,
     sources=None,
@@ -93,6 +118,17 @@ def analysis_script(
     """
     analysis_script: runs command line version of RNPFind
     """
+
+    # First, check if readonly data directory exists
+    if not Path(RO_DATA_PATH).is_dir():
+        # We assume that if the dir exists the data is fine; otherwise
+        # the data needs to be downloaded
+
+        # In case of corrupt data one would have to call download_ro_data()
+        # manually (Or if one were to wish for just the data without analysis)
+        print("Downloading data necessary for rnpfind...", file=sys.stderr)
+        download_ro_data()
+
     # Start by getting the transcript of interest to analyze
     rna_info: dict = get_user_rna_preference(transcript)
 

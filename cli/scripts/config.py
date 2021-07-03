@@ -74,6 +74,9 @@ PWM_SCAN_CUT_OFF_PERCENTAGE = 0.80
 ANNOTATION_COLUMN_DELIMITER = ",,,,,"
 ANNOTATION_ROW_DELIMITER = ";;;;;"
 
+RO_DATA_TAR_NAME = "all.tar.gz"
+RO_DATA_URL = "https://rnpfind.com/ro-data/all.tar.gz"
+
 # Path for all cached data
 CACHE_PATH = "./.cache"
 # Path for pickled data
