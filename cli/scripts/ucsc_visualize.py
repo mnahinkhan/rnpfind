@@ -9,10 +9,8 @@ uploading them to a server online, so that the binding sites can be visualized.
 import os
 import shutil
 import sys
-from datetime import datetime
 from pathlib import Path
 
-from .config import DEDICATED_ANALYSIS, GENOME_VERSION
 from .populate_rbp_binding_sites_script import populate_binding_sites
 from .populate_trackhub import (
     convert_bed_to_bb,
@@ -20,25 +18,6 @@ from .populate_trackhub import (
     density_plot,
     populate_local_track_hub,
 )
-
-
-def get_overarching_path(rna):
-    """
-    Returns a filepath to a unqiue folder for saving BED files in.
-    :param rna: name of RNA gene of interest
-
-    """
-    if not DEDICATED_ANALYSIS:
-        time_list = datetime.now().timetuple()
-        time_list = [str(x) for x in time_list]
-        time_date = "_".join(time_list[0:6])  # year to seconds
-    else:
-        time_date = rna
-
-    return (
-        "./website/output-data/ucsc/rbp_binding_sites_bed_files"
-        f"/{time_date}/"
-    )
 
 
 def ucsc_visualize(big_storage, rna_info, configs=None):
