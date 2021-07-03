@@ -8,6 +8,7 @@ saved pickle files the next time around.
 
 """
 import pickle
+from pathlib import Path
 
 from .config import PICKLE_PATH
 
@@ -38,6 +39,7 @@ def picklify(dict_generator, *args, **kwargs):
             dict_to_return = pickle.load(pickle_handle)
     except FileNotFoundError:
         dict_to_return = dict_generator(*args, **kwargs)
+        Path(pickle_path).parent.mkdir(parents=True, exist_ok=True)
         with open(pickle_path, "wb") as pickle_handle:
             pickle.dump(
                 dict_to_return, pickle_handle, protocol=pickle.HIGHEST_PROTOCOL

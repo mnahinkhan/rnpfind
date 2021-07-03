@@ -2,6 +2,8 @@
 Stores most of the configurable variables for RNPFind for ease of access.
 """
 
+from pathlib import Path
+
 # Building dictionary takes time. Set to false to use an identity function
 # instead.
 # dictionaryBuild = True
@@ -74,15 +76,15 @@ PWM_SCAN_CUT_OFF_PERCENTAGE = 0.80
 ANNOTATION_COLUMN_DELIMITER = ",,,,,"
 ANNOTATION_ROW_DELIMITER = ";;;;;"
 
-RO_DATA_TAR_NAME = "all.tar.gz"
+RO_DATA_TAR_NAME = Path(__file__).parent / "all.tar.gz"
 RO_DATA_URL = "https://rnpfind.com/ro-data/all.tar.gz"
 
 # Path for all cached data
-CACHE_PATH = "./.cache"
+CACHE_PATH = Path(__file__).parent / "cache"
 # Path for pickled data
 PICKLE_PATH = f"{CACHE_PATH}/pickles"
 # Path for all (input) read-only data
-RO_DATA_PATH = "./ro-data"
+RO_DATA_PATH = Path(__file__).parent / "ro-data"
 # Path for RBPDB data
 RBPDB_PATH = f"{RO_DATA_PATH}/rbpdb"
 # Path for ATTRACT data

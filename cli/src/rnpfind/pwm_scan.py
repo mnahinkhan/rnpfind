@@ -56,8 +56,9 @@ represented by "pwm".
 
 
 from functools import partial
+from pathlib import Path
 
-from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE
+from .config import GENOME_VERSION, PWM_SCAN_CUT_OFF_PERCENTAGE, RO_DATA_PATH
 
 bases = ["A", "G", "C", "T"]
 
@@ -84,8 +85,8 @@ def get_human_seq(rna_info):
     if (chr_no, chr_start, chr_end) in seqs:
         return seqs[(chr_no, chr_start, chr_end)]
 
-    chr_files_dir = "ro-data/" + GENOME_VERSION + "-human-genome/"
-    chr_file = chr_files_dir + "chr" + str(chr_no) + ".fa"
+    chr_files_dir = Path(RO_DATA_PATH) / f"{GENOME_VERSION}-human-genome"
+    chr_file = chr_files_dir / f"chr{chr_no}.fa"
 
     with open(chr_file) as handle:
         # Need to skip the first line, and then a bunch more to reach the line

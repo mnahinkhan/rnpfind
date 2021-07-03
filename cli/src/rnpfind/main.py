@@ -98,9 +98,10 @@ def download_ro_data():
     os.system(f"mkdir {RO_DATA_PATH}")
     # Download contents and extract
     os.system(
-        f"wget -c {RO_DATA_URL}"
+        f"wget -c -O {RO_DATA_TAR_NAME} {RO_DATA_URL}"
         " && echo 'Extracting tar file...' >&2"
-        f" && tar xf {RO_DATA_TAR_NAME} --checkpoint=.10000 >&2"
+        f" && tar xf {RO_DATA_TAR_NAME}"
+        f" --checkpoint=.10000  --directory={Path(RO_DATA_PATH).parent} >&2"
         f" && rm {RO_DATA_TAR_NAME}"
         " && echo 'Done!' >&2"
     )
