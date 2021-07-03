@@ -14,3 +14,4 @@ ro-data/
 ucsc-tracks/
 output-data/
 .cache/
+*.egg-info
