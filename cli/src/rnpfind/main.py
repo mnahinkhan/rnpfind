@@ -97,7 +97,7 @@ def download_ro_data():
     # Create folder
     os.system(f"mkdir {RO_DATA_PATH}")
     # Download contents and extract
-    os.system(
+    exit_code = os.system(
         f"wget -c -O {RO_DATA_TAR_NAME} {RO_DATA_URL}"
         " && echo 'Extracting tar file...' >&2"
         f" && tar xf {RO_DATA_TAR_NAME}"
@@ -105,6 +105,12 @@ def download_ro_data():
         f" && rm {RO_DATA_TAR_NAME}"
         " && echo 'Done!' >&2"
     )
+
+    if not exit_code:
+        # Delete folder
+        os.system(f"rm -rf {RO_DATA_PATH}")
+        print("Problems occured in getting ro-data...", file=sys.stderr)
+        sys.exit(1)
 
 
 def analysis_script(
