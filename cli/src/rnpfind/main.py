@@ -106,7 +106,7 @@ def download_ro_data():
         " && echo 'Done!' >&2"
     )
 
-    if not exit_code:
+    if exit_code:
         # Delete folder
         os.system(f"rm -rf {RO_DATA_PATH}")
         print("Problems occured in getting ro-data...", file=sys.stderr)
