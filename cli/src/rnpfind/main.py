@@ -99,9 +99,9 @@ def download_ro_data():
     # Download contents and extract
     exit_code = os.system(
         f"wget -c -O {RO_DATA_TAR_NAME} {RO_DATA_URL}"
-        " && echo 'Extracting tar file...' >&2"
+        " && echo 'Extracting tar file (this will take some time)...' >&2"
         f" && tar xf {RO_DATA_TAR_NAME}"
-        f" --checkpoint=.10000  --directory={Path(RO_DATA_PATH).parent} >&2"
+        f" --directory={Path(RO_DATA_PATH).parent} >&2"
         f" && rm {RO_DATA_TAR_NAME}"
         " && echo 'Done!' >&2"
     )
