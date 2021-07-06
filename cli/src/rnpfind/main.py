@@ -113,7 +113,7 @@ def download_ro_data():
         sys.exit(1)
 
 
-def analysis_script(
+def rnpfind(
     transcript,
     sources=None,
     methods=None,
@@ -123,7 +123,15 @@ def analysis_script(
     is_trackhub_only=False,
 ):
     """
-    analysis_script: runs command line version of RNPFind
+    Collect binding data of RBPs on RNA.
+
+      :param transcript: gene name or genomic location to specify transcript
+      :param sources: list of data sources to limit to for data collection
+      :param methods: list of output formats to restrict to
+      :param base_stringency: config option for csv output method
+      :param out_dir: directory to write output files in
+      :param is_trackhub: whether to generate trakchub structure
+      :param is_trackhub_only: wheter to delete BED files in the end
     """
 
     # First, check if readonly data directory exists
@@ -306,7 +314,7 @@ def main():
     )
 
     args = parser.parse_args()
-    analysis_script(
+    rnpfind(
         args.transcript,
         args.sources,
         args.out_format,

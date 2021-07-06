@@ -45,6 +45,22 @@ specify). A few output formats are supported (use `--out-format` to specify):
 
 For more options, run `rnpfind --help`
 
+
+### Within Python
+You can import `rnpfind` to your Python code as follows:
+
+```
+from rnpfind import rnpfind
+
+# Collect data on Malat1
+rnpfind("malat1")
+```
+
+The data is written to disk like in the command line call.
+Check `help(rnpfind)` for keyword arg options.
+
+
+
 ## How does it work?
 In principle, RNA-RBP interactions can be backed by two forms of evidence:
 experimental and computational.
