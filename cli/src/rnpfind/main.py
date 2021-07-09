@@ -114,7 +114,10 @@ def download_ro_data():
 
     """
     # Delete folder
-    shutil.rmtree(RO_DATA_PATH)
+    try:
+        shutil.rmtree(RO_DATA_PATH)
+    except FileNotFoundError:
+        pass
 
     # Create folder
     Path(RO_DATA_PATH).mkdir(parents=True, exist_ok=True)
