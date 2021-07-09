@@ -86,6 +86,27 @@ def rm_folder_contents(folder):
             print("Failed to delete %s.")
 
 
+import urllib.request
+
+from tqdm import tqdm
+
+
+class DownloadProgressBar(tqdm):
+    def update_to(self, b=1, bsize=1, tsize=None):
+        if tsize is not None:
+            self.total = tsize
+        self.update(b * bsize - self.n)
+
+
+def download_url(url, output_path):
+    with DownloadProgressBar(
+        unit="B", unit_scale=True, miniters=1, desc=url.split("/")[-1]
+    ) as t:
+        urllib.request.urlretrieve(
+            url, filename=output_path, reporthook=t.update_to
+        )
+
+
 def download_ro_data():
     """
     Deletes the ro-data directory and downloads the contents from
@@ -93,24 +114,26 @@ def download_ro_data():
 
     """
     # Delete folder
-    os.system(f"rm -rf {RO_DATA_PATH}")
+    shutil.rmtree(RO_DATA_PATH)
+
     # Create folder
-    os.system(f"mkdir {RO_DATA_PATH}")
-    # Download contents and extract
-    exit_code = os.system(
-        f"wget -c -O {RO_DATA_TAR_NAME} {RO_DATA_URL}"
-        " && echo 'Extracting tar file (this will take some time)...' >&2"
-        f" && tar xf {RO_DATA_TAR_NAME}"
-        f" --directory={Path(RO_DATA_PATH).parent} >&2"
-        f" && rm {RO_DATA_TAR_NAME}"
-        " && echo 'Done!' >&2"
+    Path(RO_DATA_PATH).mkdir(parents=True, exist_ok=True)
+
+    # Download tar file
+    print("Downloading tar file...", file=sys.stderr)
+    download_url(RO_DATA_URL, RO_DATA_TAR_NAME)
+
+    # Extract tar file
+    print("Extracting tar file (this will take some time)...", file=sys.stderr)
+    shutil.unpack_archive(
+        RO_DATA_TAR_NAME, extract_dir=Path(RO_DATA_PATH).parent
     )
 
-    if exit_code:
-        # Delete folder
-        os.system(f"rm -rf {RO_DATA_PATH}")
-        print("Problems occured in getting ro-data...", file=sys.stderr)
-        sys.exit(1)
+    # Delete the tar file
+    Path(RO_DATA_TAR_NAME).unlink()
+
+    # Display confirmation of completion
+    print("Done!", file=sys.stderr)
 
 
 def rnpfind(
