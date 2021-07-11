@@ -1,2 +1,2 @@
 include VERSION
-include src/rnpfind/ucsc-tools/*
+recursive-include src/rnpfind/ucsc-tools *
