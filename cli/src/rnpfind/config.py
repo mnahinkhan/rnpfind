@@ -94,4 +94,4 @@ POSTAR_PATH = f"{RO_DATA_PATH}/postar"
 # Path for AutoSQL files
 AUTOSQL_PATH = f"{RO_DATA_PATH}/autosql"
 # Path for UCSC tools
-UCSCTOOL_PATH = "./ucsc-tools"
+UCSCTOOL_PATH = Path(__file__).parent / "ucsc-tools"
