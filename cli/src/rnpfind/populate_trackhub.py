@@ -76,7 +76,7 @@ def populate_local_track_hub(
     #     _str = threshold_config_file.read()
 
     assert OVERLAP_CONFLICT == "union"
-    hub_name = f"rbps-on-{rna}-{OVERLAP_CONFLICT.lower()}"
+    hub_name = f"rbps-on-{rna.lower()}"
     hub, _, _, trackdb = trackhub.default_hub(
         hub_name=hub_name,
         short_label=f"RBPs on {rna}",
@@ -348,9 +348,7 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
         rbp_no_dict[data_load_source] = len(storage)
 
         folder_path = Path(overarching_path) / data_load_source
-        filepath = (
-            f"{rna}-{data_load_source}-{GENOME_VERSION}-density-plot.wig"
-        )
+        filepath = f"{rna.lower()}-{data_load_source}-{GENOME_VERSION}-density-plot.wig"
 
         filepath = folder_path / filepath
 

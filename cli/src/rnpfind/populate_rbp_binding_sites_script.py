@@ -123,7 +123,9 @@ def populate_binding_sites(
             #     + GENOME_VERSION
             #     + "_sites.bed"
             # )
-            filepath = f"{rbp}-{data_load_source}-{GENOME_VERSION}-sites.bed"
+            filepath = (
+                f"{rbp.lower()}-{data_load_source}-{GENOME_VERSION}-sites.bed"
+            )
 
             filepath = folder_path + filepath
 
