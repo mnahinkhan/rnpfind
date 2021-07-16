@@ -60,6 +60,15 @@ The data is written to disk like in the command line call.
 Check `help(rnpfind)` for keyword arg options.
 
 
+Perhaps not so usefully, you can find the genome version `rnpfind` is working
+with programatically:
+
+```
+from rnpfind import GENOME_VERSION
+print(GENOME_VERSION)
+```
+
+
 
 ## How does it work?
 In principle, RNA-RBP interactions can be backed by two forms of evidence:
