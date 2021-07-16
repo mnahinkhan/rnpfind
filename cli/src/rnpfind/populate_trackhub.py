@@ -81,7 +81,7 @@ def populate_local_track_hub(
         hub_name=hub_name,
         short_label=f"RBPs on {rna}",
         long_label=(
-            "RNA binding proteins on the transcript at {rna}. Overlapping"
+            f"RNA binding proteins on the transcript at {rna}. Overlapping"
             " sites were merged into one."
         ),
         genome=GENOME_VERSION,
