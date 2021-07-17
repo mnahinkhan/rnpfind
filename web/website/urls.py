@@ -8,7 +8,9 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("gene", views.gene_page_redirector, name="gene-page-redirector"),
+    path(
+        "gene-search", views.gene_page_redirector, name="gene-page-redirector"
+    ),
     path("gene/<str:gene_name>", views.gene_page, name="gene-page"),
     path(
         "analysis-request/<str:gene>",
@@ -19,5 +21,10 @@ urlpatterns = [
         "analysis-status/<str:request_id>",
         views.analysis_status,
         name="analysis-status",
+    ),
+    path(
+        "analysis-result/<str:gene>",
+        views.analysis_result,
+        name="analysis-result",
     ),
 ]

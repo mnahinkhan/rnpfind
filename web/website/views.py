@@ -9,17 +9,15 @@ Important views needed for RNPFind are:
  3. A view used for clients to ask on the status of a previously requested
     analysis
 """
+import sys
+
+import redis
 from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from hgfind import WrongGeneName, hgfind
 
-from .models import AnalysisStatus, BindingSummaryInfo, Gene
-
-# RNPFind source script files
-
-
-# from time import sleep
-# from django.urls import reverse
+from .models import AnalysisStatus, Gene
+from .tasks import analyze_gene, analyze_gene_done
 
 
 def index(request, bad_gene=""):
@@ -43,7 +41,7 @@ def gene_page_redirector(request):
     view.
     """
     gene_name = request.GET["gene_name"]
-    return gene_page(request, gene_name)
+    return redirect(gene_page, gene_name=gene_name)
 
 
 def gene_page(request, gene_name):
@@ -57,7 +55,13 @@ def gene_page(request, gene_name):
         return index(request, bad_gene=gene_name)
 
     official_name = rna_info["official_name"]
+
+    if gene_name != official_name.lower():
+        return redirect(gene_page, gene_name=official_name.lower())
+
     is_in_database = len(Gene.objects.filter(name=official_name)) != 0
+    dbg_print(official_name)
+    dbg_print(is_in_database)
 
     return render(
         request,
@@ -79,104 +83,88 @@ def analysis_status(request, request_id):
     """
     del request
 
-    if len(AnalysisStatus.objects.filter(request_id=request_id)) > 0:
-        status = AnalysisStatus.objects.get(request_id=request_id).status
-    else:
-        status = ""
+    task = analyze_gene.AsyncResult(request_id.lower())
 
+    if (
+        task.state == "SUCCESS"
+        and len(Gene.objects.filter(name=request_id.upper())) == 1
+    ):
+        state = "SUCCESS"
+    else:
+        state = "PENDING"
+
+    if len(AnalysisStatus.objects.filter(request_id=request_id.upper())) > 0:
+        status = AnalysisStatus.objects.get(
+            request_id=request_id.upper()
+        ).output
+    else:
+        status = "No analysis record"
+        state = "UNREQUESTED"
+
+    return JsonResponse({"message": status, "status": state})
+
+
+def dbg_print(string: str):
+    print(string, file=sys.stderr)
+
+
+def analysis_result(request, gene):
+    """
+    Returns the status of the analysis as a JSON object
+    """
+    del request
+
+    if len(Gene.objects.filter(name=gene.upper())) == 0:
+        if len(AnalysisStatus.objects.filter(request_id=gene.upper())) == 0:
+            return reject("unrequested")
+
+        return reject("analysis ongoing")
+
+    gene_obj = Gene.objects.get(name=gene.upper())
     return JsonResponse(
         {
-            "status": status
-            if status
-            else "0/13. Sending request to server for analysis"
+            "request_accepted": True,
+            "chr_no": gene_obj.chromosome_number,
+            "start_coord": gene_obj.start_coord,
+            "end_coord": gene_obj.end_coord,
+            "ucsc_url": gene_obj.ucsc_url,
         }
     )
 
 
-def out_fn_gen(request_id):
+def reject(reason):
     """
-    Generates a function that allows for emitting status updates of an analysis,
-    given the request id for the analysis. The "out" function returned may be
-    called multiple times.
-
-    Internally, the out function updates a database entry with every output
-    (status update) message emitted. This allows for requests that check on
-    the current status of an analysis.
+    Returns a query rejection JSON object with customizable message
     """
-
-    def out(msg):
-        if len(AnalysisStatus.objects.filter(request_id=request_id)) > 0:
-            analysis_status_obj = AnalysisStatus.objects.get(
-                request_id=request_id
-            )
-            analysis_status_obj.status = msg
-            analysis_status_obj.save()
-        else:
-            AnalysisStatus(request_id=request_id, status=msg).save()
-
-    return out
+    return JsonResponse({"request_accepted": False, "reason": reason})
 
 
 def analysis_request(request, gene):
     """
-    Given a gene name, analyses its transcript.
-
-    This function is adopted from analysis_script() in main.py (the command
-    line tool). It specifically populates the binding sites for the gene from
-    various (three) data sources, and then returns a JSON object to confirm
-    completion. The client may then refresh their page to see the newly
-    populated data for their transcript of interest.
+    API callpoint for requesting analysis of genes
     """
     del request
 
-    rna_info = gene_to_coord(gene)
-    assert rna_info["success"]
-    assert rna_info["official_name"] == gene
-    assert len(Gene.objects.filter(name=rna_info["official_name"])) == 0
+    try:
+        rna_info = hgfind(gene)
+    except WrongGeneName:
+        return reject("unrecognized gene")
 
-    if len(AnalysisStatus.objects.filter(request_id=gene)) > 0:
-        return JsonResponse({"process_complete": False})
-    gene_entry = Gene(name=gene)
+    if rna_info["official_name"].lower() != gene:
+        return reject(f"Try {rna_info['official_name'].lower()} instead")
 
-    request_id = gene
-    out = out_fn_gen(request_id)
+    if len(Gene.objects.filter(name=gene.upper())) != 0:
+        return reject(f"{gene.upper()} has already been analyzed")
 
-    # collect binding sites
-    data_load_sources = ["rbpdb", "attract", "postar"]
-    big_storage = load_data(
-        data_load_sources, rna_info, out=out, total_steps=TOTAL_STEPS
+    if len(AnalysisStatus.objects.filter(request_id=gene.upper())) > 0:
+        return reject(f"{gene.upper()} is currently being analyzed")
+
+    task = analyze_gene.apply_async(
+        args=[gene.upper()], task_id=gene.lower(), link=analyze_gene_done.s()
     )
-
-    out(f"4/{TOTAL_STEPS}. Creating visualizations on UCSC")
-
-    analysis_method = "ucsc"
-    analysis_method_function = analysis_method_functions[analysis_method]
-    ucsc_url = analysis_method_function(
-        big_storage, rna_info, out=out, total_steps=TOTAL_STEPS
-    )
-    gene_entry.ucsc_url = ucsc_url
-
-    out(f"11/{TOTAL_STEPS}. Caching computed values")
-    gene_entry.chromosome_number = rna_info["chr_n"]
-    gene_entry.start_coord = rna_info["start_coord"]
-    gene_entry.end_coord = rna_info["end_coord"]
-
-    gene_entry.save()
-
-    out(f"12/{TOTAL_STEPS}. Generating summary data")
-    # Save binding site summary info
-    for data_source in big_storage:
-        no_unique_rbps, no_unqiue_sites = big_storage[data_source].summary()
-        BindingSummaryInfo(
-            data_source_type=data_source,
-            gene=gene_entry,
-            number_of_sites=no_unqiue_sites,
-            number_of_rbps=no_unique_rbps,
-        ).save()
-
-    assert len(Gene.objects.filter(name=rna_info["official_name"])) == 1
-    out(
-        f"13/{TOTAL_STEPS}. Complete! Refreshing your page now..."
-        " If it does not automatically, please refresh this page!"
-    )
-    return JsonResponse({"process_complete": True})
+    assert task.id == gene.lower()
+    AnalysisStatus(
+        request_id=gene.upper(), output="analysis request queued"
+    ).save()
+    assert len(AnalysisStatus.objects.filter(request_id=gene.upper())) > 0
+    return JsonResponse({"request_accepted": True, "task_id": task.id})
