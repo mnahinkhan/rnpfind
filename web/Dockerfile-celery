@@ -8,17 +8,21 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libkrb5-dev \
  && rm -rf /var/lib/apt/lists/*
 
-
 WORKDIR /app
+RUN pip install rnpfind==0.5.2
+RUN rnpfind-download
+
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
 
-
 RUN adduser --disabled-password myuser; \
+    mkdir /app/staticfiles; \
+    chown myuser /app; \
+    chown myuser /app/staticfiles; \
     chown myuser /usr/local/lib/python3.8/site-packages/rnpfind; \
     chown myuser /usr/local/lib/python3.8/site-packages/hgfind
 
-
 USER myuser
-ENTRYPOINT ["./web-entrypoint.sh"]
+
+# vi: ft=dockerfile

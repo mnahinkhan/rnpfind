@@ -9,6 +9,9 @@ services:
      - db.env
    container_name: db-container
 
+ redis:
+   image: "redis:alpine"
+
  web:
    build: ./web
    volumes:
@@ -21,7 +24,23 @@ services:
      - 8000
    depends_on:
      - db
+     - nginx
+     - redis
    container_name: web-container
+
+ celery:
+   build:
+     context: ./web
+     dockerfile: Dockerfile-celery
+   command: celery -A rnp_find worker -l INFO
+   env_file:
+     - db.env
+   volumes:
+     - static_volume:/app/staticfiles
+   depends_on:
+     - db
+     - redis
+
 
  nginx:
    build: ./nginx
