@@ -103,10 +103,10 @@ def populate_local_track_hub(
 
         track = trackhub.Track(
             name=rbp + "-" + category + "-binding-sites",
-            short_label=rbp + "-" + category,
+            short_label=rbp.upper() + "-" + category,
             long_label=(
                 "Binding sites of "
-                + rbp
+                + rbp.upper()
                 + " derived from "
                 + data_load_sources_supported_long[
                     data_load_sources_supported_short.index(category)
@@ -152,7 +152,7 @@ def populate_local_track_hub(
         # TODO: consider options for this for the user (add to Config at least)
 
         track = trackhub.Track(
-            name=rna + "-" + data_load_source + "-density-plot",
+            name=rna.lower() + "-" + data_load_source + "-density-plot",
             short_label="00 " + rna + "-density",
             long_label=(
                 "Density plot of "
