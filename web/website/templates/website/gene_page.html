@@ -26,19 +26,17 @@
 
     if (!cached) {
         fetch(`/analysis-request/${gene}`)
-        .then(response => response.json())
-        .then(info => {
-            if (info.process_complete) {
-                setTimeout(() => window.location.reload(), 100);
-            }
-        })
         .catch(error => console.log(error));
 
         function ask_status() {
             fetch(`/analysis-status/${gene}`)
             .then(response => response.json())
             .then(info => {
-                document.querySelector('#status').innerHTML = info.status + "..."
+                document.querySelector('#status').innerHTML = info.message + "...";
+                if (info.status == "SUCCESS") {
+                    setTimeout(() => window.location.reload(), 100);
+                }
+
             })
             .catch(error => console.log(error));
 
