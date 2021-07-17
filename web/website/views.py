@@ -150,7 +150,7 @@ def analysis_request(request, gene):
     except WrongGeneName:
         return reject("unrecognized gene")
 
-    if rna_info["official_name"].lower() != gene:
+    if rna_info["official_name"].lower() != gene.lower():
         return reject(f"Try {rna_info['official_name'].lower()} instead")
 
     if len(Gene.objects.filter(name=gene.upper())) != 0:
