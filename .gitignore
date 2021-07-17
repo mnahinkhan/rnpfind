@@ -16,3 +16,5 @@ output-data/
 .cache/
 *.egg-info
 dist/
+ro-data
+cache
