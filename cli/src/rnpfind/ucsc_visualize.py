@@ -83,8 +83,8 @@ def ucsc_visualize(big_storage, rna_info, configs=None):
     os.system(f"rm -rf {local_dir}")
     os.system(f"mv {local_dir}-copy {local_dir}")
 
-    os.system("find . -name '*.bb' | xargs rm")
-    os.system("find . -name '*.bw' | xargs rm")
+    os.system(f"find {overarching_path} -name '*.bb' | xargs rm")
+    os.system(f"find {overarching_path} -name '*.bw' | xargs rm")
 
     print(f"Created directory {local_dir}...", file=sys.stderr)
 
