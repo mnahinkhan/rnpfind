@@ -389,7 +389,7 @@ def convert_wig_to_bw(overarching_path, data_load_sources):
         # os.chdir(overarching_path + data_load_source + "/")
 
         os.system(
-            f"for file in {overarching_path+data_load_source}/*.wig;"
+            f"for file in {Path(overarching_path) / data_load_source}/*.wig;"
             f" do echo $file; {UCSCTOOL_PATH}/{os_folder}/wigToBigWig"
             f' "$file" {UCSCTOOL_PATH}/hg38.chrom.sizes '
             '"$file.bw"; done >/dev/null 2>&1'
