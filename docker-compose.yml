@@ -33,8 +33,6 @@ services:
    ports:
      - 80:80
      - 443:443
-   depends_on:
-     - web
    container_name: nginx-container
    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
