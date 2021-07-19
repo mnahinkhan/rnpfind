@@ -1,3 +1,7 @@
+"""
+Module for defining celery tasks
+"""
+
 # pylint: disable=no-member
 # Create your tasks here
 
@@ -11,9 +15,15 @@ from rnpfind import GENOME_VERSION, rnpfind
 from .models import AnalysisStatus, Gene
 
 
-# Credit for this idea:
-# https://stackoverflow.com/a/27253257/8551394
 class DbFileObject:
+    """
+    A file-like object to redirect output from gene analysis tasks.
+    The object writes outputs as records on a database model.
+
+    Inspiration for this idea:
+    https://stackoverflow.com/a/27253257/8551394
+    """
+
     def __init__(self, _key: str):
         self.key = _key
         assert len(AnalysisStatus.objects.filter(request_id=self.key)) > 0
@@ -24,6 +34,9 @@ class DbFileObject:
         analysis_status_obj.save()
 
     def write(self, data):
+        """
+        Writes data to a database
+        """
         if len(data) < 4:
             print("too short not saving to db", file=sys.__stderr__)
             return
@@ -42,11 +55,16 @@ class DbFileObject:
         assert AnalysisStatus.objects.get(request_id=self.key).output == data
 
     def close(self):
-        pass
+        """
+        Needed to simulate files
+        """
 
 
 @shared_task(rate_limit="4/m")
 def analyze_gene(gene):
+    """
+    Analyzes a given gene; redirects output to write to a database
+    """
     prev_stderr = sys.stderr
     sys.stderr = DbFileObject(gene)
     rnpfind(
@@ -62,11 +80,17 @@ def analyze_gene(gene):
 
 @shared_task
 def analyze_gene_done(gene):
+    """
+    Writes the results of gene analysis (to mark its completion)
+    """
     # Save the result in db
     rna_info = hgfind(gene)
     assert rna_info["official_name"] == gene
 
-    hub_url = f"https://rnpfind.com/static/{gene.lower()}/trackhub/rbps-on-{gene.lower()}.hub.txt"
+    hub_url = (
+        f"https://rnpfind.com/static/{gene.lower()}/trackhub"
+        f"/rbps-on-{gene.lower()}.hub.txt"
+    )
 
     ucsc_url = (
         f"https://genome.ucsc.edu/cgi-bin/hgTracks?db={GENOME_VERSION}&hubUrl="

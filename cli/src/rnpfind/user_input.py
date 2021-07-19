@@ -2,19 +2,12 @@
 Defines functions that are involved in getting some data from the user.
 Used for the command line interface variant of RNPFind.
 """
+
 import sys
 
 from hgfind import WrongGeneName, hgfind
 
-from .analysis_functions import (
-    analysis_methods_supported_long,
-    analysis_methods_supported_short,
-)
 from .config import GENOME_VERSION
-from .data_load_functions import (
-    data_load_sources_supported_long,
-    data_load_sources_supported_short,
-)
 from .gene_coordinates import Chromosome
 
 
@@ -73,8 +66,8 @@ def parse_genome_coord(transcript: str) -> dict:
 
 def get_rna_coord(rna_gene_name):
     """
-    Given a gene name, informs the user of the predicted RNA coordinates.
-    Allows the user to potentially revise the coordinates, if required.
+    Given a gene name, returns its hg38 coordinate.
+    The input may also be of the form <chr>:<start>-<end>.
 
     :param rna_gene_name: input RNA gene name (string)
 
@@ -129,77 +122,3 @@ def get_user_rna_preference(transcript: str) -> dict:
     rna_info["start_coord"] = int(rna_start_chr_coord)
     rna_info["end_coord"] = int(rna_end_chr_coord)
     return rna_info
-
-
-def get_user_data_source_preference():
-    """
-    Asks the user for their preferred method of data source retrieval.
-    The user is asked to input numbers to represent their combination of
-    requested data sources
-    """
-    print("")
-    print("")
-    print(
-        "Which sources of data would you like to collect RBP binding data"
-        " from today?"
-    )
-    print("")
-    for i, source in enumerate(data_load_sources_supported_long):
-        print("[" + str(i) + "]: " + source)
-    print("")
-
-    input_digits = ""
-    while not (
-        input_digits.isdigit()
-        and all(
-            [
-                int(c) < len(data_load_sources_supported_short)
-                for c in input_digits
-            ]
-        )
-    ):
-        print(
-            "Please choose any combination from above as you like (e.g. 124)"
-        )
-        print(">")
-        input_digits = input()
-
-    print("Thank you")
-    return [data_load_sources_supported_short[int(i)] for i in input_digits]
-
-
-def get_user_analysis_preference():
-    """
-    Asks the user for their preferred method of data analysis on retrieved
-    binding sites. The user is asked to input numbers to represent their
-    combination of requested data sources.
-    """
-    print("")
-    print("")
-    print(
-        "Which method of analysis on the data would you like to employ today?"
-    )
-    print("")
-    for i, source in enumerate(analysis_methods_supported_long):
-        print("[" + str(i) + "]: " + source)
-    print("")
-    print(
-        "Please pick just one analysis method and write the number associated"
-        " with it (e.g. 3)"
-    )
-    print(">")
-    input_digits = input()
-    while not (
-        len(input_digits) == 1
-        and input_digits.isdigit()
-        and int(input_digits) < len(analysis_methods_supported_short)
-    ):
-        print(
-            "Please pick just one analysis method and write the number"
-            " associated with it (e.g. 3)"
-        )
-        print(">")
-        input_digits = input()
-
-    print("Thank you")
-    return analysis_methods_supported_short[int(input_digits)]

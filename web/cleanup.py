@@ -1,3 +1,14 @@
+"""
+Removes 'bad analysis status records' from the database.
+
+Such bad records are those which exist despite their counterpart
+records not existing among the 'Gene records', which store the results of
+the analysis after it is complete.
+
+These records are bad as their exitence from the outset might fool the
+system into thinking that the gene is currently being analyzed, when in
+fact it is not.
+"""
 import sys
 
 from website.models import AnalysisStatus, Gene

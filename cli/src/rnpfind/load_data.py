@@ -57,7 +57,7 @@ def load_data(data_load_sources, rna_info: dict):
     """
 
     big_storage = {}
-    for i, data_load_source in enumerate(data_load_sources):
+    for data_load_source in data_load_sources:
         print(
             f"Loading binding sites from {data_load_source}", file=sys.stderr
         )

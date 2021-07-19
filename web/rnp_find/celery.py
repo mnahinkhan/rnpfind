@@ -1,3 +1,10 @@
+"""
+Module for defining the Celery instance.
+
+From:
+https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html
+"""
+
 import os
 
 from celery import Celery
@@ -19,4 +26,7 @@ app.autodiscover_tasks()
 
 @app.task(bind=True)
 def debug_task(self):
+    """
+    Presumably for debugging
+    """
     print(f"Request: {self.request!r}")

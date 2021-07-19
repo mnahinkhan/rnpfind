@@ -122,47 +122,46 @@ def binary_search_populate(file_path, rna_info, debug=False):
     rna_end_chr_coord = rna_info["end_coord"]
     query = Query((rna_chr_no, rna_start_chr_coord, rna_end_chr_coord))
 
-    postar_data_file = open(file_path)
-
-    search_file = FileSearcher(postar_data_file)
-    to_seek = bisect.bisect(search_file, query)
-    postar_data_file.seek(to_seek)
-    postar_line_parts = postar_data_file.readline().split()
-    # print(postar_line_parts)
-    is_found = False
-    seen = []
-    not_found_counter = 0
-    while postar_line_parts:
-        if (
-            postar_line_parts[0] == "chr" + str(rna_chr_no)
-            and int(postar_line_parts[1]) > rna_start_chr_coord
-            and int(postar_line_parts[2]) < rna_end_chr_coord
-        ):
-            is_found = True
-
-            if debug:
-                if (postar_line_parts[7]) not in seen:
-                    print(";".join(postar_line_parts))
-                    seen += [postar_line_parts[7]]
-
-            rbp = postar_line_parts[6]
-            start, end = postar_line_parts[1], postar_line_parts[2]
-            start = int(start) - rna_start_chr_coord
-            end = int(end) - rna_start_chr_coord
-
-            # TODO: Consider reformatting the annotation for visual appeal
-            annotation = ANNOTATION_COLUMN_DELIMITER.join(
-                [postar_line_parts[i] for i in postar_columns_of_interest]
-            )
-            yield rbp, start, end, annotation
-
-        elif is_found:
-            break
-        if not is_found:
-            not_found_counter += 1
-            if not_found_counter >= 4:
-                break
+    with open(file_path) as postar_data_file:
+        search_file = FileSearcher(postar_data_file)
+        to_seek = bisect.bisect(search_file, query)
+        postar_data_file.seek(to_seek)
         postar_line_parts = postar_data_file.readline().split()
+        # print(postar_line_parts)
+        is_found = False
+        seen = []
+        not_found_counter = 0
+        while postar_line_parts:
+            if (
+                postar_line_parts[0] == "chr" + str(rna_chr_no)
+                and int(postar_line_parts[1]) > rna_start_chr_coord
+                and int(postar_line_parts[2]) < rna_end_chr_coord
+            ):
+                is_found = True
+
+                if debug:
+                    if (postar_line_parts[7]) not in seen:
+                        print(";".join(postar_line_parts))
+                        seen += [postar_line_parts[7]]
+
+                rbp = postar_line_parts[6]
+                start, end = postar_line_parts[1], postar_line_parts[2]
+                start = int(start) - rna_start_chr_coord
+                end = int(end) - rna_start_chr_coord
+
+                # TODO: Consider reformatting the annotation for visual appeal
+                annotation = ANNOTATION_COLUMN_DELIMITER.join(
+                    [postar_line_parts[i] for i in postar_columns_of_interest]
+                )
+                yield rbp, start, end, annotation
+
+            elif is_found:
+                break
+            if not is_found:
+                not_found_counter += 1
+                if not_found_counter >= 4:
+                    break
+            postar_line_parts = postar_data_file.readline().split()
 
 
 def postar_data_load(rna_info):

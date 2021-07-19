@@ -45,8 +45,11 @@ import argparse
 import os
 import shutil
 import sys
+import urllib.request
 from datetime import datetime
 from pathlib import Path
+
+from tqdm import tqdm
 
 # Responsible for managing the analysis functions that manipulate the RNA-RBP
 # interaction data to get a useful output:
@@ -86,24 +89,30 @@ def rm_folder_contents(folder):
             print("Failed to delete %s.")
 
 
-import urllib.request
-
-from tqdm import tqdm
-
-
 class DownloadProgressBar(tqdm):
-    def update_to(self, b=1, bsize=1, tsize=None):
-        if tsize is not None:
-            self.total = tsize
-        self.update(b * bsize - self.n)
+    """
+    Creates a progress bar for downloading data
+    """
+
+    def update_to(self, chunk_number=1, chunk_size=1, total_size=None):
+        """
+        Update value of progress bar
+        """
+        if total_size is not None:
+            self.total = total_size
+        self.update(chunk_number * chunk_size - self.n)
 
 
 def download_url(url, output_path):
+    """
+    Download a file from a given url to a local file.
+    Displays progress bar while doing so (on stderr).
+    """
     with DownloadProgressBar(
         unit="B", unit_scale=True, miniters=1, desc=url.split("/")[-1]
-    ) as t:
+    ) as pbar:
         urllib.request.urlretrieve(
-            url, filename=output_path, reporthook=t.update_to
+            url, filename=output_path, reporthook=pbar.update_to
         )
 
 

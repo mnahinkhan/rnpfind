@@ -11,7 +11,6 @@ Important views needed for RNPFind are:
 """
 import sys
 
-import redis
 from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
 from django.shortcuts import redirect, render
 from hgfind import WrongGeneName, hgfind
@@ -105,6 +104,9 @@ def analysis_status(request, request_id):
 
 
 def dbg_print(string: str):
+    """
+    Prints string to stderr
+    """
     print(string, file=sys.stderr)
 
 
