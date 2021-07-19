@@ -45,7 +45,7 @@ class DbFileObject:
         pass
 
 
-@shared_task
+@shared_task(rate_limit="4/m")
 def analyze_gene(gene):
     prev_stderr = sys.stderr
     sys.stderr = DbFileObject(gene)
