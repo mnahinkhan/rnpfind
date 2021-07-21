@@ -1,4 +1,3 @@
-# RNPFind
 ![RNPFind](images/rnpfind-logo-transparent.png "RNPFind - Explore RNA-Protein
 interactions")
 
@@ -9,12 +8,10 @@ interactions")
 [![isort](https://github.com/mnahinkhan/rnpfind/actions/workflows/isort-check.yml/badge.svg)](https://github.com/mnahinkhan/rnpfind/actions/workflows/isort-check.yml)
 [![PyPI version](https://badge.fury.io/py/rnpfind.svg)](https://badge.fury.io/py/rnpfind)
 ![Lines of code](https://img.shields.io/tokei/lines/github/mnahinkhan/rnpfind)
-![PyPI - Downloads](https://img.shields.io/pypi/dw/rnpfind)
-![PyPI - License](https://img.shields.io/pypi/l/rnpfind)
-![GitHub language count](https://img.shields.io/github/languages/count/mnahinkhan/rnpfind)A
+[![PyPI - Downloads](https://img.shields.io/pypi/dw/rnpfind)](https://pypi.org/project/rnpfind/)
+[![PyPI - License](https://img.shields.io/pypi/l/rnpfind)](cli/LICENSE)
+![GitHub language count](https://img.shields.io/github/languages/count/mnahinkhan/rnpfind)
 ![GitHub top language](https://img.shields.io/github/languages/top/mnahinkhan/rnpfind)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 --------------------------------------------------------------------------
 
