@@ -1,0 +1,19 @@
+# Tests whether the code passes black style
+name: black
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master, dev ]
+
+jobs:
+  black_check:
+    name: Check code style
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Black Check
+        uses: jpetrucciani/black-check@20.8b1
