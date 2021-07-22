@@ -670,9 +670,9 @@ class BindingSites:
         The modes supported right now are 'baseCoverNumber', 'TopDepthRatio',
         'TopDepthNumber', 'MinimumDepthNumber', 'TopSitesNumber','TopSitesRatio'
 
-            'baseCoverNumber': Choose cut off based on number of bases that
-                should be covered by the selected sites. The most stringent
-                cutoff that achieves this criteria is selected, unless not
+            'baseCoverNumber': Choose cut off based on maximum number of bases
+                that the selected sites are allowed to cover. The most stringent
+                depth cutoff that achieves this criteria is selected, unless not
                 possible*.
 
             'TopDepthRatio': Choose cutoff based on the fraction of highest
