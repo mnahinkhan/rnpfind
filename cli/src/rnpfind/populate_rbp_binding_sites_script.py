@@ -15,7 +15,11 @@ from .load_data import data_source_annotation_to_columns
 
 
 def populate_binding_sites(
-    big_storage, rna_info, data_load_sources, overarching_path, main_rbp="",
+    big_storage,
+    rna_info,
+    data_load_sources,
+    overarching_path,
+    main_rbp="",
 ):
     """
     Saves binding sites as BED files

@@ -42,7 +42,8 @@ class DbFileObject:
             return
 
         print(
-            f"Writing to db: {data}", file=sys.__stderr__,
+            f"Writing to db: {data}",
+            file=sys.__stderr__,
         )
 
         assert len(AnalysisStatus.objects.filter(request_id=self.key)) > 0
