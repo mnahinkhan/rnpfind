@@ -74,20 +74,20 @@ def ucsc_visualize(big_storage, rna_info, configs=None):
         if len(big_storage[k]) > 0
     }
 
-    populate_local_track_hub(
+    if populate_local_track_hub(
         overarching_path, rna_info, local_dir, rbp_no_dict, rbp_peaks
-    )
+    ):
+        # Resolving links
+        shutil.copytree(local_dir, f"{local_dir}-copy")
+        # os.system(f"cp -rL {local_dir} {local_dir}-copy")
+        os.system(f"rm -rf {local_dir}")
+        os.system(f"mv {local_dir}-copy {local_dir}")
+        print(f"Created directory {local_dir}...", file=sys.stderr)
+    else:
+        print("Trackhub structure not created...", file=sys.stderr)
 
-    # Resolving links
-    shutil.copytree(local_dir, f"{local_dir}-copy")
-    # os.system(f"cp -rL {local_dir} {local_dir}-copy")
-    os.system(f"rm -rf {local_dir}")
-    os.system(f"mv {local_dir}-copy {local_dir}")
-
-    os.system(f"find {overarching_path} -name '*.bb' | xargs rm")
-    os.system(f"find {overarching_path} -name '*.bw' | xargs rm")
-
-    print(f"Created directory {local_dir}...", file=sys.stderr)
+    os.system(f"find {overarching_path} -name '*.bb' | xargs rm 2>/dev/null")
+    os.system(f"find {overarching_path} -name '*.bw' | xargs rm 2>/dev/null")
 
     if configs["trackhub-only"]:
         print("Removing original bed files...", file=sys.stderr)

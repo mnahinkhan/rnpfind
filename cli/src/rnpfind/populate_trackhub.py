@@ -88,6 +88,7 @@ def populate_local_track_hub(
         email="mnk1@alumni.cmu.edu",
     )
 
+    is_track_added = False
     for filename in glob.iglob(f"{overarching_path}/**/*.bb", recursive=True):
         category = Path(filename).parent.name
         name = Path(filename).name
@@ -139,6 +140,7 @@ def populate_local_track_hub(
         # TODO: Add options for mouse hover views of information
 
         trackdb.add_tracks(track)
+        is_track_added = True
 
     for filename in glob.iglob(f"{overarching_path}/**/*.bw", recursive=True):
         data_load_source = Path(filename).parent.name
@@ -173,8 +175,12 @@ def populate_local_track_hub(
         )
 
         trackdb.add_tracks(track)
+        is_track_added = True
 
-    trackhub.upload.stage_hub(hub, staging=local_stage)
+    if is_track_added:
+        trackhub.upload.stage_hub(hub, staging=local_stage)
+    else:
+        return None
 
     return hub_name
 

@@ -13,6 +13,7 @@ from .config import (
 )
 from .picklify import picklify
 from .pwm_scan import (
+    bases,
     get_human_seq,
     motif_to_pwm,
     pwm_degree_of_freedom,
@@ -284,6 +285,9 @@ def rbpdb_data_load(rna_info):
     letter_strength = RBPDB_MOTIF_PWM_LETTER_STRENGTH
     n_repeat_req = RBPDB_MOTIF_N_REPEAT_REQ
     rna_seq = get_human_seq(rna_info)
+
+    if len([b for b in rna_seq if b not in bases]) > 0:
+        return
 
     experiment_id_to_pwm_dict = picklify(
         generate_rbpdb_experimental_to_pwm, letter_strength, n_repeat_req
