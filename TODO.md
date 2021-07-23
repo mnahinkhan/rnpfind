@@ -64,7 +64,8 @@
 
 ## Bugs
  - If gene has no binding sites it could raise errors (at least for POSTAR,
-   e.g. SPRR4)
+   e.g. SPRR4) ✅ (SPRR4 case onl check for zero binding sites from all
+   sources)
  - Unrecognized 'db' errors (no idea how to reproduce)
 
 ## Security
