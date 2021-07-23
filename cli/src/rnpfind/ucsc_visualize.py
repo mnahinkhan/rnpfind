@@ -92,29 +92,3 @@ def ucsc_visualize(big_storage, rna_info, configs=None):
     if configs["trackhub-only"]:
         print("Removing original bed files...", file=sys.stderr)
         os.system(f"rm -rf {overarching_path}")
-
-    # print("The link to your hub has been generated:")
-
-    # hub_url = (
-    #     "https://rnpfind.com/static/ucsc-tracks/"
-    #     + date_time_folder_name
-    #     + "/"
-    #     + hub_name.replace(" ", "+")
-    #     + ".hub.txt"
-    # )
-
-    # ucsc_url = (
-    #     "https://genome.ucsc.edu/cgi-bin/hgTracks?db="
-    #     + GENOME_VERSION
-    #     + "&hubUrl="
-    #     + hub_url
-    #     + "&position=chr"
-    #     + str(rna_info["chr_n"])
-    #     + ":"
-    #     + str(rna_info["start_coord"])
-    #     + "-"
-    #     + str(rna_info["end_coord"])
-    # )
-
-    # print(ucsc_url)
-    # return ucsc_url
