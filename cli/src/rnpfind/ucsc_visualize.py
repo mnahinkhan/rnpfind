@@ -71,6 +71,7 @@ def ucsc_visualize(big_storage, rna_info, configs=None):
     rbp_peaks = {
         k: max(big_storage[k].sum_over_all().return_depth())
         for k in big_storage
+        if len(big_storage[k]) > 0
     }
 
     populate_local_track_hub(

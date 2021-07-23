@@ -81,6 +81,9 @@ def load_data(data_load_sources, rna_info: dict):
         # TODO: fix the implementation of overlap_collapse so annotations are
         # not lost
 
+        if len(storage_space) == 0:
+            continue
+
         # Get max coverage
         max_coverage = max(
             [

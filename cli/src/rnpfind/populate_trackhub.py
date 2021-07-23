@@ -331,6 +331,9 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
     for data_load_source in data_load_sources:
         storage = big_storage[data_load_source]
 
+        if len(storage) == 0:
+            continue
+
         # TODO: check if displacement needs to be shifted by one for all data
         # sources or just RBPDB
         wig_string = storage.print_wig(
