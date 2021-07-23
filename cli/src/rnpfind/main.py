@@ -187,10 +187,7 @@ def rnpfind(
     data_load_sources = (
         sources if sources else data_load_sources_supported_short
     )
-    # print(
-    #     f"Collecting data from: {', '.join(data_load_sources)}",
-    #     file=sys.stderr,
-    # )
+
     # load RNA-RBP interaction data using the selected data sources on the RNA
     # molecule of interest big_storage stores data on binding sites of RBPs on
     # the RNA molecule from each data source. For more details on how
@@ -221,11 +218,6 @@ def rnpfind(
     # We now proceed to perform any number of analysis methods that the user
     # may wish to apply to the data obtained
     analysis_methods = methods if methods else analysis_methods_supported_short
-    # print(
-    #     "Producing the following output formats:"
-    #     f" {', '.join(analysis_methods)}",
-    #     file=sys.stderr,
-    # )
 
     if out_dir:
         # The user specified an out directory
