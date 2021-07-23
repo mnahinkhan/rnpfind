@@ -204,14 +204,21 @@ def rnpfind(
     # Give a quick summary on the data that has been loaded, in terms of total
     # number of RBPs and binding sites collected for the RNA molecule of
     # interest
-    no_rbps = 0
     no_sites = 0
-    for no_rbp, no_site in [big_storage[k].summary() for k in big_storage]:
-        no_rbps += no_rbp
+    uniq_rbps = set()
+    for data_source, storage in big_storage.items():
+        no_rbp, no_site = storage.summary()
+        print(
+            f"Collected data for {no_rbp} RBPs with {no_site}"
+            f" binding sites (from {data_source})",
+            file=sys.stderr,
+        )
         no_sites += no_site
+        uniq_rbps.update(storage.get_rbps())
 
     print(
-        f"Collected data for {no_rbps} RBPs with {no_sites} binding sites",
+        f"Collected data for {len(uniq_rbps)} unique RBPs with {no_sites}"
+        " binding sites (total)",
         file=sys.stderr,
     )
 
