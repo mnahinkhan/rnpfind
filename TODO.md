@@ -23,8 +23,8 @@
 ## Containerization
  - Reduce image size (base from Alpine, remove apt-caches)
  - Create multiple containers for different processes (computation, web
-   serving, database)
- - Orchestrate with compose (read up on diff between compose and Kubernetes)
+   serving, database) ✅
+ - Orchestrate with compose ✅ (read up on diff between compose and Kubernetes)
  - Mount docker volume for large read-only binding site data (separate data
    from logic)
  - Push to Docker Hub or other suitable registry
@@ -42,7 +42,7 @@
  - Make binding density plots a weighted sum based on strengths
 
 ## Migrating
- - Migrate from Heroku to personal server, ensure easy docker set up
+ - Migrate from Heroku to personal server, ensure easy docker set up ✅
  - Modify GitLab CI accordingly
  - Figure out daemonization of Django process, fault tolerance, etc.
  - Get d for web
@@ -60,7 +60,7 @@
 
 ## Migrating to GitHub
  - Convert jobs on GitLab to GitHub Actions
- - Disable mirroring on GitLab
+ - Disable mirroring on GitLab ✅
 
 ## Bugs
  - If gene has no binding sites it could raise errors (at least for POSTAR,
@@ -68,8 +68,8 @@
  - Unrecognized 'db' errors (no idea how to reproduce)
 
 ## Security
- - Direct to HTTPS for UCSC Genome Browser
- - Make personal server use SSL as well
+ - Direct to HTTPS for UCSC Genome Browser ✅
+ - Make personal server use SSL as well ✅
 
 ## RBPs
  - Allow generating a track dedicated for a particular RBP showing binding
@@ -85,4 +85,4 @@
  - Consider security against DOS or otherwise
  - Set up production vs development envs
  - Automate production-push
- - Consider serving static files via Apache / nginx instead of Django
+ - Consider serving static files via Apache / nginx instead of Django ✅
