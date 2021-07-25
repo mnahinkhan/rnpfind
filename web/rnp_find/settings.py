@@ -89,6 +89,7 @@ database_name = os.environ.get("POSTGRES_DB")
 database_user = os.environ.get("POSTGRES_USER")
 database_password = os.environ.get("POSTGRES_PASSWORD")
 
+database_host = os.environ.get("DB_HOST")
 # Consider HOST or PORT options if below does not work
 DATABASES = {
     "default": {
@@ -96,7 +97,7 @@ DATABASES = {
         "NAME": database_name,
         "USER": database_user,
         "PASSWORD": database_password,
-        "HOST": "db",
+        "HOST": database_host,
     }
 }
 
@@ -154,12 +155,14 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+broker_host = os.environ.get("TRANSPORT_HOST")
+
 # Celery Configuration Options
 CELERY_TIMEZONE = "Africa/Nairobi"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_BROKER_URL = "redis://redis:6379"
-CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_BROKER_URL = f"redis://{broker_host}:6379"
+CELERY_RESULT_BACKEND = f"redis://{broker_host}:6379"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"

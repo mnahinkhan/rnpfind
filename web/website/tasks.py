@@ -5,6 +5,7 @@ Module for defining celery tasks
 # pylint: disable=no-member
 # Create your tasks here
 
+import os
 import sys
 
 from celery import shared_task
@@ -88,8 +89,9 @@ def analyze_gene_done(gene):
     rna_info = hgfind(gene)
     assert rna_info["official_name"] == gene
 
+    host_url = os.environ.get("HOST_URL")
     hub_url = (
-        f"https://rnpfind.com/static/{gene.lower()}/trackhub"
+        f"{host_url}/static/{gene.lower()}/trackhub"
         f"/rbps-on-{gene.lower()}.hub.txt"
     )
 

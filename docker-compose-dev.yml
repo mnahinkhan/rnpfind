@@ -1,36 +1,36 @@
 version: "3.9"
 
 services:
- db:
+ db-dev:
    image: postgres
    volumes:
-     - postgres_data:/var/lib/postgresql/data
+     - postgres_data_dev:/var/lib/postgresql/data
    env_file:
      - db.env
-   container_name: db-container
+   container_name: db-container-dev
 
- redis:
+ redis-dev:
    image: "redis:alpine"
 
- web:
+ web-dev:
    build: ./web
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_dev:/app/staticfiles
    environment:
      - PORT=8000
-     - DB_HOST=db
-     - TRANSPORT_HOST=redis
+     - DB_HOST=db-dev
+     - TRANSPORT_HOST=redis-dev
    env_file:
      - db.env
    expose:
      - 8000
    depends_on:
-     - db
-     - nginx
-     - redis
-   container_name: web-container
+     - db-dev
+     - nginx-dev
+     - redis-dev
+   container_name: web-container-dev
 
- celery:
+ celery-dev:
    build:
      context: ./web
      dockerfile: Dockerfile-celery
@@ -38,33 +38,33 @@ services:
    env_file:
      - db.env
    environment:
-     - DB_HOST=db
-     - TRANSPORT_HOST=redis
-     - HOST_URL=https://rnpfind.com
+     - DB_HOST=db-dev
+     - TRANSPORT_HOST=redis-dev
+     - HOST_URL=https://rnpfind.com:4430
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_dev:/app/staticfiles
    depends_on:
-     - db
-     - redis
+     - db-dev
+     - redis-dev
 
 
- nginx:
+ nginx-dev:
    build: ./nginx
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_dev:/app/staticfiles
      - ./data/certbot/conf:/etc/letsencrypt
      - ./data/certbot/www:/var/www/certbot
      - ./ro-data:/app/ro-data
    ports:
-     - 80:80
-     - 443:443
+     - 800:80
+     - 4430:443
    environment:
-     - UPSTREAM_HOST=web
-   container_name: nginx-container
+     - UPSTREAM_HOST=web-dev
+   container_name: nginx-container-dev
    entrypoint: /nginx-entry.sh
    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
- certbot:
+ certbot-dev:
    image: certbot/certbot
    volumes:
      - ./data/certbot/conf:/etc/letsencrypt
@@ -72,5 +72,5 @@ services:
    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
- postgres_data:
- static_volume:
+ postgres_data_dev:
+ static_volume_dev:
