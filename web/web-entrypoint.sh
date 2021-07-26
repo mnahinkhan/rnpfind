@@ -9,6 +9,10 @@ echo "Apply database migrations"
 python manage.py makemigrations
 python manage.py migrate
 
+# To allow testing
+echo "Remove malat1 record"
+echo 'import remove_malat1' | python manage.py shell
+
 # Clean up bad database records
 echo "Remove bad records"
 echo 'import cleanup' | python manage.py shell
