@@ -40,6 +40,8 @@ def gene_page_redirector(request):
     view.
     """
     gene_name = request.GET["gene_name"]
+    if not gene_name.strip():
+        return redirect(index)
     return redirect(gene_page, gene_name=gene_name)
 
 
