@@ -16,6 +16,7 @@ services:
    build: ./web
    volumes:
      - static_volume_dev:/app/staticfiles
+     - ./web:/app
    environment:
      - PORT=8000
      - DB_HOST=db-dev
