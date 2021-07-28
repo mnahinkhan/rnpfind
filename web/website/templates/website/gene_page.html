@@ -11,6 +11,13 @@
     <h6>Gene size: {{gene_cached_data.size}} bases</h6>
     <div class="information container">
         <h5>RBP binding sites collected for this gene's transcript:</h5>
+        <ul id="binding_summaries">
+            {% for binding_summary in binding_site_data %}
+                <li>
+                    {{binding_summary.data_source_type.upper}}: {{binding_summary.number_of_sites}} sites from {{binding_summary.number_of_rbps}} RBPs
+                </li>
+            {% endfor %}
+        </ul>
         <p>View the binding sites <a href="{{gene_cached_data.ucsc_url}}">here</a></p>
     </div>
 

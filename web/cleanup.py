@@ -11,17 +11,30 @@ fact it is not.
 """
 import sys
 
-from website.models import AnalysisStatus, Gene
+from website.models import AnalysisStatus, BindingSummaryInfo, Gene
 
-bad_records = [
+bad_analysis_records = [
     x
     for x in AnalysisStatus.objects.all()
     if not Gene.objects.filter(name=x.request_id).exists()
 ]
 
-for bad_record in bad_records:
+bad_binding_records = [
+    x
+    for x in BindingSummaryInfo.objects.all()
+    if not Gene.objects.filter(name=x.gene).exists()
+]
+
+for bad_record in bad_analysis_records:
     print(
         f"{bad_record.request_id} deleted as it is a bad record",
+        file=sys.stderr,
+    )
+    bad_record.delete()
+
+for bad_record in bad_binding_records:
+    print(
+        f"{bad_record.gene} deleted as it is a bad record",
         file=sys.stderr,
     )
     bad_record.delete()

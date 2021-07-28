@@ -15,7 +15,7 @@ from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
 from django.shortcuts import redirect, render
 from hgfind import WrongGeneName, hgfind
 
-from .models import AnalysisStatus, Gene
+from .models import AnalysisStatus, BindingSummaryInfo, Gene
 from .tasks import analyze_gene, analyze_gene_done
 
 
@@ -71,6 +71,13 @@ def gene_page(request, gene_name):
             "gene_typed_name": gene_name,
             "gene_cached_data": (
                 Gene.objects.get(name=official_name) if is_in_database else 0
+            ),
+            "binding_site_data": (
+                BindingSummaryInfo.objects.filter(gene=official_name).exclude(
+                    data_source_type=BindingSummaryInfo.TOTAL
+                )
+                if is_in_database
+                else 0
             ),
         },
     )

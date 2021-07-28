@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-RUN pip install rnpfind==0.5.4
+RUN pip install rnpfind==0.6.0
 RUN rnpfind-download
 
 COPY ./requirements.txt .

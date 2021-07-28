@@ -13,7 +13,7 @@ from hgfind import hgfind
 
 from rnpfind import GENOME_VERSION, rnpfind
 
-from .models import AnalysisStatus, Gene
+from .models import AnalysisStatus, BindingSummaryInfo, Gene
 
 
 class DbFileObject:
@@ -46,6 +46,28 @@ class DbFileObject:
             f"Writing to db: {data}",
             file=sys.__stderr__,
         )
+
+        if "Collected" in data:
+            assert len([c for c in data if c == "("]) == 1
+            assert len([c for c in data if c == ")"]) == 1
+            assert data.find("(") < data.find(")")
+            nums = [int(s) for s in data.split() if s.isdigit()]
+            source_text = data[data.find("(") + 1 : data.find(")")]
+
+            num_rbps = nums[0]
+            num_sites = nums[1]
+
+            if "total" in source_text:
+                data_source = BindingSummaryInfo.TOTAL
+            else:
+                data_source = source_text.split()[1]
+
+            BindingSummaryInfo(
+                data_source_type=data_source,
+                gene=self.key,
+                number_of_sites=num_sites,
+                number_of_rbps=num_rbps,
+            ).save()
 
         assert len(AnalysisStatus.objects.filter(request_id=self.key)) > 0
 
@@ -110,3 +132,5 @@ def analyze_gene_done(gene):
     ).save()
 
     print("Gene record saved!", file=sys.stderr)
+    print(Gene.objects.get(name=gene).total_sites())
+    print(Gene.objects.get(name=gene).num_unique_rbps())
