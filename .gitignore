@@ -19,3 +19,4 @@ dist/
 ro-data
 cache
 jbrowse2
+migrations/
