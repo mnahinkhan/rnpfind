@@ -20,6 +20,7 @@ services:
      - PORT=8000
      - DB_HOST=db
      - TRANSPORT_HOST=redis
+     - DEBUG=0
    env_file:
      - db.env
    expose:
