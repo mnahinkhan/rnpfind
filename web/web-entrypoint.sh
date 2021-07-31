@@ -10,7 +10,7 @@ python manage.py makemigrations
 python manage.py migrate
 
 # To allow testing
-echo "Remove malat1 record"
+echo "Remove gene record"
 echo 'import remove_record' | python manage.py shell
 
 # Clean up bad database records
