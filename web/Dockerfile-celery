@@ -23,5 +23,6 @@ RUN adduser --disabled-password myuser; \
     chown myuser /usr/local/lib/python3.8/site-packages/hgfind
 
 USER myuser
+CMD ["celery", "-A", "rnp_find", "worker", "-l", "INFO"]
 
 # vi: ft=dockerfile

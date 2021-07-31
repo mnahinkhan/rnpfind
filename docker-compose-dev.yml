@@ -36,7 +36,6 @@ services:
    build:
      context: ./web
      dockerfile: Dockerfile-celery
-   command: celery -A rnp_find worker -l INFO
    env_file:
      - db.env
    environment:
@@ -64,7 +63,6 @@ services:
    environment:
      - UPSTREAM_HOST=web-dev
    container_name: nginx-container-dev
-   entrypoint: /nginx-entry.sh
    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
  certbot-dev:
