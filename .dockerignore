@@ -1,7 +1,0 @@
-__pycache__
-*.pyc
-env/
-ro-data/
-website/output-data/
-website/ucsc-tools/mac-os
-# db.sqlite3
