@@ -44,6 +44,7 @@ services:
      - HOST_URL=https://rnpfind.com
    volumes:
      - static_volume:/app/staticfiles
+     - ./ro-data:/usr/local/lib/python3.8/site-packages/rnpfind/ro-data
    depends_on:
      - db
      - redis
