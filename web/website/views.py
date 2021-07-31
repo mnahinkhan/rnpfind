@@ -70,7 +70,6 @@ def gene_page(request, gene_name):
         {
             "cached": is_in_database,
             "gene_official_name": official_name,
-            "gene_typed_name": gene_name,
             "gene_cached_data": (
                 Gene.objects.get(name=official_name) if is_in_database else 0
             ),
