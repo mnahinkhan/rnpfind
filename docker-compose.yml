@@ -13,7 +13,7 @@ services:
    image: "redis:alpine"
 
  web:
-   build: ./web
+   image: rnpfind/web
    volumes:
      - static_volume:/app/staticfiles
    environment:
@@ -32,9 +32,7 @@ services:
    container_name: web-container
 
  celery:
-   build:
-     context: ./web
-     dockerfile: Dockerfile-celery
+   image: rnpfind/celery
    command: celery -A rnp_find worker -l INFO
    env_file:
      - db.env
@@ -51,7 +49,7 @@ services:
 
 
  nginx:
-   build: ./nginx
+   image: rnpfind/nginx
    volumes:
      - static_volume:/app/staticfiles
      - ./data/certbot/conf:/etc/letsencrypt
