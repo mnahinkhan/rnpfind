@@ -1,70 +1,69 @@
 version: "3.9"
 
 services:
- db:
+ db-${MODE}:
    image: postgres
    volumes:
-     - postgres_data:/var/lib/postgresql/data
+     - postgres_data_${MODE}:/var/lib/postgresql/data
    env_file:
      - db.env
-   container_name: db-container
+   container_name: db-container-${MODE}
 
- redis:
+ redis-${MODE}:
    image: "redis:alpine"
 
- web:
-   image: rnpfind/web
+ web-${MODE}:
+   build: ./web
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_${MODE}:/app/staticfiles
+     - ./web:/app
    environment:
      - PORT=8000
-     - DB_HOST=db
-     - TRANSPORT_HOST=redis
+     - DB_HOST=db-${MODE}
+     - TRANSPORT_HOST=redis-${MODE}
      - DEBUG=0
    env_file:
      - db.env
    expose:
      - 8000
    depends_on:
-     - db
-     - nginx
-     - redis
-   container_name: web-container
+     - db-${MODE}
+     - nginx-${MODE}
+     - redis-${MODE}
+   container_name: web-container-${MODE}
 
- celery:
+ celery-${MODE}:
    image: rnpfind/celery
-   command: celery -A rnp_find worker -l INFO
    env_file:
      - db.env
    environment:
-     - DB_HOST=db
-     - TRANSPORT_HOST=redis
-     - HOST_URL=https://rnpfind.com
+     - DB_HOST=db-${MODE}
+     - TRANSPORT_HOST=redis-${MODE}
+     - HOST_URL=${HOST_URL}
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_${MODE}:/app/staticfiles
      - ./ro-data:/usr/local/lib/python3.8/site-packages/rnpfind/ro-data
    depends_on:
-     - db
-     - redis
+     - db-${MODE}
+     - redis-${MODE}
 
 
- nginx:
+ nginx-${MODE}:
    image: rnpfind/nginx
    volumes:
-     - static_volume:/app/staticfiles
+     - static_volume_${MODE}:/app/staticfiles
      - ./data/certbot/conf:/etc/letsencrypt
      - ./data/certbot/www:/var/www/certbot
      - ./ro-data:/app/ro-data
    ports:
-     - 80:80
-     - 443:443
+     - ${HOST_HTTP_PORT}:80
+     - ${HOST_HTTPS_PORT}:443
    environment:
-     - UPSTREAM_HOST=web
-   container_name: nginx-container
-   entrypoint: /nginx-entry.sh
+     - UPSTREAM_HOST=web-${MODE}
+   container_name: nginx-container-${MODE}
    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 
- certbot:
+ certbot-${MODE}:
    image: certbot/certbot
    volumes:
      - ./data/certbot/conf:/etc/letsencrypt
@@ -72,5 +71,5 @@ services:
    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
- postgres_data:
- static_volume:
+ postgres_data_${MODE}:
+ static_volume_${MODE}:

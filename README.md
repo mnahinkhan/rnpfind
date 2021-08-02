@@ -94,14 +94,9 @@ POSTGRES_PASSWORD=*****************
 *Note:* In the following commands, docker might need `sudo` prepended depending
 on your setup.
 
-Build the Docker image(s) if needed
+Pull the Docker images and run them
 ```bash
-docker-compose build
-```
-
-Run it
-```bash
-docker-compose up
+make prod
 ```
 
 Now you should be able to use `rnpfind` by navigating to localhost:80 (or the
