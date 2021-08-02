@@ -14,6 +14,9 @@ prod:
 	&& docker-compose -f docker-compose-prod.yml pull \
 	&& docker-compose -f docker-compose-prod.yml up
 
+dev:
+	docker-compose -f docker-compose-dev.yml build \
+	&& docker-compose -f docker-compose-dev.yml up
 
 push:
 	docker build --tag rnpfind/nginx nginx/ \
