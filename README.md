@@ -96,7 +96,7 @@ on your setup.
 
 Pull the Docker images and run them
 ```bash
-make prod
+make prod # Might need sudo
 ```
 
 Now you should be able to use `rnpfind` by navigating to localhost:80 (or the
