@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+ db-dev:
+   image: postgres
+   volumes:
+     - postgres_data_dev:/var/lib/postgresql/data
+   env_file:
+     - db.env
+   container_name: db-container-dev
+
+ redis-dev:
+   image: "redis:alpine"
+
+ web-dev:
+   build: ./web
+   volumes:
+     - static_volume_dev:/app/staticfiles
+     - ./web:/app
+   environment:
+     - PORT=8000
+     - DB_HOST=db-dev
+     - TRANSPORT_HOST=redis-dev
+     - DEBUG=1
+   env_file:
+     - db.env
+   expose:
+     - 8000
+   depends_on:
+     - db-dev
+     - nginx-dev
+     - redis-dev
+   container_name: web-container-dev
+
+ celery-dev:
+   build:
+     context: ./web
+     dockerfile: Dockerfile-celery
+   env_file:
+     - db.env
+   environment:
+     - DB_HOST=db-dev
+     - TRANSPORT_HOST=redis-dev
+     - HOST_URL=https://rnpfind.com:4430
+   volumes:
+     - static_volume_dev:/app/staticfiles
+     - ./ro-data:/usr/local/lib/python3.8/site-packages/rnpfind/ro-data
+   depends_on:
+     - db-dev
+     - redis-dev
+
+
+ nginx-dev:
+   build:
+     context: ./nginx
+     args:
+       - CONF_FILE=nginx-dev-local.conf
+   volumes:
+     - static_volume_dev:/app/staticfiles
+     - ./ro-data:/app/ro-data
+   ports:
+     - 800:80
+     - 4430:443
+   environment:
+     - UPSTREAM_HOST=web-dev
+   container_name: nginx-container-dev
+   command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+
+volumes:
+ postgres_data_dev:
+ static_volume_dev:
