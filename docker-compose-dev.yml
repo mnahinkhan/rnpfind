@@ -41,7 +41,7 @@ services:
    environment:
      - DB_HOST=db-dev
      - TRANSPORT_HOST=redis-dev
-     - HOST_URL=https://rnpfind.com:4430
+     - HOST_URL=localhost:8000
    volumes:
      - static_volume_dev:/app/staticfiles
      - ./ro-data:/usr/local/lib/python3.8/site-packages/rnpfind/ro-data
@@ -59,8 +59,7 @@ services:
      - static_volume_dev:/app/staticfiles
      - ./ro-data:/app/ro-data
    ports:
-     - 800:80
-     - 4430:443
+     - 8000:80
    environment:
      - UPSTREAM_HOST=web-dev
    container_name: nginx-container-dev
