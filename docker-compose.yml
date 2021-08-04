@@ -13,7 +13,7 @@ services:
    image: "redis:alpine"
 
  web-${MODE}:
-   build: ./web
+   image: rnpfind/web
    volumes:
      - static_volume_${MODE}:/app/staticfiles
      - ./web:/app
