@@ -1,0 +1,10 @@
+neat1
+malat1
+hnrnpc
+hnrnpd
+hnrnpf
+hnrnpk
+brca1
+brca2
+pten
+parp1
