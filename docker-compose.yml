@@ -16,7 +16,6 @@ services:
    image: rnpfind/web
    volumes:
      - static_volume_${MODE}:/app/staticfiles
-     - ./web:/app
    environment:
      - PORT=8000
      - DB_HOST=db-${MODE}
