@@ -8,11 +8,21 @@ test:
 	&& docker-compose -f docker-compose-test.yml pull \
 	&& docker-compose -f docker-compose-test.yml up
 
+test-swarm:
+	source .env.test \
+	&& envsubst < docker-compose.yml > docker-compose-test.yml \
+	&& docker stack deploy -c docker-compose-test.yml test_swarm
+
 prod:
 	source .env.prod \
 	&& envsubst < docker-compose.yml > docker-compose-prod.yml \
 	&& docker-compose -f docker-compose-prod.yml pull \
 	&& docker-compose -f docker-compose-prod.yml up
+
+prod-swarm:
+	source .env.prod \
+	&& envsubst < docker-compose.yml > docker-compose-prod.yml \
+	&& docker stack deploy -c docker-compose-prod.yml prod_swarm
 
 dev:
 	docker-compose -f docker-compose-dev.yml build \
