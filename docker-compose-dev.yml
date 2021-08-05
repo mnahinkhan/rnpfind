@@ -58,6 +58,7 @@ services:
    volumes:
      - static_volume_dev:/app/staticfiles
      - ./ro-data:/app/ro-data
+     - ./web/website/static/website:/app/staticfiles/website
    ports:
      - 8000:80
    environment:
