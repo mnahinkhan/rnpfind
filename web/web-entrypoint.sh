@@ -4,6 +4,10 @@
 echo "Collect static files"
 python manage.py collectstatic --noinput
 
+# Move images to static files"
+echo "Moving images to static files"
+cp -r /app/images /app/staticfiles
+
 # Apply database migrations
 echo "Apply database migrations"
 python manage.py makemigrations
