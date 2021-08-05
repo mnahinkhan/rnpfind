@@ -37,3 +37,7 @@ push:
 	&& docker push rnpfind/nginx \
 	&& docker push rnpfind/web \
 	&& docker push rnpfind/celery
+
+clean:
+	rm -rf web/cli web/images web/about.md docker-compose-test.yml \
+	docker-compose-prod.yml web/website/static/website/styles.css

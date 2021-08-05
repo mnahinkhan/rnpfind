@@ -20,5 +20,3 @@ ro-data
 cache
 jbrowse2
 migrations/
-docker-compose-prod.yml
-docker-compose-test.yml
