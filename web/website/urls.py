@@ -27,4 +27,5 @@ urlpatterns = [
         views.analysis_result,
         name="analysis-result",
     ),
+    path("about", views.about, name="about"),
 ]

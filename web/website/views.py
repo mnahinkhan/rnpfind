@@ -11,6 +11,7 @@ Important views needed for RNPFind are:
 """
 import sys
 
+import cmarkgfm
 from django.http import JsonResponse  # HttpResponse,; HttpResponseRedirect,
 from django.shortcuts import redirect, render
 from hgfind import WrongGeneName, hgfind
@@ -30,6 +31,14 @@ def index(request, bad_gene=""):
         "website/index.html",
         {"bad_gene": bad_gene, "analysed_genes": Gene.objects.all()},
     )
+
+
+def about(request):
+    with open("about.md", "r", encoding="utf-8") as about_file:
+        about_text = about_file.read()
+    about_html = cmarkgfm.github_flavored_markdown_to_html(about_text)
+
+    return render(request, "website/about.html", {"content": about_html})
 
 
 def gene_page_redirector(request):

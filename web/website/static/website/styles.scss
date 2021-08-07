@@ -115,3 +115,35 @@ p {
     }
 
 }
+
+.about {
+	margin-bottom: 20px;
+	p {
+		# padding-top: 5px;
+		# padding-bottom: 5px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		text-align: left;
+	}
+	h1, h2 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		text-align: left;
+		border-bottom: 1px lightgray solid;
+	}
+	h3, h4 {
+		text-align: left;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 16pt;
+	}
+	code {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	pre {
+		margin-top: 20px;
+		background: #f8f9fa;
+		margin-bottom: 20px;
+	}
+}
