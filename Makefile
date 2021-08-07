@@ -26,11 +26,13 @@ prod-swarm:
 
 dev:
 	./gen_web_files.sh \
+	&& ./gen_nginx_files.sh \
 	&& docker-compose -f docker-compose-dev.yml build \
 	&& docker-compose -f docker-compose-dev.yml up
 
 push:
 	./gen_web_files.sh \
+	&& ./gen_nginx_files.sh \
 	&& docker build --tag rnpfind/nginx nginx/ \
 	&& docker build -f web/Dockerfile-celery --tag rnpfind/celery web/ \
 	&& docker build --tag rnpfind/web web/ \
