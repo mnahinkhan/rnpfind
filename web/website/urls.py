@@ -28,4 +28,5 @@ urlpatterns = [
         name="analysis-result",
     ),
     path("about", views.about, name="about"),
+    path("cli/README.md", views.cli_docs, name="cli_doc"),
 ]

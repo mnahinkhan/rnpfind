@@ -38,7 +38,15 @@ def about(request):
         about_text = about_file.read()
     about_html = cmarkgfm.github_flavored_markdown_to_html(about_text)
 
-    return render(request, "website/about.html", {"content": about_html})
+    return render(request, "website/markdown.html", {"content": about_html})
+
+
+def cli_docs(request):
+    with open("cli_docs.md", "r", encoding="utf-8") as cli_doc_file:
+        cli_doc_text = cli_doc_file.read()
+    cli_doc_html = cmarkgfm.github_flavored_markdown_to_html(cli_doc_text)
+
+    return render(request, "website/markdown.html", {"content": cli_doc_html})
 
 
 def gene_page_redirector(request):
