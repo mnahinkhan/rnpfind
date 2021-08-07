@@ -31,7 +31,7 @@
     <div class="container analysed_genes">
         <h5>Genes analysed so far:</h5>
         {% for gene in analysed_genes %}
-            <a href="{% url 'gene-page' gene.name %}"><div class="container analysed_gene">
+            <a href="{% url 'gene-page' gene.name.lower %}"><div class="container analysed_gene">
                 <div class="row">
                     <div class="col-12">
                         <h6>{{gene.name}}</h6>
