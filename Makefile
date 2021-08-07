@@ -42,4 +42,5 @@ push:
 
 clean:
 	rm -rf web/cli web/images web/about.md docker-compose-test.yml \
-	docker-compose-prod.yml web/website/static/website/styles.css
+	docker-compose-prod.yml web/website/static/website/styles.css \
+	web/cli_docs.md nginx/nginx-prod.conf nginx/nginx-dev.conf
