@@ -25,12 +25,12 @@ prod-swarm:
 	&& docker stack deploy -c docker-compose-prod.yml prod_swarm
 
 dev:
-	./preprocess_web_files.sh \
+	./gen_web_files.sh \
 	&& docker-compose -f docker-compose-dev.yml build \
 	&& docker-compose -f docker-compose-dev.yml up
 
 push:
-	./preprocess_web_files.sh \
+	./gen_web_files.sh \
 	&& docker build --tag rnpfind/nginx nginx/ \
 	&& docker build -f web/Dockerfile-celery --tag rnpfind/celery web/ \
 	&& docker build --tag rnpfind/web web/ \
