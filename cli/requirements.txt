@@ -1,5 +1,7 @@
 docutils==0.17.1
-hgfind==0.0.4
+hgfind==1.0.0
+pybind11==2.7.1
+pylcs==0.0.6
 sortedcontainers==2.4.0
 tqdm==4.61.2
 trackhub==0.2.4

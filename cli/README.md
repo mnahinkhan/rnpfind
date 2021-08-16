@@ -23,6 +23,11 @@ rnpfind <transcript>
 where `transcript` is a gene name such as "PTEN", or an hg38 coordinate range
 (such as 11:65497688-65506516)
 
+*Note*: If a transcript is specified through genomic coordinates, the
+transcript is assumed to be on the forward strand (the "+" strand). On the
+other hand, a transcript specified by name will have its strand positioning
+correctly identified.
+
 The tool takes a transcript as input, and computes the binding sites of various
 RBPs on the transcript. The information is collected from data sources
 including RBPDB, ATTRACT, and POSTAR.

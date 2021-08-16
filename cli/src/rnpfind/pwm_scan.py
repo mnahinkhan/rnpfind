@@ -76,14 +76,18 @@ def get_human_seq(rna_info):
             'chr_n' : chromosome number
             'start_coord' : start coordinate on the chromosome
             'end_coord' : end coordinate on the chromosome
+        optional:
+            'strand' : "+" or "-" denoting gene's existence on forward or
+                reverse strand
 
     """
     chr_no = rna_info["chr_n"]
     chr_start = rna_info["start_coord"]
     chr_end = rna_info["end_coord"]
+    strand = rna_info["strand"]
 
-    if (chr_no, chr_start, chr_end) in seqs:
-        return seqs[(chr_no, chr_start, chr_end)]
+    if (chr_no, chr_start, chr_end, strand) in seqs:
+        return seqs[(chr_no, chr_start, chr_end, strand)]
 
     chr_files_dir = Path(RO_DATA_PATH) / f"{GENOME_VERSION}-human-genome"
     chr_file = chr_files_dir / f"chr{chr_no}.fa"
@@ -112,7 +116,31 @@ def get_human_seq(rna_info):
         gene = gene[: chr_end - chr_start]
 
     seq = gene.upper()
-    seqs[(chr_no, chr_start, chr_end)] = seq
+
+    if strand == "-":
+        seq = reverse_complement(seq)
+    seqs[(chr_no, chr_start, chr_end, strand)] = seq
+    return seq
+
+
+def complement(base: str):
+
+    assert len(base) == 1
+    assert base in bases
+    return {"A": "T", "C": "G", "G": "C", "T": "A"}[base]
+
+
+def reverse_complement(seq: str):
+    """
+    Compute the reverse complement of a sequence.
+
+    :param seq: the input sequence.
+
+    """
+    # Reverse the sequence
+    seq = seq[::-1]
+    # Complement it
+    seq = "".join(complement(base) for base in seq)
     return seq
 
 

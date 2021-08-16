@@ -85,19 +85,23 @@ def get_rna_coord(rna_gene_name):
                 file=sys.stderr,
             )
             sys.exit(1)
+        if not "strand" in rna_info:
+            rna_info["strand"] = "+"
 
     rna_chr_no = rna_info["chr_n"]
     rna_start_chr_coord = rna_info["start_coord"]
     rna_end_chr_coord = rna_info["end_coord"]
+    rna_strand = rna_info["strand"]
 
     print(
         f"Analyzing {GENOME_VERSION}"
         f" {rna_chr_no}:{rna_start_chr_coord}-{rna_end_chr_coord}"
+        f" ({rna_strand})"
         f" (length = {rna_end_chr_coord - rna_start_chr_coord} bases)",
         file=sys.stderr,
     )
 
-    return rna_chr_no, rna_start_chr_coord, rna_end_chr_coord
+    return rna_chr_no, rna_start_chr_coord, rna_end_chr_coord, rna_strand
 
 
 def get_user_rna_preference(transcript: str) -> dict:
@@ -109,9 +113,12 @@ def get_user_rna_preference(transcript: str) -> dict:
               its chrosome number, start coordinate, and end coordinate on the
               human genome.
     """
-    rna_chr_no, rna_start_chr_coord, rna_end_chr_coord = get_rna_coord(
-        transcript
-    )
+    (
+        rna_chr_no,
+        rna_start_chr_coord,
+        rna_end_chr_coord,
+        rna_strand,
+    ) = get_rna_coord(transcript)
     rna_info = {}
     rna_info["official_name"] = (
         transcript.upper()
@@ -121,4 +128,5 @@ def get_user_rna_preference(transcript: str) -> dict:
     rna_info["chr_n"] = rna_chr_no
     rna_info["start_coord"] = int(rna_start_chr_coord)
     rna_info["end_coord"] = int(rna_end_chr_coord)
+    rna_info["strand"] = rna_strand
     return rna_info
