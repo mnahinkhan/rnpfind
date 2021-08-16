@@ -20,6 +20,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Create directories
+      run: mkdir -p ./cli/src/rnpfind/ro-data/hg38-human-genome/
+    # - name: Install tools
+    #   run: sudo apt install wget && sudo apt install gzip
+    - name: Download chromosome 4
+      working-directory: ./cli/src/rnpfind/ro-data/hg38-human-genome/
+      run: wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr4.fa.gz && gzip -d chr4.fa.gz
+    - name: Download chromosome 11
+      working-directory: ./cli/src/rnpfind/ro-data/hg38-human-genome/
+      run: wget https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr11.fa.gz && gzip -d chr11.fa.gz
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
