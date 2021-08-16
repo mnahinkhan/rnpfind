@@ -7,6 +7,7 @@
 
 {% if cached %}
     <h6>Chromsome {{gene_cached_data.chromosome_number}}, {{gene_cached_data.start_coord}}-{{gene_cached_data.end_coord}}</h6>
+    <h6>{{strand}}</h6>
     <h6>Gene size: {{gene_cached_data.size}} bases</h6>
     <div class="information container">
         <h5>RBP binding sites collected for this gene's transcript:</h5>

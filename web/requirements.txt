@@ -12,7 +12,7 @@ dj-database-url==0.5.0
 Django==3.2.5
 docutils==0.17.1
 gunicorn==20.1.0
-hgfind==0.0.4
+hgfind==1.0.0
 kombu==5.1.0
 Markdown==3.3.4
 prompt-toolkit==3.0.19
@@ -20,7 +20,7 @@ psycopg2-binary==2.9.1
 pycparser==2.20
 pytz==2021.1
 redis==3.5.3
-rnpfind==0.6.0
+rnpfind==1.0.0
 six==1.16.0
 sortedcontainers==2.4.0
 sqlparse==0.4.1

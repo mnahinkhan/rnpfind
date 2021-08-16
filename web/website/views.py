@@ -99,6 +99,11 @@ def gene_page(request, gene_name):
             "gene_cached_data": (
                 Gene.objects.get(name=official_name) if is_in_database else 0
             ),
+            "strand": (
+                "Forward strand"
+                if rna_info["strand"] == "+"
+                else "Reverse strand"
+            ),
             "binding_site_data": (
                 BindingSummaryInfo.objects.filter(gene=official_name).exclude(
                     data_source_type=BindingSummaryInfo.TOTAL
