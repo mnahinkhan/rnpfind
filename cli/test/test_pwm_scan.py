@@ -7,7 +7,6 @@ from test.read_fasta import read_fasta
 
 from hgfind import hgfind
 from pylcs import lcs2 as lcs
-
 from src.rnpfind.pwm_scan import get_human_seq
 
 
