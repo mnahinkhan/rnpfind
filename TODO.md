@@ -21,13 +21,13 @@
  - Prune suitable requirements for each of the services
 
 ## Containerization
- - Reduce image size (base from Alpine, remove apt-caches)
+ - Reduce image size (base from Alpine, remove apt-caches, multi-stage build)
  - Create multiple containers for different processes (computation, web
    serving, database) ✅
  - Orchestrate with compose ✅ (read up on diff between compose and Kubernetes)
  - Mount docker volume for large read-only binding site data (separate data
-   from logic)
- - Push to Docker Hub or other suitable registry
+   from logic) ✅ (Data is now handled by cli tool, and supplied through volume)
+ - Push to Docker Hub or other suitable registry ✅
 
 ## Testing
  - Finish up unit tests
@@ -41,11 +41,14 @@
  - Make use of binding strength; add shade on UCSC
  - Make binding density plots a weighted sum based on strengths
 
+## Binding Sites
+ - Consider not merging binding sites at all
+
 ## Migrating
  - Migrate from Heroku to personal server, ensure easy docker set up ✅
  - Modify GitLab CI accordingly
  - Figure out daemonization of Django process, fault tolerance, etc.
- - Get d for web
+ - Get d for web ✅ (webd is a process now)
 
 ## UI
  - Add chromosome diagrams for anaysis completion view
@@ -56,7 +59,7 @@
    host on S3 or server
 
 ## Write-up
- - Add explanation on "About" section
+ - Add explanation on "About" section ✅ (Perhaps room for improvement)
 
 ## Migrating to GitHub
  - Convert jobs on GitLab to GitHub Actions
@@ -66,7 +69,7 @@
  - If gene has no binding sites it could raise errors (at least for POSTAR,
    e.g. SPRR4) ✅ (SPRR4 case onl check for zero binding sites from all
    sources)
- - Unrecognized 'db' errors (no idea how to reproduce)
+ - ~~Unrecognized 'db' errors (no idea how to reproduce)~~
 
 ## Security
  - Direct to HTTPS for UCSC Genome Browser ✅
@@ -84,6 +87,6 @@
 ## Stack and setup
  - Consider the scalability of the current set up
  - Consider security against DOS or otherwise
- - Set up production vs development envs
+ - Set up production vs development envs ✅ (Refer to Makefile)
  - Automate production-push
  - Consider serving static files via Apache / nginx instead of Django ✅
