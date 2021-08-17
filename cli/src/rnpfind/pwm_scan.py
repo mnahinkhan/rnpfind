@@ -124,6 +124,9 @@ def get_human_seq(rna_info):
 
 
 def complement(base: str):
+    """
+    Return the base-pairing complement of a nucleotide base
+    """
 
     assert len(base) == 1
     assert base in bases
