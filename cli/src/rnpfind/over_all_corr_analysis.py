@@ -96,7 +96,7 @@ def overall_correlation_analysis(big_storage, rna_info, configs=None):
 
         storage = big_storage[data_load_source]
 
-        _, symmetric_corr_table, _, _ = storage.self_analysis(
+        symmetric_corr_table = storage.self_analysis(
             bp_threshold=threshold, progress_feedback=False
         )
         symmetric_corr_tables[data_load_source] = symmetric_corr_table
