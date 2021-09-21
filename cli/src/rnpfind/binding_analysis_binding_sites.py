@@ -154,7 +154,7 @@ class BindingSites:
 
         start_1, end_1, *_ = interval_1
         start_2, end_2, *_ = interval_2
-        return start_1 <= end_2 and start_2 <= end_1
+        return start_1 < end_2 and start_2 < end_1
 
     @staticmethod
     def _merge_meta(annotation_list, user_merge_func=None):
@@ -642,7 +642,7 @@ class BindingSites:
                     " do not call return_depth without "
                     "specifying the length parameter."
                 )
-            length = max(map(secondItem, self)) + 1
+            length = max(map(secondItem, self))
 
         # Stores 'depth' of support for each nucleotide in the
         # molecule in terms of its chances of being a binding site.
@@ -653,7 +653,9 @@ class BindingSites:
             start = site[0]
             end = site[1]
 
-            for nucleotide in range(start, end + 1):  # inclusive
+            # TODO: Document coordinate system choice and remain consistent
+            # start inclusive, end exclusive
+            for nucleotide in range(start, end):
                 binding_depth[nucleotide] += 1
 
         return binding_depth
