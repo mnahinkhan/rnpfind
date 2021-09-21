@@ -56,7 +56,7 @@ class Storage:
         # just a nested dictionary) is created and stored here. For any two
         # RBPs x and y, self.corr_table[x][y] gives the correlation between
         # x and y's binding sites (when y is "thrown" at x)
-        self.corr_table = -1
+        # self.corr_table = -1
 
         # The same correlation table aforementioned, but [x][y] and [y][x]
         # give the same result, which is the f-score (2pq/(p+q) where p and
@@ -64,11 +64,6 @@ class Storage:
         # because some RBPs seem to bind almost everywhere, so correlation is
         # a one-way street
         self.corr_table_f_measure = -1
-
-        # Stores a list of tuples sorted by the distance scores. The tuples
-        # are of the form (x,y,score) where x and y are RBP gene names. Note
-        # that the scores here are actually the f-scores!
-        self.corr_sorted = -1
 
         # When the analysis was done, what was the base pair stringency used?
         self.corr_bp_threshold = -1
@@ -173,9 +168,7 @@ class Storage:
         Resets correlation data stored internally.
         In case new data is added, it's a good idea to reset correlation data
         """
-        self.corr_table = -1
         self.corr_table_f_measure = -1
-        self.corr_sorted = -1
 
     def __setitem__(self, item, value):
         # Discourage this use mostly, but if the types are right why not
@@ -207,8 +200,6 @@ class Storage:
     def self_analysis(
         self,
         bp_threshold=30,
-        display_threshold=0.8,
-        verbose=False,
         progress_feedback=True,
     ):
         """
@@ -224,8 +215,6 @@ class Storage:
         :param display_threshold: Threshold correlation value below which the
                                   pairwise RBP correlations are not shown.
                                   (Default value = 0.8)
-        :param verbose: specifies level of detail in output
-                        (Default value = False)
         :param progress_feedback: specifies whether the progress of analysis is
                                   printed continuously as the correlations are
                                   calculated
@@ -284,75 +273,9 @@ class Storage:
 
                     tuple_list.append((i, j, corr_table_f_score[i][j]))
 
-            sorted_tuple_list = sorted(tuple_list, key=thirdItem, reverse=True)
-
-            self.corr_table = corr_table
             self.corr_table_f_measure = corr_table_f_score
-            self.corr_sorted = sorted_tuple_list
             self.corr_bp_threshold = bp_threshold
 
-            if verbose:
-                print("Data was saved in storage")
-
-        if verbose:
-            print(
-                "Some of the highest score pairs above threshold"
-                " (0.8 by default):"
-            )
-
-            for output in self.corr_sorted:  # sorted three element tuple list
-                if 1.0 > output[2] > display_threshold:
-                    print(output)
-
-        return (
-            self.corr_table,
-            self.corr_table_f_measure,
-            self.corr_sorted,
-            self.corr_bp_threshold,
-        )
-
-    def lookup(
-        self, first_rbp, second_rbp=-1, display_threshold=-0.1, bp_threshold=30
-    ):
-        """
-        gets the correlation value for a specific RBP and all RBPs or a specific
-        RBP and another one.
-        :param first_rbp: the first RBP
-        :param second_rbp: the second RBP, or -1 if you need against all
-                  (Default value = -1)
-        :param display_threshold:  the cutoff value below which correlation
-                                   pairs should not be shown
-                                   (Default value = -0.1)
-        :param bp_threshold:  the number of bases beyond which two RBPs are
-                              considered too far in terms of the distance
-                              between a pair of their binding sites
-                              (Default value = 30)
-
-        """
-        if self.corr_table == -1 or self.corr_bp_threshold != bp_threshold:
-            self.self_analysis(
-                bp_threshold=bp_threshold, display_threshold=1.1
-            )
-
-        if second_rbp == -1:
-            to_return_list = []
-            corr_entries = self.corr_table_f_measure.get(first_rbp, {})
-            for key in sorted(
-                corr_entries, key=corr_entries.get, reverse=True
-            ):
-                if float(corr_entries[key]) > display_threshold:
-                    to_return_list.append((key, corr_entries[key]))
-
-            return to_return_list
-
-        return self.corr_table_f_measure.get(first_rbp, {}).get(second_rbp, 0)
-
-    def lookup_table(self):
-        """
-        Returns the correlation table for this RNA molecule.
-        A correlation table describes the extent to which the RBPs binding to
-        this molecule have similar binding patterns on this RNA.
-        """
         return self.corr_table_f_measure
 
     def binds_near(self, interval_range, bp_threshold=30):
@@ -442,12 +365,6 @@ class Storage:
         prints the Storage instance (collection of RBP binding sites)
         """
         print(self)
-
-    def len(self):
-        """
-        returns the number of RBPs binding to this Storage (RNA) instance
-        """
-        return len(self)
 
     def all_sites_in(self, interval_range, bp_threshold=0):
         """
