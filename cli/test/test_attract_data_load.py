@@ -33,7 +33,7 @@ class TestCorrectBindingSites(unittest.TestCase):
         test_rna_info["start_coord"] = 65497738
         test_rna_info["end_coord"] = 65506516
 
-        # attract_binding_sites = attract_data_load(test_rna_info)
+        # TODO: Fill in proper tests here
         self.assertEqual(
             len(analysis_methods_supported_short),
             len(analysis_methods_supported_long),
