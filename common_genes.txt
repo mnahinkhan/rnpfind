@@ -1,10 +1,12 @@
 brca1
 brca2
+cfd
 hnrnpa2b1
 hnrnpc
 hnrnpd
 hnrnpf
 hnrnpk
+hnrnpl
 hnrnpm
 malat1
 mapk14
