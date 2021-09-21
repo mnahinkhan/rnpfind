@@ -42,7 +42,7 @@ class Storage:
     differet RNA binding proteins (RBPs) can bind. Thus each BindingSite
     represents an RBP molecule, within a Storage.
 
-    This class stores data about a lncRNA and RBPs that might bind to it, as
+    This class stores data about an RNA and RBPs that might bind to it, as
     well as the sites at which they bind (using dictionaries that store
     BindingSites values)
     """
@@ -199,8 +199,8 @@ class Storage:
         """
 
         summary_info = []
-        for rbp in self._rbps:
-            summary_info.append((rbp, len(self._rbps[rbp])))
+        for rbp, sites in self._rbps.items():
+            summary_info.append((rbp, len(sites)))
 
         return len(self._rbps), sum([k for (a, k) in summary_info])
 
@@ -234,7 +234,10 @@ class Storage:
         """
 
         # If analysis hasn't happened yet or different stringency is being used:
-        if self.corr_table == -1 or self.corr_bp_threshold != bp_threshold:
+        if (
+            self.corr_table_f_measure == -1
+            or self.corr_bp_threshold != bp_threshold
+        ):
             corr_table = {}  # Stores the correlation table (nested dictionary)
             prev_num = 0
             num_j = 0
@@ -355,7 +358,7 @@ class Storage:
     def binds_near(self, interval_range, bp_threshold=30):
         """
         This function takes a tuple representing an interval that one wants
-        to test on the lncRNA and returns a Storage of RBPs binding to or near
+        to test on the lncRNA and returns a list of RBPs binding to or near
         that interval
 
         :param interval_range: in the form (start, end) or (start, end, _)
@@ -365,11 +368,11 @@ class Storage:
         start, end, *_ = interval_range
         extended_range = (start - bp_threshold, end + bp_threshold)
 
-        to_return = Storage()
+        to_return = []
 
-        for k in self._rbps:
-            if self._rbps[k].is_overlap(extended_range):
-                to_return[k] = self._rbps[k]
+        for rbp, sites in self._rbps.items():
+            if sites.is_overlap(extended_range):
+                to_return.append(rbp)
 
         return to_return
 
@@ -384,9 +387,9 @@ class Storage:
 
         """
         to_return = Storage()
-        for k in self._rbps:
-            if filter_func(k):
-                to_return[k] = self._rbps[k]
+        for rbp, sites in self._rbps.items():
+            if filter_func(rbp):
+                to_return[rbp] = sites
 
         return to_return
 
