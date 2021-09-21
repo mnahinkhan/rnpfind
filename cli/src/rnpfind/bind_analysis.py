@@ -345,6 +345,7 @@ class Storage:
         }
 
         """
+        gene = gene.upper()
         # sanity check
         if gene not in self._rbps:
             gene = self.synonym_func(gene)
@@ -492,6 +493,12 @@ class Storage:
         for rbp in self:
             for site in self[rbp]:
                 # print(site)
+                start, end, annotation = site
+                if annotation:
+                    annotation += rbp
+                else:
+                    annotation = rbp
+                site = (start, end, annotation)
                 new_binding_site.add(site)
         return new_binding_site
 
