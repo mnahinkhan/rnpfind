@@ -808,15 +808,17 @@ class BindingSites:
             in_range = False
             binding_site_to_add_to.add((start_range, end_range))
 
-        # Add annotations
-        for site in sites:
-            start, end, annotation = site
-            # print(start, end, annotation)
-            site, distance = binding_site_to_add_to.nearest_site(site)
-            if distance == 0:
-                binding_site_to_add_to.add(
-                    (start, end, annotation), annotation_merger
-                )
+        if len(binding_site_to_add_to) > 0:
+            # Add annotations
+            for site in sites:
+                _, _, annotation = site
+                site, distance = binding_site_to_add_to.nearest_site(site)
+                start, end, _ = site
+                if distance == 0:
+                    binding_site_to_add_to.add(
+                        (start, end, annotation), annotation_merger
+                    )
+
         if not in_place:
             return binding_site_to_add_to
 
