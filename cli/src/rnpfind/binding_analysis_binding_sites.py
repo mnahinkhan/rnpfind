@@ -33,6 +33,11 @@ OVERLAP_CONFLICT = "union"
 # with "None" instead
 
 
+class NoSites(Exception):
+    """Raised when there are no sites in the BindingSite but a site is
+    sought"""
+
+
 class BindingSites:
     """
     BindingSites allows adding binding sites, removing binding sites, querying
@@ -428,6 +433,9 @@ class BindingSites:
 
         start, end, *_ = query_site
         pos = self.sorted_sites.bisect_left((start, 0))
+
+        if not self.sorted_sites:
+            raise NoSites
 
         # tuple at the beginning
         if pos == 0:
