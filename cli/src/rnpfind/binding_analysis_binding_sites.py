@@ -799,12 +799,12 @@ class BindingSites:
                     in_range = True
             else:
                 if in_range:
-                    end_range = nucleotide - 1
+                    end_range = nucleotide
                     in_range = False
                     binding_site_to_add_to.add((start_range, end_range))
 
         if in_range:
-            end_range = nucleotide
+            end_range = nucleotide + 1
             in_range = False
             binding_site_to_add_to.add((start_range, end_range))
 
