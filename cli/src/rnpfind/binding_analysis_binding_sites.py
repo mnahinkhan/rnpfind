@@ -344,6 +344,9 @@ class BindingSites:
 
         """
 
+        # If the threshold is lower than one it's the same as being one
+        bp_threshold = max(1, bp_threshold)
+
         if self.overlap_mode:
             raise ValueError(
                 "dist() is not supported for BindingSites with"
