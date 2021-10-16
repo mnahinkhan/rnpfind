@@ -716,8 +716,8 @@ class BindingSites:
         associated with the original range interval data.
 
         If inPlace is set to True, the BindingSites variable changes and
-        collpases, otherwise a new BindingSites variable is generated and
-        returned.
+        collpases (None is returned), otherwise a new BindingSites variable is
+        generated and returned.
 
         *In general, no nucleotide with support<1 is kept.
 
@@ -820,7 +820,7 @@ class BindingSites:
         if not in_place:
             return binding_site_to_add_to
 
-        return BindingSites()
+        return None
 
     def base_cover(self):
         """
