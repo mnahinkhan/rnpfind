@@ -210,8 +210,11 @@ class BindingSites:
         return new_l_set.pop()
 
     @staticmethod
-    def _collapse(interval_list, user_merge_func=None):
-        """Takes a list of overlapping ranges and collapses them into one
+    def _collapse(interval_list: "BindingSites", user_merge_func=None):
+        """Takes a list of overlapping ranges and collapses them into one.
+
+        A precondition is that the ranges are overlapping overall (even with
+        chained relations)
 
         :param interval_list: A list of intervals to be merged
         :param user_merge_func: if specified, this function is used to merge the
@@ -418,7 +421,8 @@ class BindingSites:
 
     def nearest_site(self, query_site):
         """This returns the closest range to the input tuple range
-        present in the set of binding sites stored in self
+        present in the set of binding sites stored in self, as well as the
+        distance to said site.
 
         :param query_site: a site in the form (start, end, metadata) or just
                             (start, end)
@@ -684,9 +688,9 @@ class BindingSites:
         'TopDepthNumber', 'MinimumDepthNumber', 'TopSitesNumber','TopSitesRatio'
 
             'baseCoverNumber': Choose cut off based on maximum number of bases
-                that the selected sites are allowed to cover. The most stringent
-                depth cutoff that achieves this criteria is selected, unless not
-                possible*.
+                that the selected sites are allowed to cover (laterally). The
+                most stringent depth cutoff that achieves this criteria is
+                selected, unless not possible*.
 
             'TopDepthRatio': Choose cutoff based on the fraction of highest
                 depth coverage that should be supported as binding sites. For
