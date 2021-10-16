@@ -482,12 +482,6 @@ class BindingSites:
         start_2, end_2, *_ = site_2
         return min(abs(start_1 - end_2), abs(start_2 - end_1))
 
-    def print(self):
-        """
-        prints the BindingSite instance
-        """
-        print(self)
-
     def len(self):
         """
         returns the number of sites stored in the BindingSite instance
