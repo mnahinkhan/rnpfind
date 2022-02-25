@@ -48,7 +48,7 @@ class Gene(models.Model):
         """
         size of gene in bases
         """
-        return self.end_coord - self.start_coord
+        return self.end_coord - self.start_coord + 1
 
 
 class BindingSummaryInfo(models.Model):
