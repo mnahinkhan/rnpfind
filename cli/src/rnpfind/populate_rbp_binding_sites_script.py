@@ -36,8 +36,9 @@ def populate_binding_sites(
     rna_chr_no = rna_info["chr_n"]
     rna_start_chr_coord = rna_info["start_coord"]
 
-    # TODO: check if this -1 patch is necessary for all data sources or just
-    # RBPDB
+    # The RNA start coordinate is 1-based. But all BED file binding sites
+    # should be half-open and 0-based, and the binding sites returned by
+    # data loading functions are half-open and 0-based.
     displacement = rna_start_chr_coord - 1
 
     comp_color = red
@@ -108,7 +109,7 @@ def populate_binding_sites(
             total_sites = storage[[rbp]].print_bed(
                 chr_n=rna_chr_no,
                 displacement=displacement,
-                end_inclusion=True,
+                end_inclusion=False,  # BED files have to be 0-based, half-open.
                 add_annotation=True,
                 include_color=True,
                 include_header=False,

@@ -97,7 +97,7 @@ def get_rna_coord(rna_gene_name):
         f"Analyzing {GENOME_VERSION}"
         f" {rna_chr_no}:{rna_start_chr_coord}-{rna_end_chr_coord}"
         f" ({rna_strand})"
-        f" (length = {rna_end_chr_coord - rna_start_chr_coord} bases)",
+        f" (length = {rna_end_chr_coord - rna_start_chr_coord + 1} bases)",
         file=sys.stderr,
     )
 
@@ -112,6 +112,8 @@ def get_user_rna_preference(transcript: str) -> dict:
     :returns: a dictionary containing the official name of the RNA, along with
               its chrosome number, start coordinate, and end coordinate on the
               human genome.
+
+    Start and end coordinates are 1-based, fully closed.
     """
     (
         rna_chr_no,

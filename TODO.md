@@ -32,6 +32,12 @@
 ## Testing
  - Finish up unit tests
  - Test binding site accuracy
+ - The following should hold for the BED file outputs, when analyzing Malat1:
+   - Attract: A1CF should have a binding site on `chr11 65503843 65503850`
+   - POSTAR: AGGF1 should have a binding site on `chr11 65499702 65499791`
+   - RBPDB: ELAVL2 should have a binding site on `chr11 65498029 65498033`
+
+
 
 ## Methods
  - Implement methods straight from paper methodologies so each data source

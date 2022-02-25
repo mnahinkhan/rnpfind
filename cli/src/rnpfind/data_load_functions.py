@@ -11,6 +11,20 @@ on the hg38 chromosome. If you preferred to have the RNA sequence,
 get_human_seq() from pwm_scan should help you (see attract_data_load.py for an
 example of that).
 
+-------------------------------------
+Clarification: The input RNA coordinates should be assumed to be 1-based, fully
+closed.
+
+So for a chromosome X that starts with:
+
+             AUCGAU...
+
+The (crazy short) RNA transcript "CGA" would be specified as chrX:3-5 (+)
+
+All data loading functions should process rna_info with this in mind.
+----------------------------------------------
+
+
 Upon getting the above input, a data loading function must return an iterable
 object that contains elements of the following form that each represent a
 binding site of an rbp on the RNA molecule: (rbp, start, end, annotation). For
@@ -32,6 +46,19 @@ start of the RNA (where "start" is always the thing on the left side, doesn't
 matter if the gene is on anti-sense strand) on the hg38 chromosome, and "end"
 refers to the nucleotide number where the site ends (again relative to where the
 RNA starts on the chromosome).
+
+-------------------------------------
+Clarification: All binding site (output) coordinates throughout RNPFind should
+assume 0-based, "half-open" coordinates. This means for an RNA template that
+looks like:
+
+             AUCGAU...
+
+The binding site "CGA" should be specified as (rbpX, 2, 5).
+
+All data loading functions should return values with this in mind.
+----------------------------------------------
+
 
 "Annotation" is any annotation you might want to add to the binding site. I have
 struggled with standardizing this, switching back and forth between strings with

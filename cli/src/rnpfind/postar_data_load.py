@@ -146,8 +146,11 @@ def binary_search_populate(file_path, rna_info, debug=False):
 
                 rbp = postar_line_parts[6]
                 start, end = postar_line_parts[1], postar_line_parts[2]
-                start = int(start) - rna_start_chr_coord
-                end = int(end) - rna_start_chr_coord
+                # Assumption: POSTAR coordinates are 0-based, half-open
+                # Fact: Input RNA coordinates are 1-based, fully-closed
+                # Fact: the output is expected to be 0-based, half-open
+                start = int(start) - rna_start_chr_coord + 1
+                end = int(end) - rna_start_chr_coord + 1
 
                 # TODO: Consider reformatting the annotation for visual appeal
                 annotation = ANNOTATION_COLUMN_DELIMITER.join(

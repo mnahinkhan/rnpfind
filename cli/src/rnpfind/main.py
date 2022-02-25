@@ -180,6 +180,7 @@ def rnpfind(
         download_ro_data()
 
     # Start by getting the transcript of interest to analyze
+    # Coordinates are 1-based, fully closed.
     rna_info: dict = get_user_rna_preference(transcript)
 
     # what data sources does the user want to collect data from today?

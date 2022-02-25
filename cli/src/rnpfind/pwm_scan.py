@@ -80,6 +80,9 @@ def get_human_seq(rna_info):
             'strand' : "+" or "-" denoting gene's existence on forward or
                 reverse strand
 
+
+    The start and end coordinates are assumed to be 1-based, fully closed.
+
     """
     chr_no = rna_info["chr_n"]
     chr_start = rna_info["start_coord"]
@@ -111,15 +114,17 @@ def get_human_seq(rna_info):
         # Once at the required position, keep adding lines of bases as long as
         # too short. Then adjust in case we overshot the required length.
         gene = ""
-        while len(gene) < chr_end - chr_start:
+        while len(gene) < chr_end - chr_start + 1:
             gene += handle.readline().strip()
-        gene = gene[: chr_end - chr_start]
+        gene = gene[: chr_end - chr_start + 1]
 
     seq = gene.upper()
 
     if strand == "-":
         seq = reverse_complement(seq)
     seqs[(chr_no, chr_start, chr_end, strand)] = seq
+
+    assert len(seq) == chr_end - chr_start + 1
     return seq
 
 
