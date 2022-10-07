@@ -163,7 +163,10 @@ def binary_search_populate(file_path, rna_info, debug=False):
 
                     # TODO: Consider reformatting the annotation for visual appeal
                     annotation = ANNOTATION_COLUMN_DELIMITER.join(
-                        [postar_line_parts[i] for i in postar_columns_of_interest]
+                        [
+                            postar_line_parts[i]
+                            for i in postar_columns_of_interest
+                        ]
                     )
                     yield rbp, start, end, annotation
 

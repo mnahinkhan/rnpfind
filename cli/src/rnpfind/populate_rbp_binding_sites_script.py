@@ -64,20 +64,6 @@ def populate_binding_sites(
                 f"Directory {folder_path} already exists...", file=sys.stderr
             )
 
-        # with open(
-        #     Path(overarching_path) / "threshold_config.txt", "w"
-        # ) as threshold_config_file:
-        #     threshold_config_file.write(
-        #         "competitive threshold used: "
-        #         + str(competitive_threshold_bp)
-        #         + "\n"
-        #     )
-        #     threshold_config_file.write(
-        #         "cooperative threshold used: "
-        #         + str(cooperative_threshold_bp)
-        #         + "\n"
-        #     )
-
         default_color = data_load_source_colors[data_load_source]
 
         def coloring_func(
