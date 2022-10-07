@@ -42,10 +42,10 @@ changing code than any demonstrable efficiency).
 Above, for each binding site, "rbp" is the name of an RBP molecule (a string).
 
 The "start" refers to the starting coordinate of a binding site relative to the
-start of the RNA (where "start" is always the thing on the left side, doesn't
-matter if the gene is on anti-sense strand) on the hg38 chromosome, and "end"
+start of the RNA (the left side of the RNA molecule, so if the gene is on
+anti-sense strand, things are flipped compared to the genome) and "end"
 refers to the nucleotide number where the site ends (again relative to where the
-RNA starts on the chromosome).
+RNA starts).
 
 -------------------------------------
 Clarification: All binding site (output) coordinates throughout RNPFind should

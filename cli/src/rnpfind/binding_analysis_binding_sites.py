@@ -521,6 +521,7 @@ class BindingSites:
         chr_n=1,
         displacement=0,
         end_inclusion=False,
+        antisense=False,
         add_annotation=False,
         include_score=False,
         score_max=1000,
@@ -537,6 +538,7 @@ class BindingSites:
         :param chr_n:  (Default value = 1)
         :param displacement:  (Default value = 0)
         :param end_inclusion:  (Default value = False)
+        :param antisense:  (Default value = False)
         :param add_annotation:  (Default value = False)
         :param include_score:  (Default value = False)
         :param score_max:  (Default value = 1000)
@@ -563,6 +565,8 @@ class BindingSites:
 
         for _tuple in self.sorted_sites:
             start, end, annotation = _tuple
+            if antisense:
+                start, end = -end, -start
             start, end = (
                 displacement + start,
                 (displacement + end + (1 if end_inclusion else 0)),
@@ -592,8 +596,8 @@ class BindingSites:
             if include_color and is_bar:
                 raise ValueError("Cant be both color and bar!")
 
+            strand = "+" if not antisense else "-"
             if include_color:
-                strand = "+"  # default
 
                 if conditional_color_func is None:
                     color = "0,0,0"  # black
@@ -606,7 +610,6 @@ class BindingSites:
             if is_bar and not include_score:
                 raise ValueError("What height for bar?")
             if is_bar:
-                strand = "+"  # default
                 number_of_bars = 1
                 to_join += [strand, name, number_of_bars, score]
 

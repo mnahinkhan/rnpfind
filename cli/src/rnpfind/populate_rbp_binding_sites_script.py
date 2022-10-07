@@ -35,11 +35,15 @@ def populate_binding_sites(
 
     rna_chr_no = rna_info["chr_n"]
     rna_start_chr_coord = rna_info["start_coord"]
+    rna_end_chr_coord = rna_info["end_coord"]
+    strand = rna_info["strand"]
 
     # The RNA start coordinate is 1-based. But all BED file binding sites
     # should be half-open and 0-based, and the binding sites returned by
     # data loading functions are half-open and 0-based.
-    displacement = rna_start_chr_coord - 1
+    displacement = (
+        rna_start_chr_coord - 1 if strand == "+" else rna_end_chr_coord
+    )
 
     comp_color = red
     coop_color = green
@@ -109,6 +113,7 @@ def populate_binding_sites(
             total_sites = storage[[rbp]].print_bed(
                 chr_n=rna_chr_no,
                 displacement=displacement,
+                antisense=strand == "-",
                 end_inclusion=False,  # BED files have to be 0-based, half-open.
                 add_annotation=True,
                 include_color=True,

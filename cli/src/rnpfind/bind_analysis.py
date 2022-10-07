@@ -471,6 +471,7 @@ class Storage:
         chr_n=1,
         displacement=0,
         end_inclusion=False,
+        antisense=False,
         add_annotation=False,
         include_score=False,
         score_max=1000,
@@ -493,6 +494,11 @@ class Storage:
         :param endInclusion: set to True if the formatting requires last base to
                              be included in the interval specification
                              (Default value = False)
+        :param antisense: set to True if every (start, end) should be replaced by
+                          (-end, -start). Useful if the RNA molecule is known to be
+                          on the anti-sense strand (set displacement to end of RNA
+                          coordinate on a 1-based fully-closed system). Will print
+                          the strand column as "-" as well. (Default value = False)
         :param addAnnotation: set to True if the binding site annotations should
                               be included in the BED file content returned
                               (Default value = False)
@@ -522,6 +528,7 @@ class Storage:
                 chr_n=chr_n,
                 displacement=displacement,
                 end_inclusion=end_inclusion,
+                antisense=antisense,
                 add_annotation=add_annotation,
                 include_score=include_score,
                 score_max=score_max,

@@ -120,6 +120,7 @@ def binary_search_populate(file_path, rna_info, debug=False):
     rna_chr_no = rna_info["chr_n"]
     rna_start_chr_coord = rna_info["start_coord"]
     rna_end_chr_coord = rna_info["end_coord"]
+    rna_strand = rna_info["strand"]
     query = Query((rna_chr_no, rna_start_chr_coord, rna_end_chr_coord))
 
     with open(file_path) as postar_data_file:
@@ -144,19 +145,27 @@ def binary_search_populate(file_path, rna_info, debug=False):
                         print(";".join(postar_line_parts))
                         seen += [postar_line_parts[7]]
 
-                rbp = postar_line_parts[6]
-                start, end = postar_line_parts[1], postar_line_parts[2]
-                # Assumption: POSTAR coordinates are 0-based, half-open
-                # Fact: Input RNA coordinates are 1-based, fully-closed
-                # Fact: the output is expected to be 0-based, half-open
-                start = int(start) - rna_start_chr_coord + 1
-                end = int(end) - rna_start_chr_coord + 1
+                if rna_strand == postar_line_parts[5]:
+                    # postar strand annot matches
 
-                # TODO: Consider reformatting the annotation for visual appeal
-                annotation = ANNOTATION_COLUMN_DELIMITER.join(
-                    [postar_line_parts[i] for i in postar_columns_of_interest]
-                )
-                yield rbp, start, end, annotation
+                    rbp = postar_line_parts[6]
+                    start, end = postar_line_parts[1], postar_line_parts[2]
+                    # Assumption: POSTAR coordinates are 0-based, half-open
+                    # Fact: Input RNA coordinates are 1-based, fully-closed
+                    # Fact: the output is expected to be 0-based, half-open
+                    if rna_strand == "+":
+                        start = int(start) - rna_start_chr_coord + 1
+                        end = int(end) - rna_start_chr_coord + 1
+                    else:
+                        start, end = rna_end_chr_coord - int(
+                            end
+                        ), rna_end_chr_coord - int(start)
+
+                    # TODO: Consider reformatting the annotation for visual appeal
+                    annotation = ANNOTATION_COLUMN_DELIMITER.join(
+                        [postar_line_parts[i] for i in postar_columns_of_interest]
+                    )
+                    yield rbp, start, end, annotation
 
             elif is_found:
                 break
