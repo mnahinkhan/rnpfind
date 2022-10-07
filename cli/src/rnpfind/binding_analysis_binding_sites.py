@@ -572,7 +572,10 @@ class BindingSites:
         else:
             chr_n = ("chr" + chr_n) if chr_n[:3] != "chr" else chr_n
 
-        for _tuple in self.sorted_sites:
+        sorted_sites = (
+            self.sorted_sites if not antisense else reversed(self.sorted_sites)
+        )
+        for _tuple in sorted_sites:
             start, end, annotation = _tuple
             if antisense:
                 start, end = -end, -start
