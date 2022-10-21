@@ -353,6 +353,7 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
             ),
             include_header=True,
             antisense=rna_info["strand"] == "-",
+            length=rna_info["end_coord"] - rna_info["start_coord"] + 1,
         )
 
         rbp_no_dict[data_load_source] = len(storage)
