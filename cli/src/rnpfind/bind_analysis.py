@@ -512,6 +512,7 @@ class Storage:
         description="",
         include_header=True,
         antisense=False,
+        length=-1,
     ):
         """
         Prints a WIG file represeting the density of binding by the RBPs on the
@@ -527,6 +528,7 @@ class Storage:
         :param description:  (Default value = "")
         :param include_header:  (Default value = True)
         :param antisense:  (Default value = False)
+        :param length:  (Default value = -1)
 
         """
 
@@ -539,4 +541,5 @@ class Storage:
             description=description,
             include_header=include_header,
             antisense=antisense,
+            length=length,
         )
