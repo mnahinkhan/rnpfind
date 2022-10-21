@@ -352,6 +352,7 @@ def density_plot(big_storage, rna_info, data_load_sources, overarching_path):
                 "Density plot of " + str(len(storage)) + " RBPs on " + rna
             ),
             include_header=True,
+            antisense=rna_info["strand"] == "-",
         )
 
         rbp_no_dict[data_load_source] = len(storage)

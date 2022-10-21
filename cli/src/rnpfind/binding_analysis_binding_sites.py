@@ -848,6 +848,7 @@ class BindingSites:
         description="",
         include_header=True,
         length=-1,
+        antisense=False,
     ):
         """Prints a wig file depicting density of binding sites by the RBP.
 
@@ -862,6 +863,7 @@ class BindingSites:
         :param description:  (Default value = "")
         :param include_header:  (Default value = True)
         :param length:  (Default value = -1)
+        :param antisense:  (Default value = False)
 
         """
 
@@ -889,6 +891,8 @@ class BindingSites:
 
         # length long array, 0-indexed
         depth_array = self.return_depth(length=length)
+        if antisense:
+            depth_array = reversed(depth_array)
         output_str += "\n".join(map(str, depth_array))
 
         return output_str

@@ -320,6 +320,28 @@ class TestStorage(unittest.TestCase):
             ideal_depth_array, depth_array[0 : len(ideal_depth_array)]
         )
 
+        # Now test antisense
+        depth_array = storage.print_wig(
+            chr_no=13, include_header=False, antisense=True
+        ).split("\n")
+        self.assertTrue("chr13" in depth_array[0])
+        depth_array = depth_array[1:]
+        ideal_depth_array = (
+            [3] * 100  # 600 - 699
+            + [0] * 100  # 500 - 599
+            + [0] * 50  # 450 - 499
+            + [1] * 50  # 400 - 449
+            + [2] * 100  # 300 - 399
+            + [1] * 100  # 200 - 299
+            + [1] * 100  # 100 - 199
+            + [0] * 100  # 0 - 99
+        )
+        depth_array = [int(c) for c in depth_array]
+        self.assertEqual(len(depth_array), 700)
+        self.assertEqual(
+            ideal_depth_array, depth_array[0 : len(ideal_depth_array)]
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
