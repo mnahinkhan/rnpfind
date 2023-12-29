@@ -16,12 +16,12 @@ services:
    build: ./web
    volumes:
      - static_volume_dev:/app/staticfiles
-     - ./web:/app
+       # - ./web:/app
    environment:
      - PORT=8000
      - DB_HOST=db-dev
      - TRANSPORT_HOST=redis-dev
-     - DEBUG=1
+     - DEBUG=0
    env_file:
      - db.env
    expose:
@@ -41,7 +41,7 @@ services:
    environment:
      - DB_HOST=db-dev
      - TRANSPORT_HOST=redis-dev
-     - HOST_URL=localhost:8000
+     - HOST_URL=https://rnpfind.com
    volumes:
      - static_volume_dev:/app/staticfiles
      - ./ro-data:/usr/local/lib/python3.8/site-packages/rnpfind/ro-data
@@ -58,7 +58,7 @@ services:
    volumes:
      - static_volume_dev:/app/staticfiles
      - ./ro-data:/app/ro-data
-     - ./web/website/static/website:/app/staticfiles/website
+       # - ./web/website/static/website:/app/staticfiles/website
    ports:
      - 8000:80
    environment:

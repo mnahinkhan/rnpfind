@@ -6,6 +6,9 @@ ENV DEBUG 0
 # used by bedToBigBed tool
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libkrb5-dev \
+    libpq-dev \
+    gcc \
+ && pip install psycopg2 \
  && rm -rf /var/lib/apt/lists/*
 
 

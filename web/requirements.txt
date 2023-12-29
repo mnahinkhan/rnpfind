@@ -16,7 +16,7 @@ hgfind==1.0.0
 kombu==5.1.0
 Markdown==3.3.4
 prompt-toolkit==3.0.19
-psycopg2-binary==2.9.1
+psycopg2==2.9.5
 pycparser==2.20
 pytz==2021.1
 redis==3.5.3
