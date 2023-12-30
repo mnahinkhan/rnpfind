@@ -17,7 +17,8 @@ COPY . .
 
 RUN adduser --disabled-password myuser; \
     chown myuser /usr/local/lib/python3.8/site-packages/rnpfind; \
-    chown myuser /usr/local/lib/python3.8/site-packages/hgfind
+    chown myuser /usr/local/lib/python3.8/site-packages/hgfind; \
+    chown myuser /app/website/migrations
 
 
 USER myuser
