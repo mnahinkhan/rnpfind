@@ -111,6 +111,10 @@ def download_url(url, output_path):
     with DownloadProgressBar(
         unit="B", unit_scale=True, miniters=1, desc=url.split("/")[-1]
     ) as pbar:
+        # Adding user_agent information
+        opener=urllib.request.build_opener()
+        opener.addheaders=[('User-Agent','Mozilla/5.0')]
+        urllib.request.install_opener(opener)
         urllib.request.urlretrieve(
             url, filename=output_path, reporthook=pbar.update_to
         )
