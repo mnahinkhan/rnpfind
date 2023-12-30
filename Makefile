@@ -30,6 +30,12 @@ dev:
 	&& docker compose -f docker-compose-dev.yml build \
 	&& docker compose -f docker-compose-dev.yml up
 
+dev-detach:
+	./gen_web_files.sh \
+	&& ./gen_nginx_files.sh \
+	&& docker compose -f docker-compose-dev.yml build \
+	&& docker compose -f docker-compose-dev.yml up --detach
+
 push:
 	./gen_web_files.sh \
 	&& ./gen_nginx_files.sh \
