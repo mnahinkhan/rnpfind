@@ -22,7 +22,12 @@ RUN adduser --disabled-password myuser; \
     chown myuser /app; \
     chown myuser /app/staticfiles; \
     chown myuser /usr/local/lib/python3.8/site-packages/rnpfind; \
-    chown myuser /usr/local/lib/python3.8/site-packages/hgfind
+    chown myuser /usr/local/lib/python3.8/site-packages/hgfind; \
+    cp ./ucsc-arm64/* /usr/local/lib/python3.8/site-packages/rnpfind/ucsc-tools/linux; \
+    cp ./libssl/* /lib/aarch64-linux-gnu/
+
+
+
 
 USER myuser
 CMD ["celery", "-A", "rnp_find", "worker", "-l", "INFO"]
