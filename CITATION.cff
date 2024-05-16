@@ -1,0 +1,37 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: RNPFind
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Nahin
+    family-names: Khan
+    email: mnk1@alumni.cmu.edu
+    affiliation: Carnegie Mellon University Qatar
+    orcid: 'https://orcid.org/0000-0002-0645-9993'
+  - given-names: Ihab
+    family-names: Younis
+    email: iyounis@andrew.cmu.edu
+    affiliation: Carnegie Mellon University Qatar
+    orcid: 'https://orcid.org/0000-0003-3329-5979'
+identifiers:
+  - type: url
+    value: 'https://github.com/mnahinkhan/rnpfind'
+  - type: url
+    value: 'https://rnpfind.com'
+repository-code: 'https://github.com/mnahinkhan/rnpfind'
+url: 'https://rnpfind.com'
+abstract: 'Explore, identify, and download RNA Protein interactions'
+keywords:
+  - Python
+  - RBP
+  - RNA
+  - Protein
+  - UCSC
+  - Visualize
+commit: 65272bbeb7e73355b3259b6c6ac4ce35398c2eeb
+date-released: '2023-12-30'
